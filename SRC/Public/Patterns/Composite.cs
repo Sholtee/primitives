@@ -159,7 +159,9 @@ namespace Solti.Utils.Primitives
         }
         #endregion
 
+        #region Public
         public int MaxChildCount { get; }
+        #endregion
 
         #region IComposite
         /// <summary>
