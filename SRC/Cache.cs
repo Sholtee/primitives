@@ -7,7 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 
-namespace Solti.Utils.DI.Internals
+namespace Solti.Utils.Primitives
 {
     /// <summary>
     /// Represents a generic cache where the items have no expiration.
