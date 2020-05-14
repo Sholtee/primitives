@@ -5,6 +5,7 @@
 ********************************************************************************/
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace Solti.Utils.Primitives
@@ -12,6 +13,7 @@ namespace Solti.Utils.Primitives
     /// <summary>
     /// Represents a generic cache where the items have no expiration.
     /// </summary>
+    [SuppressMessage("Naming", "CA1724:Type names should not match namespaces")]
     public static class Cache 
     {
         private static class Backend<TKey, TValue> 
