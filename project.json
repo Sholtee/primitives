@@ -1,0 +1,14 @@
+{
+  "bin": "\\BIN",
+  "solution": "\\Primitives.sln",
+  "app": "\\SRC\\Primitives.csproj",
+  "githubrepo": "Sholtee/primitives.git",
+  "vendor": "\\Vendor",
+  "tests": "\\TEST\\Primitives.Tests.csproj",
+  "testtarget": "netcoreapp3.1",
+  "testresults": "testresults.xml",
+  "coveragereport": "coverage.xml",
+  "artifacts": "\\Artifacts",
+  "coveragefilter": "+[Primitives*]* -[Primitives.Tests]*",
+  "CI": "AppVeyor"
+}

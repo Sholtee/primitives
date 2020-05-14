@@ -1,0 +1,56 @@
+#############################################################################
+#                                                                           #
+# appveyor.yml                                                              #
+#                                                                           #
+# Author: Denes Solti                                                       #
+#                                                                           #
+#############################################################################
+
+# common configuration for ALL branches
+image: Visual Studio 2019
+
+environment:
+  COVERALLS_REPO_TOKEN:  
+    secure: Vq/CK5r09Xj8EiL6EItaHk73P8GXAMPPITVCQLIJQnz1JRCvJSdhFoADiV/rao2r
+  NUGET_REPO_TOKEN:
+    secure: xXx
+  GITHUB_EMAIL:
+    secure: Z6F+xZzdZzc5DMYB/4J0KUhyoTzTlXH75ciGl7hFH9s= 
+
+# prevent MSBuild from running
+build: off
+
+# clone repo & submodules
+clone_script:
+  - cmd: |
+      git clone -q --recursive --branch=%APPVEYOR_REPO_BRANCH% https://github.com/%APPVEYOR_REPO_NAME%.git %APPVEYOR_BUILD_FOLDER%
+      git checkout -qf %APPVEYOR_REPO_COMMIT%
+
+# load the build scripts
+before_test:
+  - ps: |
+      Set-Location -path ".\scripts"
+      .(".\includes.ps1")
+      Update-AppveyorBuild -Version "$($PROJECT.version).$($Env:APPVEYOR_BUILD_NUMBER)-$($Env:APPVEYOR_REPO_BRANCH)"
+      Get-SysInfo
+
+test_script:
+  - ps: |
+      Write-Host "Running regular tests"
+      Regular-Tests
+
+after_test:
+  - ps: Push-Test-Results
+
+# after build failure or success
+on_finish:
+  - ps: Push-Artifact "*.txt"  
+
+# override settings for `master` branch
+for:
+-
+  branches:
+    only:
+      - master
+  deploy_script: 
+    - ps: Deploy
