@@ -61,6 +61,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dispose can not be called directly..
+        /// </summary>
+        internal static string ARBITRARY_RELEASE {
+            get {
+                return ResourceManager.GetString("ARBITRARY_RELEASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The child already assigned to a parent..
         /// </summary>
         internal static string BELONGING_ITEM {
