@@ -1,0 +1,2 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/1cislo45m0jywxlm/branch/master?svg=true)](https://ci.appveyor.com/project/Sholtee/primitives/branch/master) ![AppVeyor tests](https://img.shields.io/appveyor/tests/sholtee/primitives) [![Coverage Status](https://coveralls.io/repos/github/Sholtee/primitives/badge.svg?branch=master)](https://coveralls.io/github/Sholtee/primitives?branch=master)
+> Shared classes used in my .NET projects
