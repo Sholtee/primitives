@@ -35,9 +35,7 @@ before_test:
       Get-SysInfo
 
 test_script:
-  - ps: |
-      Write-Host "Running regular tests"
-      Regular-Tests
+  - ps: Regular-Tests
 
 after_test:
   - ps: Push-Test-Results
