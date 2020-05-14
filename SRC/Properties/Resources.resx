@@ -129,4 +129,7 @@
   <data name="TOO_MANY_CHILDREN" xml:space="preserve">
     <value>The number of children exceeded the limit ({0}).</value>
   </data>
+  <data name="VALUE_ALREADY_SET" xml:space="preserve">
+    <value>The value has already been set.</value>
+  </data>
 </root>

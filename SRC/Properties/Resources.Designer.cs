@@ -95,5 +95,14 @@ namespace Solti.Utils.Primitives.Properties {
                 return ResourceManager.GetString("TOO_MANY_CHILDREN", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value has already been set..
+        /// </summary>
+        internal static string VALUE_ALREADY_SET {
+            get {
+                return ResourceManager.GetString("VALUE_ALREADY_SET", resourceCulture);
+            }
+        }
     }
 }
