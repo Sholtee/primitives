@@ -13,7 +13,7 @@ namespace Solti.Utils.Primitives
     /// </summary>
     /// <typeparam name="T">The type on which we want to apply the pattern.</typeparam>
     /// <remarks>This is an internal interface so it may change from version to version. Don't use it!</remarks>
-    public interface IComposite<T> where T : class, IComposite<T>, IDisposableEx
+    public interface IComposite<T>: IDisposableEx where T : class, IComposite<T>
     {
         /// <summary>
         /// The parent of this entity.

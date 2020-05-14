@@ -29,29 +29,49 @@ namespace Solti.Utils.Primitives
     /// <remarks>This is an internal class so it may change from version to version. Don't use it!</remarks>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     [SuppressMessage("Design", "CA1033:Interface methods should be callable by child types", Justification = "Derived types can access these methods via the Children property")]
-    public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>, IDisposableEx
+    public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
     {
         #region Private
         private readonly HashSet<TInterface> FChildren = new HashSet<TInterface>();
 
         private readonly ReaderWriterLockSlim FLock = new ReaderWriterLockSlim();
 
+        private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping; 
+
         private TInterface? FParent;
 
         private TInterface Self { get; }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 1, fNeedFileInfo: false).GetMethod();
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 2, fNeedFileInfo: false).GetMethod();
 
-        private static Func<object, object[], object> ConvertToDelegate(MethodInfo method) 
+        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() 
+        {
+            InterfaceMapping mapping = GetType().GetInterfaceMap(typeof(TInterface));
+            return mapping
+                .TargetMethods
+                .Select((tm, i) => new 
+                { 
+                    TargetMethod = tm, 
+                    InterfaceMethod = mapping.InterfaceMethods[i] 
+                })
+                .ToDictionary(m => m.TargetMethod, m => m.InterfaceMethod);
+
+            //
+            // TODO: typeof(TInterface).GetInterfaces()-re is
+            //
+        }
+
+        private static Func<TInterface, object[], object> ConvertToDelegate(MethodInfo method) 
         {
             ParameterExpression
-                instance = Expression.Parameter(typeof(object), nameof(instance)),
+                instance = Expression.Parameter(typeof(TInterface), nameof(instance)),
                 paramz   = Expression.Parameter(typeof(object[]), nameof(paramz));
 
-            Expression call = Expression.Invoke
+            Expression call = Expression.Call
             (
-                Expression.Convert(instance, method.DeclaringType),
+                instance,
+                method,
                 method.GetParameters().Select((para, i) => Expression.Convert
                 (
                     Expression.ArrayAccess
@@ -67,7 +87,7 @@ namespace Solti.Utils.Primitives
                 ? (Expression) Expression.Convert(call, typeof(object))
                 : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
 
-            return Expression.Lambda<Func<object, object[], object>>
+            return Expression.Lambda<Func<TInterface, object[], object>>
             (
                 call,
                 instance,
@@ -85,9 +105,21 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
-            MethodInfo caller = GetCallerMethod();
+            MethodInfo ifaceMethod;
+            try
+            {
+                ifaceMethod = FInterfaceMapping[GetCallerMethod()];
+            }
+            catch (KeyNotFoundException) 
+            {
+                //
+                // TODO: sajat kivetel h csak interface metodusbol lehet hivni ezt a metodust
+                //
 
-            Func<object, object[], object> call = Cache.GetOrAdd(caller, () => ConvertToDelegate(caller));
+                throw;
+            }
+
+            Func<TInterface, object[], object> call = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
 
             return Children
                 //
@@ -110,6 +142,8 @@ namespace Solti.Utils.Primitives
             parent?.Children.Add(Self);
 
             MaxChildCount = maxChildCount;
+
+            FInterfaceMapping = GetInterfaceMapping();
         }
 
         /// <summary>
@@ -282,7 +316,13 @@ namespace Solti.Utils.Primitives
             }
         }
 
-        void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex) => throw new NotSupportedException();
+        void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)
+        {
+            using (FLock.AcquireReaderLock())
+            {
+                FChildren.CopyTo(array, arrayIndex);
+            }
+        }
 
         IEnumerator<TInterface> IEnumerable<TInterface>.GetEnumerator()
         {
