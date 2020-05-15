@@ -15,12 +15,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
-    <OutputPath>..\BIN\</OutputPath>
+    <OutputPath>..\BIN\$(Configuration)</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <Optimize>true</Optimize>
-    <OutputPath>..\BIN\</OutputPath>
+    <OutputPath>..\BIN\$(Configuration)</OutputPath>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(CI)' == ''">

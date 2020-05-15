@@ -38,7 +38,7 @@ namespace Solti.Utils.Primitives
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
-        private static readonly IReadOnlyDictionary<MethodInfo, Func<TInterface, object[], object>> FInterfaceInvocations = GetInterfaceInvocations();
+        private static readonly IReadOnlyDictionary<MethodInfo, Func<TInterface, object?[], object>> FInterfaceInvocations = GetInterfaceInvocations();
 
         private TInterface? FParent;
 
@@ -75,11 +75,11 @@ namespace Solti.Utils.Primitives
             }
         }
 
-        private static Func<TInterface, object[], object> ConvertToDelegate(MethodInfo method) 
+        private static Func<TInterface, object?[], object> ConvertToDelegate(MethodInfo method) 
         {
             ParameterExpression
                 instance = Expression.Parameter(typeof(TInterface), nameof(instance)),
-                paramz   = Expression.Parameter(typeof(object[]), nameof(paramz));
+                paramz   = Expression.Parameter(typeof(object?[]), nameof(paramz));
 
             Expression call = Expression.Call
             (
@@ -100,7 +100,7 @@ namespace Solti.Utils.Primitives
                 ? (Expression) Expression.Convert(call, typeof(object))
                 : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
 
-            return Expression.Lambda<Func<TInterface, object[], object>>
+            return Expression.Lambda<Func<TInterface, object?[], object>>
             (
                 call,
                 instance,
@@ -108,13 +108,13 @@ namespace Solti.Utils.Primitives
             ).Compile();
         }
 
-        private static IReadOnlyDictionary<MethodInfo, Func<TInterface, object[], object>> GetInterfaceInvocations() 
+        private static IReadOnlyDictionary<MethodInfo, Func<TInterface, object?[], object>> GetInterfaceInvocations() 
         {
             return GetIfaceMethods(typeof(TInterface))
                 .Distinct()
                 .ToDictionary(m => m, ConvertToDelegate);
 
-            IEnumerable<MethodInfo> GetIfaceMethods(Type iface) => iface
+            static IEnumerable<MethodInfo> GetIfaceMethods(Type iface) => iface
                 .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                 .Concat
                 (
@@ -122,9 +122,9 @@ namespace Solti.Utils.Primitives
                 );       
         }
 
-        private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object[] args) 
+        private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
         {
-            Func<TInterface, object[], object> invoke = FInterfaceInvocations[ifaceMethod];
+            Func<TInterface, object?[], object> invoke = FInterfaceInvocations[ifaceMethod];
 
             return Children
                 //
@@ -145,7 +145,7 @@ namespace Solti.Utils.Primitives
         /// </summary>
         /// <returns>Values returned by child methods.</returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        protected IReadOnlyCollection<object> Dispatch(params object[] args)
+        protected internal IReadOnlyCollection<object> Dispatch(params object?[] args)
         {
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
