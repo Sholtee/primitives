@@ -88,11 +88,29 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dispatch method can be invoked from interface implementations only..
+        /// </summary>
+        internal static string DISPATCH_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("DISPATCH_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given interface ({0}) is not supported..
         /// </summary>
         internal static string INTERFACE_NOT_SUPPORTED {
             get {
                 return ResourceManager.GetString("INTERFACE_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type must be an interface..
+        /// </summary>
+        internal static string NOT_AN_INTERFACE {
+            get {
+                return ResourceManager.GetString("NOT_AN_INTERFACE", resourceCulture);
             }
         }
         

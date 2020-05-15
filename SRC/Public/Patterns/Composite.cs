@@ -40,26 +40,33 @@ namespace Solti.Utils.Primitives
 
         private TInterface? FParent;
 
-        private TInterface Self { get; }
+        private TInterface Self => (this as TInterface)!;
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 2, fNeedFileInfo: false).GetMethod();
 
+        private static MethodInfo GetMethod(Expression<Action<TInterface>> expr) => ((MethodCallExpression) expr.Body).Method;
+
         private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() 
         {
-            InterfaceMapping mapping = GetType().GetInterfaceMap(typeof(TInterface));
-            return mapping
-                .TargetMethods
-                .Select((tm, i) => new 
-                { 
-                    TargetMethod = tm, 
-                    InterfaceMethod = mapping.InterfaceMethods[i] 
-                })
-                .ToDictionary(m => m.TargetMethod, m => m.InterfaceMethod);
+            return GetMappingsInternal(typeof(TInterface))
+                .Distinct()
+                .ToDictionary(kvp => kvp.TargetMethod, kvp => kvp.InterfaceMethod);
+ 
+            IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetMappingsInternal(Type iface) 
+            {
+                InterfaceMapping mappings = GetType().GetInterfaceMap(iface);
+                
+                foreach (var mapping in mappings.TargetMethods.Select((tm, i) => (tm, mappings.InterfaceMethods[i])))
+                {
+                    yield return mapping;
+                }
 
-            //
-            // TODO: typeof(TInterface).GetInterfaces()-re is
-            //
+                foreach (var mapping in iface.GetInterfaces().SelectMany(GetMappingsInternal)) 
+                {
+                    yield return mapping;
+                }
+            }
         }
 
         private static Func<TInterface, object[], object> ConvertToDelegate(MethodInfo method) 
@@ -94,6 +101,22 @@ namespace Solti.Utils.Primitives
                 paramz
             ).Compile();
         }
+
+        private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object[] args) 
+        {
+            Func<TInterface, object[], object> call = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
+
+            return Children
+                //
+                // Ez azert kell h:
+                //   - Iteracio kozben is modosithato legyen a gyermek lista
+                //   - Ne blokkoljuk a teljes listat hosszu ideig (az egyes "call" hivasok idoigenyesek lehetnek)
+                //
+
+                .ToArray()
+                .Select(child => call(child, args))
+                .ToArray();
+        }
         #endregion
 
         #region Protected
@@ -101,7 +124,8 @@ namespace Solti.Utils.Primitives
         /// Forwards the arguments to all the child methods.
         /// </summary>
         /// <returns>Values returned by child methods.</returns>
-        protected IReadOnlyCollection<object> Dispatch(params object[] args) 
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        protected IReadOnlyCollection<object> Dispatch(params object[] args)
         {
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
@@ -110,25 +134,12 @@ namespace Solti.Utils.Primitives
             {
                 ifaceMethod = FInterfaceMapping[GetCallerMethod()];
             }
-            catch (KeyNotFoundException) 
+            catch (KeyNotFoundException e)
             {
-                //
-                // TODO: sajat kivetel h csak interface metodusbol lehet hivni ezt a metodust
-                //
-
-                throw;
+                throw new InvalidOperationException(Resources.DISPATCH_NOT_ALLOWED, e);
             }
 
-            Func<TInterface, object[], object> call = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
-
-            return Children
-                //
-                // Ez azert kell h iteracio kozben is modosithato legyen a gyermek lista
-                //
-
-                .ToArray()
-                .Select(child => call(child, args))
-                .ToArray();
+            return Dispatch(ifaceMethod, args);
         }
 
         /// <summary>
@@ -137,7 +148,8 @@ namespace Solti.Utils.Primitives
         /// <param name="parent">The (optional) parent entity. It can be null.</param>
         protected Composite(TInterface? parent, int maxChildCount = int.MaxValue)
         {
-            Self = this as TInterface ?? throw new Exception(string.Format(Resources.Culture, Resources.INTERFACE_NOT_SUPPORTED, typeof(TInterface)));
+            Ensure.Type<TInterface>.IsInterface();
+            Ensure.Type<TInterface>.IsSupportedBy(this);
 
             parent?.Children.Add(Self);
 
@@ -164,7 +176,7 @@ namespace Solti.Utils.Primitives
                 // Dispose() hivasa az osszes gyermeken.
                 //
 
-                Dispatch();
+                Dispatch(ifaceMethod: GetMethod(i => i.Dispose()));
 
                 Assert(!FChildren.Any());
 
@@ -174,13 +186,16 @@ namespace Solti.Utils.Primitives
             base.Dispose(disposeManaged);
         }
 
+        [SuppressMessage("Reliability", "CA2012:Use ValueTasks correctly", Justification = "DisposeAsync() call is just an expression")]
         protected async override ValueTask AsyncDispose()
         {
             FParent?.Children.Remove(Self);
 
             await Task.WhenAll
             (
-                Dispatch().Cast<ValueTask>().Select(t => t.AsTask())
+                Dispatch(ifaceMethod: GetMethod(i => i.DisposeAsync()))
+                    .Cast<ValueTask>()
+                    .Select(t => t.AsTask())
             );
 
             Assert(!FChildren.Any());
