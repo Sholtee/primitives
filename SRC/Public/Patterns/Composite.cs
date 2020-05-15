@@ -36,7 +36,9 @@ namespace Solti.Utils.Primitives
 
         private readonly ReaderWriterLockSlim FLock = new ReaderWriterLockSlim();
 
-        private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping; 
+        private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
+
+        private static readonly IReadOnlyDictionary<MethodInfo, Func<TInterface, object[], object>> FInterfaceInvocations = GetInterfaceInvocations();
 
         private TInterface? FParent;
 
@@ -49,11 +51,15 @@ namespace Solti.Utils.Primitives
 
         private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() 
         {
-            return GetMappingsInternal(typeof(TInterface))
+            return GetInterfaceMappingInternal(typeof(TInterface))
+                //
+                // Tekintsuk a kovetkezo esetet: IA: IDisposable, IB: IDisposable, IC: IA, IB -> Distinct()
+                //
+
                 .Distinct()
                 .ToDictionary(kvp => kvp.TargetMethod, kvp => kvp.InterfaceMethod);
  
-            IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetMappingsInternal(Type iface) 
+            IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetInterfaceMappingInternal(Type iface) 
             {
                 InterfaceMapping mappings = GetType().GetInterfaceMap(iface);
                 
@@ -62,7 +68,7 @@ namespace Solti.Utils.Primitives
                     yield return mapping;
                 }
 
-                foreach (var mapping in iface.GetInterfaces().SelectMany(GetMappingsInternal)) 
+                foreach (var mapping in iface.GetInterfaces().SelectMany(GetInterfaceMappingInternal)) 
                 {
                     yield return mapping;
                 }
@@ -102,9 +108,23 @@ namespace Solti.Utils.Primitives
             ).Compile();
         }
 
+        private static IReadOnlyDictionary<MethodInfo, Func<TInterface, object[], object>> GetInterfaceInvocations() 
+        {
+            return GetIfaceMethods(typeof(TInterface))
+                .Distinct()
+                .ToDictionary(m => m, ConvertToDelegate);
+
+            IEnumerable<MethodInfo> GetIfaceMethods(Type iface) => iface
+                .GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                .Concat
+                (
+                    iface.GetInterfaces().SelectMany(GetIfaceMethods)
+                );       
+        }
+
         private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object[] args) 
         {
-            Func<TInterface, object[], object> call = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
+            Func<TInterface, object[], object> invoke = FInterfaceInvocations[ifaceMethod];
 
             return Children
                 //
@@ -114,7 +134,7 @@ namespace Solti.Utils.Primitives
                 //
 
                 .ToArray()
-                .Select(child => call(child, args))
+                .Select(child => invoke(child, args))
                 .ToArray();
         }
         #endregion
@@ -129,15 +149,8 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
-            MethodInfo ifaceMethod;
-            try
-            {
-                ifaceMethod = FInterfaceMapping[GetCallerMethod()];
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw new InvalidOperationException(Resources.DISPATCH_NOT_ALLOWED, e);
-            }
+            if (!FInterfaceMapping.TryGetValue(GetCallerMethod(), out MethodInfo ifaceMethod))
+                throw new InvalidOperationException(Resources.DISPATCH_NOT_ALLOWED);
 
             return Dispatch(ifaceMethod, args);
         }
