@@ -346,6 +346,9 @@ namespace Solti.Utils.Primitives
 
         void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)
         {
+            Ensure.Parameter.IsNotNull(array, nameof(array));
+            CheckNotDisposed();
+
             using (FLock.AcquireReaderLock())
             {
                 FChildren.CopyTo(array, arrayIndex);
