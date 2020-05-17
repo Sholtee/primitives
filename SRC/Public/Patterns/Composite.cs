@@ -38,8 +38,6 @@ namespace Solti.Utils.Primitives
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
-        private static readonly IReadOnlyDictionary<MethodInfo, Func<TInterface, object?[], object>> FInterfaceInvocations = GetInterfaceInvocations();
-
         private TInterface? FParent;
 
         private TInterface Self => (this as TInterface)!;
@@ -85,15 +83,25 @@ namespace Solti.Utils.Primitives
             (
                 instance,
                 method,
-                method.GetParameters().Select((para, i) => Expression.Convert
-                (
-                    Expression.ArrayAccess
+                method.GetParameters().Select((para, i) =>
+                {
+                    //
+                    // Composite minta nem tamogatja a kimeno parametereket
+                    //
+
+                    if (para.ParameterType.IsByRef)
+                        throw new NotSupportedException(string.Format(Resources.Culture, Resources.BYREF_PARAM_NOT_SUPPORTED, method.Name));
+
+                    return Expression.Convert
                     (
-                        paramz,
-                        Expression.Constant(i)
-                    ),
-                    para.ParameterType
-                ))
+                        Expression.ArrayAccess
+                        (
+                            paramz,
+                            Expression.Constant(i)
+                        ),
+                        para.ParameterType
+                    );
+                })
             );
 
             call = method.ReturnType != typeof(void)
@@ -108,23 +116,15 @@ namespace Solti.Utils.Primitives
             ).Compile();
         }
 
-        private static IReadOnlyDictionary<MethodInfo, Func<TInterface, object?[], object>> GetInterfaceInvocations() 
-        {
-            return GetIfaceMethods(typeof(TInterface))
-                .Distinct()
-                .ToDictionary(m => m, ConvertToDelegate);
-
-            static IEnumerable<MethodInfo> GetIfaceMethods(Type iface) => iface
-                .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                .Concat
-                (
-                    iface.GetInterfaces().SelectMany(GetIfaceMethods)
-                );       
-        }
-
         private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
         {
-            Func<TInterface, object?[], object> invoke = FInterfaceInvocations[ifaceMethod];
+            //
+            // 1) Ne generaljuk elore le az osszes delegate-et mert nem tudhatjuk h mely metodusok implementacioja
+            //    fogja hivni a Dispatch()-et (nem biztos h az osszes).
+            // 2) Generikus argumentumot tartalmazo metodushoz amugy sem tudnank legeneralni.
+            //
+
+            Func<TInterface, object?[], object> invoke = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
 
             return Children
                 //

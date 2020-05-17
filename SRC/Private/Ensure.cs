@@ -45,7 +45,7 @@ namespace Solti.Utils.Primitives
             public static void IsSupportedBy(object obj) 
             {
                 if (obj as T == null)
-                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.INTERFACE_NOT_SUPPORTED, typeof(T)));
+                    throw new NotSupportedException(string.Format(Resources.Culture, Resources.INTERFACE_NOT_SUPPORTED, typeof(T)));
             }
         }
     }

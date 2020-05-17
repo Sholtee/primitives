@@ -282,5 +282,73 @@ namespace Solti.Utils.Primitives.Tests
             Assert.Throws<ArgumentNullException>(() => root.Dispatch(args: null));
             Assert.Throws<InvalidOperationException>(() => root.Dispatch(), Resources.DISPATCH_NOT_ALLOWED);
         }
+
+        private class BadComposite : Composite<IMyComposite> 
+        {
+            public BadComposite() : base(null) { }
+        }
+
+        [Test]
+        public void Ctor_ShouldThrowIfTheInterfaceIsNotImplemented() =>
+            Assert.Throws<NotSupportedException>(() => new BadComposite(), Resources.INTERFACE_NOT_SUPPORTED);
+
+        private interface IByRef: IComposite<IByRef>
+        {
+            void Foo(ref int b);
+        }
+
+        private class ByRefComposite : Composite<IByRef>, IByRef
+        {
+            public ByRefComposite() : base(null) { }
+
+            public void Foo(ref int b) => Dispatch(b);
+        }
+
+        [Test]
+        public void Dispatch_ShouldThrowOnByRefParameter() =>
+            Assert.Throws<NotSupportedException>(() => 
+            {
+                int i = 0;
+                new ByRefComposite().Foo(ref i);
+            }, Resources.BYREF_PARAM_NOT_SUPPORTED);
+
+        public interface IGeneric: IComposite<IGeneric>
+        {
+            void Foo<T>(T p);
+        }
+
+        private class GenericComposite : Composite<IGeneric>, IGeneric 
+        {
+            public GenericComposite() : base(null) { }
+
+            public void Foo<T>(T p) => Dispatch(p);
+        }
+
+        [Test]
+        public void Dispatch_ShouldSupportGenericMethods() 
+        {
+            var mockChild = new Mock<IGeneric>(MockBehavior.Strict);
+
+            IGeneric parent = null;
+
+            mockChild
+                .SetupGet(i => i.Parent)
+                .Returns(() => parent);
+
+#pragma warning disable CS0618 // Type or member is obsolete
+            mockChild
+                .SetupSet(i => i.Parent)
+#pragma warning restore CS0618
+                    .Callback(val => parent = val);
+
+            mockChild.Setup(i => i.Foo(1));
+
+            var root = new GenericComposite();
+            root.Children.Add(mockChild.Object);
+
+            root.Foo(1);
+
+            mockChild.Verify(i => i.Foo(1), Times.Once);        
+        }
     }
 }
