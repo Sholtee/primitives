@@ -145,12 +145,23 @@ namespace Solti.Utils.Primitives
         /// </summary>
         /// <returns>Values returned by child methods.</returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        protected internal IReadOnlyCollection<object> Dispatch(params object?[] args)
+        protected internal IReadOnlyCollection<object> Dispatch(Type[]? genericArgs, params object?[] args)
         {
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
+            //
+            // GetCallerMEthod() mindig a generikus metodus definiciojat adja vissza.
+            //
+
             if (!FInterfaceMapping.TryGetValue(GetCallerMethod(), out MethodInfo ifaceMethod))
                 throw new InvalidOperationException(Resources.DISPATCH_NOT_ALLOWED);
+
+            if (ifaceMethod.IsGenericMethodDefinition)
+            {
+                Ensure.Parameter.IsNotNull(genericArgs, nameof(genericArgs));
+
+                ifaceMethod = ifaceMethod.MakeGenericMethod(genericArgs);
+            }
 
             return Dispatch(ifaceMethod, args);
         }

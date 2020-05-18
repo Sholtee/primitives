@@ -177,12 +177,12 @@ namespace Solti.Utils.Primitives.Tests
 
             public void Foo(int arg) // direkt nem explicit
             {
-                Dispatch(arg);
+                Dispatch(null, arg);
             }
 
             string IRealComposite.Bar()
             {
-                return string.Join(" ", Dispatch());
+                return string.Join(" ", Dispatch(null));
             }
         }
 
@@ -279,8 +279,8 @@ namespace Solti.Utils.Primitives.Tests
         {
             var root = new RealComposite();
 
-            Assert.Throws<ArgumentNullException>(() => root.Dispatch(args: null));
-            Assert.Throws<InvalidOperationException>(() => root.Dispatch(), Resources.DISPATCH_NOT_ALLOWED);
+            Assert.Throws<ArgumentNullException>(() => root.Dispatch(null, args: null));
+            Assert.Throws<InvalidOperationException>(() => root.Dispatch(null), Resources.DISPATCH_NOT_ALLOWED);
         }
 
         private class BadComposite : Composite<IMyComposite> 
@@ -301,7 +301,7 @@ namespace Solti.Utils.Primitives.Tests
         {
             public ByRefComposite() : base(null) { }
 
-            public void Foo(ref int b) => Dispatch(b);
+            public void Foo(ref int b) => Dispatch(null, b);
         }
 
         [Test]
@@ -321,7 +321,7 @@ namespace Solti.Utils.Primitives.Tests
         {
             public GenericComposite() : base(null) { }
 
-            public void Foo<T>(T p) => Dispatch(p);
+            public void Foo<T>(T p) => Dispatch(new[] { typeof(T) }, p);
         }
 
         [Test]
