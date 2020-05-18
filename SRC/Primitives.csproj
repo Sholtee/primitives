@@ -53,4 +53,14 @@
     </EmbeddedResource>
   </ItemGroup>
   
+  <PropertyGroup>
+    <Product>Solti.Utils.Primitives</Product>
+    <Description>Provides common types for the "Solti.Utils.*" libraries. This is an internal package not meant for direct consumption.</Description>
+    <PackageId>Solti.Utils.Primitives</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/Sholtee/primitives</RepositoryUrl>
+    <RepositoryBranch>$(CurrentBranch)</RepositoryBranch>
+  </PropertyGroup>
+
 </Project>
