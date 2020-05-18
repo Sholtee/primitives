@@ -9,6 +9,6 @@
   "testresults": "testresults.xml",
   "coveragereport": "coverage.xml",
   "artifacts": "\\Artifacts",
-  "coveragefilter": "+[Primitives*]* -[Primitives.Tests]*",
+  "coveragefilter": "+[Solti.Utils.Primitives*]* -[Solti.Utils.Primitives.Tests]*",
   "CI": "AppVeyor"
 }
