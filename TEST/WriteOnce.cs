@@ -7,7 +7,7 @@ using System;
 
 using NUnit.Framework;
 
-namespace Solti.Utils.Primitives.Tests
+namespace Solti.Utils.Primitives.Patterns.Tests
 {
     [TestFixture]
     public class WriteOnceTests

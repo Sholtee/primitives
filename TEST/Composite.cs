@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 
-namespace Solti.Utils.Primitives.Tests
+namespace Solti.Utils.Primitives.Patterns.Tests
 {
     using Properties;
 

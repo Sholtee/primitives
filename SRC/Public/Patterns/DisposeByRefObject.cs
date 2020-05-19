@@ -7,7 +7,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     using Properties;
 

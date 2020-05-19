@@ -9,6 +9,8 @@ using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
 {
+    using Patterns;
+
     /// <summary>
     /// Thread safe <see cref="IEnumerator{T}"/> implementation.
     /// </summary>

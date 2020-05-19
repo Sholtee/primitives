@@ -3,10 +3,9 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
-using System;
 using System.Collections.Generic;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     /// <summary>
     /// Describes the composite pattern.

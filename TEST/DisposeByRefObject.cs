@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 using NUnit.Framework;
 
-namespace Solti.Utils.Primitives.Tests
+namespace Solti.Utils.Primitives.Patterns.Tests
 {
     using Properties;
 

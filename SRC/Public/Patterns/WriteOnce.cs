@@ -5,7 +5,7 @@
 ********************************************************************************/
 using System;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     using Properties;
 

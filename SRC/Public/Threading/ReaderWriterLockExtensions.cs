@@ -8,6 +8,8 @@ using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
 {
+    using Patterns;
+
     /// <summary>
     /// Exposes several handy methods related to <see cref="ReaderWriterLockSlim"/>.
     /// </summary>

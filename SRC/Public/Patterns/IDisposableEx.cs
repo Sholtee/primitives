@@ -5,7 +5,7 @@
 ********************************************************************************/
 using System;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     /// <summary>
     /// Extends the base <see cref="IDisposable"/> interface with several new features

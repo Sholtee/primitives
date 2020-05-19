@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     /// <summary>
     /// Implements the <see cref="IDisposable"/> and <see cref="IAsyncDisposable"/> interfaces.
@@ -26,7 +26,8 @@ namespace Solti.Utils.Primitives
         /// Method to be overridden to implement custom disposal logic.
         /// </summary>
         /// <param name="disposeManaged">It is set to true on <see cref="IDisposable.Dispose"/> call.</param>
-        protected virtual void Dispose(bool disposeManaged) => Debug.WriteLineIf(!disposeManaged, $"{GetType()} is disposed by GC. You may be missing a Dispose() call.");
+        protected virtual void Dispose(bool disposeManaged) =>
+            Trace.WriteLineIf(!disposeManaged, $"{GetType()} is disposed by GC. You may be missing a Dispose() call.");
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting resources asynchronously

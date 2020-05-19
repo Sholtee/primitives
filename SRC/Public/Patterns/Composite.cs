@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 using static System.Diagnostics.Debug;
 
-namespace Solti.Utils.Primitives
+namespace Solti.Utils.Primitives.Patterns
 {
     using Properties;
     using Threading;
