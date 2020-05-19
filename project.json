@@ -1,5 +1,5 @@
 {
-  "bin": "\\BIN",
+  "bin": "\\BIN\\Release",
   "solution": "\\Primitives.sln",
   "app": "\\SRC\\Primitives.csproj",
   "githubrepo": "Sholtee/primitives.git",
