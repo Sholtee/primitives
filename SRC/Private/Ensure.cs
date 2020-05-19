@@ -4,7 +4,6 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace Solti.Utils.Primitives
@@ -15,13 +14,8 @@ namespace Solti.Utils.Primitives
     /// Every method that can be accessed publicly or use one or more parameters that were passed outside of the library 
     /// should use this class for basic validations to ensure consistent validation errors.
     /// </summary>
-    [SuppressMessage("Design", "CA1034:Nested types should not be visible")]
-    [SuppressMessage("Design", "CA1000:Do not declare static members on generic types")]
-    public static class Ensure
+    internal static class Ensure
     {
-        /// <summary>
-        /// Parameter related validations.
-        /// </summary>
         public static class Parameter
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -33,13 +27,9 @@ namespace Solti.Utils.Primitives
                 argument ?? throw new ArgumentNullException(name);
         }
 
-        /// <summary>
-        /// Type related validations.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
         public static class Type<T> where T: class
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]         
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void IsInterface() 
             {
                 if (!typeof(T).IsInterface)
