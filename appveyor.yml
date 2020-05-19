@@ -13,7 +13,7 @@ environment:
   COVERALLS_REPO_TOKEN:  
     secure: Vq/CK5r09Xj8EiL6EItaHk73P8GXAMPPITVCQLIJQnz1JRCvJSdhFoADiV/rao2r
   NUGET_REPO_TOKEN:
-    secure: xXx
+    secure: nsvsjt9oFbO86ooc/lL2oVbU7YQxRn9TiG6+WRjULI/ehanBUBv4i0XpmQyK3lgK
   GITHUB_EMAIL:
     secure: Z6F+xZzdZzc5DMYB/4J0KUhyoTzTlXH75ciGl7hFH9s= 
 
