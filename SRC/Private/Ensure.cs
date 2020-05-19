@@ -21,10 +21,6 @@ namespace Solti.Utils.Primitives
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static T IsNotNull<T>(T? argument, string name) where T : class =>
                 argument ?? throw new ArgumentNullException(name);
-
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static T? IsNotNull<T>(T? argument, string name) where T : struct =>
-                argument ?? throw new ArgumentNullException(name);
         }
 
         public static class Type<T> where T: class
