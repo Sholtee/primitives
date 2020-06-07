@@ -5,6 +5,7 @@
 ********************************************************************************/
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -18,8 +19,13 @@ namespace Solti.Utils.Primitives
     {
         private static class Backend<TKey, TValue> 
         {
-            public static ConcurrentDictionary<(TKey Key, string Scope), TValue> Value { get; } = new ConcurrentDictionary<(TKey Key, string Scope), TValue>();     
+            public static ConcurrentDictionary<(TKey, string), TValue> Value { get; } = new ConcurrentDictionary<(TKey, string), TValue>();     
         }
+
+        /// <summary>
+        /// Gets the underlying dictionary associated with the given key and value type.
+        /// </summary>
+        public static IDictionary<(TKey, string), TValue> AsDictionary<TKey, TValue>() => Backend<TKey, TValue>.Value;
 
         /// <summary>
         /// Does what its name suggests.
