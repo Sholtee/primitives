@@ -55,6 +55,7 @@
   
   <PropertyGroup>
     <Product>Solti.Utils.Primitives</Product>
+    <DocumentationFile>$(OutputPath)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <Description>Provides common types for the "Solti.Utils.*" libraries. This is an internal package not meant for direct consumption.</Description>
     <PackageId>Solti.Utils.Primitives</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

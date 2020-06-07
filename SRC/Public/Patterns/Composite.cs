@@ -169,7 +169,6 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Creates a new <see cref="Composite{TInterface}"/> instance.
         /// </summary>
-        /// <param name="parent">The (optional) parent entity. It can be null.</param>
         protected Composite(TInterface? parent, int maxChildCount = int.MaxValue)
         {
             Ensure.Type<TInterface>.IsInterface();
@@ -210,6 +209,9 @@ namespace Solti.Utils.Primitives.Patterns
             base.Dispose(disposeManaged);
         }
 
+        /// <summary>
+        /// Disposal logic related to this class.
+        /// </summary>
         [SuppressMessage("Reliability", "CA2012:Use ValueTasks correctly", Justification = "DisposeAsync() call is just an expression")]
         protected async override ValueTask AsyncDispose()
         {
@@ -233,6 +235,9 @@ namespace Solti.Utils.Primitives.Patterns
         #endregion
 
         #region Public
+        /// <summary>
+        /// Returns the maximum child count that can be stored by this instance.
+        /// </summary>
         public int MaxChildCount { get; }
         #endregion
 

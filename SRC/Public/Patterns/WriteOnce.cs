@@ -16,8 +16,14 @@ namespace Solti.Utils.Primitives.Patterns
     {
         private object? FValue;
 
+        /// <summary>
+        /// Creates a new <see cref="WriteOnce"/> instance.
+        /// </summary>
         public WriteOnce(bool strict = true) => Strict = strict;
 
+        /// <summary>
+        /// Returns true if this instance is strict.
+        /// </summary>
         public bool Strict { get; }
 
         /// <summary>
