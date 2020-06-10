@@ -28,62 +28,76 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Creates a new instance delegate from the given <see cref="MethodInfo"/>.
         /// </summary>
-        public static Func<object, object?[], object> ToInstanceDelegate(this MethodInfo method) => Cache.GetOrAdd(method, () =>
+        public static Func<object, object?[], object> ToInstanceDelegate(this MethodInfo method)
         {
-            ParameterExpression
-                instance = Expression.Parameter(typeof(object), nameof(instance)),
-                paramz   = Expression.Parameter(typeof(object?[]), nameof(paramz));
+            Ensure.Parameter.IsNotNull(method, nameof(method));
 
-            Expression call = Expression.Call(
-                Expression.Convert(instance, method.DeclaringType), 
-                method, 
-                GetInvocationArguments(method, paramz));
+            return Cache.GetOrAdd(method, () =>
+            {
+                ParameterExpression
+                    instance = Expression.Parameter(typeof(object), nameof(instance)),
+                    paramz = Expression.Parameter(typeof(object?[]), nameof(paramz));
 
-            call = method.ReturnType != typeof(void)
-                ? (Expression) Expression.Convert(call, typeof(object))
-                : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
+                Expression call = Expression.Call(
+                    Expression.Convert(instance, method.DeclaringType),
+                    method,
+                    GetInvocationArguments(method, paramz));
 
-            return Expression.Lambda<Func<object, object?[], object>>
-            (
-                call,
-                instance, 
-                paramz        
-            ).Compile();
-        });
+                call = method.ReturnType != typeof(void)
+                    ? (Expression)Expression.Convert(call, typeof(object))
+                    : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
+
+                return Expression.Lambda<Func<object, object?[], object>>
+                (
+                    call,
+                    instance,
+                    paramz
+                ).Compile();
+            });
+        }
 
         /// <summary>
         /// Creates a new static delegate from the given <see cref="MethodBase"/> that can be either <see cref="ConstructorInfo"/> or <see cref="MethodInfo"/>.
         /// </summary>
         /// <param name="methodBase"></param>
         /// <returns></returns>
-        public static Func<object?[], object> ToStaticDelegate(this MethodBase methodBase) => Cache.GetOrAdd(methodBase, () =>
+        public static Func<object?[], object> ToStaticDelegate(this MethodBase methodBase)
         {
-            ParameterExpression paramz = Expression.Parameter(typeof(object?[]), nameof(paramz));
+            Ensure.Parameter.IsNotNull(methodBase, nameof(methodBase));
 
-            IEnumerable<Expression> arguments = GetInvocationArguments(methodBase, paramz);
-
-            Expression call = methodBase switch
+            return Cache.GetOrAdd(methodBase, () =>
             {
-                ConstructorInfo ctor => Expression.Convert
-                (
-                    Expression.New(ctor, arguments),
-                    typeof(object)
-                ),
-                MethodInfo voidMethod when voidMethod.ReturnType == typeof(void) => Expression.Block
-                (
-                    typeof(object),
-                    Expression.Call(voidMethod, arguments),
-                    Expression.Default(typeof(object))
-                ),
-                MethodInfo method when method.ReturnType != typeof(void) => Expression.Convert
-                (
-                    Expression.Call(method, arguments),
-                    typeof(object)
-                ),
-                _ => throw new NotSupportedException() // TODO
-            };
+                ParameterExpression paramz = Expression.Parameter(typeof(object?[]), nameof(paramz));
 
-            return Expression.Lambda<Func<object?[], object>>(call, paramz).Compile();
-        });
+                IEnumerable<Expression> arguments = GetInvocationArguments(methodBase, paramz);
+
+                Expression call = methodBase switch
+                {
+                    ConstructorInfo ctor => Expression.Convert
+                    (
+                        Expression.New(ctor, arguments),
+                        typeof(object)
+                    ),
+                    MethodInfo voidMethod when voidMethod.ReturnType == typeof(void) => Expression.Block
+                    (
+                        typeof(object),
+                        Expression.Call(voidMethod, arguments),
+                        Expression.Default(typeof(object))
+                    ),
+                    MethodInfo method when method.ReturnType != typeof(void) => Expression.Convert
+                    (
+                        Expression.Call(method, arguments),
+                        typeof(object)
+                    ),
+                    _ => throw new NotSupportedException() // TODO
+                };
+
+                return Expression.Lambda<Func<object?[], object>>
+                (
+                    call, 
+                    paramz
+                ).Compile();
+            });
+        }
     }
 }
