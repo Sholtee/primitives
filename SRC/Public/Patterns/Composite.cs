@@ -75,45 +75,14 @@ namespace Solti.Utils.Primitives.Patterns
 
         private static Func<TInterface, object?[], object> ConvertToDelegate(MethodInfo method) 
         {
-            ParameterExpression
-                instance = Expression.Parameter(typeof(TInterface), nameof(instance)),
-                paramz   = Expression.Parameter(typeof(object?[]), nameof(paramz));
+            //
+            // Composite minta nem tamogatja a kimeno parametereket
+            //
 
-            Expression call = Expression.Call
-            (
-                instance,
-                method,
-                method.GetParameters().Select((para, i) =>
-                {
-                    //
-                    // Composite minta nem tamogatja a kimeno parametereket
-                    //
+            if (method.GetParameters().Any(para => para.ParameterType.IsByRef))
+                throw new NotSupportedException(string.Format(Resources.Culture, Resources.BYREF_PARAM_NOT_SUPPORTED, method.Name));
 
-                    if (para.ParameterType.IsByRef)
-                        throw new NotSupportedException(string.Format(Resources.Culture, Resources.BYREF_PARAM_NOT_SUPPORTED, method.Name));
-
-                    return Expression.Convert
-                    (
-                        Expression.ArrayAccess
-                        (
-                            paramz,
-                            Expression.Constant(i)
-                        ),
-                        para.ParameterType
-                    );
-                })
-            );
-
-            call = method.ReturnType != typeof(void)
-                ? (Expression) Expression.Convert(call, typeof(object))
-                : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
-
-            return Expression.Lambda<Func<TInterface, object?[], object>>
-            (
-                call,
-                instance,
-                paramz
-            ).Compile();
+            return method.ToInstanceDelegate();
         }
 
         private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
