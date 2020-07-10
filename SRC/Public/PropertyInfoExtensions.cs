@@ -17,7 +17,7 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Creates a getter from the given <see cref="PropertyInfo"/>.
         /// </summary>
-        public static Func<object, object> ToGetter(this PropertyInfo src)
+        public static Func<object, object?> ToGetter(this PropertyInfo src)
         {
             Ensure.Parameter.IsNotNull(src, nameof(src));
 
@@ -26,7 +26,7 @@ namespace Solti.Utils.Primitives
                 ParameterExpression p = Expression.Parameter(typeof(object), "instance");
 
                 return Expression
-                    .Lambda<Func<object, object>>
+                    .Lambda<Func<object, object?>>
                     (
                         Expression.Convert // cast-olas boxibf miatt kell (ha a property visszaterese ValueType)
                         (
