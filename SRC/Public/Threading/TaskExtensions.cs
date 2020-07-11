@@ -27,8 +27,8 @@ namespace Solti.Utils.Primitives.Threading
             return task.ContinueWith(t => 
             {
                 object result = t.Result!;
-                return Task.FromResult((TT) result);
-            }).Unwrap();
+                return (TT) result;
+            });
         }
 
         /// <summary>
