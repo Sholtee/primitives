@@ -260,7 +260,7 @@ namespace Solti.Utils.Primitives.Patterns
             }
         }
 
-        bool ICollection<TInterface>.IsReadOnly { get; } = false;
+        bool ICollection<TInterface>.IsReadOnly => false;
       
         [CanSetParent]
         [MethodImpl(MethodImplOptions.NoInlining)]
