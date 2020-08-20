@@ -132,6 +132,9 @@
   <data name="DISPATCH_NOT_ALLOWED" xml:space="preserve">
     <value>Dispatch method can be invoked from interface implementations only.</value>
   </data>
+  <data name="INSTANCE_ALREADY_CREATED" xml:space="preserve">
+    <value>An instance has already been created.</value>
+  </data>
   <data name="INTERFACE_NOT_SUPPORTED" xml:space="preserve">
     <value>The given interface ({0}) is not supported.</value>
   </data>
