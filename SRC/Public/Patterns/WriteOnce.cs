@@ -22,6 +22,11 @@ namespace Solti.Utils.Primitives.Patterns
         public WriteOnce(bool strict = true) => Strict = strict;
 
         /// <summary>
+        /// Creates a new <see cref="WriteOnce"/> instance.
+        /// </summary>
+        public WriteOnce(object? initialValue) : this(strict: false) => FValue = initialValue;
+
+        /// <summary>
         /// Returns true if this instance is strict.
         /// </summary>
         public bool Strict { get; }
@@ -38,12 +43,16 @@ namespace Solti.Utils.Primitives.Patterns
         {
             get
             {
-                if (!HasValue && Strict) throw new InvalidOperationException(); // TODO
+                if (!HasValue && Strict)
+                    throw new InvalidOperationException(Resources.NO_VALUE);
+
                 return FValue;
             }
             set
             {
-                if (HasValue) throw new InvalidOperationException(Resources.VALUE_ALREADY_SET);
+                if (HasValue) 
+                    throw new InvalidOperationException(Resources.VALUE_ALREADY_SET);
+
                 FValue = value;
                 HasValue = true;
             }

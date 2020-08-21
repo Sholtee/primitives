@@ -9,6 +9,8 @@ using NUnit.Framework;
 
 namespace Solti.Utils.Primitives.Patterns.Tests
 {
+    using Properties;
+
     [TestFixture]
     public class WriteOnceTests
     {
@@ -18,7 +20,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             var wo = new WriteOnce();
 
             object val;
-            Assert.Throws<InvalidOperationException>(() => val = wo.Value);
+            Assert.Throws<InvalidOperationException>(() => val = wo.Value, Resources.NO_VALUE);
 
             wo.Value = new object();
             Assert.DoesNotThrow(() => val = wo.Value);
@@ -30,7 +32,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             var wo = new WriteOnce();
 
             Assert.DoesNotThrow(() => wo.Value = new object());
-            Assert.Throws<InvalidOperationException>(() => wo.Value = new object());
+            Assert.Throws<InvalidOperationException>(() => wo.Value = new object(), Resources.VALUE_ALREADY_SET);
         }
     }
 }

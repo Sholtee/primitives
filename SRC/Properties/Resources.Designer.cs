@@ -124,6 +124,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No value to return..
+        /// </summary>
+        internal static string NO_VALUE {
+            get {
+                return ResourceManager.GetString("NO_VALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type must be an interface..
         /// </summary>
         internal static string NOT_AN_INTERFACE {

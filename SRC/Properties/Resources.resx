@@ -141,6 +141,9 @@
   <data name="NOT_AN_INTERFACE" xml:space="preserve">
     <value>Type must be an interface.</value>
   </data>
+  <data name="NO_VALUE" xml:space="preserve">
+    <value>No value to return.</value>
+  </data>
   <data name="TOO_MANY_CHILDREN" xml:space="preserve">
     <value>The number of children exceeded the limit ({0}).</value>
   </data>
