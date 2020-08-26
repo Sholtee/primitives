@@ -26,7 +26,6 @@ namespace Solti.Utils.Primitives.Patterns
     /// Implements the <see cref="IComposite{T}"/> interface.
     /// </summary>
     /// <typeparam name="TInterface">The interface on which we want to apply the composite pattern.</typeparam>
-    /// <remarks>This is an internal class so it may change from version to version. Don't use it!</remarks>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     [SuppressMessage("Design", "CA1033:Interface methods should be callable by child types", Justification = "Derived types can access these methods via the Children property")]
     public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
