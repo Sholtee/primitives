@@ -5,6 +5,7 @@
 ********************************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -12,7 +13,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 using static System.Diagnostics.Debug;
@@ -31,9 +31,7 @@ namespace Solti.Utils.Primitives.Patterns
     public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
     {
         #region Private
-        private readonly HashSet<TInterface> FChildren = new HashSet<TInterface>();
-
-        private readonly ReaderWriterLockSlim FLock = new ReaderWriterLockSlim();
+        private readonly ConcurrentDictionary<TInterface, object?> FChildren = new ConcurrentDictionary<TInterface, object?>();
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
@@ -170,8 +168,6 @@ namespace Solti.Utils.Primitives.Patterns
                 Dispatch(ifaceMethod: GetMethod(i => i.Dispose()));
 
                 Assert(!FChildren.Any());
-
-                FLock.Dispose();
             }
 
             base.Dispose(disposeManaged);
@@ -193,8 +189,6 @@ namespace Solti.Utils.Primitives.Patterns
             );
 
             Assert(!FChildren.Any());
-
-            FLock.Dispose();
 
             //
             // Ne hivjuk a "base"-t mert azt a Dispose()-t hivna
@@ -252,10 +246,7 @@ namespace Solti.Utils.Primitives.Patterns
             {
                 CheckNotDisposed();
 
-                using (FLock.AcquireReaderLock()) 
-                {
-                    return FChildren.Count;
-                }
+                return FChildren.Count;
             }
         }
 
@@ -271,14 +262,11 @@ namespace Solti.Utils.Primitives.Patterns
             if (child.Parent != null) 
                 throw new ArgumentException(Resources.BELONGING_ITEM, nameof(child));
 
-            using (FLock.AcquireWriterLock())
-            {
-                if (FChildren.Count == MaxChildCount)
-                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
+            if (FChildren.Count == MaxChildCount)
+                throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
 
-                bool succeeded = FChildren.Add(child);
-                Assert(succeeded, "Child already contained");
-            }
+            bool succeeded = FChildren.TryAdd(child, null);
+            Assert(succeeded, "Child already contained");
 
             child.Parent = Self;
         }
@@ -290,13 +278,11 @@ namespace Solti.Utils.Primitives.Patterns
             Ensure.Parameter.IsNotNull(child, nameof(child));
             CheckNotDisposed();
 
-            if (child.Parent != Self) return false;
-
-            using (FLock.AcquireWriterLock())
-            {
-                bool succeeded = FChildren.Remove(child);
-                Assert(succeeded, "Child already removed");
-            }
+            if (child.Parent != Self) 
+                return false;
+ 
+            bool succeeded = FChildren.TryRemove(child, out _);
+            Assert(succeeded, "Child already removed");
 
             child.Parent = null;
 
@@ -317,15 +303,12 @@ namespace Solti.Utils.Primitives.Patterns
         {
             CheckNotDisposed();
 
-            using (FLock.AcquireWriterLock())
+            foreach (TInterface child in FChildren.Keys)
             {
-                foreach (TInterface child in FChildren)
-                {
-                    child.Parent = null;
-                }
-
-                FChildren.Clear();
+                child.Parent = null;
             }
+
+            FChildren.Clear();
         }
 
         void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)
@@ -333,17 +316,14 @@ namespace Solti.Utils.Primitives.Patterns
             Ensure.Parameter.IsNotNull(array, nameof(array));
             CheckNotDisposed();
 
-            using (FLock.AcquireReaderLock())
-            {
-                FChildren.CopyTo(array, arrayIndex);
-            }
+            FChildren.Keys.CopyTo(array, arrayIndex);
         }
 
         IEnumerator<TInterface> IEnumerable<TInterface>.GetEnumerator()
         {
             CheckNotDisposed();
 
-            return new SafeEnumerator<TInterface>(FChildren, FLock);
+            return FChildren.Keys.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => Children.GetEnumerator();
