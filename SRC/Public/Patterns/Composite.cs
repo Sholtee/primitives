@@ -93,13 +93,6 @@ namespace Solti.Utils.Primitives.Patterns
             Func<TInterface, object?[], object> invoke = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
 
             return Children
-                //
-                // Ez azert kell h:
-                //   - Iteracio kozben is modosithato legyen a gyermek lista
-                //   - Ne blokkoljuk a teljes listat hosszu ideig (az egyes "call" hivasok idoigenyesek lehetnek)
-                //
-
-                .ToArray()
                 .Select(child => invoke(child, args))
                 .ToArray();
         }
