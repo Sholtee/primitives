@@ -7,7 +7,7 @@
     <AssemblyName>Solti.Utils.Primitives</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives</RootNamespace>
     <Configurations>Debug;Release</Configurations>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>CA2007</NoWarn>
@@ -23,15 +23,12 @@
     <OutputPath>..\BIN\$(Configuration)</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(CI)' == ''">
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.*">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.*" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.*">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.*" />
   </ItemGroup>
 
   <ItemGroup>

@@ -142,6 +142,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum pool size reached..
+        /// </summary>
+        internal static string POOL_SIZE_REACHED {
+            get {
+                return ResourceManager.GetString("POOL_SIZE_REACHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of children exceeded the limit ({0})..
         /// </summary>
         internal static string TOO_MANY_CHILDREN {
