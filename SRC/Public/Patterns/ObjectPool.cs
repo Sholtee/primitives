@@ -4,7 +4,6 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 
@@ -15,45 +14,43 @@ namespace Solti.Utils.Primitives.Patterns
     /// <summary>
     /// Represents a requested pool item.
     /// </summary>
-    public class PoolItem<T> where T : class 
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    public class PoolItem<T> : Disposable where T : class
     {
-        internal  PoolItem(T item, ObjectPool<T> owner) 
-        {
-            Item = item;
-            Owner = owner;
-        }
-
-        internal ObjectPool<T> Owner { get; } 
+        /// <summary>
+        /// The index of the item.
+        /// </summary>
+        public int Index { get; init; }
 
         /// <summary>
-        /// The requested item.
+        /// The owner of this item.
         /// </summary>
-        public T Item { get; private set; }
+
+        public ObjectPool<T> Owner { get; init; }
 
         /// <summary>
-        /// Returns the object to the pool if there is enough space in it, discards otherwise.
+        /// The value of this item.
         /// </summary>
-        public void Return() 
+        public T Value { get; init; }
+
+        /// <inheritdoc/>
+        protected override void Dispose(bool disposeManaged)
         {
-            //
-            // Mar vissza lett teve az elem?
-            //
+            if (disposeManaged)
+                Owner.Return(Index);
 
-            if (Item is null)
-                throw new InvalidOperationException();
-
-            Owner.Return(Item);
-            Item = null!;
+            base.Dispose(disposeManaged);
         }
     }
+    #pragma warning restore CS8618
 
     /// <summary>
-    /// Describes the <see cref="ObjectPool{T}.Get(CancellationToken)"/> behavior when the request can not be granted.
+    /// Describes the <see cref="ObjectPool{T}.Get(CheckoutPolicy, CancellationToken)"/> behavior when the request can not be granted.
     /// </summary>
     public enum CheckoutPolicy 
     {
         /// <summary>
-        /// <see cref="ObjectPool{T}.Get(CancellationToken)"/> blocks until it can serve the request.
+        /// The calling thread is blocked until the request can be served.
         /// </summary>
         Block,
 
@@ -68,14 +65,25 @@ namespace Solti.Utils.Primitives.Patterns
     /// </summary>
     public class ObjectPool<T>: Disposable where T: class
     {
+        private readonly SemaphoreSlim FSemaphore;
+
+        private readonly ObjectHolder[] FObjects;
+
+        private struct ObjectHolder
+        {
+            public int CheckedOut;
+            public T? Object;
+        }
+
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
         public ObjectPool(int maxPoolSize, Func<T> factory) 
         {
-            Semaphore = new SemaphoreSlim(0, MaxSize = maxPoolSize);
-            Objects = new ConcurrentBag<T>();
+            FSemaphore = new SemaphoreSlim(0, maxPoolSize);
+            FObjects = new ObjectHolder[maxPoolSize];
             Factory = factory;
+            MaxSize = maxPoolSize;
         }
 
         /// <summary>
@@ -88,34 +96,59 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         public Func<T> Factory { get; }
 
-        /// <summary>
-        /// Gets an item from the pool.
-        /// </summary>
-        public PoolItem<T> Get(CancellationToken cancellation = default) => new PoolItem<T>
-        (
-            Get(true, cancellation), 
-            this
-        );
-
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
-                Semaphore.Dispose();
+            {
+                for (int i = 0; i < MaxSize; i++)
+                {
+                    ref ObjectHolder holder = ref FObjects[i]; // nem masolat
+
+                    //
+                    // Csak annyi elemet probalunk meg felszabaditani amennyi peldanyositva is volt.
+                    //
+
+                    if (holder.Object is null)
+                        break;
+
+                    try
+                    {
+                        if (holder.Object is IDisposable disposable)
+                            disposable.Dispose();
+                    }
+                    catch (Exception e)
+                    {
+                        Trace.WriteLine($"Can't dispose pool item: {e}");
+                    }
+                }
+
+                FSemaphore.Dispose();
+            }
+
             base.Dispose(disposeManaged);
         }
 
-        internal ConcurrentBag<T> Objects { get; }
+        /// <summary>
+        /// Gets an item from the pool.
+        /// </summary>
+        public PoolItem<T> Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default) => new PoolItem<T>
+        {
+            Value = Get(out int index, checkoutPolicy, cancellation),
+            Index = index,
+            Owner = this
+        };
 
-        internal SemaphoreSlim Semaphore { get; }
-
-        internal T Get(bool wait, CancellationToken cancellation)
+        /// <summary>
+        /// Gets an item from the pool.
+        /// </summary>
+        public T Get(out int index, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
             //
             // Elertuk a maximalis meretet?
             //
 
-            if (!Semaphore.Wait(wait ? Timeout.Infinite : 0, cancellation))
+            if (!FSemaphore.Wait(checkoutPolicy == CheckoutPolicy.Block ? Timeout.Infinite : 0, cancellation))
             {
                 //
                 // Igen, de a kerest nem kellett vna azonnal kiszolgalni ezert a szal blokkolasra kerult -> varakozas meg lett szakitva.
@@ -127,7 +160,7 @@ namespace Solti.Utils.Primitives.Patterns
                 // Igen es mivel a kerest egybol ki kellett vna szolgalni ezert kivetel.
                 //
 
-                Debug.Assert(!wait);
+                Debug.Assert(checkoutPolicy == CheckoutPolicy.Throw);
 
                 throw new InvalidOperationException(Resources.POOL_SIZE_REACHED);
             }
@@ -137,26 +170,41 @@ namespace Solti.Utils.Primitives.Patterns
             // kulonben letrehozunk egy ujat.
             //
 
-            return Objects.TryTake(out T item)
-                ? item
-                : Factory();
+            for (index = 0; index < MaxSize; index++)
+            {
+                ref ObjectHolder holder = ref FObjects[index]; // nem masolat
+
+                //
+                // Az elso olyan elem ami meg nincs kicsekkolva
+                //
+
+                if (Interlocked.CompareExchange(ref holder.CheckedOut, -1, 0) == 0)
+                    //
+                    // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
+                    //
+
+                    return holder.Object ??= Factory();
+            }
+
+            //
+            // Ide sose lenne szabad eljussunk a semaphore miatt
+            //
+
+            Debug.Fail("No empty slot in the pool");
+            return default!;
         }
 
-        internal void Return(T item) 
+        /// <summary>
+        /// Returns the item to the pool, identified by its index.
+        /// </summary>
+        public void Return(int index) 
         {
-            //
-            // Allapot visszaallitas
-            //
+            ref ObjectHolder holder = ref FObjects[index]; // nem masolat
 
-            if (item is IResettable resettable)
+            if (holder.Object is IResettable resettable)
                 resettable.Reset();
 
-            //
-            // Oljektum visszaadasa a szulonek
-            //
-
-            Objects.Add(item);
-            Semaphore.Release();
+            Interlocked.Exchange(ref holder.CheckedOut, 0);
         }
     }
 }
