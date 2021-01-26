@@ -25,7 +25,6 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// The owner of this item.
         /// </summary>
-
         public ObjectPool<T> Owner { get; init; }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         public ObjectPool(int maxPoolSize, Func<T> factory) 
         {
-            FSemaphore = new SemaphoreSlim(0, maxPoolSize);
+            FSemaphore = new SemaphoreSlim(maxPoolSize, maxPoolSize);
             FObjects = new ObjectHolder[maxPoolSize];
             Factory = factory;
             MaxSize = maxPoolSize;
@@ -205,6 +204,8 @@ namespace Solti.Utils.Primitives.Patterns
                 resettable.Reset();
 
             Interlocked.Exchange(ref holder.CheckedOut, 0);
+
+            FSemaphore.Release();
         }
     }
 }
