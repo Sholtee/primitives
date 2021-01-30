@@ -12,6 +12,8 @@ image: Visual Studio 2019
 environment:
   COVERALLS_REPO_TOKEN:  
     secure: Vq/CK5r09Xj8EiL6EItaHk73P8GXAMPPITVCQLIJQnz1JRCvJSdhFoADiV/rao2r
+  GITHUB_REPO_TOKEN:
+    secure: qJEufJv866eebR/Boe1UnV3p1arOIX9BTyqAQnAVY49h4Ks40Sr0rHb3iN70e7BZ
   NUGET_REPO_TOKEN:
     secure: nsvsjt9oFbO86ooc/lL2oVbU7YQxRn9TiG6+WRjULI/ehanBUBv4i0XpmQyK3lgK
   GITHUB_EMAIL:
@@ -50,5 +52,12 @@ for:
   branches:
     only:
       - master
+
+  before_deploy:
+    - ps: Git-Config 
+  
   deploy_script: 
-    - ps: Deploy
+    # update documentation & publish nuget package
+    - ps: |
+        GH-Pages
+        Deploy
