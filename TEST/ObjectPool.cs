@@ -26,16 +26,23 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             object
                 a, b;
 
+            Assert.That(pool.Count, Is.EqualTo(0));
+
             using (PoolItem<object> item = pool.Get()) 
             {
+                Assert.That(pool.Count, Is.EqualTo(1));
                 a = item.Value;
             }
 
+            Assert.That(pool.Count, Is.EqualTo(0));
+
             using (PoolItem<object> item = pool.Get())
             {
+                Assert.That(pool.Count, Is.EqualTo(1));
                 b = item.Value;
             }
 
+            Assert.That(pool.Count, Is.EqualTo(0));
             Assert.AreSame(a, b);
         }
 

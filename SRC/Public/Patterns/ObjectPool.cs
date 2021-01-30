@@ -4,6 +4,8 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
@@ -62,7 +64,7 @@ namespace Solti.Utils.Primitives.Patterns
     /// <summary>
     /// Describes a simple object pool.
     /// </summary>
-    public class ObjectPool<T>: Disposable where T: class
+    public class ObjectPool<T>: Disposable, IReadOnlyCollection<T> where T: class
     {
         private readonly SemaphoreSlim FSemaphore;
 
@@ -82,13 +84,13 @@ namespace Solti.Utils.Primitives.Patterns
             FSemaphore = new SemaphoreSlim(maxPoolSize, maxPoolSize);
             FObjects = new ObjectHolder[maxPoolSize];
             Factory = factory;
-            MaxSize = maxPoolSize;
+            Capacity = maxPoolSize;
         }
 
         /// <summary>
         /// The maximum number of objects that can be checked out in the same time.
         /// </summary>
-        public int MaxSize { get; }
+        public int Capacity { get; }
 
         /// <summary>
         /// Delegate to create pool items.
@@ -100,20 +102,11 @@ namespace Solti.Utils.Primitives.Patterns
         {
             if (disposeManaged)
             {
-                for (int i = 0; i < MaxSize; i++)
+                foreach (T item in this) // csak a felhasznalt elemeket adja vissza
                 {
-                    ref ObjectHolder holder = ref FObjects[i]; // nem masolat
-
-                    //
-                    // Csak annyi elemet probalunk meg felszabaditani amennyi peldanyositva is volt.
-                    //
-
-                    if (holder.Object is null)
-                        break;
-
                     try
                     {
-                        if (holder.Object is IDisposable disposable)
+                        if (item is IDisposable disposable)
                             disposable.Dispose();
                     }
                     catch (Exception e)
@@ -169,7 +162,7 @@ namespace Solti.Utils.Primitives.Patterns
             // kulonben letrehozunk egy ujat.
             //
 
-            for (index = 0; index < MaxSize; index++)
+            for (index = 0; index < Capacity; index++)
             {
                 ref ObjectHolder holder = ref FObjects[index]; // nem masolat
 
@@ -207,5 +200,38 @@ namespace Solti.Utils.Primitives.Patterns
 
             FSemaphore.Release();
         }
+
+        /// <summary>
+        /// See <see cref="IEnumerable{T}.GetEnumerator"/>.
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Capacity; i++)
+            {
+                T? item = GetItem(i);
+
+                //
+                // Csak a hasznalatban levo elemeket adjuk vissza.
+                //
+
+                if (item is null)
+                    yield break;
+
+                yield return item;
+            }
+
+            T? GetItem(int index) // CS8176
+            {
+                ref ObjectHolder holder = ref FObjects[index]; // nem masolat
+                return holder.Object;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        /// <summary>
+        /// The count of checked out objects.
+        /// </summary>
+        public int Count => Capacity - FSemaphore.CurrentCount;
     }
 }
