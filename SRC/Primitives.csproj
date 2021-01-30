@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <Authors>Denes Solti</Authors>
-    <Version>1.7.0</Version>
+    <Version>1.7.1</Version>
     <AssemblyName>Solti.Utils.Primitives</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives</RootNamespace>
     <Configurations>Debug;Release</Configurations>
@@ -23,8 +23,8 @@
     <OutputPath>..\BIN\$(Configuration)</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.*" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.*" Condition="'$(TargetFramework)' == 'netstandard2.0'"/>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.*">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
