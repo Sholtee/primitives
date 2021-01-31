@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Patterns
@@ -17,7 +18,9 @@ namespace Solti.Utils.Primitives.Patterns
     /// Represents a requested pool item.
     /// </summary>
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    public class PoolItem<T> : Disposable where T : class
+    #pragma warning disable CS0618 // Type or member is obsolete
+    public class PoolItem<T> : Disposable, ICustomAdapter where T : class
+    #pragma warning restore CS0618
     {
         /// <summary>
         /// The index of the item.
@@ -33,6 +36,8 @@ namespace Solti.Utils.Primitives.Patterns
         /// The value of this item.
         /// </summary>
         public T Value { get; init; }
+
+        object ICustomAdapter.GetUnderlyingObject() => Value;
 
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
