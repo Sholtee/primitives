@@ -963,6 +963,25 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).Owner
   nameWithType: PoolItem<T>.Owner
   nameWithType.vb: PoolItem(Of T).Owner
+- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
+  name: ICustomAdapter.GetUnderlyingObject()
+  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject
+  commentId: M:Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
+  name.vb: System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
+  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
+  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
+  nameWithType: PoolItem<T>.ICustomAdapter.GetUnderlyingObject()
+  nameWithType.vb: PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
+- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject*
+  name: ICustomAdapter.GetUnderlyingObject
+  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
+  isSpec: "True"
+  name.vb: System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
+  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
+  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
+  nameWithType: PoolItem<T>.ICustomAdapter.GetUnderlyingObject
+  nameWithType.vb: PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
 - uid: Solti.Utils.Primitives.Patterns.PoolItem`1.Value
   name: Value
   href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_Value
