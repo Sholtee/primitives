@@ -84,12 +84,13 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
-        public ObjectPool(int maxPoolSize, Func<T> factory) 
+        public ObjectPool(int maxPoolSize, Func<T> factory, bool suppressItemDispose = false) 
         {
             FSemaphore = new SemaphoreSlim(maxPoolSize, maxPoolSize);
             FObjects = new ObjectHolder[maxPoolSize];
             Factory = factory;
             Capacity = maxPoolSize;
+            SuppressItemDispose = suppressItemDispose;
         }
 
         /// <summary>
@@ -102,12 +103,17 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         public Func<T> Factory { get; }
 
+        /// <summary>
+        /// Returns true if the <see cref="ObjectPool{T}"/> should NOT dispose its items on release.
+        /// </summary>
+        public bool SuppressItemDispose { get; }
+
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
             {
-                foreach (T item in this) // csak a felhasznalt elemeket adja vissza
+                if (!SuppressItemDispose) foreach (T item in this) // csak a felhasznalt elemeket adja vissza
                 {
                     try
                     {
