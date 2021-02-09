@@ -31,7 +31,7 @@ namespace Solti.Utils.Primitives.Patterns
     public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
     {
         #region Private
-        private readonly ConcurrentDictionary<TInterface, object?> FChildren = new ConcurrentDictionary<TInterface, object?>();
+        private readonly ConcurrentDictionary<TInterface, byte> FChildren = new ConcurrentDictionary<TInterface, byte>();
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
@@ -258,7 +258,7 @@ namespace Solti.Utils.Primitives.Patterns
             if (FChildren.Count == MaxChildCount)
                 throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
 
-            bool succeeded = FChildren.TryAdd(child, null);
+            bool succeeded = FChildren.TryAdd(child, 0);
             Assert(succeeded, "Child already contained");
 
             child.Parent = Self;
