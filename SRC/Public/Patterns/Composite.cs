@@ -92,9 +92,18 @@ namespace Solti.Utils.Primitives.Patterns
 
             Func<TInterface, object?[], object> invoke = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
 
-            return Children
-                .Select(child => invoke(child, args))
-                .ToArray();
+            //
+            // Mivel itt a lista egy korabbi allapotaval dolgozunk ezert az iteracio alatt hozzaadott gyermekeken
+            // nem, mig eltavolitott gyermekeken meg lesz hivva a cel metodus.
+            //
+
+            ICollection<TInterface> children = FChildren.Keys; // masolat
+
+            object[] result = new object[children.Count];
+
+            Parallel.ForEach(Children, (child, _, i) => result[i] = invoke(child, args));
+
+            return result;
         }
         #endregion
 
