@@ -1161,6 +1161,38 @@ references:
   commentId: N:Solti.Utils.Primitives.Threading
   fullName: Solti.Utils.Primitives.Threading
   nameWithType: Solti.Utils.Primitives.Threading
+- uid: Solti.Utils.Primitives.Threading.Exclusive
+  name: Exclusive
+  href: Solti.Utils.Primitives.Threading.Exclusive.html
+  commentId: T:Solti.Utils.Primitives.Threading.Exclusive
+  fullName: Solti.Utils.Primitives.Threading.Exclusive
+  nameWithType: Exclusive
+- uid: Solti.Utils.Primitives.Threading.Exclusive.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Threading.Exclusive.html#Solti_Utils_Primitives_Threading_Exclusive_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.Exclusive.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Threading.Exclusive.Dispose(System.Boolean)
+  nameWithType: Exclusive.Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Threading.Exclusive.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.Exclusive.html#Solti_Utils_Primitives_Threading_Exclusive_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.Exclusive.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.Exclusive.Dispose
+  nameWithType: Exclusive.Dispose
+- uid: Solti.Utils.Primitives.Threading.Exclusive.Enter
+  name: Enter()
+  href: Solti.Utils.Primitives.Threading.Exclusive.html#Solti_Utils_Primitives_Threading_Exclusive_Enter
+  commentId: M:Solti.Utils.Primitives.Threading.Exclusive.Enter
+  fullName: Solti.Utils.Primitives.Threading.Exclusive.Enter()
+  nameWithType: Exclusive.Enter()
+- uid: Solti.Utils.Primitives.Threading.Exclusive.Enter*
+  name: Enter
+  href: Solti.Utils.Primitives.Threading.Exclusive.html#Solti_Utils_Primitives_Threading_Exclusive_Enter_
+  commentId: Overload:Solti.Utils.Primitives.Threading.Exclusive.Enter
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.Exclusive.Enter
+  nameWithType: Exclusive.Enter
 - uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
   name: ReaderWriterLockExtensions
   href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html
