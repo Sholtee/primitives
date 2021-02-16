@@ -142,6 +142,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attempt to invoke non thread safe code parallelly..
+        /// </summary>
+        internal static string NOT_EXCLUSIVE {
+            get {
+                return ResourceManager.GetString("NOT_EXCLUSIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum pool size reached..
         /// </summary>
         internal static string POOL_SIZE_REACHED {
