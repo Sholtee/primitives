@@ -1,5 +1,5 @@
 ﻿/********************************************************************************
-* Exclusive.cs                                                                  *
+* ExclusiveBlock.cs                                                             *
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
@@ -15,17 +15,17 @@ namespace Solti.Utils.Primitives.Threading
     /// Ensures operation exclusivity without lock.
     /// </summary>
     /// <remarks>This class is intended to signal the attempt to call non thread safe code parallelly.</remarks>
-    public sealed class Exclusive : Disposable
+    public sealed class ExclusiveBlock : Disposable
     {
-        private int FGlobalState;
+        private int FEntered;
 
-        private readonly ThreadLocal<bool> FLocalState = new ThreadLocal<bool>(() => false, trackAllValues: false);
+        private readonly ThreadLocal<int> FDepth = new ThreadLocal<int>(() => 0, trackAllValues: false);
 
         private sealed class Scope : Disposable
         {
-            private readonly Exclusive FOwner;
+            private readonly ExclusiveBlock FOwner;
 
-            public Scope(Exclusive owner) => FOwner = owner;
+            public Scope(ExclusiveBlock owner) => FOwner = owner;
 
             protected override void Dispose(bool disposeManaged)
             {
@@ -36,8 +36,8 @@ namespace Solti.Utils.Primitives.Threading
 
         private void Leave()
         {
-            Interlocked.Exchange(ref FGlobalState, 0);
-            FLocalState.Value = false;
+            if (--FDepth.Value == 0)
+                Interlocked.Exchange(ref FEntered, 0);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Solti.Utils.Primitives.Threading
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
-                FLocalState.Dispose();
+                FDepth.Dispose();
 
             base.Dispose(disposeManaged);
         }
@@ -56,22 +56,22 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public IDisposable Enter() 
         {
+            if (FDepth.Value == 0)
+            {
+                //
+                // Ha uj jatekosok vagyunk akkor ellenorizzuk h vki mas mar igenyelte e a
+                // kizarolagossagot, ha igen akkor kivetel.
+                //
+
+                if (Interlocked.CompareExchange(ref FEntered, 1, 0) != 0)
+                    throw new InvalidOperationException(Resources.NOT_EXCLUSIVE);
+            }
+
             //
-            // Ugyanaz a szal tobbszor is kerhet kizarolagossagot. Rekurzio eseten csak a legelso igenylest
-            // kell kiszolgalni mert nyilvan az fog legutoljara veget erni
+            // Ugyanaz a szal tobbszor is igenyelheti a kizarolagossagot, akkor a melyseget noveljuk.
             //
 
-            if (FLocalState.Value)
-                return new Disposable();
-
-            //
-            // Ha vki mas is mar igenyelt kizarolagossagot akkor kivetel
-            //
-
-            if (Interlocked.CompareExchange(ref FGlobalState, 1, 0) != 0)
-                throw new InvalidOperationException(Resources.NOT_EXCLUSIVE);
-
-            FLocalState.Value = true;
+            FDepth.Value++;
             return new Scope(this);          
         }
     }

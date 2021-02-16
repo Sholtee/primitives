@@ -1,5 +1,5 @@
 ﻿/********************************************************************************
-* Exclusive.cs                                                                  *
+* ExclusiveBlock.cs                                                             *
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
@@ -13,24 +13,24 @@ namespace Solti.Utils.Primitives.Threading.Tests
     using Properties;
 
     [TestFixture]
-    public class ExclusiveTests
+    public class ExclusiveBlockTests
     {
-        private Exclusive Exclusive { get; set; }
+        private ExclusiveBlock ExclusiveBlock { get; set; }
 
         [SetUp]
-        public void Setup() => Exclusive = new Exclusive();
+        public void Setup() => ExclusiveBlock = new ExclusiveBlock();
 
         [TearDown]
-        public void TearDown() => Exclusive?.Dispose();
+        public void TearDown() => ExclusiveBlock?.Dispose();
 
         [Test]
         public void Acquire_ShouldThrowOnParallelInvocation()
         {
             for (int i = 0; i < 5; i++)
             {
-                using (Exclusive.Enter())
+                using (ExclusiveBlock.Enter())
                 {
-                    Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Exclusive.Enter), Resources.NOT_EXCLUSIVE);
+                    Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(ExclusiveBlock.Enter), Resources.NOT_EXCLUSIVE);
                 }
             }
         }
@@ -40,11 +40,11 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             for (int i = 0; i < 5; i++)
             {
-                using (Exclusive.Enter())
+                using (ExclusiveBlock.Enter())
                 {
-                    using (Exclusive.Enter())
+                    using (ExclusiveBlock.Enter())
                     {
-                        using (Exclusive.Enter())
+                        using (ExclusiveBlock.Enter())
                         {
                         }
                     }
@@ -58,16 +58,16 @@ namespace Solti.Utils.Primitives.Threading.Tests
             for (int i = 0; i < 5; i++)
             {
                 // MethodA()
-                using (Exclusive.Enter())
+                using (ExclusiveBlock.Enter())
                 {
                     // calls MethodB()
-                    using (Exclusive.Enter())
+                    using (ExclusiveBlock.Enter())
                     {
                         // calls MethodC()
-                        using (Exclusive.Enter())
+                        using (ExclusiveBlock.Enter())
                         {
                             // MethodC() is called parallelly
-                            Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Exclusive.Enter), Resources.NOT_EXCLUSIVE);
+                            Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(ExclusiveBlock.Enter), Resources.NOT_EXCLUSIVE);
                         }
                     }
                 }
