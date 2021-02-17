@@ -117,25 +117,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
-        public void Clear_ShouldNotDisposeTheChildren()
-        {
-            IMyComposite
-                root = new MyComposite(),
-                child = new MyComposite(root);
-
-            Assert.That(root.Children.Count, Is.EqualTo(1));
-            root.Children.Clear();
-
-            //
-            // Nem lett felszabaditva.
-            //
-
-            Assert.That(child.Parent, Is.Null);
-            Assert.DoesNotThrow(child.Dispose);
-            Assert.That(root.Children.Count, Is.EqualTo(0));
-        }
-
-        [Test]
         public void Parent_ShouldNotBeSetDirectly() 
         {
             IMyComposite

@@ -25,6 +25,19 @@ namespace Solti.Utils.Primitives
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int? IncrementIfLessThan(ref int location, int comparand)
+        {
+            int snapshot;
+            do
+            {
+                snapshot = location;
+                if (snapshot >= comparand) return null;
+            }
+            while (Increment(ref location) != ++snapshot);
+            return snapshot;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int? DecrementIfGreaterThan(ref int location, int comparand)
         {
             int snapshot;

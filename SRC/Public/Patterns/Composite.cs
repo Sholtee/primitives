@@ -13,6 +13,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 using static System.Diagnostics.Debug;
@@ -32,19 +33,28 @@ namespace Solti.Utils.Primitives.Patterns
     {
         #region Private
         private readonly ConcurrentDictionary<TInterface, byte> FChildren = new ConcurrentDictionary<TInterface, byte>();
+        private int FCount; // kulon kell szamon tartani
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
         private TInterface? FParent;
 
-        private TInterface Self => (this as TInterface)!;
+        private TInterface Self 
+        {
+            get
+            {
+                TInterface? result = (this as TInterface);
+                Assert(result is not null);
+                return result!;
+            }
+        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 2, fNeedFileInfo: false).GetMethod();
 
         private static MethodInfo GetMethod(Expression<Action<TInterface>> expr) => ((MethodCallExpression) expr.Body).Method;
 
-        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() 
+        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() // TODO: gyorsitotarazni
         {
             return GetInterfaceMappingInternal(typeof(TInterface))
                 //
@@ -118,7 +128,7 @@ namespace Solti.Utils.Primitives.Patterns
             Ensure.Parameter.IsNotNull(args, nameof(args));
 
             //
-            // GetCallerMEthod() mindig a generikus metodus definiciojat adja vissza.
+            // GetCallerMethod() mindig a generikus metodus definiciojat adja vissza.
             //
 
             if (!FInterfaceMapping.TryGetValue(GetCallerMethod(), out MethodInfo ifaceMethod))
@@ -248,7 +258,7 @@ namespace Solti.Utils.Primitives.Patterns
             {
                 CheckNotDisposed();
 
-                return FChildren.Count;
+                return FCount;
             }
         }
 
@@ -264,7 +274,7 @@ namespace Solti.Utils.Primitives.Patterns
             if (child.Parent != null) 
                 throw new ArgumentException(Resources.BELONGING_ITEM, nameof(child));
 
-            if (FChildren.Count == MaxChildCount)
+            if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxChildCount) is null)
                 throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
 
             bool succeeded = FChildren.TryAdd(child, 0);
@@ -286,6 +296,8 @@ namespace Solti.Utils.Primitives.Patterns
             bool succeeded = FChildren.TryRemove(child, out _);
             Assert(succeeded, "Child already removed");
 
+            Interlocked.Decrement(ref FCount);
+
             child.Parent = null;
 
             return true;
@@ -298,20 +310,11 @@ namespace Solti.Utils.Primitives.Patterns
 
             return child.Parent == Self;
         }
-
+/*
         [CanSetParent]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        void ICollection<TInterface>.Clear()
-        {
-            CheckNotDisposed();
-
-            foreach (TInterface child in FChildren.Keys)
-            {
-                child.Parent = null;
-            }
-
-            FChildren.Clear();
-        }
+*/
+        void ICollection<TInterface>.Clear() => throw new NotImplementedException();
 
         void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)
         {
