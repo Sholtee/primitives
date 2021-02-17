@@ -6,6 +6,7 @@
   "tests": "\\TEST\\Primitives.Tests.csproj",
   "artifacts": "\\Artifacts",
   "coveragefilter": "+[Solti.Utils.Primitives*]* -[Solti.Utils.Primitives.Tests]*",
+  "perftests": "\\PERF\\Primitives.Perf.csproj",
   "docsbranch": "gh-pages",
   "CI": "AppVeyor"
 }

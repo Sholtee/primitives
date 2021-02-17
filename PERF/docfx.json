@@ -1,0 +1,20 @@
+{
+	"build": {
+		"content": [
+			{
+				"files": ["*.md"],
+				"src": "../Artifacts/BenchmarkDotNet.Artifacts/results"
+			},
+			{
+				"files": ["index.md"]
+			}
+		],
+		"dest": "../Artifacts/BenchmarkDotNet.Artifacts/perf",
+		"resource": [],
+		"globalMetadata": {
+			"_appTitle": "Benchmark Results",
+			"_disableNavbar": true,
+			"_disableContribution": true
+		}
+	}
+}
