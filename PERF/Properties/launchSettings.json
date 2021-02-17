@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Primitives.Perf": {
+      "commandName": "Project",
+      "commandLineArgs": "-f *"
+    }
+  }
+}

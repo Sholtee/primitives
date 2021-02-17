@@ -33,6 +33,7 @@ namespace Solti.Utils.Primitives.Patterns
     {
         #region Private
         private readonly ConcurrentDictionary<TInterface, byte> FChildren = new ConcurrentDictionary<TInterface, byte>();
+
         private int FCount; // kulon kell szamon tartani
 
         private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;

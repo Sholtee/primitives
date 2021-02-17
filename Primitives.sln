@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primitives", "Src\Primitive
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primitives.Tests", "Test\Primitives.Tests.csproj", "{7C708EDC-81BE-4DE8-823C-0992BEA138E6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primitives.Perf", "PERF\Primitives.Perf.csproj", "{C3D04C00-3EDC-4D0F-A267-5DFE68F32756}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,7 +22,10 @@ Global
 		{7C708EDC-81BE-4DE8-823C-0992BEA138E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C708EDC-81BE-4DE8-823C-0992BEA138E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C708EDC-81BE-4DE8-823C-0992BEA138E6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C708EDC-81BE-4DE8-823C-0992BEA138E6}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C3D04C00-3EDC-4D0F-A267-5DFE68F32756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D04C00-3EDC-4D0F-A267-5DFE68F32756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D04C00-3EDC-4D0F-A267-5DFE68F32756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D04C00-3EDC-4D0F-A267-5DFE68F32756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
