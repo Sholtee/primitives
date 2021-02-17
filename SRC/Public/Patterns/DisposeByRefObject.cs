@@ -4,11 +4,12 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
 {
+    using static InterlockedExtensions;
+
     using Properties;
 
     /// <summary>
@@ -16,28 +17,19 @@ namespace Solti.Utils.Primitives.Patterns
     /// </summary>
     public class DisposeByRefObject : Disposable
     {
-        private readonly object FLock = new object();
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void EnsureNotDisposed() 
-        {
-            if (RefCount == 0)
-                throw new ObjectDisposedException(null);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void EnsureDisposeAllowed() 
-        {
-            if (RefCount != 0)
-                throw new InvalidOperationException(Resources.ARBITRARY_RELEASE);
-        }
+        private int FRefCount = 1;
 
         /// <summary>
         /// See <see cref="Disposable"/> class.
         /// </summary>
         protected override void Dispose(bool disposeManaged)
         {
-            if (disposeManaged) EnsureDisposeAllowed();
+            if (disposeManaged)
+            {
+                if (FRefCount > 0)
+                    throw new InvalidOperationException(Resources.ARBITRARY_RELEASE);
+            }
+
             base.Dispose(disposeManaged);
         }
 
@@ -46,14 +38,16 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         protected override ValueTask AsyncDispose()
         {
-            EnsureDisposeAllowed();
+            if (FRefCount > 0)
+                throw new InvalidOperationException(Resources.ARBITRARY_RELEASE);
+
             return base.AsyncDispose();
         }
 
         /// <summary>
         /// The current reference count.
         /// </summary>
-        public int RefCount { get; private set; } = 1;
+        public int RefCount => FRefCount;
 
         /// <summary>
         /// Increments the reference counter as an atomic operation.
@@ -61,11 +55,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public int AddRef()
         {
-            lock (FLock)
-            {
-                EnsureNotDisposed();
-                return ++RefCount;
-            }
+            int? refCount = IncrementIfGreaterThan(ref FRefCount, 0);
+
+            if (refCount is null)
+                throw new ObjectDisposedException(null);
+
+            return refCount.Value;
         }
 
         /// <summary>
@@ -74,14 +69,15 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public int Release()
         {
-            lock (FLock) 
-            {
-                EnsureNotDisposed();
-                if (--RefCount > 0) return RefCount;
-            }
+            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0);
 
-            Dispose();
-            return 0;
+            if (refCount is null)
+                throw new ObjectDisposedException(null);
+
+            if (refCount is 0)
+                Dispose();
+
+            return refCount.Value;
         }
 
         /// <summary>
@@ -90,14 +86,15 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public async Task<int> ReleaseAsync() 
         {
-            lock (FLock) 
-            {
-                EnsureNotDisposed();
-                if (--RefCount > 0) return RefCount;
-            }
+            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0);
 
-            await DisposeAsync();
-            return 0;
+            if (refCount is null)
+                throw new ObjectDisposedException(null);
+
+            if (refCount is 0)
+                await DisposeAsync();
+
+            return refCount.Value;
         }
     }
 }
