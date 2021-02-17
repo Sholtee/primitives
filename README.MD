@@ -2,3 +2,4 @@
 > Shared classes used in my .NET projects
 
 [API docs](https://sholtee.github.io/primitives )
+[Benchmark Results](https://sholtee.github.io/primitives/perf/ )
