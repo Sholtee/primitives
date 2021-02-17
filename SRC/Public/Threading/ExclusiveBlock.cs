@@ -4,6 +4,8 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
@@ -54,6 +56,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Gets a scope for an exclusive operation.
         /// </summary>
+        [MethodImpl(MethodImplOptions.NoInlining)] // StackFrame jo helyre mutasson
         public IDisposable Enter() 
         {
             if (FDepth.Value == 0)
@@ -63,8 +66,13 @@ namespace Solti.Utils.Primitives.Threading
                 // kizarolagossagot, ha igen akkor kivetel.
                 //
 
-                if (Interlocked.CompareExchange(ref FEntered, 1, 0) != 0)
-                    throw new InvalidOperationException(Resources.NOT_EXCLUSIVE);
+                if (Interlocked.CompareExchange(ref FEntered, -1, 0) != 0)
+                {
+                    var ex = new InvalidOperationException(Resources.NOT_EXCLUSIVE);
+                    ex.Data["method"] = new StackFrame(skipFrames: 1).GetMethod();
+
+                    throw ex;
+                }
             }
 
             //

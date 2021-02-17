@@ -4,6 +4,7 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using NUnit.Framework;
@@ -30,7 +31,8 @@ namespace Solti.Utils.Primitives.Threading.Tests
             {
                 using (ExclusiveBlock.Enter())
                 {
-                    Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(ExclusiveBlock.Enter), Resources.NOT_EXCLUSIVE);
+                    InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Acquire_ShouldThrowOnParallelInvocation), Resources.NOT_EXCLUSIVE);
+                    Assert.That(ex.Data["method"], Is.EqualTo(MethodBase.GetCurrentMethod()));
                 }
             }
         }
@@ -57,17 +59,14 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             for (int i = 0; i < 5; i++)
             {
-                // MethodA()
                 using (ExclusiveBlock.Enter())
                 {
-                    // calls MethodB()
                     using (ExclusiveBlock.Enter())
                     {
-                        // calls MethodC()
                         using (ExclusiveBlock.Enter())
                         {
-                            // MethodC() is called parallelly
-                            Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(ExclusiveBlock.Enter), Resources.NOT_EXCLUSIVE);
+                            InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Acquire_ShouldThrowOnSubsequentParallelInvocation), Resources.NOT_EXCLUSIVE);
+                            Assert.That(ex.Data["method"], Is.EqualTo(MethodBase.GetCurrentMethod()));
                         }
                     }
                 }
