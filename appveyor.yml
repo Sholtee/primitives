@@ -37,7 +37,7 @@ before_test:
       Get-SysInfo
 
 test_script:
-  - ps: Regular-Tests
+  - ps: Test
 
 after_test:
   - ps: Push-Test-Results
