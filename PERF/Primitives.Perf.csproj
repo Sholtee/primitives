@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Perf</Configurations>
     <!--BenchmarkDotNet requires the exe and csproj name to be equal-->
     <AssemblyName>Primitives.Perf</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives.Perf</RootNamespace>
@@ -21,7 +21,7 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.*" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(LibVersion)' != ''" >
+  <ItemGroup Condition="'$(LibVersion)' != ''">
     <PackageReference Include="Solti.Utils.Primitives" Version="$(LibVersion)"></PackageReference>
   </ItemGroup>
 
