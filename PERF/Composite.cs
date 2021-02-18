@@ -51,6 +51,11 @@ namespace Solti.Utils.Primitives.Perf
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
+            static MyComposite() 
+            {
+                MaxDegreeOfParallelism = 4;
+            }
+
             public MyComposite() : base(null)
             {
             }
@@ -58,10 +63,10 @@ namespace Solti.Utils.Primitives.Perf
             void IMyComposite.Foo(string arg) => Dispatch(null, arg);
         }
 
-        [Params(1, 2, 5, 10)]
+        [Params(1, 2, 5)]
         public int Depth { get; set; }
 
-        [Params(1, 2, 5, 10)]
+        [Params(1, 2, 5)]
         public int ChildCount { get; set; }
 
         private IMyComposite Root { get; set; }
