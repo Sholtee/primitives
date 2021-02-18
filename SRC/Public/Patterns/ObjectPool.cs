@@ -63,7 +63,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// An <see cref="InvalidOperationException"/> is thrown.
         /// </summary>
-        Throw
+        Throw,
+
+        /// <summary>
+        /// The pool discards the request and returns NULL.
+        /// </summary>
+        Discard
     }
 
     /// <summary>
@@ -135,17 +140,24 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Gets an item from the pool.
         /// </summary>
-        public PoolItem<T> Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default) => new PoolItem<T>
+        public PoolItem<T>? Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
-            Value = Get(out int index, checkoutPolicy, cancellation),
-            Index = index,
-            Owner = this
-        };
+            T? value = Get(out int index, checkoutPolicy, cancellation);
+
+            return value is null
+                ? null
+                : new PoolItem<T>
+                {
+                    Value = value,
+                    Index = index,
+                    Owner = this
+                };
+        }
 
         /// <summary>
         /// Gets an item from the pool.
         /// </summary>
-        public T Get(out int index, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
+        public T? Get(out int index, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
             //
             // Elertuk a maximalis meretet?
@@ -160,12 +172,16 @@ namespace Solti.Utils.Primitives.Patterns
                 cancellation.ThrowIfCancellationRequested();
 
                 //
-                // Igen es mivel a kerest egybol ki kellett vna szolgalni ezert kivetel.
+                // Igen es mivel a kerest egybol ki kellett vna szolgalni ezert vagy kivetelt v NULL-t adunk vissza.
                 //
 
-                Debug.Assert(checkoutPolicy == CheckoutPolicy.Throw);
+                if (checkoutPolicy == CheckoutPolicy.Throw)
+                    throw new InvalidOperationException(Resources.POOL_SIZE_REACHED);
 
-                throw new InvalidOperationException(Resources.POOL_SIZE_REACHED);
+                Debug.Assert(checkoutPolicy == CheckoutPolicy.Discard);
+
+                index = -1;
+                return default;
             }
 
             //

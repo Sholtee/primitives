@@ -58,6 +58,17 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
+        public void Get_ShouldReturnNullIfThereIsNoMoreSpaceInThePool()
+        {
+            using var pool = new ObjectPool<object>(1, () => new object());
+
+            using (pool.Get(CheckoutPolicy.Throw))
+            {
+                Assert.IsNull(pool.Get(CheckoutPolicy.Discard));
+            }
+        }
+
+        [Test]
         public void Get_ShouldBlockIfThereIsNoMoreSpaceInThePool() 
         {
             using var pool = new ObjectPool<object>(1, () => new object());
