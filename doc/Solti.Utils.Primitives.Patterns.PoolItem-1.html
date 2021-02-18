@@ -56,7 +56,6 @@
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.icustomadapter">ICustomAdapter</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -101,7 +100,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_PoolItem_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PoolItem&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, ICustomAdapter where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class PoolItem&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable where T : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -120,30 +119,6 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Solti_Utils_Primitives_Patterns_PoolItem_1_Index_" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.Index*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_PoolItem_1_Index" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.Index">Index</h4>
-  <div class="markdown level1 summary"><p>The index of the item.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Index { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <a id="Solti_Utils_Primitives_Patterns_PoolItem_1_Owner_" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.Owner*"></a>
   <h4 id="Solti_Utils_Primitives_Patterns_PoolItem_1_Owner" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.Owner">Owner</h4>
   <div class="markdown level1 summary"><p>The owner of this item.</p>
@@ -223,31 +198,6 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <a id="Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject_" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject" data-uid="Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject">ICustomAdapter.GetUnderlyingObject()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">object ICustomAdapter.GetUnderlyingObject()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a>
@@ -257,9 +207,6 @@
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">System.IAsyncDisposable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.icustomadapter">System.Runtime.InteropServices.ICustomAdapter</a>
   </div>
 </article>
           </div>

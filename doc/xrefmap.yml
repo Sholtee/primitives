@@ -569,15 +569,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).Get(Solti.Utils.Primitives.Patterns.CheckoutPolicy, System.Threading.CancellationToken)
   nameWithType: ObjectPool<T>.Get(CheckoutPolicy, CancellationToken)
   nameWithType.vb: ObjectPool(Of T).Get(CheckoutPolicy, CancellationToken)
-- uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.Get(System.Int32@,Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)
-  name: Get(out Int32, CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_System_Int32__Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Patterns.ObjectPool`1.Get(System.Int32@,Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)
-  name.vb: Get(ByRef Int32, CheckoutPolicy, CancellationToken)
-  fullName: Solti.Utils.Primitives.Patterns.ObjectPool<T>.Get(out System.Int32, Solti.Utils.Primitives.Patterns.CheckoutPolicy, System.Threading.CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).Get(ByRef System.Int32, Solti.Utils.Primitives.Patterns.CheckoutPolicy, System.Threading.CancellationToken)
-  nameWithType: ObjectPool<T>.Get(out Int32, CheckoutPolicy, CancellationToken)
-  nameWithType.vb: ObjectPool(Of T).Get(ByRef Int32, CheckoutPolicy, CancellationToken)
 - uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.Get*
   name: Get
   href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_
@@ -604,14 +595,31 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).GetEnumerator
   nameWithType: ObjectPool<T>.GetEnumerator
   nameWithType.vb: ObjectPool(Of T).GetEnumerator
-- uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.Return(System.Int32)
-  name: Return(Int32)
-  href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Return_System_Int32_
-  commentId: M:Solti.Utils.Primitives.Patterns.ObjectPool`1.Return(System.Int32)
-  fullName: Solti.Utils.Primitives.Patterns.ObjectPool<T>.Return(System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).Return(System.Int32)
-  nameWithType: ObjectPool<T>.Return(Int32)
-  nameWithType.vb: ObjectPool(Of T).Return(Int32)
+- uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem(Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)
+  name: GetItem(CheckoutPolicy, CancellationToken)
+  href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_GetItem_Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem(Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)
+  fullName: Solti.Utils.Primitives.Patterns.ObjectPool<T>.GetItem(Solti.Utils.Primitives.Patterns.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).GetItem(Solti.Utils.Primitives.Patterns.CheckoutPolicy, System.Threading.CancellationToken)
+  nameWithType: ObjectPool<T>.GetItem(CheckoutPolicy, CancellationToken)
+  nameWithType.vb: ObjectPool(Of T).GetItem(CheckoutPolicy, CancellationToken)
+- uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem*
+  name: GetItem
+  href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_GetItem_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.ObjectPool<T>.GetItem
+  fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).GetItem
+  nameWithType: ObjectPool<T>.GetItem
+  nameWithType.vb: ObjectPool(Of T).GetItem
+- uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.Return
+  name: Return()
+  href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Return
+  commentId: M:Solti.Utils.Primitives.Patterns.ObjectPool`1.Return
+  fullName: Solti.Utils.Primitives.Patterns.ObjectPool<T>.Return()
+  fullName.vb: Solti.Utils.Primitives.Patterns.ObjectPool(Of T).Return()
+  nameWithType: ObjectPool<T>.Return()
+  nameWithType.vb: ObjectPool(Of T).Return()
 - uid: Solti.Utils.Primitives.Patterns.ObjectPool`1.Return*
   name: Return
   href: Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Return_
@@ -683,23 +691,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).Dispose
   nameWithType: PoolItem<T>.Dispose
   nameWithType.vb: PoolItem(Of T).Dispose
-- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.Index
-  name: Index
-  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_Index
-  commentId: P:Solti.Utils.Primitives.Patterns.PoolItem`1.Index
-  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.Index
-  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).Index
-  nameWithType: PoolItem<T>.Index
-  nameWithType.vb: PoolItem(Of T).Index
-- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.Index*
-  name: Index
-  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_Index_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.PoolItem`1.Index
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.Index
-  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).Index
-  nameWithType: PoolItem<T>.Index
-  nameWithType.vb: PoolItem(Of T).Index
 - uid: Solti.Utils.Primitives.Patterns.PoolItem`1.Owner
   name: Owner
   href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_Owner
@@ -717,25 +708,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).Owner
   nameWithType: PoolItem<T>.Owner
   nameWithType.vb: PoolItem(Of T).Owner
-- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
-  name: ICustomAdapter.GetUnderlyingObject()
-  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject
-  commentId: M:Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
-  name.vb: System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
-  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
-  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
-  nameWithType: PoolItem<T>.ICustomAdapter.GetUnderlyingObject()
-  nameWithType.vb: PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject()
-- uid: Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject*
-  name: ICustomAdapter.GetUnderlyingObject
-  href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_System_Runtime_InteropServices_ICustomAdapter_GetUnderlyingObject_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.PoolItem`1.System#Runtime#InteropServices#ICustomAdapter#GetUnderlyingObject
-  isSpec: "True"
-  name.vb: System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
-  fullName: Solti.Utils.Primitives.Patterns.PoolItem<T>.System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
-  fullName.vb: Solti.Utils.Primitives.Patterns.PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
-  nameWithType: PoolItem<T>.ICustomAdapter.GetUnderlyingObject
-  nameWithType.vb: PoolItem(Of T).System.Runtime.InteropServices.ICustomAdapter.GetUnderlyingObject
 - uid: Solti.Utils.Primitives.Patterns.PoolItem`1.Value
   name: Value
   href: Solti.Utils.Primitives.Patterns.PoolItem-1.html#Solti_Utils_Primitives_Patterns_PoolItem_1_Value

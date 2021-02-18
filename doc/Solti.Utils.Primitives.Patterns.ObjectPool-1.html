@@ -56,8 +56,8 @@
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;T&gt;</div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">ValueTuple</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">ValueTuple</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
   </div>
   <div class="inheritedMembers">
@@ -103,7 +103,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ObjectPool&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, IReadOnlyCollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class ObjectPool&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, IReadOnlyCollection&lt;(int OwnerThread, T Object)&gt;, IEnumerable&lt;(int OwnerThread, T Object)&gt;, IEnumerable where T : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -289,12 +289,82 @@
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
   <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Get*"></a>
   <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Get(Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)">Get(CheckoutPolicy, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets a value from the pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.Patterns.CheckoutPolicy.html">CheckoutPolicy</a></td>
+        <td><span class="parametername">checkoutPolicy</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+        <td><span class="parametername">cancellation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetEnumerator_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetEnumerator*"></a>
+  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetEnumerator" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator#System_Collections_Generic_IEnumerable_1_GetEnumerator">GetEnumerator()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;(int OwnerThread, T Object)&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">ValueTuple</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetItem_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem*"></a>
+  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetItem_Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetItem(Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)">GetItem(CheckoutPolicy, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets an item from the pool.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PoolItem&lt;T&gt; Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public PoolItem&lt;T&gt; GetItem(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -333,107 +403,15 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Get*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_System_Int32__Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Get(System.Int32@,Solti.Utils.Primitives.Patterns.CheckoutPolicy,System.Threading.CancellationToken)">Get(out Int32, CheckoutPolicy, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets an item from the pool.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Get(out int index, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Patterns.CheckoutPolicy.html">CheckoutPolicy</a></td>
-        <td><span class="parametername">checkoutPolicy</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellation</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetEnumerator_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_GetEnumerator" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator#System_Collections_Generic_IEnumerable_1_GetEnumerator">GetEnumerator()</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Return_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Return*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Return_System_Int32_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Return(System.Int32)">Return(Int32)</h4>
+  <h4 id="Solti_Utils_Primitives_Patterns_ObjectPool_1_Return" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.Return">Return()</h4>
   <div class="markdown level1 summary"><p>Returns the item to the pool, identified by its index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Return(int index)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Return()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
   <a id="Solti_Utils_Primitives_Patterns_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Solti.Utils.Primitives.Patterns.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator*"></a>
