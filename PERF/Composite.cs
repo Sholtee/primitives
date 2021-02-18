@@ -61,7 +61,7 @@ namespace Solti.Utils.Primitives.Perf
         [Params(1, 2, 5, 10)]
         public int Depth { get; set; }
 
-        [Params(1, 2, 5, 10, 20)]
+        [Params(1, 2, 5, 10)]
         public int ChildCount { get; set; }
 
         private IMyComposite Root { get; set; }
