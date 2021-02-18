@@ -28,7 +28,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             Assert.That(pool.Count, Is.EqualTo(0));
 
-            using (PoolItem<object> item = pool.Get()) 
+            using (PoolItem<object> item = pool.GetItem()) 
             {
                 Assert.That(pool.Count, Is.EqualTo(1));
                 a = item.Value;
@@ -36,7 +36,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             Assert.That(pool.Count, Is.EqualTo(0));
 
-            using (PoolItem<object> item = pool.Get())
+            using (PoolItem<object> item = pool.GetItem())
             {
                 Assert.That(pool.Count, Is.EqualTo(1));
                 b = item.Value;
@@ -47,13 +47,21 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
+        public void Get_ShouldReturnTheSameObject2()
+        {
+            using var pool = new ObjectPool<object>(2, () => new object());
+
+            Assert.AreSame(pool.Get(), pool.Get());
+        }
+
+        [Test]
         public void Get_ShouldThrowIfThereIsNoMoreSpaceInThePool() 
         {
             using var pool = new ObjectPool<object>(1, () => new object());
 
-            using (pool.Get(CheckoutPolicy.Throw))
+            using (pool.GetItem(CheckoutPolicy.Throw))
             {
-                Assert.Throws<InvalidOperationException>(() => pool.Get(CheckoutPolicy.Throw), Resources.POOL_SIZE_REACHED);
+                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(CheckoutPolicy.Throw), Resources.POOL_SIZE_REACHED)));
             }
         }
 
@@ -62,9 +70,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             using var pool = new ObjectPool<object>(1, () => new object());
 
-            using (pool.Get(CheckoutPolicy.Throw))
+            using (pool.GetItem(CheckoutPolicy.Throw))
             {
-                Assert.IsNull(pool.Get(CheckoutPolicy.Discard));
+                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.IsNull(pool.Get(CheckoutPolicy.Discard))));
             }
         }
 
@@ -77,7 +85,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             Task.Run(() => 
             {
-                using (pool.Get())
+                using (pool.GetItem())
                 {
                     evt.Wait();
                 }       
@@ -89,7 +97,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.Get(CheckoutPolicy.Block))
+                    using (pool.GetItem(CheckoutPolicy.Block))
                     {
                     }
                 }).Wait(10)
@@ -101,7 +109,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.Get(CheckoutPolicy.Block))
+                    using (pool.GetItem(CheckoutPolicy.Block))
                     {
                     }
                 }).Wait(10)
@@ -116,7 +124,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
 
-            using (pool.Get()) { }
+            using (pool.GetItem()) { }
 
             mockResettable.Verify(r => r.Reset(), Times.Once);
         }
@@ -130,7 +138,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             using (var pool = new ObjectPool<IDisposable>(1, () => mockDisposable.Object))
             {
                 if (returned)
-                    using (pool.Get()) { }
+                    using (pool.GetItem()) { }
                 else
                     pool.Get();
             }
@@ -191,7 +199,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             while (!Terminated)
             {
-                using (PoolItem<MyObject> poolItem = Pool.Get())
+                using (PoolItem<MyObject> poolItem = Pool.GetItem())
                 {
 
                     if (poolItem.Value.Value != 0)
@@ -202,7 +210,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                     poolItem.Value.Value = 1986;
                 }
 
-                using (PoolItem<MyObject> poolItem = Pool.Get())
+                using (PoolItem<MyObject> poolItem = Pool.GetItem())
                 {
                     if (poolItem.Value.Value != 0)
                     {

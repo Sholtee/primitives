@@ -7,7 +7,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Patterns
@@ -18,15 +17,8 @@ namespace Solti.Utils.Primitives.Patterns
     /// Represents a requested pool item.
     /// </summary>
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    #pragma warning disable CS0618 // Type or member is obsolete
-    public class PoolItem<T> : Disposable, ICustomAdapter where T : class
-    #pragma warning restore CS0618
+    public class PoolItem<T> : Disposable where T : class
     {
-        /// <summary>
-        /// The index of the item.
-        /// </summary>
-        public int Index { get; init; }
-
         /// <summary>
         /// The owner of this item.
         /// </summary>
@@ -37,13 +29,11 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         public T Value { get; init; }
 
-        object ICustomAdapter.GetUnderlyingObject() => Value;
-
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
-                Owner.Return(Index);
+                Owner.Return();
 
             base.Dispose(disposeManaged);
         }
@@ -74,17 +64,15 @@ namespace Solti.Utils.Primitives.Patterns
     /// <summary>
     /// Describes a simple object pool.
     /// </summary>
-    public class ObjectPool<T>: Disposable, IReadOnlyCollection<T> where T: class
+    public class ObjectPool<T>: Disposable, IReadOnlyCollection<(int OwnerThread, T Object)> where T: class
     {
         private readonly SemaphoreSlim FSemaphore;
 
-        private readonly ObjectHolder[] FObjects;
+        private readonly (int OwnerThread, T? Object)[] FObjects;
 
-        private struct ObjectHolder
-        {
-            public int CheckedOut;
-            public T? Object;
-        }
+        private readonly ThreadLocal<GetObjectHolder?> FHeldObject;
+
+        private delegate ref (int OwnerThread, T? Object) GetObjectHolder();
 
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
@@ -92,7 +80,8 @@ namespace Solti.Utils.Primitives.Patterns
         public ObjectPool(int maxPoolSize, Func<T> factory, bool suppressItemDispose = false) 
         {
             FSemaphore = new SemaphoreSlim(maxPoolSize, maxPoolSize);
-            FObjects = new ObjectHolder[maxPoolSize];
+            FObjects = new (int OwnerThread, T? Object)[maxPoolSize]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
+            FHeldObject = new ThreadLocal<GetObjectHolder?>(trackAllValues: false);
             Factory = factory;
             Capacity = maxPoolSize;
             SuppressItemDispose = suppressItemDispose;
@@ -118,11 +107,11 @@ namespace Solti.Utils.Primitives.Patterns
         {
             if (disposeManaged)
             {
-                if (!SuppressItemDispose) foreach (T item in this) // csak a felhasznalt elemeket adja vissza
+                if (!SuppressItemDispose) foreach ((int _, T Object) item in this) // csak a felhasznalt elemeket adja vissza
                 {
                     try
                     {
-                        if (item is IDisposable disposable)
+                        if (item.Object is IDisposable disposable)
                             disposable.Dispose();
                     }
                     catch (Exception e)
@@ -132,6 +121,7 @@ namespace Solti.Utils.Primitives.Patterns
                 }
 
                 FSemaphore.Dispose();
+                FHeldObject.Dispose();
             }
 
             base.Dispose(disposeManaged);
@@ -140,25 +130,31 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Gets an item from the pool.
         /// </summary>
-        public PoolItem<T>? Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
+        public PoolItem<T>? GetItem(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
-            T? value = Get(out int index, checkoutPolicy, cancellation);
+            T? value = Get(checkoutPolicy, cancellation);
 
             return value is null
                 ? null
                 : new PoolItem<T>
                 {
                     Value = value,
-                    Index = index,
                     Owner = this
                 };
         }
 
         /// <summary>
-        /// Gets an item from the pool.
+        /// Gets a value from the pool.
         /// </summary>
-        public T? Get(out int index, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
+        public T? Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
+            //
+            // Szalankent csak egyszer vehetunk ki a pool-bol elemet
+            //
+
+            if (FHeldObject.Value is not null)
+                return FHeldObject.Value().Object;
+
             //
             // Elertuk a maximalis meretet?
             //
@@ -179,8 +175,6 @@ namespace Solti.Utils.Primitives.Patterns
                     throw new InvalidOperationException(Resources.POOL_SIZE_REACHED);
 
                 Debug.Assert(checkoutPolicy == CheckoutPolicy.Discard);
-
-                index = -1;
                 return default;
             }
 
@@ -189,20 +183,24 @@ namespace Solti.Utils.Primitives.Patterns
             // kulonben letrehozunk egy ujat.
             //
 
-            for (index = 0; index < Capacity; index++)
+            for (int i = 0; i < Capacity; i++)
             {
-                ref ObjectHolder holder = ref FObjects[index]; // nem masolat
+                ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
                 //
                 // Az elso olyan elem ami meg nincs kicsekkolva
                 //
 
-                if (Interlocked.CompareExchange(ref holder.CheckedOut, -1, 0) == 0)
+                if (Interlocked.CompareExchange(ref holder.OwnerThread, Thread.CurrentThread.ManagedThreadId, 0) == 0)
+                {
+                    FHeldObject.Value = () => ref FObjects[i];
+
                     //
                     // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
                     //
 
                     return holder.Object ??= Factory();
+                }
             }
 
             //
@@ -216,41 +214,43 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Returns the item to the pool, identified by its index.
         /// </summary>
-        public void Return(int index) 
+        public void Return() 
         {
-            ref ObjectHolder holder = ref FObjects[index]; // nem masolat
+            if (FHeldObject.Value is null)
+                return;
+
+            ref (int OwnerThread, T? Object) holder = ref FHeldObject.Value(); // nem masolat
 
             if (holder.Object is IResettable resettable)
                 resettable.Reset();
 
-            Interlocked.Exchange(ref holder.CheckedOut, 0);
+            Interlocked.Exchange(ref holder.OwnerThread, 0);
 
             FSemaphore.Release();
+            FHeldObject.Value = null;
         }
 
         /// <summary>
         /// See <see cref="IEnumerable{T}.GetEnumerator"/>.
         /// </summary>
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator<(int OwnerThread, T Object)> GetEnumerator()
         {
             for (int i = 0; i < Capacity; i++)
             {
-                T? item = GetItem(i);
+                //
+                // Masolat, ami nekunk jo is mert igy a visszaadott elem szabadon modosithato
+                //
+
+                (int OwnerThread, T? Object) holder = FObjects[i];
 
                 //
                 // Csak a hasznalatban levo elemeket adjuk vissza.
                 //
 
-                if (item is null)
+                if (holder.Object is null)
                     yield break;
 
-                yield return item;
-            }
-
-            T? GetItem(int index) // CS8176
-            {
-                ref ObjectHolder holder = ref FObjects[index]; // nem masolat
-                return holder.Object;
+                yield return holder!;
             }
         }
 
