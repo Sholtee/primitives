@@ -155,6 +155,12 @@ references:
   commentId: F:Solti.Utils.Primitives.Patterns.CheckoutPolicy.Block
   fullName: Solti.Utils.Primitives.Patterns.CheckoutPolicy.Block
   nameWithType: CheckoutPolicy.Block
+- uid: Solti.Utils.Primitives.Patterns.CheckoutPolicy.Discard
+  name: Discard
+  href: Solti.Utils.Primitives.Patterns.CheckoutPolicy.html#Solti_Utils_Primitives_Patterns_CheckoutPolicy_Discard
+  commentId: F:Solti.Utils.Primitives.Patterns.CheckoutPolicy.Discard
+  fullName: Solti.Utils.Primitives.Patterns.CheckoutPolicy.Discard
+  nameWithType: CheckoutPolicy.Discard
 - uid: Solti.Utils.Primitives.Patterns.CheckoutPolicy.Throw
   name: Throw
   href: Solti.Utils.Primitives.Patterns.CheckoutPolicy.html#Solti_Utils_Primitives_Patterns_CheckoutPolicy_Throw
