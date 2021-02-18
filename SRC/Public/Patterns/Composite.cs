@@ -55,15 +55,15 @@ namespace Solti.Utils.Primitives.Patterns
 
         private static MethodInfo GetMethod(Expression<Action<TInterface>> expr) => ((MethodCallExpression) expr.Body).Method;
 
-        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping() // TODO: gyorsitotarazni
+        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping()
         {
-            return GetInterfaceMappingInternal(typeof(TInterface))
+            return Cache.GetOrAdd(new {Iface = typeof(TInterface), Impl = GetType()}, () => GetInterfaceMappingInternal(typeof(TInterface))
                 //
                 // Tekintsuk a kovetkezo esetet: IA: IDisposable, IB: IDisposable, IC: IA, IB -> Distinct()
                 //
 
                 .Distinct()
-                .ToDictionary(kvp => kvp.TargetMethod, kvp => kvp.InterfaceMethod);
+                .ToDictionary(kvp => kvp.TargetMethod, kvp => kvp.InterfaceMethod));
  
             IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetInterfaceMappingInternal(Type iface) 
             {
@@ -140,9 +140,12 @@ namespace Solti.Utils.Primitives.Patterns
                 // Ha van szabad Task akkor az elem es gyermekeinek feldolgozasat elinditjuk azon
                 //
 
-                if (InterlockedExtensions.IncrementIfLessThan(ref FUsedTasks, Environment.ProcessorCount) is not null)
+                int? taskIndex = InterlockedExtensions.IncrementIfLessThan(ref FUsedTasks, Environment.ProcessorCount);
+
+                if (taskIndex is not null)
                     boundTasks.Add(Task.Run(() =>
                     {
+                        WriteLine($"{nameof(Dispatch)}(): traversing parallelly ({taskIndex})");
                         try
                         {
                             result[itemIndex] = invoke(child, args);
