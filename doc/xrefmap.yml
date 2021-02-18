@@ -105,6 +105,28 @@ references:
   fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Instance
   nameWithType: ComparerBase<TConcreteComparer, T>.Instance
   nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Instance
+- uid: Solti.Utils.Primitives.EnumerableExtensions
+  name: EnumerableExtensions
+  href: Solti.Utils.Primitives.EnumerableExtensions.html
+  commentId: T:Solti.Utils.Primitives.EnumerableExtensions
+  fullName: Solti.Utils.Primitives.EnumerableExtensions
+  nameWithType: EnumerableExtensions
+- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach*
+  name: ForEach
+  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach_
+  commentId: Overload:Solti.Utils.Primitives.EnumerableExtensions.ForEach
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach
+  nameWithType: EnumerableExtensions.ForEach
+- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
+  name: ForEach<T>(IEnumerable<T>, Action<T, Int32>)
+  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0_System_Int32__
+  commentId: M:Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
+  name.vb: ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
+  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T, System.Int32>)
+  fullName.vb: Solti.Utils.Primitives.EnumerableExtensions.ForEach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T, System.Int32))
+  nameWithType: EnumerableExtensions.ForEach<T>(IEnumerable<T>, Action<T, Int32>)
+  nameWithType.vb: EnumerableExtensions.ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
 - uid: Solti.Utils.Primitives.MethodInfoExtensions
   name: MethodInfoExtensions
   href: Solti.Utils.Primitives.MethodInfoExtensions.html
@@ -176,297 +198,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface)
   nameWithType: Composite<TInterface>
   nameWithType.vb: Composite(Of TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor(`0,System.Int32)
-  name: Composite(TInterface, Int32)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor__0_System_Int32_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.#ctor(`0,System.Int32)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite(TInterface, System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite(TInterface, System.Int32)
-  nameWithType: Composite<TInterface>.Composite(TInterface, Int32)
-  nameWithType.vb: Composite(Of TInterface).Composite(TInterface, Int32)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor*
-  name: Composite
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.#ctor
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite
-  nameWithType: Composite<TInterface>.Composite
-  nameWithType.vb: Composite(Of TInterface).Composite
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.AsyncDispose
-  name: AsyncDispose()
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_AsyncDispose
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.AsyncDispose
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.AsyncDispose()
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).AsyncDispose()
-  nameWithType: Composite<TInterface>.AsyncDispose()
-  nameWithType.vb: Composite(Of TInterface).AsyncDispose()
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.AsyncDispose*
-  name: AsyncDispose
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_AsyncDispose_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.AsyncDispose
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.AsyncDispose
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).AsyncDispose
-  nameWithType: Composite<TInterface>.AsyncDispose
-  nameWithType.vb: Composite(Of TInterface).AsyncDispose
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Children
-  name: Children
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children
-  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.Children
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Children
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Children
-  nameWithType: Composite<TInterface>.Children
-  nameWithType.vb: Composite(Of TInterface).Children
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Children*
-  name: Children
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.Children
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Children
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Children
-  nameWithType: Composite<TInterface>.Children
-  nameWithType.vb: Composite(Of TInterface).Children
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Type[],System.Object[])
-  name: Dispatch(Type[], Object[])
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Type___System_Object___
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Type[],System.Object[])
-  name.vb: Dispatch(Type(), Object())
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispatch(System.Type[], System.Object[])
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch(System.Type(), System.Object())
-  nameWithType: Composite<TInterface>.Dispatch(Type[], Object[])
-  nameWithType.vb: Composite(Of TInterface).Dispatch(Type(), Object())
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch*
-  name: Dispatch
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.Dispatch
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispatch
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch
-  nameWithType: Composite<TInterface>.Dispatch
-  nameWithType.vb: Composite(Of TInterface).Dispatch
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispose(System.Boolean)
-  name: Dispose(Boolean)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispose_System_Boolean_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.Dispose(System.Boolean)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispose(System.Boolean)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispose(System.Boolean)
-  nameWithType: Composite<TInterface>.Dispose(Boolean)
-  nameWithType.vb: Composite(Of TInterface).Dispose(Boolean)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispose*
-  name: Dispose
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispose_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.Dispose
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispose
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispose
-  nameWithType: Composite<TInterface>.Dispose
-  nameWithType.vb: Composite(Of TInterface).Dispose
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
-  name: MaxChildCount
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount
-  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.MaxChildCount
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).MaxChildCount
-  nameWithType: Composite<TInterface>.MaxChildCount
-  nameWithType.vb: Composite(Of TInterface).MaxChildCount
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount*
-  name: MaxChildCount
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.MaxChildCount
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).MaxChildCount
-  nameWithType: Composite<TInterface>.MaxChildCount
-  nameWithType.vb: Composite(Of TInterface).MaxChildCount
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Parent
-  name: Parent
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Parent
-  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.Parent
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Parent
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Parent
-  nameWithType: Composite<TInterface>.Parent
-  nameWithType.vb: Composite(Of TInterface).Parent
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Parent*
-  name: Parent
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Parent_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.Parent
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Parent
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Parent
-  nameWithType: Composite<TInterface>.Parent
-  nameWithType.vb: Composite(Of TInterface).Parent
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add(`0)
-  name: ICollection<TInterface>.Add(TInterface)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Add__0_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add(`0)
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Add(TInterface)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Add(TInterface)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Add(TInterface)
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Add(TInterface)
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Add(TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add*
-  name: ICollection<TInterface>.Add
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Add_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Add
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Add
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Add
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Add
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Add
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear
-  name: ICollection<TInterface>.Clear()
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Clear
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Clear()
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Clear()
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Clear()
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Clear()
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Clear()
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear*
-  name: ICollection<TInterface>.Clear
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Clear_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Clear
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Clear
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Clear
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Clear
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Clear
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains(`0)
-  name: ICollection<TInterface>.Contains(TInterface)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Contains__0_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains(`0)
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Contains(TInterface)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Contains(TInterface)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Contains(TInterface)
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Contains(TInterface)
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Contains(TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains*
-  name: ICollection<TInterface>.Contains
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Contains_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Contains
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Contains
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Contains
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Contains
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Contains
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo(`0[],System.Int32)
-  name: ICollection<TInterface>.CopyTo(TInterface[], Int32)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__CopyTo__0___System_Int32_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo(`0[],System.Int32)
-  name.vb: System.Collections.Generic.ICollection<TInterface>.CopyTo(TInterface(), Int32)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.CopyTo(TInterface[], System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.CopyTo(TInterface(), System.Int32)
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.CopyTo(TInterface[], Int32)
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.CopyTo(TInterface(), Int32)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo*
-  name: ICollection<TInterface>.CopyTo
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__CopyTo_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.CopyTo
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.CopyTo
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.CopyTo
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.CopyTo
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.CopyTo
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count
-  name: ICollection<TInterface>.Count
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Count
-  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Count
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Count
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Count
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Count
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Count
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count*
-  name: ICollection<TInterface>.Count
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Count_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Count
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Count
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Count
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Count
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Count
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly
-  name: ICollection<TInterface>.IsReadOnly
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__IsReadOnly
-  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly
-  name.vb: System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.IsReadOnly
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly*
-  name: ICollection<TInterface>.IsReadOnly
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__IsReadOnly_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.IsReadOnly
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.IsReadOnly
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove(`0)
-  name: ICollection<TInterface>.Remove(TInterface)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Remove__0_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove(`0)
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Remove(TInterface)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Remove(TInterface)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Remove(TInterface)
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Remove(TInterface)
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Remove(TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove*
-  name: ICollection<TInterface>.Remove
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Remove_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove
-  isSpec: "True"
-  name.vb: System.Collections.Generic.ICollection<TInterface>.Remove
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.ICollection<TInterface>.Remove
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Remove
-  nameWithType: Composite<TInterface>.ICollection<TInterface>.Remove
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.ICollection<TInterface>.Remove
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator
-  name: IEnumerable<TInterface>.GetEnumerator()
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_IEnumerable_TInterface__GetEnumerator
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator
-  name.vb: System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator()
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator()
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator()
-  nameWithType: Composite<TInterface>.IEnumerable<TInterface>.GetEnumerator()
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator()
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator*
-  name: IEnumerable<TInterface>.GetEnumerator
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_IEnumerable_TInterface__GetEnumerator_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator
-  isSpec: "True"
-  name.vb: System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator
-  nameWithType: Composite<TInterface>.IEnumerable<TInterface>.GetEnumerator
-  nameWithType.vb: Composite(Of TInterface).System.Collections.Generic.IEnumerable<TInterface>.GetEnumerator
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator
-  name: IEnumerable.GetEnumerator()
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_IEnumerable_GetEnumerator
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator
-  name.vb: System.Collections.IEnumerable.GetEnumerator()
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.IEnumerable.GetEnumerator()
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.IEnumerable.GetEnumerator()
-  nameWithType: Composite<TInterface>.IEnumerable.GetEnumerator()
-  nameWithType.vb: Composite(Of TInterface).System.Collections.IEnumerable.GetEnumerator()
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator*
-  name: IEnumerable.GetEnumerator
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_IEnumerable_GetEnumerator_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator
-  isSpec: "True"
-  name.vb: System.Collections.IEnumerable.GetEnumerator
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.System.Collections.IEnumerable.GetEnumerator
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).System.Collections.IEnumerable.GetEnumerator
-  nameWithType: Composite<TInterface>.IEnumerable.GetEnumerator
-  nameWithType.vb: Composite(Of TInterface).System.Collections.IEnumerable.GetEnumerator
 - uid: Solti.Utils.Primitives.Patterns.Disposable
   name: Disposable
   href: Solti.Utils.Primitives.Patterns.Disposable.html
