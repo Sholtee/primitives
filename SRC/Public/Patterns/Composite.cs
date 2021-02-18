@@ -94,8 +94,6 @@ namespace Solti.Utils.Primitives.Patterns
         }
 
         //
-        // TODO: Megnezni h igy vajon gyorsabb lenne e
-        //
         // Feldolgoz(elem)
         //   eredmeny[elem.gyerekek.length]
         //   feldolgozok[]
@@ -108,6 +106,8 @@ namespace Solti.Utils.Primitives.Patterns
         //      Megvar(feldolgozok)
         //   RETURN eredmeny
         //
+
+        private static int FUsedTasks; // NEM globalis, leszarmazottankent ertelmezett
 
         private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
         {
@@ -128,7 +128,41 @@ namespace Solti.Utils.Primitives.Patterns
 
             object[] result = new object[children.Count];
 
-            Parallel.ForEach(children, (child, _, i) => result[i] = invoke(child, args));
+            List<Task> boundTasks = new();
+
+            //
+            // Cel metodus hivasa rekurzivan az osszes gyerekre.
+            //
+
+            children.ForEach((child, itemIndex) =>
+            {
+                //
+                // Ha van szabad Task akkor az elem es gyermekeinek feldolgozasat elinditjuk azon
+                //
+
+                if (InterlockedExtensions.IncrementIfLessThan(ref FUsedTasks, Environment.ProcessorCount) is not null)
+                    boundTasks.Add(Task.Run(() =>
+                    {
+                        try
+                        {
+                            result[itemIndex] = invoke(child, args);
+                        }
+                        finally 
+                        {
+                            Interlocked.Decrement(ref FUsedTasks);
+                        }
+                    }));
+
+                //
+                // Kulonben helyben dolgozzuk fel
+                //
+
+                else
+                    result[itemIndex] = invoke(child, args);
+            });
+
+            if (boundTasks.Any())
+                Task.WaitAll(boundTasks.ToArray()); 
 
             return result;
         }
