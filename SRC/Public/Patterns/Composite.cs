@@ -93,6 +93,22 @@ namespace Solti.Utils.Primitives.Patterns
             return method.ToInstanceDelegate();
         }
 
+        //
+        // TODO: Megnezni h igy vajon gyorsabb lenne e
+        //
+        // Feldolgoz(elem)
+        //   eredmeny[elem.gyerekek.length]
+        //   feldolgozok[]
+        //   For i := 0 to elem.gyerekek.length - 1
+        //     HA van szabad feldolgzo
+        //       feldolgozok.push(() => eredmeny[i] = Feldolgoz(elem.gyerekek[i]))
+        //     KULONBEN
+        //       eredmeny[i] = Feldolgoz(elem.gyerekek[i])
+        //   HA feldolgozok.length > 0
+        //      Megvar(feldolgozok)
+        //   RETURN eredmeny
+        //
+
         private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
         {
             //
@@ -112,7 +128,7 @@ namespace Solti.Utils.Primitives.Patterns
 
             object[] result = new object[children.Count];
 
-            Parallel.ForEach(Children, (child, _, i) => result[i] = invoke(child, args));
+            Parallel.ForEach(children, (child, _, i) => result[i] = invoke(child, args));
 
             return result;
         }
