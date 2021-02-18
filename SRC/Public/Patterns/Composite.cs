@@ -57,7 +57,9 @@ namespace Solti.Utils.Primitives.Patterns
 
         private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping()
         {
-            return Cache.GetOrAdd(new {Iface = typeof(TInterface), Impl = GetType()}, () => GetInterfaceMappingInternal(typeof(TInterface))
+            Type impl = GetType();
+
+            return Cache.GetOrAdd((Iface: typeof(TInterface), Impl: impl), () => GetInterfaceMappingInternal(typeof(TInterface))
                 //
                 // Tekintsuk a kovetkezo esetet: IA: IDisposable, IB: IDisposable, IC: IA, IB -> Distinct()
                 //
@@ -67,7 +69,7 @@ namespace Solti.Utils.Primitives.Patterns
  
             IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetInterfaceMappingInternal(Type iface) 
             {
-                InterfaceMapping mappings = GetType().GetInterfaceMap(iface);
+                InterfaceMapping mappings = impl.GetInterfaceMap(iface);
                 
                 foreach (var mapping in mappings.TargetMethods.Select((tm, i) => (tm, mappings.InterfaceMethods[i])))
                 {
@@ -140,7 +142,7 @@ namespace Solti.Utils.Primitives.Patterns
                 // Ha van szabad Task akkor az elem es gyermekeinek feldolgozasat elinditjuk azon
                 //
 
-                int? taskIndex = InterlockedExtensions.IncrementIfLessThan(ref FUsedTasks, Environment.ProcessorCount);
+                int? taskIndex = InterlockedExtensions.IncrementIfLessThan(ref FUsedTasks, MaxDegreeOfParallelism);
 
                 if (taskIndex is not null)
                     boundTasks.Add(Task.Run(() =>
@@ -267,6 +269,11 @@ namespace Solti.Utils.Primitives.Patterns
         /// Returns the maximum child count that can be stored by this instance.
         /// </summary>
         public int MaxChildCount { get; }
+
+        /// <summary>
+        /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch(Type[], object[])"/> method may use.
+        /// </summary>
+        public static int MaxDegreeOfParallelism { get; set; } = Environment.ProcessorCount;
         #endregion
 
         #region IComposite
