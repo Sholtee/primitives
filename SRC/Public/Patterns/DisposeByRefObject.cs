@@ -60,7 +60,7 @@ namespace Solti.Utils.Primitives.Patterns
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            return refCount.Value;
+            return refCount.Value + 1; // refCount most meg az inkrementalas elotti erteket tartalmazza
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Solti.Utils.Primitives.Patterns
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            if (refCount is 0)
+            if (--refCount is 0) // refCount most meg a dekrementalas elotti erteket tartalmazza
                 Dispose();
 
             return refCount.Value;
@@ -91,7 +91,7 @@ namespace Solti.Utils.Primitives.Patterns
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            if (refCount is 0)
+            if (--refCount is 0) // refCount most meg a dekrementalas elotti erteket tartalmazza
                 await DisposeAsync();
 
             return refCount.Value;

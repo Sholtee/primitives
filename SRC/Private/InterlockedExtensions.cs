@@ -20,7 +20,7 @@ namespace Solti.Utils.Primitives
                 snapshot = location;
                 if (snapshot <= comparand) return null;
             }
-            while (Increment(ref location) != ++snapshot);
+            while (CompareExchange(ref location, snapshot + 1, snapshot) != snapshot);
             return snapshot;
         }
 
@@ -33,7 +33,7 @@ namespace Solti.Utils.Primitives
                 snapshot = location;
                 if (snapshot >= comparand) return null;
             }
-            while (Increment(ref location) != ++snapshot);
+            while (CompareExchange(ref location, snapshot + 1, snapshot) != snapshot);
             return snapshot;
         }
 
@@ -46,7 +46,7 @@ namespace Solti.Utils.Primitives
                 snapshot = location;
                 if (snapshot <= comparand) return null;
             }
-            while (Decrement(ref location) != --snapshot);
+            while (CompareExchange(ref location, snapshot - 1, snapshot) != snapshot);
             return snapshot;
         }
     }
