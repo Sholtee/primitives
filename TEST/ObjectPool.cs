@@ -14,6 +14,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 {
     using Patterns;
     using Properties;
+    using Threading;
 
     [TestFixture]
     public class ObjectPoolTests 

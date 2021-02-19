@@ -8,6 +8,7 @@ using BenchmarkDotNet.Attributes;
 namespace Solti.Utils.Primitives.Perf
 {
     using static Consts;
+    using Threading;
 
     [MemoryDiagnoser]
     public class ObjectPool
@@ -15,11 +16,11 @@ namespace Solti.Utils.Primitives.Perf
         [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
         public void GetAndReturn() 
         {
-            using var pool = new Patterns.ObjectPool<object>(1, () => new object());
+            using var pool = new ObjectPool<object>(1, () => new object());
 
             for (int i = 0; i < OperationsPerInvoke; i++)
             {
-                pool.Get(Patterns.CheckoutPolicy.Throw);
+                pool.Get(CheckoutPolicy.Throw);
                 pool.Return();
             }
         }

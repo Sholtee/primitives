@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Solti.Utils.Primitives.Patterns
+namespace Solti.Utils.Primitives.Threading
 {
+    using Patterns;
     using Properties;
 
     /// <summary>
