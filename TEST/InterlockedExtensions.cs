@@ -84,14 +84,14 @@ namespace Solti.Utils.Primitives.Tests
 
             Task[] tasks = Enumerable
                 .Repeat(0, 5)
-                .Select(_ => Task.Run(Increment))
+                .Select(_ => Task.Run(Decrement))
                 .ToArray();
 
             Assert.DoesNotThrowAsync(() => Task.WhenAll(tasks));
 
             Assert.That(value, Is.EqualTo(0));
 
-            void Increment()
+            void Decrement()
             {
                 for (int i = 0; i < 1000; i++)
                 {
