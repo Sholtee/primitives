@@ -37,17 +37,17 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.Patterns.CheckoutPolicy">
+            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.Threading.CheckoutPolicy">
   
   
-  <h1 id="Solti_Utils_Primitives_Patterns_CheckoutPolicy" data-uid="Solti.Utils.Primitives.Patterns.CheckoutPolicy" class="text-break">Enum CheckoutPolicy
+  <h1 id="Solti_Utils_Primitives_Threading_CheckoutPolicy" data-uid="Solti.Utils.Primitives.Threading.CheckoutPolicy" class="text-break">Enum CheckoutPolicy
   </h1>
-  <div class="markdown level0 summary"><p>Describes the <a class="xref" href="Solti.Utils.Primitives.Patterns.ObjectPool-1.html#Solti_Utils_Primitives_Patterns_ObjectPool_1_Get_Solti_Utils_Primitives_Patterns_CheckoutPolicy_System_Threading_CancellationToken_">Get(CheckoutPolicy, CancellationToken)</a> behavior when the request can not be granted.</p>
+  <div class="markdown level0 summary"><p>Describes the <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_">Get(CheckoutPolicy, CancellationToken)</a> behavior when the request can not be granted.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Patterns.html">Solti.Utils.Primitives.Patterns</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Threading.html">Solti.Utils.Primitives.Threading</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
-  <h5 id="Solti_Utils_Primitives_Patterns_CheckoutPolicy_syntax">Syntax</h5>
+  <h5 id="Solti_Utils_Primitives_Threading_CheckoutPolicy_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public enum CheckoutPolicy</code></pre>
   </div>
@@ -62,17 +62,17 @@
     <thead>
     <tbody>
       <tr>
-        <td id="Solti_Utils_Primitives_Patterns_CheckoutPolicy_Block">Block</td>
+        <td id="Solti_Utils_Primitives_Threading_CheckoutPolicy_Block">Block</td>
         <td><p>The calling thread is blocked until the request can be served.</p>
 </td>
       </tr>
       <tr>
-        <td id="Solti_Utils_Primitives_Patterns_CheckoutPolicy_Discard">Discard</td>
+        <td id="Solti_Utils_Primitives_Threading_CheckoutPolicy_Discard">Discard</td>
         <td><p>The pool discards the request and returns NULL.</p>
 </td>
       </tr>
       <tr>
-        <td id="Solti_Utils_Primitives_Patterns_CheckoutPolicy_Throw">Throw</td>
+        <td id="Solti_Utils_Primitives_Threading_CheckoutPolicy_Throw">Throw</td>
         <td><p>An <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a> is thrown.</p>
 </td>
       </tr>
