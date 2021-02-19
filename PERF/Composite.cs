@@ -63,7 +63,7 @@ namespace Solti.Utils.Primitives.Perf
             void IMyComposite.Foo(string arg) => Dispatch(null, arg);
         }
 
-        [Params(1, 2, 5)]
+        [Params(1, 2, 3)]
         public int Depth { get; set; }
 
         [Params(1, 2, 5)]
