@@ -51,17 +51,15 @@ namespace Solti.Utils.Primitives.Perf
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
-            static MyComposite() 
-            {
-                MaxDegreeOfParallelism = 4;
-            }
-
             public MyComposite() : base(null)
             {
             }
 
             void IMyComposite.Foo(string arg) => Dispatch(null, arg);
         }
+
+        [Params(0, 1, 2, 4)]
+        public int MaxDegreeOfParallelism { get; set; }
 
         [Params(1, 2, 3)]
         public int Depth { get; set; }
@@ -74,6 +72,8 @@ namespace Solti.Utils.Primitives.Perf
         [GlobalSetup(Target = nameof(Dispatch))]
         public void Setup() 
         {
+            MyComposite.MaxDegreeOfParallelism = MaxDegreeOfParallelism;
+
             Root = new MyComposite();
             GC.SuppressFinalize(Root);
 
