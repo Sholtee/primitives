@@ -24,7 +24,7 @@ namespace Solti.Utils.Primitives.Patterns
     using Threading;
 
     /// <summary>
-    /// Implements the <see cref="IComposite{T}"/> interface.
+    /// Implements the <see cref="IComposite{TInterface}"/> interface.
     /// </summary>
     /// <typeparam name="TInterface">The interface on which we want to apply the composite pattern.</typeparam>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
