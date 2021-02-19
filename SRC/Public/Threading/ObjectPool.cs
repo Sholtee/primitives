@@ -196,11 +196,23 @@ namespace Solti.Utils.Primitives.Threading
                 {
                     FHeldObject.Value = () => ref FObjects[i];
 
-                    //
-                    // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
-                    //
+                    try
+                    {
+                        //
+                        // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
+                        //
 
-                    return holder.Object ??= Factory();
+                        return holder.Object ??= Factory();
+                    }
+                    catch 
+                    {
+                        //
+                        // Ha hiba vt a factory-ban akkor az elem ne maradjon kicsekkolva.
+                        //
+
+                        Return();
+                        throw;
+                    }
                 }
             }
 

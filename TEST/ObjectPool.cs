@@ -56,6 +56,15 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
+        public void Get_ShouldRevertTheCheckoutProcessIfTheFactoryThrows() 
+        {
+            using var pool = new ObjectPool<object>(2, () => throw new Exception());
+
+            Assert.Throws<Exception>(() => pool.Get(CheckoutPolicy.Block));
+            Assert.That(pool, Is.Empty);
+        }
+
+        [Test]
         public void Get_ShouldThrowIfThereIsNoMoreSpaceInThePool() 
         {
             using var pool = new ObjectPool<object>(1, () => new object());
