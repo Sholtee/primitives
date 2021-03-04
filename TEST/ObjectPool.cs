@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 
-namespace Solti.Utils.Primitives.Patterns.Tests
+namespace Solti.Utils.Primitives.Threading.Tests
 {
     using Patterns;
     using Properties;
@@ -129,14 +129,40 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         [Test]
         public void Return_ShouldResetTheState() 
         {
+            bool dirty = true;
+
             var mockResettable = new Mock<IResettable>(MockBehavior.Strict);
-            mockResettable.Setup(r => r.Reset());
+            mockResettable
+                .Setup(r => r.Reset())
+                .Callback(() => dirty = false);
+          
+            mockResettable
+                .SetupGet(r => r.Dirty)
+                .Returns(() => dirty);
 
             using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
 
-            using (pool.GetItem()) { }
+            using (pool.GetItem()) 
+            {          
+            }
 
             mockResettable.Verify(r => r.Reset(), Times.Once);
+        }
+
+        [Test]
+        public void Return_ShouldThrowIfTheStateCouldNotBeReverted()
+        {
+            var mockResettable = new Mock<IResettable>(MockBehavior.Strict);
+            mockResettable.Setup(r => r.Reset());
+
+            mockResettable
+                .SetupGet(r => r.Dirty)
+                .Returns(true);
+
+            using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
+
+            pool.Get();
+            Assert.Throws<Exception>(pool.Return, Resources.RESET_FAILED);
         }
 
         [Test]

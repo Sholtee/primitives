@@ -160,6 +160,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to State could not be reverted..
+        /// </summary>
+        internal static string RESET_FAILED {
+            get {
+                return ResourceManager.GetString("RESET_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of children exceeded the limit ({0})..
         /// </summary>
         internal static string TOO_MANY_CHILDREN {

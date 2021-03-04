@@ -234,8 +234,13 @@ namespace Solti.Utils.Primitives.Threading
 
             ref (int OwnerThread, T? Object) holder = ref FHeldObject.Value(); // nem masolat
 
-            if (holder.Object is IResettable resettable)
+            if (holder.Object is IResettable resettable && resettable.Dirty)
+            {
                 resettable.Reset();
+
+                if (resettable.Dirty)
+                    throw new Exception(Resources.RESET_FAILED);
+            }
 
             Interlocked.Exchange(ref holder.OwnerThread, 0);
 

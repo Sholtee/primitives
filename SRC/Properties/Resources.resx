@@ -150,6 +150,9 @@
   <data name="POOL_SIZE_REACHED" xml:space="preserve">
     <value>Maximum pool size reached.</value>
   </data>
+  <data name="RESET_FAILED" xml:space="preserve">
+    <value>State could not be reverted.</value>
+  </data>
   <data name="TOO_MANY_CHILDREN" xml:space="preserve">
     <value>The number of children exceeded the limit ({0}).</value>
   </data>
