@@ -24,7 +24,17 @@ namespace Solti.Utils.Primitives.Threading
         {
             Ensure.Parameter.IsNotNull(task, nameof(task));
 
-            return task.ContinueWith(t => (TT) (object) t.Result!, TaskContinuationOptions.OnlyOnRanToCompletion | TaskContinuationOptions.ExecuteSynchronously);
+            return task.ContinueWith(t =>
+            {
+                try
+                {
+                    return (TT) (object) t.Result!;
+                }
+                catch (AggregateException ex)
+                {
+                    throw ex.InnerException;
+                }
+            }, TaskContinuationOptions.ExecuteSynchronously);
         }
 
         /// <summary>
