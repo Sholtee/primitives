@@ -18,6 +18,9 @@ namespace Solti.Utils.Primitives
         /// </summary>
         public static void ForEach<T>(this IEnumerable<T> src, Action<T, int> callback)
         {
+            if (callback is null)
+                throw new ArgumentNullException(nameof(callback));
+
             int i = 0;
             foreach (T item in src ?? throw new ArgumentNullException(nameof(src)))
             {

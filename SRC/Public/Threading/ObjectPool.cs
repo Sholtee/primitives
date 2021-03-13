@@ -115,8 +115,10 @@ namespace Solti.Utils.Primitives.Threading
                         if (item.Object is IDisposable disposable)
                             disposable.Dispose();
                     }
-                    catch (Exception e)
-                    {
+                        #pragma warning disable CA1031 // This method should not throw.
+                        catch (Exception e)
+                        #pragma warning restore CA1031
+                        {
                         Trace.WriteLine($"Can't dispose pool item: {e}");
                     }
                 }
@@ -239,7 +241,9 @@ namespace Solti.Utils.Primitives.Threading
                 resettable.Reset();
 
                 if (resettable.Dirty)
+                    #pragma warning disable CA2201 // To preserve backward compatibility we should not change the exception type
                     throw new Exception(Resources.RESET_FAILED);
+                    #pragma warning restore CA2201
             }
 
             Interlocked.Exchange(ref holder.OwnerThread, 0);

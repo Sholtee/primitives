@@ -273,6 +273,7 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch(Type[], object[])"/> method may use.
         /// </summary>
+        [SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "The value of this property may differ per descendants.")]
         public static int MaxDegreeOfParallelism { get; set; } = Environment.ProcessorCount;
         #endregion
 
