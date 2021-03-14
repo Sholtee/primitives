@@ -24,7 +24,7 @@ namespace Solti.Utils.Primitives.Perf
         {
             for (int i = 0; i < OperationsPerInvoke; i++)
             {
-                MethodBase _ = new System.Diagnostics.StackFrame(SkipFrames, fNeedFileInfo: false).GetMethod();
+                MethodBase _ = new System.Diagnostics.StackFrame(SkipFrames, needFileInfo: false).GetMethod();
             }
         }
     }
