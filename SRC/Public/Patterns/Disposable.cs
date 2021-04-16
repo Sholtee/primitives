@@ -74,8 +74,10 @@ namespace Solti.Utils.Primitives.Patterns
         public async ValueTask DisposeAsync()
         {
             //
-            // MSDN szerint nem dobhatunk ObjectDisposedException kivetelt ha a metodus egynel tobbszor
-            // volt meghivva.
+            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva, ami logikus
+            // is versenyhelyzetek kivedesere:
+            // Pl Composite mintan hivjuk egy gyermeken a DisposeAsyn()-et, mellyel "egy idoben" a szulot is feszabaditjuk.
+            // Ekkor jo esellyel versenyhelyzet alakulna ki a gyermek felszabaditasara.
             //
 
             if (Interlocked.Exchange(ref FDisposing, 1) == 1) return;
