@@ -3,6 +3,7 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
+using System.Diagnostics.CodeAnalysis;
 
 //
 // NET5_0 elotti runtime-on a C# 9 init accessor hasznalata csak hack reven megoldott:
@@ -13,5 +14,6 @@
 
 namespace System.Runtime.CompilerServices
 {
+    [SuppressMessage("Performance", "CA1812:Avoid uninstantiated internal classes")]
     internal class IsExternalInit { }
 }
