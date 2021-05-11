@@ -33,6 +33,11 @@ namespace Solti.Utils.Primitives
             .ToDictionary(entry => entry.Key, entry => entry.Value.Value);
 
         /// <summary>
+        /// Clears the underlying store associated with the given key and value type.
+        /// </summary>
+        public static void Clear<TKey, TValue>() => Backend<TKey, TValue>.Value.Clear();
+
+        /// <summary>
         /// Does what its name suggests.
         /// </summary>
         public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TValue> factory, [CallerMemberName] string scope = "") =>  Backend<TKey, TValue>
