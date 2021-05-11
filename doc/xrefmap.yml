@@ -29,6 +29,22 @@ references:
   fullName.vb: Solti.Utils.Primitives.Cache.AsDictionary(Of TKey, TValue)()
   nameWithType: Cache.AsDictionary<TKey, TValue>()
   nameWithType.vb: Cache.AsDictionary(Of TKey, TValue)()
+- uid: Solti.Utils.Primitives.Cache.Clear*
+  name: Clear
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_Clear_
+  commentId: Overload:Solti.Utils.Primitives.Cache.Clear
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Cache.Clear
+  nameWithType: Cache.Clear
+- uid: Solti.Utils.Primitives.Cache.Clear``2
+  name: Clear<TKey, TValue>()
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_Clear__2
+  commentId: M:Solti.Utils.Primitives.Cache.Clear``2
+  name.vb: Clear(Of TKey, TValue)()
+  fullName: Solti.Utils.Primitives.Cache.Clear<TKey, TValue>()
+  fullName.vb: Solti.Utils.Primitives.Cache.Clear(Of TKey, TValue)()
+  nameWithType: Cache.Clear<TKey, TValue>()
+  nameWithType.vb: Cache.Clear(Of TKey, TValue)()
 - uid: Solti.Utils.Primitives.Cache.GetOrAdd*
   name: GetOrAdd
   href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd_
