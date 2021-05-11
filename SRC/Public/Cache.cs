@@ -38,10 +38,11 @@ namespace Solti.Utils.Primitives
         public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TValue> factory, [CallerMemberName] string scope = "") =>  Backend<TKey, TValue>
             .Value
             //
-            // Ne a GetOrAdd(Key, Factory) overload-jat hasznaljuk mert ott a factory tobbszor is meghivasra kerulhet
-            // parhuzamos esetben: https://docs.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentdictionary-2.getoradd
+            // Ne direktben adjuk at a "factory"-t mert az tobbszor is meghivasra kerulhet [ha ugyanazzal a kulccsal parhuzamosan
+            // huvjuk a GetOrAdd()-t]:
+            // https://docs.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentdictionary-2.getoradd
             //
 
-            .GetOrAdd((key, scope), new Lazy<TValue>(factory, LazyThreadSafetyMode.ExecutionAndPublication)).Value;
+            .GetOrAdd((key, scope), _ => new Lazy<TValue>(factory, LazyThreadSafetyMode.ExecutionAndPublication)).Value;
     }
 }
