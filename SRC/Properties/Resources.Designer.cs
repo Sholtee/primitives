@@ -106,15 +106,6 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An instance has already been created..
-        /// </summary>
-        internal static string INSTANCE_ALREADY_CREATED {
-            get {
-                return ResourceManager.GetString("INSTANCE_ALREADY_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The given interface ({0}) is not supported..
         /// </summary>
         internal static string INTERFACE_NOT_SUPPORTED {

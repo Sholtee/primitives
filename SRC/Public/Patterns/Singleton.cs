@@ -3,35 +3,33 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-
 namespace Solti.Utils.Primitives.Patterns
 {
-    using Properties;
-
     /// <summary>
     /// Implements the Singleton design pattern.
     /// </summary>
-    public abstract class Singleton<TConcrete> where TConcrete: Singleton<TConcrete>
+    public abstract class Singleton<TConcrete> where TConcrete : Singleton<TConcrete>, new()
     {
+        private static readonly object FLock = new();
+        private static TConcrete? FValue;
+
         /// <summary>
-        /// Creates a new <see cref="Singleton{TConcrete}"/> instance.
+        /// The singleton instance.
         /// </summary>
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        protected Singleton()
+        #pragma warning disable CA1000 // Do not declare static members on generic types
+        public static TConcrete Instance
+        #pragma warning restore CA1000
         {
-            if (Instance != null)
-                throw new InvalidOperationException(Resources.INSTANCE_ALREADY_CREATED);
-
-            Instance = (TConcrete) this;
+            get 
+            {
+                if (FValue is null)
+                    lock (FLock)
+                        #pragma warning disable CA1508 // Avoid dead conditional code
+                        if (FValue is null)
+                        #pragma warning restore CA1508
+                            FValue = new TConcrete();
+                return FValue;
+            }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "It is intentional to let each descendants have their own instance")]
-        public static TConcrete? Instance { get; private set; }
     }
 }
