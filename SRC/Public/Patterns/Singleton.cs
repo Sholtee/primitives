@@ -3,6 +3,8 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
+using System.Reflection;
+
 namespace Solti.Utils.Primitives.Patterns
 {
     /// <summary>
@@ -27,7 +29,21 @@ namespace Solti.Utils.Primitives.Patterns
                         #pragma warning disable CA1508 // Avoid dead conditional code
                         if (FValue is null)
                         #pragma warning restore CA1508
-                            FValue = new TConcrete();
+                            try
+                            {
+                                FValue = new TConcrete();
+                            }
+
+                            //
+                            // "new TConcrete()" valojaban Activator.CreateInstance() hivassa fordul (mondjuk erdekes miert)
+                            //
+
+                            catch (TargetInvocationException ex)
+                            {
+                                #pragma warning disable CA1065 // Do not raise exceptions in unexpected locations
+                                throw ex.InnerException;
+                                #pragma warning restore CA1065
+                            }
                 return FValue;
             }
         }
