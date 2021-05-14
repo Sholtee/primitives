@@ -79,7 +79,7 @@
   <h5 id="Solti_Utils_Primitives_Patterns_Singleton_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class Singleton&lt;TConcrete&gt;
-    where TConcrete : Singleton&lt;TConcrete&gt;</code></pre>
+    where TConcrete : Singleton&lt;TConcrete&gt;, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -96,22 +96,12 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="Solti_Utils_Primitives_Patterns_Singleton_1__ctor_" data-uid="Solti.Utils.Primitives.Patterns.Singleton`1.#ctor*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Singleton_1__ctor" data-uid="Solti.Utils.Primitives.Patterns.Singleton`1.#ctor">Singleton()</h4>
-  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Patterns.Singleton-1.html">Singleton&lt;TConcrete&gt;</a> instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Singleton()</code></pre>
-  </div>
   <h3 id="properties">Properties
   </h3>
   <a id="Solti_Utils_Primitives_Patterns_Singleton_1_Instance_" data-uid="Solti.Utils.Primitives.Patterns.Singleton`1.Instance*"></a>
   <h4 id="Solti_Utils_Primitives_Patterns_Singleton_1_Instance" data-uid="Solti.Utils.Primitives.Patterns.Singleton`1.Instance">Instance</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The singleton instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">

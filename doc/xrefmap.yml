@@ -467,23 +467,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete)
   nameWithType: Singleton<TConcrete>
   nameWithType.vb: Singleton(Of TConcrete)
-- uid: Solti.Utils.Primitives.Patterns.Singleton`1.#ctor
-  name: Singleton()
-  href: Solti.Utils.Primitives.Patterns.Singleton-1.html#Solti_Utils_Primitives_Patterns_Singleton_1__ctor
-  commentId: M:Solti.Utils.Primitives.Patterns.Singleton`1.#ctor
-  fullName: Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Singleton()
-  fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete).Singleton()
-  nameWithType: Singleton<TConcrete>.Singleton()
-  nameWithType.vb: Singleton(Of TConcrete).Singleton()
-- uid: Solti.Utils.Primitives.Patterns.Singleton`1.#ctor*
-  name: Singleton
-  href: Solti.Utils.Primitives.Patterns.Singleton-1.html#Solti_Utils_Primitives_Patterns_Singleton_1__ctor_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Singleton`1.#ctor
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Singleton
-  fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete).Singleton
-  nameWithType: Singleton<TConcrete>.Singleton
-  nameWithType.vb: Singleton(Of TConcrete).Singleton
 - uid: Solti.Utils.Primitives.Patterns.Singleton`1.Instance
   name: Instance
   href: Solti.Utils.Primitives.Patterns.Singleton-1.html#Solti_Utils_Primitives_Patterns_Singleton_1_Instance
