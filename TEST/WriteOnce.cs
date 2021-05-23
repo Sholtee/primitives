@@ -34,5 +34,13 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             Assert.DoesNotThrow(() => wo.Value = new object());
             Assert.Throws<InvalidOperationException>(() => wo.Value = new object(), Resources.VALUE_ALREADY_SET);
         }
+
+        [Test]
+        public void Value_MayBeNull() 
+        {
+            var wo = new WriteOnce(strict: true);
+            Assert.DoesNotThrow(() => wo.Value = null);
+            Assert.That(wo.Value, Is.Null);
+        }
     }
 }
