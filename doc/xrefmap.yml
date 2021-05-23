@@ -496,12 +496,6 @@ references:
   commentId: M:Solti.Utils.Primitives.Patterns.WriteOnce.#ctor(System.Boolean)
   fullName: Solti.Utils.Primitives.Patterns.WriteOnce.WriteOnce(System.Boolean)
   nameWithType: WriteOnce.WriteOnce(Boolean)
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.#ctor(System.Object)
-  name: WriteOnce(Object)
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce__ctor_System_Object_
-  commentId: M:Solti.Utils.Primitives.Patterns.WriteOnce.#ctor(System.Object)
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.WriteOnce(System.Object)
-  nameWithType: WriteOnce.WriteOnce(Object)
 - uid: Solti.Utils.Primitives.Patterns.WriteOnce.#ctor*
   name: WriteOnce
   href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce__ctor_
@@ -509,45 +503,83 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.WriteOnce.WriteOnce
   nameWithType: WriteOnce.WriteOnce
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.HasValue
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1
+  name: WriteOnce<T>
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.WriteOnce`1
+  name.vb: WriteOnce(Of T)
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T)
+  nameWithType: WriteOnce<T>
+  nameWithType.vb: WriteOnce(Of T)
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor(System.Boolean)
+  name: WriteOnce(Boolean)
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1__ctor_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.WriteOnce(System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).WriteOnce(System.Boolean)
+  nameWithType: WriteOnce<T>.WriteOnce(Boolean)
+  nameWithType.vb: WriteOnce(Of T).WriteOnce(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor*
+  name: WriteOnce
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.WriteOnce
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).WriteOnce
+  nameWithType: WriteOnce<T>.WriteOnce
+  nameWithType.vb: WriteOnce(Of T).WriteOnce
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
   name: HasValue
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_HasValue
-  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce.HasValue
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.HasValue
-  nameWithType: WriteOnce.HasValue
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.HasValue*
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_HasValue
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.HasValue
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).HasValue
+  nameWithType: WriteOnce<T>.HasValue
+  nameWithType.vb: WriteOnce(Of T).HasValue
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue*
   name: HasValue
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_HasValue_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce.HasValue
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_HasValue_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
   isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.HasValue
-  nameWithType: WriteOnce.HasValue
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.Strict
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.HasValue
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).HasValue
+  nameWithType: WriteOnce<T>.HasValue
+  nameWithType.vb: WriteOnce(Of T).HasValue
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
   name: Strict
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_Strict
-  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce.Strict
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.Strict
-  nameWithType: WriteOnce.Strict
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.Strict*
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Strict
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Strict
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Strict
+  nameWithType: WriteOnce<T>.Strict
+  nameWithType.vb: WriteOnce(Of T).Strict
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict*
   name: Strict
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_Strict_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce.Strict
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Strict_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
   isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.Strict
-  nameWithType: WriteOnce.Strict
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.Value
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Strict
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Strict
+  nameWithType: WriteOnce<T>.Strict
+  nameWithType.vb: WriteOnce(Of T).Strict
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
   name: Value
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_Value
-  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce.Value
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.Value
-  nameWithType: WriteOnce.Value
-- uid: Solti.Utils.Primitives.Patterns.WriteOnce.Value*
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Value
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Value
+  nameWithType: WriteOnce<T>.Value
+  nameWithType.vb: WriteOnce(Of T).Value
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Value*
   name: Value
-  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce_Value_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce.Value
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
   isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.Value
-  nameWithType: WriteOnce.Value
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Value
+  nameWithType: WriteOnce<T>.Value
+  nameWithType.vb: WriteOnce(Of T).Value
 - uid: Solti.Utils.Primitives.PropertyInfoExtensions
   name: PropertyInfoExtensions
   href: Solti.Utils.Primitives.PropertyInfoExtensions.html
