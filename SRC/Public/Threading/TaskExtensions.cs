@@ -4,11 +4,11 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 namespace Solti.Utils.Primitives.Threading
 {
     /// <summary>
@@ -19,36 +19,34 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Casts the given <see cref="Task"/>.
         /// </summary>
-        [SuppressMessage("Reliability", "CA2008:Do not create tasks without passing a TaskScheduler")]
-        public static Task<TT> Cast<T, TT>(this Task<T> task)
+        public static async Task<TT> Cast<T, TT>(this Task<T> task)
         {
             Ensure.Parameter.IsNotNull(task, nameof(task));
 
-            return task.ContinueWith(t =>
-            {
-                try
-                {
-                    return (TT) (object) t.Result!;
-                }
-                catch (AggregateException ex)
-                {
-                    throw ex.InnerException;
-                }
-            }, TaskContinuationOptions.ExecuteSynchronously);
+            object result = (await task)!;
+            return (TT) result;
         }
 
         /// <summary>
         /// Casts the given <see cref="Task"/>.
         /// </summary>
-        public static Task Cast<T>(this Task<T> task, Type returnType) => (Task) Cache
-            .GetOrAdd(returnType, () =>
-            {
-                MethodInfo cast = ((MethodCallExpression) ((Expression<Action>) (() => Cast<object, object>(null!))).Body)
-                    .Method
-                    .GetGenericMethodDefinition();
+        public static Task Cast<T>(this Task<T> task, Type returnType)
+        {
+            Ensure.Parameter.IsNotNull(task, nameof(task));
+            Ensure.Parameter.IsNotNull(returnType, nameof(returnType));
 
-                return cast.MakeGenericMethod(typeof(T), returnType).ToStaticDelegate();
-            })
-            .Invoke(new object[] { task });
+            return (Task) Cache
+                .GetOrAdd((typeof(T), returnType), () =>
+                {
+                    MethodInfo cast = ((MethodCallExpression) ((Expression<Action>) (() => Cast<object, object>(null!))).Body)
+                        .Method
+                        .GetGenericMethodDefinition();
+
+                    return cast
+                        .MakeGenericMethod(typeof(T), returnType)
+                        .ToStaticDelegate();
+                })
+                .Invoke(new object[] { task });
+        }
     }
 }
