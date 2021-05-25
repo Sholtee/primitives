@@ -143,6 +143,25 @@ references:
   fullName.vb: Solti.Utils.Primitives.EnumerableExtensions.ForEach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T, System.Int32))
   nameWithType: EnumerableExtensions.ForEach<T>(IEnumerable<T>, Action<T, Int32>)
   nameWithType.vb: EnumerableExtensions.ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
+- uid: Solti.Utils.Primitives.ExpressionExtensions
+  name: ExpressionExtensions
+  href: Solti.Utils.Primitives.ExpressionExtensions.html
+  commentId: T:Solti.Utils.Primitives.ExpressionExtensions
+  fullName: Solti.Utils.Primitives.ExpressionExtensions
+  nameWithType: ExpressionExtensions
+- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  name: GetDebugView(Expression)
+  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_System_Linq_Expressions_Expression_
+  commentId: M:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  nameWithType: ExpressionExtensions.GetDebugView(Expression)
+- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView*
+  name: GetDebugView
+  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_
+  commentId: Overload:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
+  nameWithType: ExpressionExtensions.GetDebugView
 - uid: Solti.Utils.Primitives.MethodInfoExtensions
   name: MethodInfoExtensions
   href: Solti.Utils.Primitives.MethodInfoExtensions.html
