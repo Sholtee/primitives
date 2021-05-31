@@ -667,6 +667,19 @@ references:
   commentId: T:Solti.Utils.Primitives.Threading.ExclusiveBlock
   fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock
   nameWithType: ExclusiveBlock
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  name: ExclusiveBlock(ExclusiveBlockFeatures)
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock__ctor_Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_
+  commentId: M:Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.ExclusiveBlock(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  nameWithType: ExclusiveBlock.ExclusiveBlock(ExclusiveBlockFeatures)
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor*
+  name: ExclusiveBlock
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.ExclusiveBlock
+  nameWithType: ExclusiveBlock.ExclusiveBlock
 - uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose(System.Boolean)
   name: Dispose(Boolean)
   href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Dispose_System_Boolean_
@@ -693,6 +706,37 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter
   nameWithType: ExclusiveBlock.Enter
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  name: Features
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Features
+  commentId: P:Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  nameWithType: ExclusiveBlock.Features
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features*
+  name: Features
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Features_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  nameWithType: ExclusiveBlock.Features
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  name: ExclusiveBlockFeatures
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html
+  commentId: T:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  nameWithType: ExclusiveBlockFeatures
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  name: None
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html#Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_None
+  commentId: F:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  nameWithType: ExclusiveBlockFeatures.None
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  name: SupportsRecursion
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html#Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_SupportsRecursion
+  commentId: F:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  nameWithType: ExclusiveBlockFeatures.SupportsRecursion
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1
   name: ObjectPool<T>
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html
