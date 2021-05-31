@@ -19,26 +19,26 @@ namespace Solti.Utils.Primitives.Threading.Tests
         private ExclusiveBlock ExclusiveBlock { get; set; }
 
         [SetUp]
-        public void Setup() => ExclusiveBlock = new ExclusiveBlock();
+        public void Setup() => ExclusiveBlock = new ExclusiveBlock(ExclusiveBlockFeatures.SupportsRecursion);
 
         [TearDown]
         public void TearDown() => ExclusiveBlock?.Dispose();
 
         [Test]
-        public void Acquire_ShouldThrowOnParallelInvocation()
+        public void Enter_ShouldThrowOnParallelInvocation()
         {
             for (int i = 0; i < 5; i++)
             {
                 using (ExclusiveBlock.Enter())
                 {
-                    InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Acquire_ShouldThrowOnParallelInvocation), Resources.NOT_EXCLUSIVE);
+                    InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Enter_ShouldThrowOnParallelInvocation), Resources.NOT_EXCLUSIVE);
                     Assert.That(ex.Data["method"], Is.EqualTo(MethodBase.GetCurrentMethod()));
                 }
             }
         }
 
         [Test]
-        public void Acquire_ShouldNotThrowOnSubsequentInvocation()
+        public void Enter_ShouldNotThrowOnRecursiveInvocations()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -55,7 +55,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         }
 
         [Test]
-        public void Acquire_ShouldThrowOnSubsequentParallelInvocation()
+        public void Enter_ShouldThrowOnParallelInvocation2()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -65,7 +65,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
                     {
                         using (ExclusiveBlock.Enter())
                         {
-                            InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Acquire_ShouldThrowOnSubsequentParallelInvocation), Resources.NOT_EXCLUSIVE);
+                            InvalidOperationException ex = Assert.ThrowsAsync<InvalidOperationException>(() => Task.Run(Enter_ShouldThrowOnParallelInvocation2), Resources.NOT_EXCLUSIVE);
                             Assert.That(ex.Data["method"], Is.EqualTo(MethodBase.GetCurrentMethod()));
                         }
                     }
