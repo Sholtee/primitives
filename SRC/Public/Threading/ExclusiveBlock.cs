@@ -55,7 +55,7 @@ namespace Solti.Utils.Primitives.Threading
 
         private void Leave()
         {
-            if (FDepth is null || --FDepth.Value == 0)
+            if (FDepth is null || --FDepth.Value is 0)
                 Interlocked.Exchange(ref FEntered, 0);
         }
 
@@ -73,7 +73,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Creates a new <see cref="ExclusiveBlock"/> instance.
         /// </summary>
-        public ExclusiveBlock(ExclusiveBlockFeatures features = ExclusiveBlockFeatures.None)
+        public ExclusiveBlock(ExclusiveBlockFeatures features = ExclusiveBlockFeatures.SupportsRecursion)
         {
             Features = features;
 
@@ -107,7 +107,7 @@ namespace Solti.Utils.Primitives.Threading
 
             else
             {
-                if (FDepth.Value == 0)
+                if (FDepth.Value is 0)
                     //
                     // Nem volt rekurzio (ebben a szalban) egyenlore
                     //
