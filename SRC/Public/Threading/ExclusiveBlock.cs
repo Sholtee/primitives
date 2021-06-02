@@ -87,7 +87,7 @@ namespace Solti.Utils.Primitives.Threading
         public ExclusiveBlockFeatures Features { get; }
 
         /// <summary>
-        /// Gets a scope for an exclusive operation.
+        /// Gets the scope for an exclusive operation.
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)] // StackFrame jo helyre mutasson
         public IDisposable Enter() 
