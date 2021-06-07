@@ -18,7 +18,7 @@ namespace Solti.Utils.Primitives.Threading
     /// Represents a requested pool item.
     /// </summary>
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    public class PoolItem<T> : Disposable where T : class
+    public class PoolItem<T> : Disposable, IWrapped<T> where T : class
     {
         /// <summary>
         /// The owner of this item.
