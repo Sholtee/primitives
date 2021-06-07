@@ -53,6 +53,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IWrapped-1.html">IWrapped</a>&lt;T&gt;</div>
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
@@ -100,7 +101,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_PoolItem_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PoolItem&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class PoolItem&lt;T&gt; : Disposable, IWrapped&lt;T&gt;, IDisposableEx, IDisposable, IAsyncDisposable where T : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -199,6 +200,9 @@
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.IWrapped-1.html">IWrapped&lt;T&gt;</a>
+  </div>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a>
   </div>

@@ -477,6 +477,32 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.IResettable.Reset
   nameWithType: IResettable.Reset
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1
+  name: IWrapped<T>
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.IWrapped`1
+  name.vb: IWrapped(Of T)
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T)
+  nameWithType: IWrapped<T>
+  nameWithType.vb: IWrapped(Of T)
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html#Solti_Utils_Primitives_Patterns_IWrapped_1_Value
+  commentId: P:Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T).Value
+  nameWithType: IWrapped<T>.Value
+  nameWithType.vb: IWrapped(Of T).Value
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1.Value*
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html#Solti_Utils_Primitives_Patterns_IWrapped_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T).Value
+  nameWithType: IWrapped<T>.Value
+  nameWithType.vb: IWrapped(Of T).Value
 - uid: Solti.Utils.Primitives.Patterns.Singleton`1
   name: Singleton<TConcrete>
   href: Solti.Utils.Primitives.Patterns.Singleton-1.html
