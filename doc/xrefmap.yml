@@ -1,3 +1,1226 @@
 ### YamlMime:XRefMap
 sorted: true
-references: []
+references:
+- uid: Solti.Utils.Primitives
+  name: Solti.Utils.Primitives
+  href: Solti.Utils.Primitives.html
+  commentId: N:Solti.Utils.Primitives
+  fullName: Solti.Utils.Primitives
+  nameWithType: Solti.Utils.Primitives
+- uid: Solti.Utils.Primitives.Cache
+  name: Cache
+  href: Solti.Utils.Primitives.Cache.html
+  commentId: T:Solti.Utils.Primitives.Cache
+  fullName: Solti.Utils.Primitives.Cache
+  nameWithType: Cache
+- uid: Solti.Utils.Primitives.Cache.AsDictionary*
+  name: AsDictionary
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_AsDictionary_
+  commentId: Overload:Solti.Utils.Primitives.Cache.AsDictionary
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Cache.AsDictionary
+  nameWithType: Cache.AsDictionary
+- uid: Solti.Utils.Primitives.Cache.AsDictionary``2
+  name: AsDictionary<TKey, TValue>()
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_AsDictionary__2
+  commentId: M:Solti.Utils.Primitives.Cache.AsDictionary``2
+  name.vb: AsDictionary(Of TKey, TValue)()
+  fullName: Solti.Utils.Primitives.Cache.AsDictionary<TKey, TValue>()
+  fullName.vb: Solti.Utils.Primitives.Cache.AsDictionary(Of TKey, TValue)()
+  nameWithType: Cache.AsDictionary<TKey, TValue>()
+  nameWithType.vb: Cache.AsDictionary(Of TKey, TValue)()
+- uid: Solti.Utils.Primitives.Cache.Clear*
+  name: Clear
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_Clear_
+  commentId: Overload:Solti.Utils.Primitives.Cache.Clear
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Cache.Clear
+  nameWithType: Cache.Clear
+- uid: Solti.Utils.Primitives.Cache.Clear``2
+  name: Clear<TKey, TValue>()
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_Clear__2
+  commentId: M:Solti.Utils.Primitives.Cache.Clear``2
+  name.vb: Clear(Of TKey, TValue)()
+  fullName: Solti.Utils.Primitives.Cache.Clear<TKey, TValue>()
+  fullName.vb: Solti.Utils.Primitives.Cache.Clear(Of TKey, TValue)()
+  nameWithType: Cache.Clear<TKey, TValue>()
+  nameWithType.vb: Cache.Clear(Of TKey, TValue)()
+- uid: Solti.Utils.Primitives.Cache.GetOrAdd*
+  name: GetOrAdd
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd_
+  commentId: Overload:Solti.Utils.Primitives.Cache.GetOrAdd
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Cache.GetOrAdd
+  nameWithType: Cache.GetOrAdd
+- uid: Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,System.Func{``1},System.String)
+  name: GetOrAdd<TKey, TValue>(TKey, Func<TValue>, String)
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd__2___0_System_Func___1__System_String_
+  commentId: M:Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,System.Func{``1},System.String)
+  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TValue), String)
+  fullName: Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey, System.Func<TValue>, System.String)
+  fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TValue), System.String)
+  nameWithType: Cache.GetOrAdd<TKey, TValue>(TKey, Func<TValue>, String)
+  nameWithType.vb: Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TValue), String)
+- uid: Solti.Utils.Primitives.ComparerBase`2
+  name: ComparerBase<TConcreteComparer, T>
+  href: Solti.Utils.Primitives.ComparerBase-2.html
+  commentId: T:Solti.Utils.Primitives.ComparerBase`2
+  name.vb: ComparerBase(Of TConcreteComparer, T)
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T)
+  nameWithType: ComparerBase<TConcreteComparer, T>
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T)
+- uid: Solti.Utils.Primitives.ComparerBase`2.Equals(`1,`1)
+  name: Equals(T, T)
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_Equals__1__1_
+  commentId: M:Solti.Utils.Primitives.ComparerBase`2.Equals(`1,`1)
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Equals(T, T)
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Equals(T, T)
+  nameWithType: ComparerBase<TConcreteComparer, T>.Equals(T, T)
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Equals(T, T)
+- uid: Solti.Utils.Primitives.ComparerBase`2.Equals*
+  name: Equals
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_Equals_
+  commentId: Overload:Solti.Utils.Primitives.ComparerBase`2.Equals
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Equals
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Equals
+  nameWithType: ComparerBase<TConcreteComparer, T>.Equals
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Equals
+- uid: Solti.Utils.Primitives.ComparerBase`2.GetHashCode(`1)
+  name: GetHashCode(T)
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_GetHashCode__1_
+  commentId: M:Solti.Utils.Primitives.ComparerBase`2.GetHashCode(`1)
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.GetHashCode(T)
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).GetHashCode(T)
+  nameWithType: ComparerBase<TConcreteComparer, T>.GetHashCode(T)
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).GetHashCode(T)
+- uid: Solti.Utils.Primitives.ComparerBase`2.GetHashCode*
+  name: GetHashCode
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_GetHashCode_
+  commentId: Overload:Solti.Utils.Primitives.ComparerBase`2.GetHashCode
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.GetHashCode
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).GetHashCode
+  nameWithType: ComparerBase<TConcreteComparer, T>.GetHashCode
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).GetHashCode
+- uid: Solti.Utils.Primitives.ComparerBase`2.Instance
+  name: Instance
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_Instance
+  commentId: P:Solti.Utils.Primitives.ComparerBase`2.Instance
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Instance
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Instance
+  nameWithType: ComparerBase<TConcreteComparer, T>.Instance
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Instance
+- uid: Solti.Utils.Primitives.ComparerBase`2.Instance*
+  name: Instance
+  href: Solti.Utils.Primitives.ComparerBase-2.html#Solti_Utils_Primitives_ComparerBase_2_Instance_
+  commentId: Overload:Solti.Utils.Primitives.ComparerBase`2.Instance
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Instance
+  fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Instance
+  nameWithType: ComparerBase<TConcreteComparer, T>.Instance
+  nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Instance
+- uid: Solti.Utils.Primitives.EnumerableExtensions
+  name: EnumerableExtensions
+  href: Solti.Utils.Primitives.EnumerableExtensions.html
+  commentId: T:Solti.Utils.Primitives.EnumerableExtensions
+  fullName: Solti.Utils.Primitives.EnumerableExtensions
+  nameWithType: EnumerableExtensions
+- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach*
+  name: ForEach
+  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach_
+  commentId: Overload:Solti.Utils.Primitives.EnumerableExtensions.ForEach
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach
+  nameWithType: EnumerableExtensions.ForEach
+- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
+  name: ForEach<T>(IEnumerable<T>, Action<T, Int32>)
+  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0_System_Int32__
+  commentId: M:Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
+  name.vb: ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
+  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T, System.Int32>)
+  fullName.vb: Solti.Utils.Primitives.EnumerableExtensions.ForEach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T, System.Int32))
+  nameWithType: EnumerableExtensions.ForEach<T>(IEnumerable<T>, Action<T, Int32>)
+  nameWithType.vb: EnumerableExtensions.ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
+- uid: Solti.Utils.Primitives.ExpressionExtensions
+  name: ExpressionExtensions
+  href: Solti.Utils.Primitives.ExpressionExtensions.html
+  commentId: T:Solti.Utils.Primitives.ExpressionExtensions
+  fullName: Solti.Utils.Primitives.ExpressionExtensions
+  nameWithType: ExpressionExtensions
+- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  name: GetDebugView(Expression)
+  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_System_Linq_Expressions_Expression_
+  commentId: M:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  nameWithType: ExpressionExtensions.GetDebugView(Expression)
+- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView*
+  name: GetDebugView
+  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_
+  commentId: Overload:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
+  nameWithType: ExpressionExtensions.GetDebugView
+- uid: Solti.Utils.Primitives.MethodInfoExtensions
+  name: MethodInfoExtensions
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html
+  commentId: T:Solti.Utils.Primitives.MethodInfoExtensions
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions
+  nameWithType: MethodInfoExtensions
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
+  name: ToInstanceDelegate(MethodInfo)
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToInstanceDelegate_System_Reflection_MethodInfo_
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
+  nameWithType: MethodInfoExtensions.ToInstanceDelegate(MethodInfo)
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate*
+  name: ToInstanceDelegate
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToInstanceDelegate_
+  commentId: Overload:Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate
+  nameWithType: MethodInfoExtensions.ToInstanceDelegate
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
+  name: ToStaticDelegate(MethodBase)
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToStaticDelegate_System_Reflection_MethodBase_
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
+  nameWithType: MethodInfoExtensions.ToStaticDelegate(MethodBase)
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate*
+  name: ToStaticDelegate
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToStaticDelegate_
+  commentId: Overload:Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate
+  nameWithType: MethodInfoExtensions.ToStaticDelegate
+- uid: Solti.Utils.Primitives.Patterns
+  name: Solti.Utils.Primitives.Patterns
+  href: Solti.Utils.Primitives.Patterns.html
+  commentId: N:Solti.Utils.Primitives.Patterns
+  fullName: Solti.Utils.Primitives.Patterns
+  nameWithType: Solti.Utils.Primitives.Patterns
+- uid: Solti.Utils.Primitives.Patterns.Composite`1
+  name: Composite<TInterface>
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.Composite`1
+  name.vb: Composite(Of TInterface)
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface)
+  nameWithType: Composite<TInterface>
+  nameWithType.vb: Composite(Of TInterface)
+- uid: Solti.Utils.Primitives.Patterns.Disposable
+  name: Disposable
+  href: Solti.Utils.Primitives.Patterns.Disposable.html
+  commentId: T:Solti.Utils.Primitives.Patterns.Disposable
+  fullName: Solti.Utils.Primitives.Patterns.Disposable
+  nameWithType: Disposable
+- uid: Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose
+  name: AsyncDispose()
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_AsyncDispose
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose()
+  nameWithType: Disposable.AsyncDispose()
+- uid: Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose*
+  name: AsyncDispose
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_AsyncDispose_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose
+  nameWithType: Disposable.AsyncDispose
+- uid: Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed
+  name: CheckNotDisposed()
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_CheckNotDisposed
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed()
+  nameWithType: Disposable.CheckNotDisposed()
+- uid: Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed*
+  name: CheckNotDisposed
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_CheckNotDisposed_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.CheckNotDisposed
+  nameWithType: Disposable.CheckNotDisposed
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Dispose
+  name: Dispose()
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.Dispose
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Dispose()
+  nameWithType: Disposable.Dispose()
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Dispose(System.Boolean)
+  nameWithType: Disposable.Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Dispose
+  nameWithType: Disposable.Dispose
+- uid: Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync
+  name: DisposeAsync()
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_DisposeAsync
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync()
+  nameWithType: Disposable.DisposeAsync()
+- uid: Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync*
+  name: DisposeAsync
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_DisposeAsync_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.DisposeAsync
+  nameWithType: Disposable.DisposeAsync
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Disposed
+  name: Disposed
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed
+  commentId: P:Solti.Utils.Primitives.Patterns.Disposable.Disposed
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Disposed
+  nameWithType: Disposable.Disposed
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Disposed*
+  name: Disposed
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.Disposed
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Disposed
+  nameWithType: Disposable.Disposed
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Finalize
+  name: Finalize()
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Finalize
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.Finalize
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Finalize()
+  nameWithType: Disposable.Finalize()
+- uid: Solti.Utils.Primitives.Patterns.Disposable.Finalize*
+  name: Finalize
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Finalize_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.Finalize
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Finalize
+  nameWithType: Disposable.Finalize
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject
+  name: DisposeByRefObject
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html
+  commentId: T:Solti.Utils.Primitives.Patterns.DisposeByRefObject
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject
+  nameWithType: DisposeByRefObject
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef
+  name: AddRef()
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_AddRef
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef()
+  nameWithType: DisposeByRefObject.AddRef()
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef*
+  name: AddRef
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_AddRef_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AddRef
+  nameWithType: DisposeByRefObject.AddRef
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose
+  name: AsyncDispose()
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_AsyncDispose
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose()
+  nameWithType: DisposeByRefObject.AsyncDispose()
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose*
+  name: AsyncDispose
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_AsyncDispose_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose
+  nameWithType: DisposeByRefObject.AsyncDispose
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose(System.Boolean)
+  nameWithType: DisposeByRefObject.Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose
+  nameWithType: DisposeByRefObject.Dispose
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount
+  name: RefCount
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_RefCount
+  commentId: P:Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount
+  nameWithType: DisposeByRefObject.RefCount
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount*
+  name: RefCount
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_RefCount_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.RefCount
+  nameWithType: DisposeByRefObject.RefCount
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release
+  name: Release()
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_Release
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release()
+  nameWithType: DisposeByRefObject.Release()
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release*
+  name: Release
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_Release_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.Release
+  nameWithType: DisposeByRefObject.Release
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync
+  name: ReleaseAsync()
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_ReleaseAsync
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync()
+  nameWithType: DisposeByRefObject.ReleaseAsync()
+- uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync*
+  name: ReleaseAsync
+  href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html#Solti_Utils_Primitives_Patterns_DisposeByRefObject_ReleaseAsync_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync
+  nameWithType: DisposeByRefObject.ReleaseAsync
+- uid: Solti.Utils.Primitives.Patterns.IComposite`1
+  name: IComposite<TInterface>
+  href: Solti.Utils.Primitives.Patterns.IComposite-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.IComposite`1
+  name.vb: IComposite(Of TInterface)
+  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>
+  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface)
+  nameWithType: IComposite<TInterface>
+  nameWithType.vb: IComposite(Of TInterface)
+- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Children
+  name: Children
+  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Children
+  commentId: P:Solti.Utils.Primitives.Patterns.IComposite`1.Children
+  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Children
+  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Children
+  nameWithType: IComposite<TInterface>.Children
+  nameWithType.vb: IComposite(Of TInterface).Children
+- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Children*
+  name: Children
+  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Children_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IComposite`1.Children
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Children
+  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Children
+  nameWithType: IComposite<TInterface>.Children
+  nameWithType.vb: IComposite(Of TInterface).Children
+- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Parent
+  name: Parent
+  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Parent
+  commentId: P:Solti.Utils.Primitives.Patterns.IComposite`1.Parent
+  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Parent
+  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Parent
+  nameWithType: IComposite<TInterface>.Parent
+  nameWithType.vb: IComposite(Of TInterface).Parent
+- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Parent*
+  name: Parent
+  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Parent_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IComposite`1.Parent
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Parent
+  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Parent
+  nameWithType: IComposite<TInterface>.Parent
+  nameWithType.vb: IComposite(Of TInterface).Parent
+- uid: Solti.Utils.Primitives.Patterns.IDisposableEx
+  name: IDisposableEx
+  href: Solti.Utils.Primitives.Patterns.IDisposableEx.html
+  commentId: T:Solti.Utils.Primitives.Patterns.IDisposableEx
+  fullName: Solti.Utils.Primitives.Patterns.IDisposableEx
+  nameWithType: IDisposableEx
+- uid: Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
+  name: Disposed
+  href: Solti.Utils.Primitives.Patterns.IDisposableEx.html#Solti_Utils_Primitives_Patterns_IDisposableEx_Disposed
+  commentId: P:Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
+  fullName: Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
+  nameWithType: IDisposableEx.Disposed
+- uid: Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed*
+  name: Disposed
+  href: Solti.Utils.Primitives.Patterns.IDisposableEx.html#Solti_Utils_Primitives_Patterns_IDisposableEx_Disposed_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
+  nameWithType: IDisposableEx.Disposed
+- uid: Solti.Utils.Primitives.Patterns.IResettable
+  name: IResettable
+  href: Solti.Utils.Primitives.Patterns.IResettable.html
+  commentId: T:Solti.Utils.Primitives.Patterns.IResettable
+  fullName: Solti.Utils.Primitives.Patterns.IResettable
+  nameWithType: IResettable
+- uid: Solti.Utils.Primitives.Patterns.IResettable.Dirty
+  name: Dirty
+  href: Solti.Utils.Primitives.Patterns.IResettable.html#Solti_Utils_Primitives_Patterns_IResettable_Dirty
+  commentId: P:Solti.Utils.Primitives.Patterns.IResettable.Dirty
+  fullName: Solti.Utils.Primitives.Patterns.IResettable.Dirty
+  nameWithType: IResettable.Dirty
+- uid: Solti.Utils.Primitives.Patterns.IResettable.Dirty*
+  name: Dirty
+  href: Solti.Utils.Primitives.Patterns.IResettable.html#Solti_Utils_Primitives_Patterns_IResettable_Dirty_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IResettable.Dirty
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IResettable.Dirty
+  nameWithType: IResettable.Dirty
+- uid: Solti.Utils.Primitives.Patterns.IResettable.Reset
+  name: Reset()
+  href: Solti.Utils.Primitives.Patterns.IResettable.html#Solti_Utils_Primitives_Patterns_IResettable_Reset
+  commentId: M:Solti.Utils.Primitives.Patterns.IResettable.Reset
+  fullName: Solti.Utils.Primitives.Patterns.IResettable.Reset()
+  nameWithType: IResettable.Reset()
+- uid: Solti.Utils.Primitives.Patterns.IResettable.Reset*
+  name: Reset
+  href: Solti.Utils.Primitives.Patterns.IResettable.html#Solti_Utils_Primitives_Patterns_IResettable_Reset_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IResettable.Reset
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IResettable.Reset
+  nameWithType: IResettable.Reset
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1
+  name: IWrapped<T>
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.IWrapped`1
+  name.vb: IWrapped(Of T)
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T)
+  nameWithType: IWrapped<T>
+  nameWithType.vb: IWrapped(Of T)
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html#Solti_Utils_Primitives_Patterns_IWrapped_1_Value
+  commentId: P:Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T).Value
+  nameWithType: IWrapped<T>.Value
+  nameWithType.vb: IWrapped(Of T).Value
+- uid: Solti.Utils.Primitives.Patterns.IWrapped`1.Value*
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.IWrapped-1.html#Solti_Utils_Primitives_Patterns_IWrapped_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.IWrapped`1.Value
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.IWrapped<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.IWrapped(Of T).Value
+  nameWithType: IWrapped<T>.Value
+  nameWithType.vb: IWrapped(Of T).Value
+- uid: Solti.Utils.Primitives.Patterns.Singleton`1
+  name: Singleton<TConcrete>
+  href: Solti.Utils.Primitives.Patterns.Singleton-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.Singleton`1
+  name.vb: Singleton(Of TConcrete)
+  fullName: Solti.Utils.Primitives.Patterns.Singleton<TConcrete>
+  fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete)
+  nameWithType: Singleton<TConcrete>
+  nameWithType.vb: Singleton(Of TConcrete)
+- uid: Solti.Utils.Primitives.Patterns.Singleton`1.Instance
+  name: Instance
+  href: Solti.Utils.Primitives.Patterns.Singleton-1.html#Solti_Utils_Primitives_Patterns_Singleton_1_Instance
+  commentId: P:Solti.Utils.Primitives.Patterns.Singleton`1.Instance
+  fullName: Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Instance
+  fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete).Instance
+  nameWithType: Singleton<TConcrete>.Instance
+  nameWithType.vb: Singleton(Of TConcrete).Instance
+- uid: Solti.Utils.Primitives.Patterns.Singleton`1.Instance*
+  name: Instance
+  href: Solti.Utils.Primitives.Patterns.Singleton-1.html#Solti_Utils_Primitives_Patterns_Singleton_1_Instance_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Singleton`1.Instance
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Instance
+  fullName.vb: Solti.Utils.Primitives.Patterns.Singleton(Of TConcrete).Instance
+  nameWithType: Singleton<TConcrete>.Instance
+  nameWithType.vb: Singleton(Of TConcrete).Instance
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce
+  name: WriteOnce
+  href: Solti.Utils.Primitives.Patterns.WriteOnce.html
+  commentId: T:Solti.Utils.Primitives.Patterns.WriteOnce
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce
+  nameWithType: WriteOnce
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce.#ctor(System.Boolean)
+  name: WriteOnce(Boolean)
+  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce__ctor_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.WriteOnce.#ctor(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.WriteOnce(System.Boolean)
+  nameWithType: WriteOnce.WriteOnce(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce.#ctor*
+  name: WriteOnce
+  href: Solti.Utils.Primitives.Patterns.WriteOnce.html#Solti_Utils_Primitives_Patterns_WriteOnce__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce.WriteOnce
+  nameWithType: WriteOnce.WriteOnce
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1
+  name: WriteOnce<T>
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html
+  commentId: T:Solti.Utils.Primitives.Patterns.WriteOnce`1
+  name.vb: WriteOnce(Of T)
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T)
+  nameWithType: WriteOnce<T>
+  nameWithType.vb: WriteOnce(Of T)
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor(System.Boolean)
+  name: WriteOnce(Boolean)
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1__ctor_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.WriteOnce(System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).WriteOnce(System.Boolean)
+  nameWithType: WriteOnce<T>.WriteOnce(Boolean)
+  nameWithType.vb: WriteOnce(Of T).WriteOnce(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor*
+  name: WriteOnce
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.WriteOnce
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).WriteOnce
+  nameWithType: WriteOnce<T>.WriteOnce
+  nameWithType.vb: WriteOnce(Of T).WriteOnce
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
+  name: HasValue
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_HasValue
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.HasValue
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).HasValue
+  nameWithType: WriteOnce<T>.HasValue
+  nameWithType.vb: WriteOnce(Of T).HasValue
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue*
+  name: HasValue
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_HasValue_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.HasValue
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.HasValue
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).HasValue
+  nameWithType: WriteOnce<T>.HasValue
+  nameWithType.vb: WriteOnce(Of T).HasValue
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
+  name: Strict
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Strict
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Strict
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Strict
+  nameWithType: WriteOnce<T>.Strict
+  nameWithType.vb: WriteOnce(Of T).Strict
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict*
+  name: Strict
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Strict_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.Strict
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Strict
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Strict
+  nameWithType: WriteOnce<T>.Strict
+  nameWithType.vb: WriteOnce(Of T).Strict
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Value
+  commentId: P:Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Value
+  nameWithType: WriteOnce<T>.Value
+  nameWithType.vb: WriteOnce(Of T).Value
+- uid: Solti.Utils.Primitives.Patterns.WriteOnce`1.Value*
+  name: Value
+  href: Solti.Utils.Primitives.Patterns.WriteOnce-1.html#Solti_Utils_Primitives_Patterns_WriteOnce_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.WriteOnce`1.Value
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.WriteOnce<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Patterns.WriteOnce(Of T).Value
+  nameWithType: WriteOnce<T>.Value
+  nameWithType.vb: WriteOnce(Of T).Value
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions
+  name: PropertyInfoExtensions
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html
+  commentId: T:Solti.Utils.Primitives.PropertyInfoExtensions
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions
+  nameWithType: PropertyInfoExtensions
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
+  name: ToGetter(PropertyInfo)
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToGetter_System_Reflection_PropertyInfo_
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
+  nameWithType: PropertyInfoExtensions.ToGetter(PropertyInfo)
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter*
+  name: ToGetter
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToGetter_
+  commentId: Overload:Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter
+  nameWithType: PropertyInfoExtensions.ToGetter
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
+  name: ToSetter(PropertyInfo)
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToSetter_System_Reflection_PropertyInfo_
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
+  nameWithType: PropertyInfoExtensions.ToSetter(PropertyInfo)
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter*
+  name: ToSetter
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToSetter_
+  commentId: Overload:Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
+  nameWithType: PropertyInfoExtensions.ToSetter
+- uid: Solti.Utils.Primitives.Threading
+  name: Solti.Utils.Primitives.Threading
+  href: Solti.Utils.Primitives.Threading.html
+  commentId: N:Solti.Utils.Primitives.Threading
+  fullName: Solti.Utils.Primitives.Threading
+  nameWithType: Solti.Utils.Primitives.Threading
+- uid: Solti.Utils.Primitives.Threading.CheckoutPolicy
+  name: CheckoutPolicy
+  href: Solti.Utils.Primitives.Threading.CheckoutPolicy.html
+  commentId: T:Solti.Utils.Primitives.Threading.CheckoutPolicy
+  fullName: Solti.Utils.Primitives.Threading.CheckoutPolicy
+  nameWithType: CheckoutPolicy
+- uid: Solti.Utils.Primitives.Threading.CheckoutPolicy.Block
+  name: Block
+  href: Solti.Utils.Primitives.Threading.CheckoutPolicy.html#Solti_Utils_Primitives_Threading_CheckoutPolicy_Block
+  commentId: F:Solti.Utils.Primitives.Threading.CheckoutPolicy.Block
+  fullName: Solti.Utils.Primitives.Threading.CheckoutPolicy.Block
+  nameWithType: CheckoutPolicy.Block
+- uid: Solti.Utils.Primitives.Threading.CheckoutPolicy.Discard
+  name: Discard
+  href: Solti.Utils.Primitives.Threading.CheckoutPolicy.html#Solti_Utils_Primitives_Threading_CheckoutPolicy_Discard
+  commentId: F:Solti.Utils.Primitives.Threading.CheckoutPolicy.Discard
+  fullName: Solti.Utils.Primitives.Threading.CheckoutPolicy.Discard
+  nameWithType: CheckoutPolicy.Discard
+- uid: Solti.Utils.Primitives.Threading.CheckoutPolicy.Throw
+  name: Throw
+  href: Solti.Utils.Primitives.Threading.CheckoutPolicy.html#Solti_Utils_Primitives_Threading_CheckoutPolicy_Throw
+  commentId: F:Solti.Utils.Primitives.Threading.CheckoutPolicy.Throw
+  fullName: Solti.Utils.Primitives.Threading.CheckoutPolicy.Throw
+  nameWithType: CheckoutPolicy.Throw
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock
+  name: ExclusiveBlock
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html
+  commentId: T:Solti.Utils.Primitives.Threading.ExclusiveBlock
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock
+  nameWithType: ExclusiveBlock
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor
+  name: ExclusiveBlock()
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock__ctor
+  commentId: M:Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.ExclusiveBlock()
+  nameWithType: ExclusiveBlock.ExclusiveBlock()
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  name: ExclusiveBlock(ExclusiveBlockFeatures)
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock__ctor_Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_
+  commentId: M:Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.ExclusiveBlock(Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures)
+  nameWithType: ExclusiveBlock.ExclusiveBlock(ExclusiveBlockFeatures)
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor*
+  name: ExclusiveBlock
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.ExclusiveBlock
+  nameWithType: ExclusiveBlock.ExclusiveBlock
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose(System.Boolean)
+  nameWithType: ExclusiveBlock.Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Dispose
+  nameWithType: ExclusiveBlock.Dispose
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter
+  name: Enter()
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Enter
+  commentId: M:Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter()
+  nameWithType: ExclusiveBlock.Enter()
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter*
+  name: Enter
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Enter_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Enter
+  nameWithType: ExclusiveBlock.Enter
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  name: Features
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Features
+  commentId: P:Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  nameWithType: ExclusiveBlock.Features
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features*
+  name: Features
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html#Solti_Utils_Primitives_Threading_ExclusiveBlock_Features_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlock.Features
+  nameWithType: ExclusiveBlock.Features
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  name: ExclusiveBlockFeatures
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html
+  commentId: T:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures
+  nameWithType: ExclusiveBlockFeatures
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  name: None
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html#Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_None
+  commentId: F:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.None
+  nameWithType: ExclusiveBlockFeatures.None
+- uid: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  name: SupportsRecursion
+  href: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.html#Solti_Utils_Primitives_Threading_ExclusiveBlockFeatures_SupportsRecursion
+  commentId: F:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
+  nameWithType: ExclusiveBlockFeatures.SupportsRecursion
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1
+  name: ObjectPool<T>
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html
+  commentId: T:Solti.Utils.Primitives.Threading.ObjectPool`1
+  name.vb: ObjectPool(Of T)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T)
+  nameWithType: ObjectPool<T>
+  nameWithType.vb: ObjectPool(Of T)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0},System.Boolean)
+  name: ObjectPool(Int32, Func<T>, Boolean)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Int32_System_Func__0__System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0},System.Boolean)
+  name.vb: ObjectPool(Int32, Func(Of T), Boolean)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Int32, System.Func<T>, System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Int32, System.Func(Of T), System.Boolean)
+  nameWithType: ObjectPool<T>.ObjectPool(Int32, Func<T>, Boolean)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(Int32, Func(Of T), Boolean)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*
+  name: ObjectPool
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool
+  nameWithType: ObjectPool<T>.ObjectPool
+  nameWithType.vb: ObjectPool(Of T).ObjectPool
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
+  name: Capacity
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Capacity
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Capacity
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Capacity
+  nameWithType: ObjectPool<T>.Capacity
+  nameWithType.vb: ObjectPool(Of T).Capacity
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity*
+  name: Capacity
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Capacity_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Capacity
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Capacity
+  nameWithType: ObjectPool<T>.Capacity
+  nameWithType.vb: ObjectPool(Of T).Capacity
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Count
+  name: Count
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Count
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Count
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Count
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Count
+  nameWithType: ObjectPool<T>.Count
+  nameWithType.vb: ObjectPool(Of T).Count
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Count*
+  name: Count
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Count_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Count
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Count
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Count
+  nameWithType: ObjectPool<T>.Count
+  nameWithType.vb: ObjectPool(Of T).Count
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Dispose(System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Dispose(System.Boolean)
+  nameWithType: ObjectPool<T>.Dispose(Boolean)
+  nameWithType.vb: ObjectPool(Of T).Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Dispose
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Dispose
+  nameWithType: ObjectPool<T>.Dispose
+  nameWithType.vb: ObjectPool(Of T).Dispose
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
+  name: Factory
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Factory
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Factory
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Factory
+  nameWithType: ObjectPool<T>.Factory
+  nameWithType.vb: ObjectPool(Of T).Factory
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Factory*
+  name: Factory
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Factory_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Factory
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Factory
+  nameWithType: ObjectPool<T>.Factory
+  nameWithType.vb: ObjectPool(Of T).Factory
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  name: Get(CheckoutPolicy, CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  nameWithType: ObjectPool<T>.Get(CheckoutPolicy, CancellationToken)
+  nameWithType.vb: ObjectPool(Of T).Get(CheckoutPolicy, CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get*
+  name: Get
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Get
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get
+  nameWithType: ObjectPool<T>.Get
+  nameWithType.vb: ObjectPool(Of T).Get
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetEnumerator
+  name: GetEnumerator()
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.GetEnumerator
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetEnumerator()
+  nameWithType: ObjectPool<T>.GetEnumerator()
+  nameWithType.vb: ObjectPool(Of T).GetEnumerator()
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetEnumerator*
+  name: GetEnumerator
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.GetEnumerator
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetEnumerator
+  nameWithType: ObjectPool<T>.GetEnumerator
+  nameWithType.vb: ObjectPool(Of T).GetEnumerator
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  name: GetItem(CheckoutPolicy, CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetItem_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  nameWithType: ObjectPool<T>.GetItem(CheckoutPolicy, CancellationToken)
+  nameWithType.vb: ObjectPool(Of T).GetItem(CheckoutPolicy, CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem*
+  name: GetItem
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetItem_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetItem
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetItem
+  nameWithType: ObjectPool<T>.GetItem
+  nameWithType.vb: ObjectPool(Of T).GetItem
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return
+  name: Return()
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Return
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Return()
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return()
+  nameWithType: ObjectPool<T>.Return()
+  nameWithType.vb: ObjectPool(Of T).Return()
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return*
+  name: Return
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Return
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Return
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return
+  nameWithType: ObjectPool<T>.Return
+  nameWithType.vb: ObjectPool(Of T).Return
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
+  name: SuppressItemDispose
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_SuppressItemDispose
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.SuppressItemDispose
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).SuppressItemDispose
+  nameWithType: ObjectPool<T>.SuppressItemDispose
+  nameWithType.vb: ObjectPool(Of T).SuppressItemDispose
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose*
+  name: SuppressItemDispose
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_SuppressItemDispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.SuppressItemDispose
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).SuppressItemDispose
+  nameWithType: ObjectPool<T>.SuppressItemDispose
+  nameWithType.vb: ObjectPool(Of T).SuppressItemDispose
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ObjectPool<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ObjectPool<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1
+  name: PoolItem<T>
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html
+  commentId: T:Solti.Utils.Primitives.Threading.PoolItem`1
+  name.vb: PoolItem(Of T)
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T)
+  nameWithType: PoolItem<T>
+  nameWithType.vb: PoolItem(Of T)
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolItem`1.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Dispose(System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Dispose(System.Boolean)
+  nameWithType: PoolItem<T>.Dispose(Boolean)
+  nameWithType.vb: PoolItem(Of T).Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolItem`1.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Dispose
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Dispose
+  nameWithType: PoolItem<T>.Dispose
+  nameWithType.vb: PoolItem(Of T).Dispose
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Owner
+  name: Owner
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Owner
+  commentId: P:Solti.Utils.Primitives.Threading.PoolItem`1.Owner
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Owner
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Owner
+  nameWithType: PoolItem<T>.Owner
+  nameWithType.vb: PoolItem(Of T).Owner
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Owner*
+  name: Owner
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Owner_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolItem`1.Owner
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Owner
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Owner
+  nameWithType: PoolItem<T>.Owner
+  nameWithType.vb: PoolItem(Of T).Owner
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Value
+  name: Value
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Value
+  commentId: P:Solti.Utils.Primitives.Threading.PoolItem`1.Value
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Value
+  nameWithType: PoolItem<T>.Value
+  nameWithType.vb: PoolItem(Of T).Value
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.Value*
+  name: Value
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolItem`1.Value
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.Value
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).Value
+  nameWithType: PoolItem<T>.Value
+  nameWithType.vb: PoolItem(Of T).Value
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
+  name: ReaderWriterLockExtensions
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html
+  commentId: T:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
+  nameWithType: ReaderWriterLockExtensions
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
+  name: AcquireReaderLock(ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
+  nameWithType: ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock*
+  name: AcquireReaderLock
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock
+  nameWithType: ReaderWriterLockExtensions.AcquireReaderLock
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
+  name: AcquireWriterLock(ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
+  nameWithType: ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock*
+  name: AcquireWriterLock
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock
+  nameWithType: ReaderWriterLockExtensions.AcquireWriterLock
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1
+  name: SafeEnumerator<T>
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html
+  commentId: T:Solti.Utils.Primitives.Threading.SafeEnumerator`1
+  name.vb: SafeEnumerator(Of T)
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T)
+  nameWithType: SafeEnumerator<T>
+  nameWithType.vb: SafeEnumerator(Of T)
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Threading.ReaderWriterLockSlim)
+  name: SafeEnumerator(IEnumerable<T>, ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_System_Collections_Generic_IEnumerable__0__System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Threading.ReaderWriterLockSlim)
+  name.vb: SafeEnumerator(IEnumerable(Of T), ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.SafeEnumerator(System.Collections.Generic.IEnumerable<T>, System.Threading.ReaderWriterLockSlim)
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).SafeEnumerator(System.Collections.Generic.IEnumerable(Of T), System.Threading.ReaderWriterLockSlim)
+  nameWithType: SafeEnumerator<T>.SafeEnumerator(IEnumerable<T>, ReaderWriterLockSlim)
+  nameWithType.vb: SafeEnumerator(Of T).SafeEnumerator(IEnumerable(Of T), ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor*
+  name: SafeEnumerator
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.SafeEnumerator
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).SafeEnumerator
+  nameWithType: SafeEnumerator<T>.SafeEnumerator
+  nameWithType.vb: SafeEnumerator(Of T).SafeEnumerator
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current
+  name: Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Current
+  commentId: P:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Current
+  nameWithType: SafeEnumerator<T>.Current
+  nameWithType.vb: SafeEnumerator(Of T).Current
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current*
+  name: Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Current_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Current
+  nameWithType: SafeEnumerator<T>.Current
+  nameWithType.vb: SafeEnumerator(Of T).Current
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Dispose_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Dispose(System.Boolean)
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Dispose(System.Boolean)
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Dispose(System.Boolean)
+  nameWithType: SafeEnumerator<T>.Dispose(Boolean)
+  nameWithType.vb: SafeEnumerator(Of T).Dispose(Boolean)
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Dispose
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Dispose
+  nameWithType: SafeEnumerator<T>.Dispose
+  nameWithType.vb: SafeEnumerator(Of T).Dispose
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext
+  name: MoveNext()
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_MoveNext
+  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.MoveNext()
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).MoveNext()
+  nameWithType: SafeEnumerator<T>.MoveNext()
+  nameWithType.vb: SafeEnumerator(Of T).MoveNext()
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext*
+  name: MoveNext
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_MoveNext_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.MoveNext
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).MoveNext
+  nameWithType: SafeEnumerator<T>.MoveNext
+  nameWithType.vb: SafeEnumerator(Of T).MoveNext
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset
+  name: Reset()
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Reset
+  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Reset()
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Reset()
+  nameWithType: SafeEnumerator<T>.Reset()
+  nameWithType.vb: SafeEnumerator(Of T).Reset()
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset*
+  name: Reset
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_Reset_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Reset
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Reset
+  nameWithType: SafeEnumerator<T>.Reset
+  nameWithType.vb: SafeEnumerator(Of T).Reset
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  name: IEnumerator.Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current
+  commentId: P:Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  name.vb: System.Collections.IEnumerator.Current
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.System.Collections.IEnumerator.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+  nameWithType: SafeEnumerator<T>.IEnumerator.Current
+  nameWithType.vb: SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current*
+  name: IEnumerator.Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerator.Current
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.System.Collections.IEnumerator.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+  nameWithType: SafeEnumerator<T>.IEnumerator.Current
+  nameWithType.vb: SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions
+  name: TaskExtensions
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html
+  commentId: T:Solti.Utils.Primitives.Threading.TaskExtensions
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions
+  nameWithType: TaskExtensions
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast*
+  name: Cast
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast_
+  commentId: Overload:Solti.Utils.Primitives.Threading.TaskExtensions.Cast
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast
+  nameWithType: TaskExtensions.Cast
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(System.Threading.Tasks.Task{``0},System.Type)
+  name: Cast<T>(Task<T>, Type)
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__1_System_Threading_Tasks_Task___0__System_Type_
+  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(System.Threading.Tasks.Task{``0},System.Type)
+  name.vb: Cast(Of T)(Task(Of T), Type)
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T>(System.Threading.Tasks.Task<T>, System.Type)
+  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T)(System.Threading.Tasks.Task(Of T), System.Type)
+  nameWithType: TaskExtensions.Cast<T>(Task<T>, Type)
+  nameWithType.vb: TaskExtensions.Cast(Of T)(Task(Of T), Type)
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(System.Threading.Tasks.Task{``0})
+  name: Cast<T, TT>(Task<T>)
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__2_System_Threading_Tasks_Task___0__
+  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(System.Threading.Tasks.Task{``0})
+  name.vb: Cast(Of T, TT)(Task(Of T))
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T, TT>(System.Threading.Tasks.Task<T>)
+  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T, TT)(System.Threading.Tasks.Task(Of T))
+  nameWithType: TaskExtensions.Cast<T, TT>(Task<T>)
+  nameWithType.vb: TaskExtensions.Cast(Of T, TT)(Task(Of T))
+- uid: Solti.Utils.Primitives.TypeExtensions
+  name: TypeExtensions
+  href: Solti.Utils.Primitives.TypeExtensions.html
+  commentId: T:Solti.Utils.Primitives.TypeExtensions
+  fullName: Solti.Utils.Primitives.TypeExtensions
+  nameWithType: TypeExtensions
+- uid: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
+  name: GetFriendlyName(Type)
+  href: Solti.Utils.Primitives.TypeExtensions.html#Solti_Utils_Primitives_TypeExtensions_GetFriendlyName_System_Type_
+  commentId: M:Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
+  fullName: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
+  nameWithType: TypeExtensions.GetFriendlyName(Type)
+- uid: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName*
+  name: GetFriendlyName
+  href: Solti.Utils.Primitives.TypeExtensions.html#Solti_Utils_Primitives_TypeExtensions_GetFriendlyName_
+  commentId: Overload:Solti.Utils.Primitives.TypeExtensions.GetFriendlyName
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName
+  nameWithType: TypeExtensions.GetFriendlyName
