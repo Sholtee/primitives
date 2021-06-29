@@ -73,13 +73,18 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Creates a new <see cref="ExclusiveBlock"/> instance.
         /// </summary>
-        public ExclusiveBlock(ExclusiveBlockFeatures features = ExclusiveBlockFeatures.SupportsRecursion)
+        public ExclusiveBlock(ExclusiveBlockFeatures features)
         {
             Features = features;
 
             if (Features.HasFlag(ExclusiveBlockFeatures.SupportsRecursion))
                 FDepth = new ThreadLocal<int>(() => 0, trackAllValues: false);
         }
+
+        /// <summary>
+        /// Creates a new <see cref="ExclusiveBlock"/> instance.
+        /// </summary>
+        public ExclusiveBlock() : this(ExclusiveBlockFeatures.SupportsRecursion) { }
 
         /// <summary>
         /// Describes the features of this instance.
