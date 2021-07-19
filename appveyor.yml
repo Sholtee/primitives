@@ -28,6 +28,9 @@ clone_script:
       git clone -q --recursive --branch=%APPVEYOR_REPO_BRANCH% https://github.com/%APPVEYOR_REPO_NAME%.git %APPVEYOR_BUILD_FOLDER%
       git checkout -qf %APPVEYOR_REPO_COMMIT%
 
+install:
+  - ps: choco install dotnetcore-sdk -y
+
 # load the build scripts
 before_test:
   - ps: |
