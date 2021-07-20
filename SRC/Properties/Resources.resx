@@ -123,14 +123,8 @@
   <data name="BELONGING_ITEM" xml:space="preserve">
     <value>The child already assigned to a parent.</value>
   </data>
-  <data name="BYREF_PARAM_NOT_SUPPORTED" xml:space="preserve">
-    <value>Composite method ({0}) can not have "by ref" parameter.</value>
-  </data>
   <data name="CANT_SET_PARENT" xml:space="preserve">
     <value>Parent cannot be set directly.</value>
-  </data>
-  <data name="DISPATCH_NOT_ALLOWED" xml:space="preserve">
-    <value>Dispatch method can be invoked from interface implementations only.</value>
   </data>
   <data name="INTERFACE_NOT_SUPPORTED" xml:space="preserve">
     <value>The given interface ({0}) is not supported.</value>

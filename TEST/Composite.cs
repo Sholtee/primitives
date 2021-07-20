@@ -158,12 +158,12 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             public void Foo(int arg) // direkt nem explicit
             {
-                Dispatch(null, arg);
+                Dispatch(i => i.Foo(arg));
             }
 
             string IRealComposite.Bar()
             {
-                return string.Join(" ", Dispatch(null));
+                return string.Join(" ", Dispatch(i => i.Bar()));
             }
         }
 
@@ -260,8 +260,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             var root = new RealComposite();
 
-            Assert.Throws<ArgumentNullException>(() => root.Dispatch(null, args: null));
-            Assert.Throws<InvalidOperationException>(() => root.Dispatch(null), Resources.DISPATCH_NOT_ALLOWED);
+            Assert.Throws<ArgumentNullException>(() => root.Dispatch(null));
         }
 
         private class BadComposite : Composite<IMyComposite> 
@@ -272,27 +271,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         [Test]
         public void Ctor_ShouldThrowIfTheInterfaceIsNotImplemented() =>
             Assert.Throws<NotSupportedException>(() => new BadComposite(), Resources.INTERFACE_NOT_SUPPORTED);
-
-        private interface IByRef: IComposite<IByRef>
-        {
-            void Foo(ref int b);
-        }
-
-        private class ByRefComposite : Composite<IByRef>, IByRef
-        {
-            public ByRefComposite() : base(null) { }
-
-            public void Foo(ref int b) => Dispatch(null, b);
-        }
-
-        [Test]
-        public void Dispatch_ShouldThrowOnByRefParameter() =>
-            Assert.Throws<NotSupportedException>(() => 
-            {
-                int i = 0;
-                new ByRefComposite().Foo(ref i);
-            }, Resources.BYREF_PARAM_NOT_SUPPORTED);
-
         public interface IGeneric: IComposite<IGeneric>
         {
             void Foo<T>(T p);
@@ -302,7 +280,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             public GenericComposite() : base(null) { }
 
-            public void Foo<T>(T p) => Dispatch(new[] { typeof(T) }, p);
+            public void Foo<T>(T p) => Dispatch(i => i.Foo(p));
         }
 
         [Test]

@@ -55,7 +55,7 @@ namespace Solti.Utils.Primitives.Perf
             {
             }
 
-            void IMyComposite.Foo(string arg) => Dispatch(null, arg);
+            void IMyComposite.Foo(string arg) => Dispatch(i => i.Foo(arg));
         }
 
         [Params(0, 1, 2, 4)]

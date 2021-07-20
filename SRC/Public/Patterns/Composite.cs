@@ -32,11 +32,9 @@ namespace Solti.Utils.Primitives.Patterns
     public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
     {
         #region Private
-        private readonly ConcurrentDictionary<TInterface, byte> FChildren = new ConcurrentDictionary<TInterface, byte>();
+        private readonly ConcurrentDictionary<TInterface, byte> FChildren = new();
 
         private int FCount; // kulon kell szamon tartani
-
-        private readonly IReadOnlyDictionary<MethodInfo, MethodInfo> FInterfaceMapping;
 
         private TInterface? FParent;
 
@@ -53,48 +51,10 @@ namespace Solti.Utils.Primitives.Patterns
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 2, fNeedFileInfo: false).GetMethod();
 
-        private static MethodInfo GetMethod(Expression<Action<TInterface>> expr) => ((MethodCallExpression) expr.Body).Method;
+        private static int FUsedTasks; // NEM globalis, leszarmazottankent ertelmezett
+        #endregion
 
-        private IReadOnlyDictionary<MethodInfo, MethodInfo> GetInterfaceMapping()
-        {
-            Type impl = GetType();
-
-            return Cache.GetOrAdd((Iface: typeof(TInterface), Impl: impl), () => GetInterfaceMappingInternal(typeof(TInterface))
-                //
-                // Tekintsuk a kovetkezo esetet: IA: IDisposable, IB: IDisposable, IC: IA, IB -> Distinct()
-                //
-
-                .Distinct()
-                .ToDictionary(kvp => kvp.TargetMethod, kvp => kvp.InterfaceMethod));
- 
-            IEnumerable<(MethodInfo TargetMethod, MethodInfo InterfaceMethod)> GetInterfaceMappingInternal(Type iface) 
-            {
-                InterfaceMapping mappings = impl.GetInterfaceMap(iface);
-                
-                foreach (var mapping in mappings.TargetMethods.Select((tm, i) => (tm, mappings.InterfaceMethods[i])))
-                {
-                    yield return mapping;
-                }
-
-                foreach (var mapping in iface.GetInterfaces().SelectMany(GetInterfaceMappingInternal)) 
-                {
-                    yield return mapping;
-                }
-            }
-        }
-
-        private static Func<TInterface, object?[], object> ConvertToDelegate(MethodInfo method) 
-        {
-            //
-            // Composite minta nem tamogatja a kimeno parametereket
-            //
-
-            if (method.GetParameters().Any(para => para.ParameterType.IsByRef))
-                throw new NotSupportedException(string.Format(Resources.Culture, Resources.BYREF_PARAM_NOT_SUPPORTED, method.Name));
-
-            return method.ToInstanceDelegate();
-        }
-
+        #region Protected
         //
         // Feldolgoz(elem)
         //   eredmeny[elem.gyerekek.length]
@@ -109,17 +69,13 @@ namespace Solti.Utils.Primitives.Patterns
         //   RETURN eredmeny
         //
 
-        private static int FUsedTasks; // NEM globalis, leszarmazottankent ertelmezett
-
-        private IReadOnlyCollection<object> Dispatch(MethodInfo ifaceMethod, params object?[] args) 
+        /// <summary>
+        /// Executes the <paramref name="callback"/> against all the <see cref="Children"/>.
+        /// </summary>
+        /// <returns>Values returned by the <see cref="Children"/>.</returns>
+        protected internal IReadOnlyCollection<TResult> Dispatch<TResult>(Func<TInterface, TResult> callback)
         {
-            //
-            // 1) Ne generaljuk elore le az osszes delegate-et mert nem tudhatjuk h mely metodusok implementacioja
-            //    fogja hivni a Dispatch()-et (nem biztos h az osszes).
-            // 2) Generikus argumentumot tartalmazo metodushoz amugy sem tudnank legeneralni.
-            //
-
-            Func<TInterface, object?[], object> invoke = Cache.GetOrAdd(ifaceMethod, () => ConvertToDelegate(ifaceMethod));
+            Ensure.Parameter.IsNotNull(callback, nameof(callback));
 
             //
             // Mivel itt a lista egy korabbi allapotaval dolgozunk ezert az iteracio alatt hozzaadott gyermekeken
@@ -128,7 +84,7 @@ namespace Solti.Utils.Primitives.Patterns
 
             ICollection<TInterface> children = FChildren.Keys; // masolat
 
-            object[] result = new object[children.Count];
+            TResult[] result = new TResult[children.Count];
 
             List<Task> boundTasks = new();
 
@@ -150,7 +106,7 @@ namespace Solti.Utils.Primitives.Patterns
                         WriteLine($"{nameof(Dispatch)}(): traversing parallelly ({taskIndex})");
                         try
                         {
-                            result[itemIndex] = invoke(child, args);
+                            result[itemIndex] = callback(child);
                         }
                         finally 
                         {
@@ -163,7 +119,7 @@ namespace Solti.Utils.Primitives.Patterns
                 //
 
                 else
-                    result[itemIndex] = invoke(child, args);
+                    result[itemIndex] = callback(child);
             });
 
             if (boundTasks.Any())
@@ -171,33 +127,19 @@ namespace Solti.Utils.Primitives.Patterns
 
             return result;
         }
-        #endregion
 
-        #region Protected
         /// <summary>
-        /// Forwards the arguments to all the child methods.
+        /// Executes the <paramref name="callback"/> against all the <see cref="Children"/>.
         /// </summary>
-        /// <returns>Values returned by child methods.</returns>
-        [MethodImpl(MethodImplOptions.NoInlining)]
-        protected internal IReadOnlyCollection<object> Dispatch(Type[]? genericArgs, params object?[] args)
+        protected internal void Dispatch(Action<TInterface> callback)
         {
-            Ensure.Parameter.IsNotNull(args, nameof(args));
-
-            //
-            // GetCallerMethod() mindig a generikus metodus definiciojat adja vissza.
-            //
-
-            if (!FInterfaceMapping.TryGetValue(GetCallerMethod(), out MethodInfo ifaceMethod))
-                throw new InvalidOperationException(Resources.DISPATCH_NOT_ALLOWED);
-
-            if (ifaceMethod.IsGenericMethodDefinition)
+            Ensure.Parameter.IsNotNull(callback, nameof(callback));
+          
+            Dispatch<object?>(i => 
             {
-                Ensure.Parameter.IsNotNull(genericArgs, nameof(genericArgs));
-
-                ifaceMethod = ifaceMethod.MakeGenericMethod(genericArgs);
-            }
-
-            return Dispatch(ifaceMethod, args);
+                callback(i);
+                return null;
+            });
         }
 
         /// <summary>
@@ -211,8 +153,6 @@ namespace Solti.Utils.Primitives.Patterns
             parent?.Children.Add(Self);
 
             MaxChildCount = maxChildCount;
-
-            FInterfaceMapping = GetInterfaceMapping();
         }
 
         /// <summary>
@@ -233,7 +173,7 @@ namespace Solti.Utils.Primitives.Patterns
                 // Dispose() hivasa az osszes gyermeken.
                 //
 
-                Dispatch(ifaceMethod: GetMethod(i => i.Dispose()));
+                Dispatch(i => i.Dispose());
 
                 Assert(!FChildren.Any());
             }
@@ -244,16 +184,13 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Disposal logic related to this class.
         /// </summary>
-        [SuppressMessage("Reliability", "CA2012:Use ValueTasks correctly", Justification = "DisposeAsync() call is just an expression")]
         protected async override ValueTask AsyncDispose()
         {
             FParent?.Children.Remove(Self);
 
             await Task.WhenAll
             (
-                Dispatch(ifaceMethod: GetMethod(i => i.DisposeAsync()))
-                    .Cast<ValueTask>()
-                    .Select(t => t.AsTask())
+                Dispatch(i => i.DisposeAsync()).Select(t => t.AsTask())
             );
 
             Assert(!FChildren.Any());
@@ -271,7 +208,7 @@ namespace Solti.Utils.Primitives.Patterns
         public int MaxChildCount { get; }
 
         /// <summary>
-        /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch(Type[], object[])"/> method may use.
+        /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch{TResult}(Func{TInterface, TResult})"/> method may use.
         /// </summary>
         [SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "The value of this property may differ per descendants.")]
         public static int MaxDegreeOfParallelism { get; set; } = Environment.ProcessorCount;

@@ -79,29 +79,11 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Composite method ({0}) can not have &quot;by ref&quot; parameter..
-        /// </summary>
-        internal static string BYREF_PARAM_NOT_SUPPORTED {
-            get {
-                return ResourceManager.GetString("BYREF_PARAM_NOT_SUPPORTED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Parent cannot be set directly..
         /// </summary>
         internal static string CANT_SET_PARENT {
             get {
                 return ResourceManager.GetString("CANT_SET_PARENT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dispatch method can be invoked from interface implementations only..
-        /// </summary>
-        internal static string DISPATCH_NOT_ALLOWED {
-            get {
-                return ResourceManager.GetString("DISPATCH_NOT_ALLOWED", resourceCulture);
             }
         }
         
