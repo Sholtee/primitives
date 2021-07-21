@@ -101,7 +101,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_Composite_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class Composite&lt;TInterface&gt; : Disposable, ICollection&lt;TInterface&gt;, IEnumerable&lt;TInterface&gt;, IEnumerable, IComposite&lt;TInterface&gt;, IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class, IComposite&lt;TInterface&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class Composite&lt;TInterface&gt; : Disposable, ICollection&lt;TInterface&gt;, IEnumerable&lt;TInterface&gt;, IEnumerable, IComposite&lt;TInterface&gt;, IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class, IDisposableEx</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -122,13 +122,13 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Solti_Utils_Primitives_Patterns_Composite_1__ctor_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1__ctor__0_System_Int32_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor(`0,System.Int32)">Composite(TInterface, Int32)</h4>
+  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1__ctor_System_Int32_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor(System.Int32)">Composite(Int32)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html">Composite&lt;TInterface&gt;</a> instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Composite(TInterface parent, int maxChildCount = 2147483647)</code></pre>
+    <pre><code class="lang-csharp hljs">protected Composite(int maxChildCount = 2147483647)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,11 +140,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><span class="xref">TInterface</span></td>
-        <td><span class="parametername">parent</span></td>
-        <td></td>
-      </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">maxChildCount</span></td>
@@ -204,7 +199,7 @@
   </table>
   <a id="Solti_Utils_Primitives_Patterns_Composite_1_MaxDegreeOfParallelism_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.MaxDegreeOfParallelism*"></a>
   <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_MaxDegreeOfParallelism" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.MaxDegreeOfParallelism">MaxDegreeOfParallelism</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the maximum number of concurrent tasks that the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Type___System_Object___">Dispatch(Type[], Object[])</a> method may use.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the maximum number of concurrent tasks that the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch__1_System_Func__0___0__">Dispatch&lt;TResult&gt;(Func&lt;TInterface, TResult&gt;)</a> method may use.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -233,7 +228,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TInterface Parent { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IComposite&lt;TInterface&gt; Parent { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -245,7 +240,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TInterface</span></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Patterns.IComposite-1.html">IComposite</a>&lt;TInterface&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -279,13 +274,13 @@
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_AsyncDispose">Disposable.AsyncDispose()</a></div>
   <a id="Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Dispatch*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Type___System_Object___" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Type[],System.Object[])">Dispatch(Type[], Object[])</h4>
-  <div class="markdown level1 summary"><p>Forwards the arguments to all the child methods.</p>
+  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Action__0__" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Action{`0})">Dispatch(Action&lt;TInterface&gt;)</h4>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">callback</code> against all the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children">Children</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IReadOnlyCollection&lt;object&gt; Dispatch(Type[] genericArgs, params object[] args)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void Dispatch(Action&lt;TInterface&gt; callback)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,13 +293,34 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a>[]</td>
-        <td><span class="parametername">genericArgs</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TInterface&gt;</td>
+        <td><span class="parametername">callback</span></td>
         <td></td>
       </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Dispatch*"></a>
+  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_Dispatch__1_System_Func__0___0__" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Dispatch``1(System.Func{`0,``0})">Dispatch&lt;TResult&gt;(Func&lt;TInterface, TResult&gt;)</h4>
+  <div class="markdown level1 summary"><p>Executes the <code data-dev-comment-type="paramref" class="paramref">callback</code> against all the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children">Children</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IReadOnlyCollection&lt;TResult&gt; Dispatch&lt;TResult&gt;(Func&lt;TInterface, TResult&gt; callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>[]</td>
-        <td><span class="parametername">args</span></td>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TInterface, TResult&gt;</td>
+        <td><span class="parametername">callback</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -319,9 +335,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
-        <td><p>Values returned by child methods.</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;TResult&gt;</td>
+        <td><p>Values returned by the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children">Children</a>.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

@@ -209,14 +209,14 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface)
   nameWithType: Composite<TInterface>
   nameWithType.vb: Composite(Of TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor(`0,System.Int32)
-  name: Composite(TInterface, Int32)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor__0_System_Int32_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.#ctor(`0,System.Int32)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite(TInterface, System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite(TInterface, System.Int32)
-  nameWithType: Composite<TInterface>.Composite(TInterface, Int32)
-  nameWithType.vb: Composite(Of TInterface).Composite(TInterface, Int32)
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor(System.Int32)
+  name: Composite(Int32)
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor_System_Int32_
+  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.#ctor(System.Int32)
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite(System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite(System.Int32)
+  nameWithType: Composite<TInterface>.Composite(Int32)
+  nameWithType.vb: Composite(Of TInterface).Composite(Int32)
 - uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor*
   name: Composite
   href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor_
@@ -260,15 +260,15 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Children
   nameWithType: Composite<TInterface>.Children
   nameWithType.vb: Composite(Of TInterface).Children
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Type[],System.Object[])
-  name: Dispatch(Type[], Object[])
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Type___System_Object___
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Type[],System.Object[])
-  name.vb: Dispatch(Type(), Object())
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispatch(System.Type[], System.Object[])
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch(System.Type(), System.Object())
-  nameWithType: Composite<TInterface>.Dispatch(Type[], Object[])
-  nameWithType.vb: Composite(Of TInterface).Dispatch(Type(), Object())
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Action{`0})
+  name: Dispatch(Action<TInterface>)
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_System_Action__0__
+  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.Dispatch(System.Action{`0})
+  name.vb: Dispatch(Action(Of TInterface))
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispatch(System.Action<TInterface>)
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch(System.Action(Of TInterface))
+  nameWithType: Composite<TInterface>.Dispatch(Action<TInterface>)
+  nameWithType.vb: Composite(Of TInterface).Dispatch(Action(Of TInterface))
 - uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch*
   name: Dispatch
   href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch_
@@ -278,6 +278,15 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch
   nameWithType: Composite<TInterface>.Dispatch
   nameWithType.vb: Composite(Of TInterface).Dispatch
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispatch``1(System.Func{`0,``0})
+  name: Dispatch<TResult>(Func<TInterface, TResult>)
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispatch__1_System_Func__0___0__
+  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.Dispatch``1(System.Func{`0,``0})
+  name.vb: Dispatch(Of TResult)(Func(Of TInterface, TResult))
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Dispatch<TResult>(System.Func<TInterface, TResult>)
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispatch(Of TResult)(System.Func(Of TInterface, TResult))
+  nameWithType: Composite<TInterface>.Dispatch<TResult>(Func<TInterface, TResult>)
+  nameWithType.vb: Composite(Of TInterface).Dispatch(Of TResult)(Func(Of TInterface, TResult))
 - uid: Solti.Utils.Primitives.Patterns.Composite`1.Dispose(System.Boolean)
   name: Dispose(Boolean)
   href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Dispose_System_Boolean_
