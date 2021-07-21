@@ -7,12 +7,8 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +17,6 @@ using static System.Diagnostics.Debug;
 namespace Solti.Utils.Primitives.Patterns
 {
     using Properties;
-    using Threading;
 
     /// <summary>
     /// Implements the <see cref="IComposite{TInterface}"/> interface.
@@ -29,27 +24,14 @@ namespace Solti.Utils.Primitives.Patterns
     /// <typeparam name="TInterface">The interface on which we want to apply the composite pattern.</typeparam>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
     [SuppressMessage("Design", "CA1033:Interface methods should be callable by child types", Justification = "Derived types can access these methods via the Children property")]
-    public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IComposite<TInterface>
+    public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IDisposableEx
     {
         #region Private
         private readonly ConcurrentDictionary<TInterface, byte> FChildren = new();
 
         private int FCount; // kulon kell szamon tartani
 
-        private TInterface? FParent;
-
-        private TInterface Self 
-        {
-            get
-            {
-                TInterface? result = (this as TInterface);
-                Assert(result is not null);
-                return result!;
-            }
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining)]
-        private static MethodInfo GetCallerMethod() => (MethodInfo) new StackFrame(skipFrames: 2, fNeedFileInfo: false).GetMethod();
+        private IComposite<TInterface>? FParent;
 
         private static int FUsedTasks; // NEM globalis, leszarmazottankent ertelmezett
         #endregion
@@ -145,12 +127,9 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Creates a new <see cref="Composite{TInterface}"/> instance.
         /// </summary>
-        protected Composite(TInterface? parent, int maxChildCount = int.MaxValue)
+        protected Composite(int maxChildCount = int.MaxValue)
         {
             Ensure.Type<TInterface>.IsInterface();
-            Ensure.Type<TInterface>.IsSupportedBy(this);
-
-            parent?.Children.Add(Self);
 
             MaxChildCount = maxChildCount;
         }
@@ -164,10 +143,10 @@ namespace Solti.Utils.Primitives.Patterns
             if (disposeManaged)
             {
                 //
-                // Kivesszuk magunkat a szulo gyerekei kozul (kiveve ha gyoker elemunk van, ott nincs szulo).
+                // Torol munket a Parent.Children elemek kozul is.
                 //
 
-                FParent?.Children.Remove(Self);
+                Parent = null;
 
                 //
                 // Dispose() hivasa az osszes gyermeken.
@@ -186,7 +165,7 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         protected async override ValueTask AsyncDispose()
         {
-            FParent?.Children.Remove(Self);
+            Parent = null;
 
             await Task.WhenAll
             (
@@ -218,15 +197,22 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// The parent of this entity. Can be null.
         /// </summary>
-        public TInterface? Parent
+        public IComposite<TInterface>? Parent
         {
             get => FParent;
-
-            [MethodImpl(MethodImplOptions.NoInlining)]
             set
             {
-                if (GetCallerMethod().GetCustomAttribute<CanSetParentAttribute>() == null)
-                    throw new InvalidOperationException(Resources.CANT_SET_PARENT);
+                if (value == FParent)
+                    return;
+
+                //
+                // Ahhoz h gyermekkent szerepelhessunk, nekunk is implementalni kell TInterface-t
+                //
+
+                TInterface self = Ensure.Type<TInterface>.IsSupportedBy(this);
+
+                FParent?.Children.Remove(self);
+                value?.Children.Add(self);
 
                 FParent = value;
             }
@@ -263,42 +249,49 @@ namespace Solti.Utils.Primitives.Patterns
 
         bool ICollection<TInterface>.IsReadOnly => false;
       
-        [CanSetParent]
-        [MethodImpl(MethodImplOptions.NoInlining)]
         void ICollection<TInterface>.Add(TInterface child)
         {
             Ensure.Parameter.IsNotNull(child, nameof(child));
             CheckNotDisposed();
 
-            if (child.Parent != null) 
-                throw new ArgumentException(Resources.BELONGING_ITEM, nameof(child));
+            //
+            // lock() arra a perverz esetre ha ugyanazt a gyereket parhuzamosan tobbszor is
+            // hozza akarnank adni.
+            //
 
-            if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxChildCount) is null)
-                throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
+            lock (child)
+            {
+                //
+                // Itt ne az FChildren.Count-ra vizsgaljunk mert az ellenorzes pillanataban az ertek meg lehet h jo,
+                // viszont mire a TryAdd()-hez jutunk mar lehet elromlik
+                // 
 
-            bool succeeded = FChildren.TryAdd(child, 0);
-            Assert(succeeded, "Child already contained");
+                if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxChildCount) is null)
+                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
 
-            child.Parent = Self;
+                //
+                // TryAdd() nem tudom min lock-ol de meg ha a kulcson akkor sincs gond mert ugyanabban a szalban lesz
+                // mint ahol a fenti lock volt hivva.
+                //
+
+                if (!FChildren.TryAdd(child, 0))
+                {
+                    Interlocked.Decrement(ref FCount);
+                    throw new InvalidOperationException(Resources.ITEM_ALREADY_ADDED);
+                }
+            }
         }
 
-        [CanSetParent]
-        [MethodImpl(MethodImplOptions.NoInlining)]
         bool ICollection<TInterface>.Remove(TInterface child)
         {
             Ensure.Parameter.IsNotNull(child, nameof(child));
             CheckNotDisposed();
 
-            if (child.Parent != Self) 
-                return false;
- 
-            bool succeeded = FChildren.TryRemove(child, out _);
-            Assert(succeeded, "Child already removed");
+            lock (child)
+                if (!FChildren.TryRemove(child, out _))
+                    return false;
 
             Interlocked.Decrement(ref FCount);
-
-            child.Parent = null;
-
             return true;
         }
 
@@ -307,12 +300,9 @@ namespace Solti.Utils.Primitives.Patterns
             Ensure.Parameter.IsNotNull(child, nameof(child));
             CheckNotDisposed();
 
-            return child.Parent == Self;
+            return FChildren.ContainsKey(child);
         }
-/*
-        [CanSetParent]
-        [MethodImpl(MethodImplOptions.NoInlining)]
-*/
+
         void ICollection<TInterface>.Clear() => throw new NotImplementedException();
 
         void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)

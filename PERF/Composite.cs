@@ -20,9 +20,6 @@ namespace Solti.Utils.Primitives.Perf
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
-            public MyComposite() : base(null)
-            {
-            }
         }
 
         [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
@@ -51,10 +48,6 @@ namespace Solti.Utils.Primitives.Perf
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
-            public MyComposite() : base(null)
-            {
-            }
-
             void IMyComposite.Foo(string arg) => Dispatch(i => i.Foo(arg));
         }
 

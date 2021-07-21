@@ -70,29 +70,20 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The child already assigned to a parent..
-        /// </summary>
-        internal static string BELONGING_ITEM {
-            get {
-                return ResourceManager.GetString("BELONGING_ITEM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parent cannot be set directly..
-        /// </summary>
-        internal static string CANT_SET_PARENT {
-            get {
-                return ResourceManager.GetString("CANT_SET_PARENT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The given interface ({0}) is not supported..
         /// </summary>
         internal static string INTERFACE_NOT_SUPPORTED {
             get {
                 return ResourceManager.GetString("INTERFACE_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempt to add an item that is already in the collection..
+        /// </summary>
+        internal static string ITEM_ALREADY_ADDED {
+            get {
+                return ResourceManager.GetString("ITEM_ALREADY_ADDED", resourceCulture);
             }
         }
         

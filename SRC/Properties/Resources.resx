@@ -120,14 +120,11 @@
   <data name="ARBITRARY_RELEASE" xml:space="preserve">
     <value>Dispose can not be called directly.</value>
   </data>
-  <data name="BELONGING_ITEM" xml:space="preserve">
-    <value>The child already assigned to a parent.</value>
-  </data>
-  <data name="CANT_SET_PARENT" xml:space="preserve">
-    <value>Parent cannot be set directly.</value>
-  </data>
   <data name="INTERFACE_NOT_SUPPORTED" xml:space="preserve">
     <value>The given interface ({0}) is not supported.</value>
+  </data>
+  <data name="ITEM_ALREADY_ADDED" xml:space="preserve">
+    <value>Attempt to add an item that is already in the collection.</value>
   </data>
   <data name="NOT_AN_INTERFACE" xml:space="preserve">
     <value>Type must be an interface.</value>

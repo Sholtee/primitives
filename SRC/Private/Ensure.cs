@@ -38,11 +38,7 @@ namespace Solti.Utils.Primitives
             }
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static void IsSupportedBy(object obj) 
-            {
-                if (obj as T == null)
-                    throw new NotSupportedException(string.Format(Resources.Culture, Resources.INTERFACE_NOT_SUPPORTED, typeof(T)));
-            }
+            public static T IsSupportedBy(object obj) => obj as T ?? throw new NotSupportedException(string.Format(Resources.Culture, Resources.INTERFACE_NOT_SUPPORTED, typeof(T)));
         }
     }
 }
