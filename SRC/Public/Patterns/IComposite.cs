@@ -11,12 +11,13 @@ namespace Solti.Utils.Primitives.Patterns
     /// Describes the composite pattern.
     /// </summary>
     /// <typeparam name="TInterface">The interface on which we want to apply the pattern.</typeparam>
-    public interface IComposite<TInterface>: IDisposableEx where TInterface : class, IComposite<TInterface>
+    /// <remarks>Disposing an <see cref="IComposite{TInterface}"/> instance should dispose its children as well.</remarks>
+    public interface IComposite<TInterface>: IDisposableEx where TInterface : class
     {
         /// <summary>
         /// The parent of this entity.
         /// </summary>
-        TInterface? Parent { get; set; }
+        IComposite<TInterface>? Parent { get; set; }
 
         /// <summary>
         /// The children of this entity.

@@ -22,13 +22,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
-            public MyComposite(IMyComposite parent) : base(parent)
-            {
-            }
-
-            public MyComposite() : this(null)
-            {
-            }
         }
 
         [Test]
@@ -36,8 +29,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite 
                 root = new MyComposite(),
-                child = new MyComposite(root),
-                grandChild = new MyComposite(child);
+                child = new MyComposite { Parent = root },
+                grandChild = new MyComposite { Parent = child };
 
             root.Dispose();
 
@@ -50,8 +43,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite(root),
-                grandChild = new MyComposite(child);
+                child = new MyComposite { Parent = root },
+                grandChild = new MyComposite { Parent = child };
 
             await root.DisposeAsync();
 
@@ -64,9 +57,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite(root);
+                child = new MyComposite { Parent = root };
 
-            new MyComposite(root); // harmadik
+            new MyComposite { Parent = root }; // harmadik
 
             Assert.That(root.Children.Count, Is.EqualTo(2));
             child.Dispose();
@@ -78,9 +71,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite(root);
+                child = new MyComposite { Parent = root };
 
-            new MyComposite(root); // harmadik
+            new MyComposite { Parent = root }; // harmadik
 
             Assert.That(root.Children.Count, Is.EqualTo(2));
             await child.DisposeAsync();
@@ -92,10 +85,12 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite 
                 root = new MyComposite(),
-                child = new MyComposite(root);
+                child = new MyComposite();
 
             Assert.Throws<ArgumentNullException>(() => root.Children.Add(null));
-            Assert.Throws<ArgumentException>(() => root.Children.Add(child), Resources.BELONGING_ITEM);
+
+            child.Parent = root;
+            Assert.Throws<InvalidOperationException>(() => root.Children.Add(child), Resources.ITEM_ALREADY_ADDED);
         }
 
         [Test]
@@ -103,7 +98,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite(root);
+                child = new MyComposite { Parent = root };
 
             Assert.Throws<ArgumentNullException>(() => root.Children.Remove(null));
             Assert.That(() => root.Children.Remove(new MyComposite()), Is.False);
@@ -114,20 +109,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             Assert.DoesNotThrow(child.Dispose);
             Assert.That(root.Children.Count, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void Parent_ShouldNotBeSetDirectly() 
-        {
-            IMyComposite
-                root = new MyComposite(),
-                child = new MyComposite(root);
-
-            Assert.That(child.Parent, Is.EqualTo(root));
-            Assert.Throws<InvalidOperationException>(() => child.Parent = null, Resources.CANT_SET_PARENT);
-            
-            root.Children.Remove(child);
-            Assert.That(child.Parent, Is.Null);
         }
 
         [Test]
@@ -152,18 +133,14 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
         private class RealComposite : Composite<IRealComposite>, IRealComposite
         {
-            public RealComposite() : base(null)
-            {
-            }
-
             public void Foo(int arg) // direkt nem explicit
             {
-                Dispatch(null, arg);
+                Dispatch(i => i.Foo(arg));
             }
 
             string IRealComposite.Bar()
             {
-                return string.Join(" ", Dispatch(null));
+                return string.Join(" ", Dispatch(i => i.Bar()));
             }
         }
 
@@ -187,7 +164,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                 result
                     .Setup(i => i.Foo(1986));
 
-                IRealComposite parent = null;
+                IComposite<IRealComposite> parent = null;
 
                 result
                     .SetupGet(i => i.Parent)
@@ -235,7 +212,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                 .Setup(i => i.Bar())
                 .Returns("cica");
 
-            IRealComposite parent = null;
+            IComposite<IRealComposite> parent = null;
 
             mockGrandChild
                 .SetupGet(i => i.Parent)
@@ -260,38 +237,16 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             var root = new RealComposite();
 
-            Assert.Throws<ArgumentNullException>(() => root.Dispatch(null, args: null));
-            Assert.Throws<InvalidOperationException>(() => root.Dispatch(null), Resources.DISPATCH_NOT_ALLOWED);
+            Assert.Throws<ArgumentNullException>(() => root.Dispatch(null));
         }
 
         private class BadComposite : Composite<IMyComposite> 
         {
-            public BadComposite() : base(null) { }
         }
 
         [Test]
         public void Ctor_ShouldThrowIfTheInterfaceIsNotImplemented() =>
-            Assert.Throws<NotSupportedException>(() => new BadComposite(), Resources.INTERFACE_NOT_SUPPORTED);
-
-        private interface IByRef: IComposite<IByRef>
-        {
-            void Foo(ref int b);
-        }
-
-        private class ByRefComposite : Composite<IByRef>, IByRef
-        {
-            public ByRefComposite() : base(null) { }
-
-            public void Foo(ref int b) => Dispatch(null, b);
-        }
-
-        [Test]
-        public void Dispatch_ShouldThrowOnByRefParameter() =>
-            Assert.Throws<NotSupportedException>(() => 
-            {
-                int i = 0;
-                new ByRefComposite().Foo(ref i);
-            }, Resources.BYREF_PARAM_NOT_SUPPORTED);
+            Assert.Throws<NotSupportedException>(() => new BadComposite { Parent = new BadComposite() }, Resources.INTERFACE_NOT_SUPPORTED);
 
         public interface IGeneric: IComposite<IGeneric>
         {
@@ -300,9 +255,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
         private class GenericComposite : Composite<IGeneric>, IGeneric 
         {
-            public GenericComposite() : base(null) { }
-
-            public void Foo<T>(T p) => Dispatch(new[] { typeof(T) }, p);
+            public void Foo<T>(T p) => Dispatch(i => i.Foo(p));
         }
 
         [Test]
@@ -310,7 +263,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             var mockChild = new Mock<IGeneric>(MockBehavior.Strict);
 
-            IGeneric parent = null;
+            IComposite<IGeneric> parent = null;
 
             mockChild
                 .SetupGet(i => i.Parent)
