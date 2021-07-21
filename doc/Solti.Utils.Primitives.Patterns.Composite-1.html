@@ -289,7 +289,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IReadOnlyCollection&lt;TResult&gt; Dispatch&lt;TResult&gt;(Func&lt;TInterface, TResult&gt; callback)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ICollection&lt;TResult&gt; Dispatch&lt;TResult&gt;(Func&lt;TInterface, TResult&gt; callback)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -318,8 +318,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;TResult&gt;</td>
-        <td><p>Values returned by the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children">Children</a>.</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;TResult&gt;</td>
+        <td><p>Values returned by the <code data-dev-comment-type="paramref" class="paramref">callback</code> invocations. The position of the returned values match the position of their counterpart child element in the <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_Children">Children</a> list.</p>
 </td>
       </tr>
     </tbody>
