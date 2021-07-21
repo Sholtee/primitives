@@ -209,14 +209,14 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface)
   nameWithType: Composite<TInterface>
   nameWithType.vb: Composite(Of TInterface)
-- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor(System.Int32)
-  name: Composite(Int32)
-  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor_System_Int32_
-  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.#ctor(System.Int32)
-  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite(System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite(System.Int32)
-  nameWithType: Composite<TInterface>.Composite(Int32)
-  nameWithType.vb: Composite(Of TInterface).Composite(Int32)
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor
+  name: Composite()
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor
+  commentId: M:Solti.Utils.Primitives.Patterns.Composite`1.#ctor
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.Composite()
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Composite()
+  nameWithType: Composite<TInterface>.Composite()
+  nameWithType.vb: Composite(Of TInterface).Composite()
 - uid: Solti.Utils.Primitives.Patterns.Composite`1.#ctor*
   name: Composite
   href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1__ctor_
