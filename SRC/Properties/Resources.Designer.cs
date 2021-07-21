@@ -88,6 +88,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum size ({0}) reached..
+        /// </summary>
+        internal static string MAX_SIZE_REACHED {
+            get {
+                return ResourceManager.GetString("MAX_SIZE_REACHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No value to return..
         /// </summary>
         internal static string NO_VALUE {
@@ -115,29 +124,11 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum pool size reached..
-        /// </summary>
-        internal static string POOL_SIZE_REACHED {
-            get {
-                return ResourceManager.GetString("POOL_SIZE_REACHED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to State could not be reverted..
         /// </summary>
         internal static string RESET_FAILED {
             get {
                 return ResourceManager.GetString("RESET_FAILED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The number of children exceeded the limit ({0})..
-        /// </summary>
-        internal static string TOO_MANY_CHILDREN {
-            get {
-                return ResourceManager.GetString("TOO_MANY_CHILDREN", resourceCulture);
             }
         }
         

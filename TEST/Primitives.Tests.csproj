@@ -8,7 +8,7 @@
     <RootNamespace>Solti.Utils.Primitives.Tests</RootNamespace>
     <Configurations>Debug</Configurations>
     <OutputType>Library</OutputType>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
     <StartupObject />
     <OutputPath>..\BIN\$(Configuration)\</OutputPath>
   </PropertyGroup>

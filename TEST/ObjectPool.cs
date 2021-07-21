@@ -71,7 +71,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
 
             using (pool.GetItem(CheckoutPolicy.Throw))
             {
-                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(CheckoutPolicy.Throw), Resources.POOL_SIZE_REACHED)));
+                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(CheckoutPolicy.Throw), Resources.MAX_SIZE_REACHED)));
             }
         }
 

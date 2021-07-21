@@ -127,12 +127,7 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Creates a new <see cref="Composite{TInterface}"/> instance.
         /// </summary>
-        protected Composite(int maxChildCount = int.MaxValue)
-        {
-            Ensure.Type<TInterface>.IsInterface();
-
-            MaxChildCount = maxChildCount;
-        }
+        protected Composite() => Ensure.Type<TInterface>.IsInterface();
 
         /// <summary>
         /// Disposal logic related to this class.
@@ -184,7 +179,7 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Returns the maximum child count that can be stored by this instance.
         /// </summary>
-        public int MaxChildCount { get; }
+        public int MaxChildCount { get; init; } = int.MaxValue;
 
         /// <summary>
         /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch{TResult}(Func{TInterface, TResult})"/> method may use.
@@ -267,7 +262,7 @@ namespace Solti.Utils.Primitives.Patterns
                 // 
 
                 if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxChildCount) is null)
-                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.TOO_MANY_CHILDREN, MaxChildCount));
+                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, MaxChildCount));
 
                 //
                 // TryAdd() nem tudom min lock-ol de meg ha a kulcson akkor sincs gond mert ugyanabban a szalban lesz

@@ -175,7 +175,7 @@ namespace Solti.Utils.Primitives.Threading
                 //
 
                 if (checkoutPolicy == CheckoutPolicy.Throw)
-                    throw new InvalidOperationException(Resources.POOL_SIZE_REACHED);
+                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, Capacity));
 
                 Debug.Assert(checkoutPolicy == CheckoutPolicy.Discard);
                 return default;

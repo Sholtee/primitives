@@ -88,9 +88,17 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                 child = new MyComposite();
 
             Assert.Throws<ArgumentNullException>(() => root.Children.Add(null));
-
-            child.Parent = root;
+            Assert.DoesNotThrow(() => child.Parent = root);
             Assert.Throws<InvalidOperationException>(() => root.Children.Add(child), Resources.ITEM_ALREADY_ADDED);
+        }
+
+        [Test]
+        public void ChildrenList_MayBeLimited() 
+        {
+            IMyComposite root = new MyComposite { MaxChildCount = 1 };
+
+            Assert.DoesNotThrow(() => new MyComposite { Parent = root });
+            Assert.Throws<InvalidOperationException>(() => new MyComposite { Parent = root }, Resources.MAX_SIZE_REACHED);
         }
 
         [Test]
