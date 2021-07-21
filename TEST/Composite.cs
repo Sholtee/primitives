@@ -4,6 +4,8 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Moq;
@@ -93,7 +95,24 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
-        public void ChildrenList_MayBeLimited() 
+        public void Children_ShouldBeThreadSafe()
+        {
+            IMyComposite root = new MyComposite();
+
+            Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 50).Select(_ => Task.Run(() =>
+            {
+                MyComposite child = new() { Parent = root };
+                Random rnd = new();
+
+                Thread.Sleep(rnd.Next(0, 5));
+                child.Parent = null;
+            }))));
+
+            Assert.That(root.Children, Is.Empty);
+        }
+
+        [Test]
+        public void Children_MayBeLimited() 
         {
             IMyComposite root = new MyComposite { MaxChildCount = 1 };
 
@@ -253,7 +272,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         }
 
         [Test]
-        public void Ctor_ShouldThrowIfTheInterfaceIsNotImplemented() =>
+        public void Parent_ShouldThrowIfTheInterfaceIsNotImplemented() =>
             Assert.Throws<NotSupportedException>(() => new BadComposite { Parent = new BadComposite() }, Resources.INTERFACE_NOT_SUPPORTED);
 
         public interface IGeneric: IComposite<IGeneric>
