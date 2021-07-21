@@ -54,8 +54,8 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Executes the <paramref name="callback"/> against all the <see cref="Children"/>.
         /// </summary>
-        /// <returns>Values returned by the <see cref="Children"/>.</returns>
-        protected internal IReadOnlyCollection<TResult> Dispatch<TResult>(Func<TInterface, TResult> callback)
+        /// <returns>Values returned by the <paramref name="callback"/> invocations. The position of the returned values match the position of their counterpart child element in the <see cref="Children"/> list.</returns>
+        protected internal ICollection<TResult> Dispatch<TResult>(Func<TInterface, TResult> callback)
         {
             Ensure.Parameter.IsNotNull(callback, nameof(callback));
 
