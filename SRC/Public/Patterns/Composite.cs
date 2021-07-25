@@ -68,7 +68,7 @@ namespace Solti.Utils.Primitives.Patterns
 
             TResult[] result = new TResult[children.Count];
 
-            List<Task> boundTasks = new();
+            List<Task> boundTasks = new(capacity: MaxDegreeOfParallelism);
 
             //
             // Cel metodus hivasa rekurzivan az osszes gyerekre.
