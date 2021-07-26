@@ -36,8 +36,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             root.Dispose();
 
-            Assert.Throws<ObjectDisposedException>(grandChild.Dispose);
-            Assert.Throws<ObjectDisposedException>(child.Dispose);
+            Assert.That(grandChild.Disposed);
+            Assert.That(child.Disposed);
         }
 
         [Test]
@@ -50,8 +50,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             await root.DisposeAsync();
 
-            Assert.Throws<ObjectDisposedException>(grandChild.Dispose);
-            Assert.Throws<ObjectDisposedException>(child.Dispose);
+            Assert.That(grandChild.Disposed);
+            Assert.That(child.Disposed);
         }
 
         [Test]

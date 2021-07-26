@@ -49,5 +49,16 @@ namespace Solti.Utils.Primitives
             while (CompareExchange(ref location, snapshot - 1, snapshot) != snapshot);
             return snapshot;
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int Or(ref int location, int value)
+        {
+            int snapshot;
+            do
+            {
+                snapshot = location;
+            } while (CompareExchange(ref location, snapshot | value, snapshot) != snapshot);
+            return snapshot;
+        }
     }
 }

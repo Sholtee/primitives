@@ -6,7 +6,6 @@
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
@@ -14,20 +13,28 @@ namespace Solti.Utils.Primitives.Patterns
     /// <summary>
     /// Implements the <see cref="IDisposable"/> and <see cref="IAsyncDisposable"/> interfaces.
     /// </summary>
-    /// <remarks>This is an internal class so it may change from version to version. Don't use it!</remarks>
     public class Disposable : IDisposableEx
     {
+        [Flags]
+        private enum DisposableStates
+        {
+            Default = 0,
+            Disposing = 1,
+            Disposed = 2
+        }
+
+        private int FState;
+
         /// <summary>
         /// Indicates whether the object was disposed or not.
         /// </summary>
-        public bool Disposed { get; private set; }
+        public bool Disposed => (FState & (int) DisposableStates.Disposed) is not 0;
 
         /// <summary>
         /// Method to be overridden to implement custom disposal logic.
         /// </summary>
         /// <param name="disposeManaged">It is set to true on <see cref="IDisposable.Dispose"/> call.</param>
-        protected virtual void Dispose(bool disposeManaged) =>
-            Trace.WriteLineIf(!disposeManaged, $"{GetType()} is disposed by GC. You may be missing a Dispose() call.");
+        protected virtual void Dispose(bool disposeManaged) { }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting resources asynchronously
@@ -49,7 +56,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Destructor of this class.
         /// </summary>
-        ~Disposable() => Dispose(disposeManaged: false);
+        [SuppressMessage("Design", "CA1063:Implement IDisposable Correctly", Justification = "The method is implemented correctly.")]
+        ~Disposable()
+        {
+            Trace.WriteLine($"{GetType().GetFriendlyName()} is disposed by GC. You may be missing a Dispose() call.");
+            Dispose(disposeManaged: false);
+        }
 
         /// <summary>
         /// Implements the <see cref="IDisposable.Dispose"/> method.
@@ -57,41 +69,37 @@ namespace Solti.Utils.Primitives.Patterns
         [SuppressMessage("Design", "CA1063:Implement IDisposable Correctly", Justification = "The method is implemented correctly.")]
         public void Dispose()
         {
-            CheckNotDisposed();
+            //
+            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva
+            // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
+            //
+
+            if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
+                return;
 
             Dispose(disposeManaged: true);
+
             GC.SuppressFinalize(this);
-
-            Disposed = true;
+            FState |= (int) DisposableStates.Disposed;
         }
-
-        private int FDisposing;
 
         /// <summary>
         /// Implements the <see cref="IAsyncDisposable.DisposeAsync"/> method.
         /// </summary>
-        [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize", Justification = "The method implements the dispose pattern.")]
         public async ValueTask DisposeAsync()
         {
             //
-            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva, ami logikus
-            // is versenyhelyzetek kivedesere:
-            // Pl Composite mintan hivjuk egy gyermeken a DisposeAsyn()-et, mellyel "egy idoben" a szulot is feszabaditjuk.
-            // Ekkor jo esellyel versenyhelyzet alakulna ki a gyermek felszabaditasara.
+            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva
+            // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
             //
 
-            if (Interlocked.Exchange(ref FDisposing, 1) == 1) return;
-
-            //
-            // Viszont ha a szinkron Dispose() mar hivva volt akkor az mas kerdes.
-            //
-
-            CheckNotDisposed();
+            if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
+                return;
 
             await AsyncDispose();
 
             GC.SuppressFinalize(this);
-            Disposed = true;
+            FState |= (int) DisposableStates.Disposed;
         }
     }
 }

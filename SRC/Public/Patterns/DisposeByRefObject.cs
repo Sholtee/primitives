@@ -55,12 +55,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public int AddRef()
         {
-            int? refCount = IncrementIfGreaterThan(ref FRefCount, 0);
+            int? refCount = IncrementIfGreaterThan(ref FRefCount, 0) + 1; // NULL + 1 == NULL
 
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            return refCount.Value + 1; // refCount most meg az inkrementalas elotti erteket tartalmazza
+            return refCount.Value;
         }
 
         /// <summary>
@@ -69,12 +69,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public int Release()
         {
-            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0);
+            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0) - 1; // NULL - 1 == NULL
 
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            if (--refCount is 0) // refCount most meg a dekrementalas elotti erteket tartalmazza
+            if (refCount is 0)
                 Dispose();
 
             return refCount.Value;
@@ -86,12 +86,12 @@ namespace Solti.Utils.Primitives.Patterns
         /// <returns>The current reference count.</returns>
         public async Task<int> ReleaseAsync() 
         {
-            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0);
+            int? refCount = DecrementIfGreaterThan(ref FRefCount, 0) - 1;
 
             if (refCount is null)
                 throw new ObjectDisposedException(null);
 
-            if (--refCount is 0) // refCount most meg a dekrementalas elotti erteket tartalmazza
+            if (refCount is 0)
                 await DisposeAsync();
 
             return refCount.Value;
