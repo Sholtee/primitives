@@ -19,29 +19,11 @@ namespace Solti.Utils.Primitives.Patterns
     {
         private int FRefCount = 1;
 
-        /// <summary>
-        /// See <see cref="Disposable"/> class.
-        /// </summary>
-        protected override void Dispose(bool disposeManaged)
-        {
-            if (disposeManaged)
-            {
-                if (FRefCount > 0)
-                    throw new InvalidOperationException(Resources.ARBITRARY_RELEASE);
-            }
-
-            base.Dispose(disposeManaged);
-        }
-
-        /// <summary>
-        /// See <see cref="Disposable"/> class.
-        /// </summary>
-        protected override ValueTask AsyncDispose()
+        /// <inheritdoc/>
+        protected override void BeforeDispose()
         {
             if (FRefCount > 0)
                 throw new InvalidOperationException(Resources.ARBITRARY_RELEASE);
-
-            return base.AsyncDispose();
         }
 
         /// <summary>
