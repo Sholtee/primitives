@@ -46,6 +46,13 @@ namespace Solti.Utils.Primitives.Patterns
         }
 
         /// <summary>
+        /// Invoked before actual disposal logic.
+        /// </summary>
+        protected virtual void BeforeDispose()
+        {
+        }
+
+        /// <summary>
         /// Throws if the current instance has already been disposed.
         /// </summary>
         protected void CheckNotDisposed() 
@@ -77,6 +84,8 @@ namespace Solti.Utils.Primitives.Patterns
             if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
                 return;
 
+            BeforeDispose();
+
             Dispose(disposeManaged: true);
 
             GC.SuppressFinalize(this);
@@ -95,6 +104,8 @@ namespace Solti.Utils.Primitives.Patterns
 
             if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
                 return;
+
+            BeforeDispose();
 
             await AsyncDispose();
 
