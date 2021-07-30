@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
@@ -67,8 +68,6 @@ namespace Solti.Utils.Primitives.Threading
     /// </summary>
     public class ObjectPool<T>: Disposable, IReadOnlyCollection<(int OwnerThread, T Object)> where T: class
     {
-        private readonly SemaphoreSlim FSemaphore;
-
         private readonly (int OwnerThread, T? Object)[] FObjects;
 
         private readonly ThreadLocal<GetObjectHolder?> FHeldObject;
@@ -80,7 +79,6 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public ObjectPool(int maxPoolSize, Func<T> factory, bool suppressItemDispose = false) 
         {
-            FSemaphore = new SemaphoreSlim(maxPoolSize, maxPoolSize);
             FObjects = new (int OwnerThread, T? Object)[maxPoolSize]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
             FHeldObject = new ThreadLocal<GetObjectHolder?>(trackAllValues: false);
             Factory = factory;
@@ -123,7 +121,6 @@ namespace Solti.Utils.Primitives.Threading
                     }
                 }
 
-                FSemaphore.Dispose();
                 FHeldObject.Dispose();
             }
 
@@ -156,74 +153,68 @@ namespace Solti.Utils.Primitives.Threading
             //
 
             if (FHeldObject.Value is not null)
+                //
+                // FHeldObject.Value().Object lehet NULL ha a factory maga is elemet akarna kivenni a pool-bol
+                //
+
                 return FHeldObject.Value().Object ?? throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
 
-            //
-            // Elertuk a maximalis meretet?
-            //
-
-            if (!FSemaphore.Wait(checkoutPolicy == CheckoutPolicy.Block ? Timeout.Infinite : 0, cancellation))
+            SpinWait.SpinUntil(() =>
             {
-                //
-                // Igen, de a kerest nem kellett vna azonnal kiszolgalni ezert a szal blokkolasra kerult -> varakozas meg lett szakitva.
-                //
-
                 cancellation.ThrowIfCancellationRequested();
 
                 //
-                // Igen es mivel a kerest egybol ki kellett vna szolgalni ezert vagy kivetelt v NULL-t adunk vissza.
+                // Megprobalunk szabad helyet keresni a pool-ban
                 //
 
-                if (checkoutPolicy == CheckoutPolicy.Throw)
-                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, Capacity));
-
-                Debug.Assert(checkoutPolicy == CheckoutPolicy.Discard);
-                return default;
-            }
-
-            //
-            // Ha ki tudjuk szolgalni a kerest egy korabbi elemmel akkor visszaadjuk azt,
-            // kulonben letrehozunk egy ujat.
-            //
-
-            for (int i = 0; i < Capacity; i++)
-            {
-                ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
-
-                //
-                // Az elso olyan elem ami meg nincs kicsekkolva
-                //
-
-                if (Interlocked.CompareExchange(ref holder.OwnerThread, Thread.CurrentThread.ManagedThreadId, 0) == 0)
+                for (int i = 0; i < Capacity; i++)
                 {
-                    FHeldObject.Value = () => ref FObjects[i];
+                    ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
-                    try
+                    //
+                    // Az elso olyan elem ami meg nincs kicsekkolva
+                    //
+
+                    if (Interlocked.CompareExchange(ref holder.OwnerThread, Thread.CurrentThread.ManagedThreadId, 0) == 0)
                     {
-                        //
-                        // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
-                        //
+                        FHeldObject.Value = () => ref FObjects[i];
 
-                        return holder.Object ??= Factory();
-                    }
-                    catch 
-                    {
-                        //
-                        // Ha hiba vt a factory-ban akkor az elem ne maradjon kicsekkolva.
-                        //
+                        try
+                        {
+                            //
+                            // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
+                            //
 
-                        Return();
-                        throw;
+                            holder.Object ??= Factory();
+                            return true;
+                        }
+                        catch
+                        {
+                            //
+                            // Ha hiba vt a factory-ban akkor az elem ne maradjon kicsekkolva.
+                            //
+
+                            Return();
+                            throw;
+                        }
                     }
                 }
-            }
 
-            //
-            // Ide sose lenne szabad eljussunk a semaphore miatt
-            //
+                //
+                // Nem volt szabad hely a poolban...
+                //
 
-            Debug.Fail("No empty slot in the pool");
-            return default!;
+                if (checkoutPolicy is CheckoutPolicy.Throw)
+                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, Capacity));
+
+                //
+                // Ha a checkoutPolicy == CheckoutPolicy.Block akkor a ciklus ujra kezdodik.
+                //
+
+                return checkoutPolicy is CheckoutPolicy.Discard;
+            });
+
+            return FHeldObject.Value?.Invoke().Object;
         }
 
         /// <summary>
@@ -241,14 +232,10 @@ namespace Solti.Utils.Primitives.Threading
                 resettable.Reset();
 
                 if (resettable.Dirty)
-                    #pragma warning disable CA2201 // To preserve backward compatibility we should not change the exception type
-                    throw new Exception(Resources.RESET_FAILED);
-                    #pragma warning restore CA2201
+                    throw new InvalidOperationException(Resources.RESET_FAILED);
             }
 
             Interlocked.Exchange(ref holder.OwnerThread, 0);
-
-            FSemaphore.Release();
             FHeldObject.Value = null;
         }
 
@@ -266,13 +253,11 @@ namespace Solti.Utils.Primitives.Threading
                 (int OwnerThread, T? Object) holder = FObjects[i];
 
                 //
-                // Csak a hasznalatban levo elemeket adjuk vissza.
+                // Csak a hasznalatban levo elemeket adjuk vissza, lukakat kihagyjuk.
                 //
 
-                if (holder.Object is null)
-                    yield break;
-
-                yield return holder!;
+                if (holder.Object is not null)
+                    yield return holder!;
             }
         }
 
@@ -281,6 +266,6 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// The count of checked out objects.
         /// </summary>
-        public int Count => Capacity - FSemaphore.CurrentCount;
+        public int Count => this.Count(entry => entry.OwnerThread is not 0);
     }
 }

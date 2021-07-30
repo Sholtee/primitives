@@ -172,7 +172,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
 
             pool.Get();
-            Assert.Throws<Exception>(pool.Return, Resources.RESET_FAILED);
+            Assert.Throws<InvalidOperationException>(pool.Return, Resources.RESET_FAILED);
         }
 
         [Test]
