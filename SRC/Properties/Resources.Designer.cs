@@ -124,6 +124,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A pool factory cannot be recursive..
+        /// </summary>
+        internal static string RECURSION_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("RECURSION_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State could not be reverted..
         /// </summary>
         internal static string RESET_FAILED {

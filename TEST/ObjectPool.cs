@@ -76,6 +76,16 @@ namespace Solti.Utils.Primitives.Threading.Tests
         }
 
         [Test]
+        public void Get_ShouldThrowOnRecursiveFactory([Values(CheckoutPolicy.Block, CheckoutPolicy.Discard, CheckoutPolicy.Throw)] CheckoutPolicy policy)
+        {
+            ObjectPool<object> pool = null;
+            using (pool = new ObjectPool<object>(1, () => pool.Get()))
+            {
+                Assert.Throws<InvalidOperationException>(() => pool.Get(policy), Resources.RECURSION_NOT_ALLOWED);
+            }
+        }
+
+        [Test]
         public void Get_ShouldReturnNullIfThereIsNoMoreSpaceInThePool()
         {
             using var pool = new ObjectPool<object>(1, () => new object());

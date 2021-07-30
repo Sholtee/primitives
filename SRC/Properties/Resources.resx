@@ -138,6 +138,9 @@
   <data name="NO_VALUE" xml:space="preserve">
     <value>No value to return.</value>
   </data>
+  <data name="RECURSION_NOT_ALLOWED" xml:space="preserve">
+    <value>A pool factory cannot be recursive.</value>
+  </data>
   <data name="RESET_FAILED" xml:space="preserve">
     <value>State could not be reverted.</value>
   </data>

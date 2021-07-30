@@ -156,7 +156,7 @@ namespace Solti.Utils.Primitives.Threading
             //
 
             if (FHeldObject.Value is not null)
-                return FHeldObject.Value().Object;
+                return FHeldObject.Value().Object ?? throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
 
             //
             // Elertuk a maximalis meretet?
