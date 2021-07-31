@@ -106,17 +106,17 @@ namespace Solti.Utils.Primitives.Threading
         {
             if (disposeManaged)
             {
-                if (!SuppressItemDispose) foreach ((int _, T Object) item in this) // csak a felhasznalt elemeket adja vissza
+                if (!SuppressItemDispose) foreach ((int _, T Object) item in this)
                 {
                     try
                     {
                         if (item.Object is IDisposable disposable)
                             disposable.Dispose();
                     }
-                        #pragma warning disable CA1031 // This method should not throw.
-                        catch (Exception e)
-                        #pragma warning restore CA1031
-                        {
+                    #pragma warning disable CA1031 // This method should not throw.
+                    catch (Exception e)
+                    #pragma warning restore CA1031
+                    {
                         Trace.WriteLine($"Can't dispose pool item: {e}");
                     }
                 }
@@ -148,6 +148,8 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public T? Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
         {
+            CheckNotDisposed();
+
             //
             // Szalankent csak egyszer vehetunk ki a pool-bol elemet
             //
@@ -222,10 +224,14 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public void Return() 
         {
+            CheckNotDisposed();
+
             if (FHeldObject.Value is null)
                 return;
 
             ref (int OwnerThread, T? Object) holder = ref FHeldObject.Value(); // nem masolat
+
+            Debug.Assert(holder.OwnerThread is not 0);
 
             if (holder.Object is IResettable resettable && resettable.Dirty)
             {
@@ -240,10 +246,12 @@ namespace Solti.Utils.Primitives.Threading
         }
 
         /// <summary>
-        /// See <see cref="IEnumerable{T}.GetEnumerator"/>.
+        /// Enumerates the already produced items.
         /// </summary>
         public IEnumerator<(int OwnerThread, T Object)> GetEnumerator()
         {
+            CheckNotDisposed();
+
             for (int i = 0; i < Capacity; i++)
             {
                 //
@@ -253,11 +261,14 @@ namespace Solti.Utils.Primitives.Threading
                 (int OwnerThread, T? Object) holder = FObjects[i];
 
                 //
-                // Csak a hasznalatban levo elemeket adjuk vissza, lukakat kihagyjuk.
+                // Mivel a Get() mindig a legelso meg ures tarolot tolti fel, ezert ha ures tarolohoz
+                // ertunk nem kell folytatni a felsorolast.
                 //
 
-                if (holder.Object is not null)
-                    yield return holder!;
+                if (holder.Object is null)
+                    yield break;
+                                    
+                yield return holder!;
             }
         }
 
