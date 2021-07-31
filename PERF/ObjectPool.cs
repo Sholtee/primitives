@@ -23,28 +23,41 @@ namespace Solti.Utils.Primitives.Perf
             public bool Return(object obj) => true;
         }
 
+        [GlobalSetup(Target = nameof(MS_Extensions_ObjectPool_GetAndReturn))]
+        public void Setup_TheirPool()
+        {
+            TheirPool = new DefaultObjectPool<object>(new SimplePoolPolicy());
+            GC.SuppressFinalize(TheirPool);
+        }
+
+        public DefaultObjectPool<object> TheirPool { get; set; }
+
         [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
         public void MS_Extensions_ObjectPool_GetAndReturn()
         {
-            var pool = new DefaultObjectPool<object>(new SimplePoolPolicy());
-
             for (int i = 0; i < OperationsPerInvoke; i++)
             {
-                object obj = pool.Get();
-                pool.Return(obj);
+                object obj = TheirPool.Get();
+                TheirPool.Return(obj);
             }
         }
+
+        [GlobalSetup(Target = nameof(Solti_Utils_ObjectPool_GetAndReturn))]
+        public void Setup_OurPool()
+        {
+            OurPool = new ObjectPool<object>(1, () => new object(), suppressItemDispose: true);
+            GC.SuppressFinalize(OurPool);
+        }
+
+        public ObjectPool<object> OurPool { get; set; }
 
         [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
         public void Solti_Utils_ObjectPool_GetAndReturn()
         {
-            var pool = new ObjectPool<object>(1, () => new object(), suppressItemDispose: true);
-            GC.SuppressFinalize(pool);
-
             for (int i = 0; i < OperationsPerInvoke; i++)
             {
-                object obj = pool.Get(CheckoutPolicy.Throw);
-                pool.Return();
+                OurPool.Get(CheckoutPolicy.Throw);
+                OurPool.Return();
             }
         }
     }
