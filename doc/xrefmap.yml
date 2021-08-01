@@ -1086,6 +1086,66 @@ references:
   commentId: F:Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
   fullName: Solti.Utils.Primitives.Threading.ExclusiveBlockFeatures.SupportsRecursion
   nameWithType: ExclusiveBlockFeatures.SupportsRecursion
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1
+  name: ILifetimeManager<T>
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html
+  commentId: T:Solti.Utils.Primitives.Threading.ILifetimeManager`1
+  name.vb: ILifetimeManager(Of T)
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T)
+  nameWithType: ILifetimeManager<T>
+  nameWithType.vb: ILifetimeManager(Of T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create
+  name: Create()
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Create
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Create()
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Create()
+  nameWithType: ILifetimeManager<T>.Create()
+  nameWithType.vb: ILifetimeManager(Of T).Create()
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create*
+  name: Create
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Create_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Create
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Create
+  nameWithType: ILifetimeManager<T>.Create
+  nameWithType.vb: ILifetimeManager(Of T).Create
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Dispose(`0)
+  name: Dispose(T)
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Dispose__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Dispose(`0)
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Dispose(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Dispose(T)
+  nameWithType: ILifetimeManager<T>.Dispose(T)
+  nameWithType.vb: ILifetimeManager(Of T).Dispose(T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Dispose*
+  name: Dispose
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Dispose_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Dispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Dispose
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Dispose
+  nameWithType: ILifetimeManager<T>.Dispose
+  nameWithType.vb: ILifetimeManager(Of T).Dispose
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset(`0)
+  name: Reset(T)
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset(`0)
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Reset(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Reset(T)
+  nameWithType: ILifetimeManager<T>.Reset(T)
+  nameWithType.vb: ILifetimeManager(Of T).Reset(T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset*
+  name: Reset
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Reset
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Reset
+  nameWithType: ILifetimeManager<T>.Reset
+  nameWithType.vb: ILifetimeManager(Of T).Reset
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1
   name: ObjectPool<T>
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html
@@ -1095,15 +1155,24 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T)
   nameWithType: ObjectPool<T>
   nameWithType.vb: ObjectPool(Of T)
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0},System.Boolean)
-  name: ObjectPool(Int32, Func<T>, Boolean)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Int32_System_Func__0__System_Boolean_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0},System.Boolean)
-  name.vb: ObjectPool(Int32, Func(Of T), Boolean)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Int32, System.Func<T>, System.Boolean)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Int32, System.Func(Of T), System.Boolean)
-  nameWithType: ObjectPool<T>.ObjectPool(Int32, Func<T>, Boolean)
-  nameWithType.vb: ObjectPool(Of T).ObjectPool(Int32, Func(Of T), Boolean)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,Solti.Utils.Primitives.Threading.ILifetimeManager{`0})
+  name: ObjectPool(Int32, ILifetimeManager<T>)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Int32_Solti_Utils_Primitives_Threading_ILifetimeManager__0__
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,Solti.Utils.Primitives.Threading.ILifetimeManager{`0})
+  name.vb: ObjectPool(Int32, ILifetimeManager(Of T))
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Int32, Solti.Utils.Primitives.Threading.ILifetimeManager<T>)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Int32, Solti.Utils.Primitives.Threading.ILifetimeManager(Of T))
+  nameWithType: ObjectPool<T>.ObjectPool(Int32, ILifetimeManager<T>)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(Int32, ILifetimeManager(Of T))
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0})
+  name: ObjectPool(Int32, Func<T>)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Int32_System_Func__0__
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Int32,System.Func{`0})
+  name.vb: ObjectPool(Int32, Func(Of T))
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Int32, System.Func<T>)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Int32, System.Func(Of T))
+  nameWithType: ObjectPool<T>.ObjectPool(Int32, Func<T>)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(Int32, Func(Of T))
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*
   name: ObjectPool
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_
@@ -1164,23 +1233,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Dispose
   nameWithType: ObjectPool<T>.Dispose
   nameWithType.vb: ObjectPool(Of T).Dispose
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
-  name: Factory
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Factory
-  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Factory
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Factory
-  nameWithType: ObjectPool<T>.Factory
-  nameWithType.vb: ObjectPool(Of T).Factory
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Factory*
-  name: Factory
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Factory_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Factory
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Factory
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Factory
-  nameWithType: ObjectPool<T>.Factory
-  nameWithType.vb: ObjectPool(Of T).Factory
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
   name: Get(CheckoutPolicy, CancellationToken)
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
@@ -1215,23 +1267,23 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetEnumerator
   nameWithType: ObjectPool<T>.GetEnumerator
   nameWithType.vb: ObjectPool(Of T).GetEnumerator
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  name: GetItem(CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetItem_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetItem(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  nameWithType: ObjectPool<T>.GetItem(CheckoutPolicy, CancellationToken)
-  nameWithType.vb: ObjectPool(Of T).GetItem(CheckoutPolicy, CancellationToken)
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem*
-  name: GetItem
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_GetItem_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.GetItem
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.LifetimeManager
+  name: LifetimeManager
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_LifetimeManager
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.LifetimeManager
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.LifetimeManager
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).LifetimeManager
+  nameWithType: ObjectPool<T>.LifetimeManager
+  nameWithType.vb: ObjectPool(Of T).LifetimeManager
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.LifetimeManager*
+  name: LifetimeManager
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_LifetimeManager_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.LifetimeManager
   isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.GetItem
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).GetItem
-  nameWithType: ObjectPool<T>.GetItem
-  nameWithType.vb: ObjectPool(Of T).GetItem
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.LifetimeManager
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).LifetimeManager
+  nameWithType: ObjectPool<T>.LifetimeManager
+  nameWithType.vb: ObjectPool(Of T).LifetimeManager
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return
   name: Return()
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return
@@ -1249,23 +1301,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return
   nameWithType: ObjectPool<T>.Return
   nameWithType.vb: ObjectPool(Of T).Return
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
-  name: SuppressItemDispose
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_SuppressItemDispose
-  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.SuppressItemDispose
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).SuppressItemDispose
-  nameWithType: ObjectPool<T>.SuppressItemDispose
-  nameWithType.vb: ObjectPool(Of T).SuppressItemDispose
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose*
-  name: SuppressItemDispose
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_SuppressItemDispose_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.SuppressItemDispose
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.SuppressItemDispose
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).SuppressItemDispose
-  nameWithType: ObjectPool<T>.SuppressItemDispose
-  nameWithType.vb: ObjectPool(Of T).SuppressItemDispose
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
   name: IEnumerable.GetEnumerator()
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator
@@ -1285,6 +1320,28 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
   nameWithType: ObjectPool<T>.IEnumerable.GetEnumerator
   nameWithType.vb: ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions
+  name: ObjectPoolExtensions
+  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html
+  commentId: T:Solti.Utils.Primitives.Threading.ObjectPoolExtensions
+  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions
+  nameWithType: ObjectPoolExtensions
+- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem*
+  name: GetItem
+  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem
+  nameWithType: ObjectPoolExtensions.GetItem
+- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  name: GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  name.vb: GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(Solti.Utils.Primitives.Threading.ObjectPool<T>, Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem(Of T)(Solti.Utils.Primitives.Threading.ObjectPool(Of T), Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  nameWithType: ObjectPoolExtensions.GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
+  nameWithType.vb: ObjectPoolExtensions.GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
 - uid: Solti.Utils.Primitives.Threading.PoolItem`1
   name: PoolItem<T>
   href: Solti.Utils.Primitives.Threading.PoolItem-1.html
