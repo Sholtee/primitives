@@ -292,15 +292,16 @@ namespace Solti.Utils.Primitives.Threading
             {
                 ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
-                if (holder.Object != item)
-                    continue;
+                if (holder.Object == item)
+                {
+                    if (holder.OwnerThread != Thread.CurrentThread.ManagedThreadId)
+                        Trace.WriteLine("Returning item from a different thread");
 
-                LifetimeManager.CheckIn(holder.Object!);
+                    LifetimeManager.CheckIn(holder.Object!);
+                    Interlocked.Exchange(ref holder.OwnerThread, 0);
 
-                if (holder.OwnerThread != Thread.CurrentThread.ManagedThreadId)
-                    Trace.WriteLine("Returning item from a different thread");
-
-                Interlocked.Exchange(ref holder.OwnerThread, 0);
+                    break;
+                }
             }
         }
 
