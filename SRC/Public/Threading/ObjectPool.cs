@@ -43,6 +43,31 @@ namespace Solti.Utils.Primitives.Threading
     #pragma warning restore CS8618
 
     /// <summary>
+    /// Defines some extensions for the <see cref="ObjectPool{T}"/> class.
+    /// </summary>
+    public static class ObjectPoolExtensions
+    {
+        /// <summary>
+        /// Gets an item from the pool.
+        /// </summary>
+        public static PoolItem<T>? GetItem<T>(this ObjectPool<T> self, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default) where T: class
+        {
+            if (self is null)
+                throw new ArgumentNullException(nameof(self));
+
+            T? value = self.Get(checkoutPolicy, cancellation);
+
+            return value is null
+                ? null
+                : new PoolItem<T>
+                {
+                    Value = value,
+                    Owner = self
+                };
+        }
+    }
+
+    /// <summary>
     /// Describes the <see cref="ObjectPool{T}.Get(CheckoutPolicy, CancellationToken)"/> behavior when the request can not be granted.
     /// </summary>
     public enum CheckoutPolicy 
@@ -64,6 +89,28 @@ namespace Solti.Utils.Primitives.Threading
     }
 
     /// <summary>
+    /// Describes how to manage the lifetime of pool items.
+    /// </summary>
+    public interface ILifetimeManager<T>
+    {
+        /// <summary>
+        /// Creates a new pool item.
+        /// </summary>
+        T Create();
+
+        /// <summary>
+        /// Resets the state of a pool item.
+        /// </summary>
+        /// <param name="item"></param>
+        void Reset(T item);
+
+        /// <summary>
+        /// Disposes a pool item.
+        /// </summary>
+        void Dispose(T item);
+    }
+
+    /// <summary>
     /// Describes a simple object pool.
     /// </summary>
     public class ObjectPool<T>: Disposable, IReadOnlyCollection<(int OwnerThread, T Object)> where T: class
@@ -74,16 +121,54 @@ namespace Solti.Utils.Primitives.Threading
 
         private delegate ref (int OwnerThread, T? Object) GetObjectHolder();
 
+        private sealed class DefaultLifetimeManager : ILifetimeManager<T>
+        {
+            public Func<T> Factory { get; }
+
+            public bool SuppressItemDispose { get; }
+
+            public DefaultLifetimeManager(Func<T> factory)
+            {
+                Factory = factory;
+            }
+
+            public T Create() => Factory();
+
+            public void Dispose(T item)
+            {
+                if (item is IDisposable disposable)
+                    disposable.Dispose();
+            }
+
+            public void Reset(T item)
+            {
+                if (item is IResettable resettable && resettable.Dirty)
+                {
+                    resettable.Reset();
+
+                    if (resettable.Dirty)
+                        throw new InvalidOperationException(Resources.RESET_FAILED);
+                }
+            }
+        }
+
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
-        public ObjectPool(int maxPoolSize, Func<T> factory, bool suppressItemDispose = false) 
+        public ObjectPool(int maxPoolSize, ILifetimeManager<T> lifetimeManager)
         {
             FObjects = new (int OwnerThread, T? Object)[maxPoolSize]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
             FHeldObject = new ThreadLocal<GetObjectHolder?>(trackAllValues: false);
-            Factory = factory;
+
+            LifetimeManager = lifetimeManager ?? throw new ArgumentNullException(nameof(lifetimeManager));
             Capacity = maxPoolSize;
-            SuppressItemDispose = suppressItemDispose;
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="ObjectPool{T}"/> object.
+        /// </summary>
+        public ObjectPool(int maxPoolSize, Func<T> factory): this(maxPoolSize, new DefaultLifetimeManager(factory ?? throw new ArgumentNullException(nameof(factory)))) 
+        {
         }
 
         /// <summary>
@@ -92,26 +177,20 @@ namespace Solti.Utils.Primitives.Threading
         public int Capacity { get; }
 
         /// <summary>
-        /// Delegate to create pool items.
+        /// The <see cref="ILifetimeManager{T}"/> of the items exposed by this pool.
         /// </summary>
-        public Func<T> Factory { get; }
-
-        /// <summary>
-        /// Returns true if the <see cref="ObjectPool{T}"/> should NOT dispose its items on release.
-        /// </summary>
-        public bool SuppressItemDispose { get; }
+        public ILifetimeManager<T> LifetimeManager { get; }
 
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
             {
-                if (!SuppressItemDispose) foreach ((int _, T Object) item in this)
+                foreach ((int _, T Object) item in this)
                 {
                     try
                     {
-                        if (item.Object is IDisposable disposable)
-                            disposable.Dispose();
+                        LifetimeManager.Dispose(item.Object);
                     }
                     #pragma warning disable CA1031 // This method should not throw.
                     catch (Exception e)
@@ -125,22 +204,6 @@ namespace Solti.Utils.Primitives.Threading
             }
 
             base.Dispose(disposeManaged);
-        }
-
-        /// <summary>
-        /// Gets an item from the pool.
-        /// </summary>
-        public PoolItem<T>? GetItem(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
-        {
-            T? value = Get(checkoutPolicy, cancellation);
-
-            return value is null
-                ? null
-                : new PoolItem<T>
-                {
-                    Value = value,
-                    Owner = this
-                };
         }
 
         /// <summary>
@@ -187,7 +250,7 @@ namespace Solti.Utils.Primitives.Threading
                             // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
                             //
 
-                            holder.Object ??= Factory();
+                            holder.Object ??= LifetimeManager.Create();
                             return true;
                         }
                         catch
@@ -231,15 +294,9 @@ namespace Solti.Utils.Primitives.Threading
 
             ref (int OwnerThread, T? Object) holder = ref FHeldObject.Value(); // nem masolat
 
-            Debug.Assert(holder.OwnerThread is not 0);
+            Debug.Assert(holder.OwnerThread == Thread.CurrentThread.ManagedThreadId);
 
-            if (holder.Object is IResettable resettable && resettable.Dirty)
-            {
-                resettable.Reset();
-
-                if (resettable.Dirty)
-                    throw new InvalidOperationException(Resources.RESET_FAILED);
-            }
+            LifetimeManager.Reset(holder.Object!);
 
             Interlocked.Exchange(ref holder.OwnerThread, 0);
             FHeldObject.Value = null;

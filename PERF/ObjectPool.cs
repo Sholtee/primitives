@@ -42,10 +42,23 @@ namespace Solti.Utils.Primitives.Perf
             }
         }
 
+        private sealed class SimpleLifetimeManager<T> : ILifetimeManager<T> where T: class, new()
+        {
+            public T Create() => new T();
+
+            public void Dispose(T item)
+            {
+            }
+
+            public void Reset(T item)
+            {
+            }
+        }
+
         [GlobalSetup(Target = nameof(Solti_Utils_ObjectPool_GetAndReturn))]
         public void Setup_OurPool()
         {
-            OurPool = new ObjectPool<object>(1, () => new object(), suppressItemDispose: true);
+            OurPool = new ObjectPool<object>(1, new SimpleLifetimeManager<object>());
             GC.SuppressFinalize(OurPool);
         }
 
