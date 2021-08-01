@@ -1095,6 +1095,40 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T)
   nameWithType: ILifetimeManager<T>
   nameWithType.vb: ILifetimeManager(Of T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn(`0)
+  name: CheckIn(T)
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckIn__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn(`0)
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.CheckIn(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).CheckIn(T)
+  nameWithType: ILifetimeManager<T>.CheckIn(T)
+  nameWithType.vb: ILifetimeManager(Of T).CheckIn(T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn*
+  name: CheckIn
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckIn_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.CheckIn
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).CheckIn
+  nameWithType: ILifetimeManager<T>.CheckIn
+  nameWithType.vb: ILifetimeManager(Of T).CheckIn
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut(`0)
+  name: CheckOut(T)
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckOut__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut(`0)
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.CheckOut(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).CheckOut(T)
+  nameWithType: ILifetimeManager<T>.CheckOut(T)
+  nameWithType.vb: ILifetimeManager(Of T).CheckOut(T)
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut*
+  name: CheckOut
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckOut_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.CheckOut
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).CheckOut
+  nameWithType: ILifetimeManager<T>.CheckOut
+  nameWithType.vb: ILifetimeManager(Of T).CheckOut
 - uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create
   name: Create()
   href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Create
@@ -1129,23 +1163,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Dispose
   nameWithType: ILifetimeManager<T>.Dispose
   nameWithType.vb: ILifetimeManager(Of T).Dispose
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset(`0)
-  name: Reset(T)
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset__0_
-  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset(`0)
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Reset(T)
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Reset(T)
-  nameWithType: ILifetimeManager<T>.Reset(T)
-  nameWithType.vb: ILifetimeManager(Of T).Reset(T)
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset*
-  name: Reset
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Reset
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Reset
-  nameWithType: ILifetimeManager<T>.Reset
-  nameWithType.vb: ILifetimeManager(Of T).Reset
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1
   name: ObjectPool<T>
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html

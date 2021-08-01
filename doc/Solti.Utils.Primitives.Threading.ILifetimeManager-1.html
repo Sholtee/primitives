@@ -68,6 +68,58 @@
   </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckIn_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckIn__0_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckIn(`0)">CheckIn(T)</h4>
+  <div class="markdown level1 summary"><p>Resets the state of the item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CheckIn(T item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckOut_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_CheckOut__0_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.CheckOut(`0)">CheckOut(T)</h4>
+  <div class="markdown level1 summary"><p>Prepares the item to be checked out.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CheckOut(T item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_Create_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_Create" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.Create">Create()</h4>
   <div class="markdown level1 summary"><p>Creates a new pool item.</p>
@@ -100,32 +152,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Dispose(T item)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_Reset__0_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.Reset(`0)">Reset(T)</h4>
-  <div class="markdown level1 summary"><p>Resets the state of a pool item.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Reset(T item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
