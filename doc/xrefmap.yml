@@ -1301,14 +1301,14 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).LifetimeManager
   nameWithType: ObjectPool<T>.LifetimeManager
   nameWithType.vb: ObjectPool(Of T).LifetimeManager
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return
-  name: Return()
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Return
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Return()
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return()
-  nameWithType: ObjectPool<T>.Return()
-  nameWithType.vb: ObjectPool(Of T).Return()
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return(`0)
+  name: Return(T)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Return(`0)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Return(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return(T)
+  nameWithType: ObjectPool<T>.Return(T)
+  nameWithType.vb: ObjectPool(Of T).Return(T)
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Return*
   name: Return
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Return_
