@@ -20,7 +20,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
     public class ObjectPoolTests 
     {
         [Test]
-        public void Get_ShouldReturnTheSameObject() 
+        public void Get_ShouldReturnTheSameObjectIfPossible() 
         {
             using var pool = new ObjectPool<object>(1, () => new object());
 
@@ -48,11 +48,11 @@ namespace Solti.Utils.Primitives.Threading.Tests
         }
 
         [Test]
-        public void Get_ShouldReturnTheSameObject2()
+        public void Get_ShouldCreateANewObjectIfRequired()
         {
             using var pool = new ObjectPool<object>(2, () => new object());
 
-            Assert.AreSame(pool.Get(), pool.Get());
+            Assert.AreNotSame(pool.Get(), pool.Get());
         }
 
         [Test]
@@ -171,8 +171,8 @@ namespace Solti.Utils.Primitives.Threading.Tests
 
             using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
 
-            pool.Get();
-            Assert.Throws<InvalidOperationException>(pool.Return, Resources.RESET_FAILED);
+            IResettable val = pool.Get();
+            Assert.Throws<InvalidOperationException>(() => pool.Return(val), Resources.RESET_FAILED);
         }
 
         [Test]

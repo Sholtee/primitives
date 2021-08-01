@@ -73,8 +73,8 @@ namespace Solti.Utils.Primitives.Perf
         {
             for (int i = 0; i < OperationsPerInvoke; i++)
             {
-                OurPool.Get(CheckoutPolicy.Throw);
-                OurPool.Return();
+                object obj = OurPool.Get(CheckoutPolicy.Throw);
+                OurPool.Return(obj);
             }
         }
     }

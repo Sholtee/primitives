@@ -35,7 +35,7 @@ namespace Solti.Utils.Primitives.Threading
         protected override void Dispose(bool disposeManaged)
         {
             if (disposeManaged)
-                Owner.Return();
+                Owner.Return(Value);
 
             base.Dispose(disposeManaged);
         }
@@ -121,10 +121,6 @@ namespace Solti.Utils.Primitives.Threading
     {
         private readonly (int OwnerThread, T? Object)[] FObjects;
 
-        private readonly ThreadLocal<GetObjectHolder?> FHeldObject;
-
-        private delegate ref (int OwnerThread, T? Object) GetObjectHolder();
-
         private sealed class DefaultLifetimeManager : ILifetimeManager<T>
         {
             public Func<T> Factory { get; }
@@ -162,7 +158,6 @@ namespace Solti.Utils.Primitives.Threading
         public ObjectPool(int maxPoolSize, ILifetimeManager<T> lifetimeManager)
         {
             FObjects = new (int OwnerThread, T? Object)[maxPoolSize]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
-            FHeldObject = new ThreadLocal<GetObjectHolder?>(trackAllValues: false);
 
             LifetimeManager = lifetimeManager ?? throw new ArgumentNullException(nameof(lifetimeManager));
             Capacity = maxPoolSize;
@@ -203,8 +198,6 @@ namespace Solti.Utils.Primitives.Threading
                         Trace.WriteLine($"Can't dispose pool item: {e}");
                     }
                 }
-
-                FHeldObject.Dispose();
             }
 
             base.Dispose(disposeManaged);
@@ -217,16 +210,7 @@ namespace Solti.Utils.Primitives.Threading
         {
             CheckNotDisposed();
 
-            //
-            // Szalankent csak egyszer vehetunk ki a pool-bol elemet
-            //
-
-            if (FHeldObject.Value is not null)
-                //
-                // FHeldObject.Value().Object lehet NULL ha a factory maga is elemet akarna kivenni a pool-bol
-                //
-
-                return FHeldObject.Value().Object ?? throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
+            T? result = null;
 
             SpinWait.SpinUntil(() =>
             {
@@ -240,21 +224,26 @@ namespace Solti.Utils.Primitives.Threading
                 {
                     ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
+                    if (holder.OwnerThread == Thread.CurrentThread.ManagedThreadId && holder.Object is null)
+                        //
+                        // Object lehet NULL ha a factory maga is elemet akarna kivenni a pool-bol
+                        //
+
+                        throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
+
                     //
                     // Az elso olyan elem ami meg nincs kicsekkolva
                     //
 
                     if (Interlocked.CompareExchange(ref holder.OwnerThread, Thread.CurrentThread.ManagedThreadId, 0) == 0)
                     {
-                        FHeldObject.Value = () => ref FObjects[i];
-
                         try
                         {
                             //
                             // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
                             //
 
-                            holder.Object ??= LifetimeManager.Create();
+                            result = (holder.Object ??= LifetimeManager.Create());
 
                             LifetimeManager.CheckOut(holder.Object);
 
@@ -266,7 +255,7 @@ namespace Solti.Utils.Primitives.Threading
                             // Ha hiba vt a factory-ban akkor az elem ne maradjon kicsekkolva.
                             //
 
-                            Return();
+                            Interlocked.Exchange(ref holder.OwnerThread, 0);
                             throw;
                         }
                     }
@@ -286,27 +275,33 @@ namespace Solti.Utils.Primitives.Threading
                 return checkoutPolicy is CheckoutPolicy.Discard;
             });
 
-            return FHeldObject.Value?.Invoke().Object;
+            return result;
         }
 
         /// <summary>
         /// Returns the item to the pool, identified by its index.
         /// </summary>
-        public void Return() 
+        public void Return(T item) 
         {
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
+
             CheckNotDisposed();
 
-            if (FHeldObject.Value is null)
-                return;
+            for (int i = 0; i < Capacity; i++)
+            {
+                ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
-            ref (int OwnerThread, T? Object) holder = ref FHeldObject.Value(); // nem masolat
+                if (holder.Object != item)
+                    continue;
 
-            Debug.Assert(holder.OwnerThread == Thread.CurrentThread.ManagedThreadId);
+                LifetimeManager.CheckIn(holder.Object!);
 
-            LifetimeManager.CheckIn(holder.Object!);
+                if (holder.OwnerThread != Thread.CurrentThread.ManagedThreadId)
+                    Trace.WriteLine("Returning item from a different thread");
 
-            Interlocked.Exchange(ref holder.OwnerThread, 0);
-            FHeldObject.Value = null;
+                Interlocked.Exchange(ref holder.OwnerThread, 0);
+            }
         }
 
         /// <summary>
