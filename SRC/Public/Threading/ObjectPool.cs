@@ -52,8 +52,7 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public static PoolItem<T>? GetItem<T>(this ObjectPool<T> self, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default) where T: class
         {
-            if (self is null)
-                throw new ArgumentNullException(nameof(self));
+            Ensure.Parameter.IsNotNull(self, nameof(self));
 
             T? value = self.Get(checkoutPolicy, cancellation);
 
@@ -166,7 +165,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
-        public ObjectPool(int maxPoolSize, Func<T> factory): this(maxPoolSize, new DefaultLifetimeManager(factory ?? throw new ArgumentNullException(nameof(factory)))) 
+        public ObjectPool(int maxPoolSize, Func<T> factory): this(maxPoolSize, new DefaultLifetimeManager(Ensure.Parameter.IsNotNull(factory, nameof(factory)))) 
         {
         }
 
@@ -283,8 +282,7 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public void Return(T item) 
         {
-            if (item is null)
-                throw new ArgumentNullException(nameof(item));
+            Ensure.Parameter.IsNotNull(item, nameof(item));
 
             CheckNotDisposed();
 
