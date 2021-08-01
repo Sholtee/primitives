@@ -50,7 +50,11 @@ namespace Solti.Utils.Primitives.Perf
             {
             }
 
-            public void Reset(T item)
+            public void CheckOut(T item)
+            {
+            }
+
+            public void CheckIn(T item)
             {
             }
         }

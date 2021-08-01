@@ -99,10 +99,14 @@ namespace Solti.Utils.Primitives.Threading
         T Create();
 
         /// <summary>
-        /// Resets the state of a pool item.
+        /// Prepares the item to be checked out.
         /// </summary>
-        /// <param name="item"></param>
-        void Reset(T item);
+        void CheckOut(T item);
+
+        /// <summary>
+        /// Resets the state of the item.
+        /// </summary>
+        void CheckIn(T item);
 
         /// <summary>
         /// Disposes a pool item.
@@ -125,8 +129,6 @@ namespace Solti.Utils.Primitives.Threading
         {
             public Func<T> Factory { get; }
 
-            public bool SuppressItemDispose { get; }
-
             public DefaultLifetimeManager(Func<T> factory)
             {
                 Factory = factory;
@@ -140,7 +142,9 @@ namespace Solti.Utils.Primitives.Threading
                     disposable.Dispose();
             }
 
-            public void Reset(T item)
+            public void CheckOut(T item) { }
+
+            public void CheckIn(T item)
             {
                 if (item is IResettable resettable && resettable.Dirty)
                 {
@@ -251,6 +255,9 @@ namespace Solti.Utils.Primitives.Threading
                             //
 
                             holder.Object ??= LifetimeManager.Create();
+
+                            LifetimeManager.CheckOut(holder.Object);
+
                             return true;
                         }
                         catch
@@ -296,7 +303,7 @@ namespace Solti.Utils.Primitives.Threading
 
             Debug.Assert(holder.OwnerThread == Thread.CurrentThread.ManagedThreadId);
 
-            LifetimeManager.Reset(holder.Object!);
+            LifetimeManager.CheckIn(holder.Object!);
 
             Interlocked.Exchange(ref holder.OwnerThread, 0);
             FHeldObject.Value = null;
