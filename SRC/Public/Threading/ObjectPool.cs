@@ -158,7 +158,7 @@ namespace Solti.Utils.Primitives.Threading
         {
             FObjects = new (int OwnerThread, T? Object)[maxPoolSize]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
 
-            LifetimeManager = lifetimeManager ?? throw new ArgumentNullException(nameof(lifetimeManager));
+            LifetimeManager = Ensure.Parameter.IsNotNull(lifetimeManager, nameof(lifetimeManager));
             Capacity = maxPoolSize;
         }
 
