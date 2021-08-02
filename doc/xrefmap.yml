@@ -1163,6 +1163,23 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Dispose
   nameWithType: ILifetimeManager<T>.Dispose
   nameWithType.vb: ILifetimeManager(Of T).Dispose
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
+  name: RecursionDetected()
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.RecursionDetected()
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).RecursionDetected()
+  nameWithType: ILifetimeManager<T>.RecursionDetected()
+  nameWithType.vb: ILifetimeManager(Of T).RecursionDetected()
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected*
+  name: RecursionDetected
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.RecursionDetected
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).RecursionDetected
+  nameWithType: ILifetimeManager<T>.RecursionDetected
+  nameWithType.vb: ILifetimeManager(Of T).RecursionDetected
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1
   name: ObjectPool<T>
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html
