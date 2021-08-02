@@ -108,6 +108,11 @@ namespace Solti.Utils.Primitives.Threading
         void CheckIn(T item);
 
         /// <summary>
+        /// Defines a handler that is called when recursive factory is detected. 
+        /// </summary>
+        void RecursionDetected();
+
+        /// <summary>
         /// Disposes a pool item.
         /// </summary>
         void Dispose(T item);
@@ -149,6 +154,8 @@ namespace Solti.Utils.Primitives.Threading
                         throw new InvalidOperationException(Resources.RESET_FAILED);
                 }
             }
+
+            public void RecursionDetected() => throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
         }
 
         /// <summary>
@@ -228,7 +235,7 @@ namespace Solti.Utils.Primitives.Threading
                         // Object lehet NULL ha a factory maga is elemet akarna kivenni a pool-bol
                         //
 
-                        throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
+                        LifetimeManager.RecursionDetected();
 
                     //
                     // Az elso olyan elem ami meg nincs kicsekkolva

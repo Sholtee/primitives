@@ -44,7 +44,7 @@ namespace Solti.Utils.Primitives.Perf
 
         private sealed class SimpleLifetimeManager<T> : ILifetimeManager<T> where T: class, new()
         {
-            public T Create() => new T();
+            public T Create() => new();
 
             public void Dispose(T item)
             {
@@ -55,6 +55,10 @@ namespace Solti.Utils.Primitives.Perf
             }
 
             public void CheckIn(T item)
+            {
+            }
+
+            public void RecursionDetected()
             {
             }
         }
