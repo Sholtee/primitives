@@ -55,6 +55,8 @@ namespace Solti.Utils.Primitives.Threading
 
         private void Leave()
         {
+            CheckNotDisposed();
+
             if (FDepth is null || --FDepth.Value is 0)
                 Interlocked.Exchange(ref FEntered, 0);
         }
@@ -97,6 +99,8 @@ namespace Solti.Utils.Primitives.Threading
         [MethodImpl(MethodImplOptions.NoInlining)] // StackFrame jo helyre mutasson
         public IDisposable Enter() 
         {
+            CheckNotDisposed();
+
             //
             // Ha ez a metodus nem lehet hivva rekurzivan akkor egyszeruen csak megnezzuk h korabban
             // mar volt e igenyelve a kizerolaoggas.
