@@ -121,7 +121,10 @@ namespace Solti.Utils.Primitives.Threading
     {
         private int FCount;
 
-        private readonly LinkedListHead FHead = new();
+        /// <summary>
+        /// The head of this instance.
+        /// </summary>
+        public LinkedListNode Head { get; } = new LinkedListHead();
 
         private sealed class LinkedListHead : LinkedListNode
         {
@@ -148,39 +151,39 @@ namespace Solti.Utils.Primitives.Threading
 
             for (; ; )
             {
-                if (!FHead.TryLock())
+                if (!Head.TryLock())
                     continue;
 
-                if (!FHead.Next!.TryLock()) // ures listanal (Next == FHead) ez nem csinal semmit 
+                if (!Head.Next!.TryLock()) // ures listanal (Next == FHead) ez nem csinal semmit 
                 {
                     //
                     // TODO: [perf] Itt raprobalhatnank az FHead.Prev-re hatha az nincs zarolva
                     //
 
-                    FHead.Release();
+                    Head.Release();
                     continue;
                 }
 
                 break;
             }
 
-            if (FHead == FHead.Next)
+            if (Head == Head.Next)
             {
                 //
                 // Ez azert van kulon hogy FHead-en ne legyen a Release() ketszer hivva (ezzel potencialisan
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
-                item.Next = item.Prev = FHead;
-                FHead.Next = FHead.Prev = item;
+                item.Next = item.Prev = Head;
+                Head.Next = Head.Prev = item;
                 item.Owner = this;
 
-                FHead.Release();
+                Head.Release();
             }
             else 
             {
-                item.Next = FHead.Next;
-                item.Prev = FHead;
+                item.Next = Head.Next;
+                item.Prev = Head;
                 item.Next.Prev = item;
                 item.Prev.Next = item;
                 item.Owner = this;
@@ -229,13 +232,13 @@ namespace Solti.Utils.Primitives.Threading
             item.Next.Prev = item.Prev;
             item.Prev.Next = item.Next;
 
-            if (item.Prev == FHead && item.Next == FHead)
+            if (item.Prev == Head && item.Next == Head)
                 //
                 // Ez azert van kulon hogy FHead-en ne legyen a Release() ketszer hivva (ezzel potencialisan
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
-                FHead.Release();
+                Head.Release();
             else 
             {
                 item.Prev.Release();
@@ -284,7 +287,7 @@ namespace Solti.Utils.Primitives.Threading
 
             public bool MoveNext()
             {
-                LinkedListNode head = Owner.FHead;
+                LinkedListNode head = Owner.Head;
 
                 for (; ; )
                 {

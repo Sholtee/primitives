@@ -16,8 +16,8 @@ namespace Solti.Utils.Primitives.Perf
     {
         public ConcurrentLinkedList List { get; set; }
 
-        [GlobalSetup()]
-        public void Setup()
+        [GlobalSetup(Target = nameof(Add))]
+        public void SetupAdd()
         {
             List = new ConcurrentLinkedList();
         }
@@ -26,6 +26,21 @@ namespace Solti.Utils.Primitives.Perf
         public void Add()
         {
             List.Add(new LinkedListNode());
+        }
+
+        [GlobalSetup(Target = nameof(ForEach))]
+        public void SetupForEach()
+        {
+            List = new ConcurrentLinkedList();
+            List.Add(new LinkedListNode());
+        }
+
+        [Benchmark]
+        public void ForEach()
+        {
+            foreach (LinkedListNode node in List)
+            {
+            }
         }
     }
 }

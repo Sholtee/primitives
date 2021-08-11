@@ -100,7 +100,28 @@ namespace Solti.Utils.Primitives.Threading.Tests
         public void EmptyList_CanBeEnumerated()
         {
             Assert.DoesNotThrowAsync(() => Task.Run(() => List.Count()));
+            Assert.That(List.Head.LockedBy, Is.EqualTo(0));
             Assert.DoesNotThrow(() => List.Add(new IntNode()));
+        }
+
+        [Test]
+        public void Enumeration_MayBeBroken()
+        {
+            IntNode
+                node1 = new(),
+                node2 = new();
+
+            List.Add(node1);
+            List.Add(node2);
+
+            foreach (IntNode node in List)
+            {
+                break;
+            }
+
+            Assert.That(List.Head.LockedBy, Is.EqualTo(0));
+            Assert.That(node1.LockedBy, Is.EqualTo(0));
+            Assert.That(node2.LockedBy, Is.EqualTo(0));
         }
 
         [Test]
