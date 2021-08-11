@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALREADY_OWNED" xml:space="preserve">
+    <value>The item is stored in an another list.</value>
+  </data>
   <data name="ARBITRARY_RELEASE" xml:space="preserve">
     <value>Dispose can not be called directly.</value>
   </data>
@@ -138,8 +141,11 @@
   <data name="NO_VALUE" xml:space="preserve">
     <value>No value to return.</value>
   </data>
-  <data name="RECURSION_NOT_ALLOWED" xml:space="preserve">
+  <data name="RECURSIVE_FACTORY" xml:space="preserve">
     <value>A pool factory cannot be recursive.</value>
+  </data>
+  <data name="RECURSIVE_LOCK" xml:space="preserve">
+    <value>The node had already been locked previously.</value>
   </data>
   <data name="RESET_FAILED" xml:space="preserve">
     <value>State could not be reverted.</value>

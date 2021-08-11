@@ -155,7 +155,7 @@ namespace Solti.Utils.Primitives.Threading
                 }
             }
 
-            public void RecursionDetected() => throw new InvalidOperationException(Resources.RECURSION_NOT_ALLOWED);
+            public void RecursionDetected() => throw new InvalidOperationException(Resources.RECURSIVE_FACTORY);
         }
 
         /// <summary>

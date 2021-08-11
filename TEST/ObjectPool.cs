@@ -81,7 +81,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             ObjectPool<object> pool = null;
             using (pool = new ObjectPool<object>(1, () => pool.Get()))
             {
-                Assert.Throws<InvalidOperationException>(() => pool.Get(policy), Resources.RECURSION_NOT_ALLOWED);
+                Assert.Throws<InvalidOperationException>(() => pool.Get(policy), Resources.RECURSIVE_FACTORY);
             }
         }
 
