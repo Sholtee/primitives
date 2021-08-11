@@ -99,7 +99,7 @@ namespace Solti.Utils.Primitives.Threading
 
             int prev = CompareExchange(ref FLockedBy, 0, Thread.CurrentThread.ManagedThreadId);
 
-            //Assert(prev == Thread.CurrentThread.ManagedThreadId, "Attempt to release a not-owned node");
+            Assert(prev == Thread.CurrentThread.ManagedThreadId, "Attempt to release a not-owned node");
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

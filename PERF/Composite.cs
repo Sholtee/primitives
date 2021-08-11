@@ -22,20 +22,40 @@ namespace Solti.Utils.Primitives.Perf
         {
         }
 
-        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+        IMyComposite Root { get; set; }
+
+        [GlobalSetup(Target = nameof(Children_Add))]
+        public void Setup_Children_Add()
+        {
+            Root = new MyComposite();
+        }
+
+        [GlobalCleanup(Target = nameof(Children_Add))]
+        public void Cleanup_Children_Add()
+        {
+            Root?.Dispose();
+        }
+
+        [Benchmark]
         public void Children_Add() 
         {
-            IMyComposite root = new MyComposite(); // direkt nincs using h a Dispose() hivas ne szamitson bele a meresbe
-            GC.SuppressFinalize(root);
-
-            for (int i = 0; i < OperationsPerInvoke; i++)
-            {
-                IMyComposite child = new MyComposite();
-                GC.SuppressFinalize(child);
-
-                root.Children.Add(child);
-            }
+            Root.Children.Add(new MyComposite());
         }
+/*
+        public ConcurrentDictionary<object, byte> Dict { get; set; }
+
+        [GlobalSetup(Target = nameof(ConcurrentDictionary_Add))]
+        public void SetupConcurrentDictionary_Add()
+        {
+            Dict = new();
+        }
+
+        [Benchmark]
+        public void ConcurrentDictionary_Add()
+        {
+            Dict.TryAdd(new object(), 0);
+        }
+*/
     }
 
     [MemoryDiagnoser]
