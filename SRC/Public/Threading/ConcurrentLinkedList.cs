@@ -31,7 +31,7 @@ namespace Solti.Utils.Primitives.Threading
         public LinkedListNode? Prev
         {
             get => FPrev;
-            set
+            internal set
             {
                 Assert(FLockedBy is 0 || Thread.CurrentThread.ManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
                 FPrev = value;
@@ -46,7 +46,7 @@ namespace Solti.Utils.Primitives.Threading
         public LinkedListNode? Next
         {
             get => FNext;
-            set
+            internal set
             {
                 Assert(FLockedBy is 0 || Thread.CurrentThread.ManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
                 FNext = value;
