@@ -1091,6 +1091,19 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.GetEnumerator
   nameWithType: ConcurrentLinkedList.GetEnumerator
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head
+  name: Head
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Head
+  commentId: P:Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head
+  nameWithType: ConcurrentLinkedList.Head
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head*
+  name: Head
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Head_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head
+  nameWithType: ConcurrentLinkedList.Head
 - uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.IsReadOnly
   name: IsReadOnly
   href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_IsReadOnly
