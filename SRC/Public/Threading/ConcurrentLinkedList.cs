@@ -21,14 +21,14 @@ namespace Solti.Utils.Primitives.Threading
     /// <summary>
     /// Represents a linked list node.
     /// </summary>
-    public class LinkedListNode: Disposable
+    public class LinkedListNode<T>
     {
-        private LinkedListNode? FPrev;
+        private LinkedListNode<T>? FPrev;
 
         /// <summary>
         /// The previous node.
         /// </summary>
-        public LinkedListNode? Prev
+        public LinkedListNode<T>? Prev
         {
             get => FPrev;
             internal set
@@ -38,12 +38,12 @@ namespace Solti.Utils.Primitives.Threading
             }
         }
 
-        private LinkedListNode? FNext;
+        private LinkedListNode<T>? FNext;
 
         /// <summary>
         /// The next node.
         /// </summary>
-        public LinkedListNode? Next
+        public LinkedListNode<T>? Next
         {
             get => FNext;
             internal set
@@ -56,7 +56,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// The owner of this node.
         /// </summary>
-        public ConcurrentLinkedList? Owner { get; internal set; }
+        public ConcurrentLinkedList<T>? Owner { get; internal set; }
 
         private int FLockedBy;
 
@@ -65,14 +65,10 @@ namespace Solti.Utils.Primitives.Threading
         /// </summary>
         public int LockedBy => FLockedBy;
 
-        /// <inheritdoc/>
-        protected override void Dispose(bool disposeManaged)
-        {
-            if (disposeManaged)
-                Owner?.Remove(this);
-
-            base.Dispose(disposeManaged);
-        }
+        /// <summary>
+        /// The value of this node
+        /// </summary>
+        public T? Value {get; init;}
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool TryLock(bool allowRecursive = true)
@@ -117,16 +113,16 @@ namespace Solti.Utils.Primitives.Threading
     /// Represents a doubly linked list that can be shared across threads.
     /// </summary>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "The name is meaningful")]
-    public class ConcurrentLinkedList: ICollection<LinkedListNode>
+    public class ConcurrentLinkedList<T>: ICollection<LinkedListNode<T>>
     {
         private int FCount;
 
         /// <summary>
         /// The head of this instance.
         /// </summary>
-        public LinkedListNode Head { get; } = new LinkedListHead();
+        public LinkedListNode<T> Head { get; } = new LinkedListHead();
 
-        private sealed class LinkedListHead : LinkedListNode
+        private sealed class LinkedListHead : LinkedListNode<T>
         {
             public LinkedListHead()
             {
@@ -142,7 +138,7 @@ namespace Solti.Utils.Primitives.Threading
         public bool IsReadOnly { get; }
 
         /// <inheritdoc/>
-        public void Add(LinkedListNode item)
+        public void Add(LinkedListNode<T> item)
         {
             Ensure.Parameter.IsNotNull(item, nameof(item));
 
@@ -196,7 +192,7 @@ namespace Solti.Utils.Primitives.Threading
         }
 
         /// <inheritdoc/>
-        public bool Remove(LinkedListNode item)
+        public bool Remove(LinkedListNode<T> item)
         {
             Ensure.Parameter.IsNotNull(item, nameof(item));
 
@@ -255,39 +251,39 @@ namespace Solti.Utils.Primitives.Threading
         public void Clear() => throw new NotImplementedException();
 
         /// <inheritdoc/>
-        public bool Contains(LinkedListNode item) => Ensure.Parameter.IsNotNull(item, nameof(item)).Owner == this;
+        public bool Contains(LinkedListNode<T> item) => Ensure.Parameter.IsNotNull(item, nameof(item)).Owner == this;
 
         /// <inheritdoc/>
-        public void CopyTo(LinkedListNode[] array, int arrayIndex)
+        public void CopyTo(LinkedListNode<T>[] array, int arrayIndex)
         {
             Ensure.Parameter.IsNotNull(array, nameof(array));
 
-            foreach (LinkedListNode node in this)
+            foreach (LinkedListNode<T> node in this)
             {
                 array[arrayIndex++] = node;
             }
         }
 
         /// <inheritdoc/>
-        public IEnumerator<LinkedListNode> GetEnumerator() => new Enumerator(this);
+        public IEnumerator<LinkedListNode<T>> GetEnumerator() => new Enumerator(this);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private sealed class Enumerator : Disposable, IEnumerator<LinkedListNode>
+        private sealed class Enumerator : Disposable, IEnumerator<LinkedListNode<T>>
         {
-            public ConcurrentLinkedList Owner { get; }
+            public ConcurrentLinkedList<T> Owner { get; }
 
-            public LinkedListNode Current { get; private set; }
+            public LinkedListNode<T> Current { get; private set; }
 
             object IEnumerator.Current => Current;
 
             #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-            public Enumerator(ConcurrentLinkedList owner) => Owner = owner;
+            public Enumerator(ConcurrentLinkedList<T> owner) => Owner = owner;
             #pragma warning restore CS8618
 
             public bool MoveNext()
             {
-                LinkedListNode head = Owner.Head;
+                LinkedListNode<T> head = Owner.Head;
 
                 for (; ; )
                 {

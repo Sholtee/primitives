@@ -14,31 +14,31 @@ namespace Solti.Utils.Primitives.Perf
     [SimpleJob(RunStrategy.Throughput, invocationCount: 10000)]
     public class LinkedList
     {
-        public ConcurrentLinkedList List { get; set; }
+        public ConcurrentLinkedList<int> List { get; set; }
 
         [GlobalSetup(Target = nameof(Add))]
         public void SetupAdd()
         {
-            List = new ConcurrentLinkedList();
+            List = new ConcurrentLinkedList<int>();
         }
 
         [Benchmark]
         public void Add()
         {
-            List.Add(new LinkedListNode());
+            List.Add(new LinkedListNode<int>());
         }
 
         [GlobalSetup(Target = nameof(ForEach))]
         public void SetupForEach()
         {
-            List = new ConcurrentLinkedList();
-            List.Add(new LinkedListNode());
+            List = new ConcurrentLinkedList<int>();
+            List.Add(new LinkedListNode<int>());
         }
 
         [Benchmark]
         public void ForEach()
         {
-            foreach (LinkedListNode node in List)
+            foreach (LinkedListNode<int> node in List)
             {
             }
         }
