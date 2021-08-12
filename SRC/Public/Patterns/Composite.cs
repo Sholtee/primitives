@@ -5,7 +5,6 @@
 ********************************************************************************/
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -17,23 +16,103 @@ using static System.Diagnostics.Debug;
 namespace Solti.Utils.Primitives.Patterns
 {
     using Properties;
+    using Threading;
 
     /// <summary>
     /// Implements the <see cref="IComposite{TInterface}"/> interface.
     /// </summary>
     /// <typeparam name="TInterface">The interface on which we want to apply the composite pattern.</typeparam>
-    [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix")]
-    [SuppressMessage("Design", "CA1033:Interface methods should be callable by child types", Justification = "Derived types can access these methods via the Children property")]
-    public abstract class Composite<TInterface> : Disposable, ICollection<TInterface>, IComposite<TInterface> where TInterface : class, IDisposableEx
+    public abstract class Composite<TInterface> : DisposableSupportsNotifyOnDispose, IComposite<TInterface> where TInterface : class, IDisposableEx, INotifyOnDispose
     {
         #region Private
-        private readonly ConcurrentDictionary<TInterface, byte> FChildren = new();
-
-        private int FCount; // kulon kell szamon tartani
-
-        private IComposite<TInterface>? FParent;
+        private readonly ConcurrentChildCollection FChildren;
 
         private static int FUsedTasks; // NEM globalis, leszarmazottankent ertelmezett
+
+        private sealed class ConcurrentChildCollection : ICollection<TInterface>
+        {
+            private readonly ConcurrentLinkedList<TInterface> FUnderlyingList = new();
+
+            private int FCount; // kulon kell szamon tartani
+
+            public int Count => FUnderlyingList.Count;
+
+            public int MaxSize { get; init; }
+
+            public bool IsReadOnly { get; }
+
+            public void Add(TInterface item)
+            {
+                Ensure.Parameter.IsNotNull(item, nameof(item));
+
+                //
+                // Itt ne az Count-ra vizsgaljunk mert az ellenorzes pillanataban az ertek meg lehet h jo,
+                // viszont mire az Add()-hez jutunk mar lehet elromlik
+                // 
+
+                if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxSize) is null)
+                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, MaxSize));
+
+                LinkedListNode<TInterface> node = new()
+                {
+                    Value = item
+                };
+
+                FUnderlyingList.Add(node);
+
+                item.OnDispose += (_, _) =>
+                {
+                    FUnderlyingList.Remove(node);
+                    Interlocked.Decrement(ref FCount);
+                };
+            }
+
+            public bool Contains(TInterface item)
+            {
+                Ensure.Parameter.IsNotNull(item, nameof(item));
+
+                return FUnderlyingList.Any(node => node.Value == item);
+            }
+
+            public IEnumerator<TInterface> GetEnumerator() => FUnderlyingList
+                .Select(node => node.Value)
+                .GetEnumerator()!;
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+            public List<TInterface> ToList()
+            {
+                List<TInterface> lst = new(capacity: Count); // Count valtozhat a felsorolas alatt de kb jo
+
+                foreach (TInterface child in this)
+                {
+                    lst.Add(child);
+                }
+
+                return lst;
+            }
+
+            public void Clear() =>
+                //
+                // Elemek csak ugy torolhetok ha azokon hivjuk a Dispose()-t
+                //
+
+                throw new NotSupportedException();
+
+            public bool Remove(TInterface item) =>
+                //
+                // Elemek csak ugy torolhetok ha azokon hivjuk a Dispose()-t
+                //
+
+                throw new NotSupportedException();
+
+            public void CopyTo(TInterface[] array, int arrayIndex) =>
+                //
+                // Nehez lehet biztonsaggal hivni mert az elemek szama felsorolas kozben is valtozhat.
+                //
+
+                throw new NotSupportedException();
+        }
         #endregion
 
         #region Protected
@@ -64,7 +143,7 @@ namespace Solti.Utils.Primitives.Patterns
             // nem, mig eltavolitott gyermekeken meg lesz hivva a cel metodus.
             //
 
-            ICollection<TInterface> children = FChildren.Keys; // masolat
+            ICollection<TInterface> children = FChildren.ToList(); // masolat
 
             TResult[] result = new TResult[children.Count];
 
@@ -90,7 +169,7 @@ namespace Solti.Utils.Primitives.Patterns
                         {
                             result[itemIndex] = callback(child);
                         }
-                        finally 
+                        finally
                         {
                             Interlocked.Decrement(ref FUsedTasks);
                         }
@@ -105,7 +184,7 @@ namespace Solti.Utils.Primitives.Patterns
             });
 
             if (boundTasks.Any())
-                Task.WaitAll(boundTasks.ToArray()); 
+                Task.WaitAll(boundTasks.ToArray());
 
             return result;
         }
@@ -116,8 +195,8 @@ namespace Solti.Utils.Primitives.Patterns
         protected internal void Dispatch(Action<TInterface> callback)
         {
             Ensure.Parameter.IsNotNull(callback, nameof(callback));
-          
-            Dispatch<object?>(i => 
+
+            Dispatch<object?>(i =>
             {
                 callback(i);
                 return null;
@@ -127,7 +206,19 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Creates a new <see cref="Composite{TInterface}"/> instance.
         /// </summary>
-        protected Composite() => Ensure.Type<TInterface>.IsInterface();
+        protected Composite(IComposite<TInterface>? parent = null, int maxChildCount = int.MaxValue)
+        {
+            Ensure.Type<TInterface>.IsInterface();
+            TInterface self = Ensure.Type<TInterface>.IsSupportedBy(this);
+
+            FChildren = new ConcurrentChildCollection
+            {
+                MaxSize = maxChildCount
+            };
+
+            Parent = parent;
+            Parent?.Children.Add(self);
+        }
 
         /// <summary>
         /// Disposal logic related to this class.
@@ -177,41 +268,15 @@ namespace Solti.Utils.Primitives.Patterns
 
         #region Public
         /// <summary>
-        /// Returns the maximum child count that can be stored by this instance.
-        /// </summary>
-        public int MaxChildCount { get; init; } = int.MaxValue;
-
-        /// <summary>
         /// Gets or sets the maximum number of concurrent tasks that the <see cref="Composite{TInterface}.Dispatch{TResult}(Func{TInterface, TResult})"/> method may use.
         /// </summary>
         [SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "The value of this property may differ per descendants.")]
         public static int MaxDegreeOfParallelism { get; set; } = Environment.ProcessorCount;
-        #endregion
 
-        #region IComposite
         /// <summary>
         /// The parent of this entity. Can be null.
         /// </summary>
-        public IComposite<TInterface>? Parent
-        {
-            get => FParent;
-            set
-            {
-                if (value == FParent)
-                    return;
-
-                //
-                // Ahhoz h gyermekkent szerepelhessunk, nekunk is implementalni kell TInterface-t
-                //
-
-                TInterface self = Ensure.Type<TInterface>.IsSupportedBy(this);
-
-                FParent?.Children.Remove(self);
-                value?.Children.Add(self);
-
-                FParent = value;
-            }
-        }
+        public IComposite<TInterface>? Parent { get; private set; }
 
         /// <summary>
         /// The children of this entity.
@@ -222,100 +287,9 @@ namespace Solti.Utils.Primitives.Patterns
             {
                 CheckNotDisposed();
 
-                return this;
+                return FChildren;
             }
         }
-        #endregion
-
-        #region ICollection
-        //
-        // Csak a lenti tagoknak kell szalbiztosnak lenniuk.
-        //
-
-        int ICollection<TInterface>.Count 
-        {
-            get 
-            {
-                CheckNotDisposed();
-
-                return FCount;
-            }
-        }
-
-        bool ICollection<TInterface>.IsReadOnly => false;
-      
-        void ICollection<TInterface>.Add(TInterface child)
-        {
-            Ensure.Parameter.IsNotNull(child, nameof(child));
-            CheckNotDisposed();
-
-            //
-            // lock() arra a perverz esetre ha ugyanazt a gyereket parhuzamosan tobbszor is
-            // hozza akarnank adni.
-            //
-
-            lock (child)
-            {
-                //
-                // Itt ne az FChildren.Count-ra vizsgaljunk mert az ellenorzes pillanataban az ertek meg lehet h jo,
-                // viszont mire a TryAdd()-hez jutunk mar lehet elromlik
-                // 
-
-                if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxChildCount) is null)
-                    throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, MaxChildCount));
-
-                //
-                // TryAdd() nem tudom min lock-ol de meg ha a kulcson akkor sincs gond mert ugyanabban a szalban lesz
-                // mint ahol a fenti lock volt hivva.
-                //
-
-                if (!FChildren.TryAdd(child, 0))
-                {
-                    Interlocked.Decrement(ref FCount);
-                    throw new InvalidOperationException(Resources.ITEM_ALREADY_ADDED);
-                }
-            }
-        }
-
-        bool ICollection<TInterface>.Remove(TInterface child)
-        {
-            Ensure.Parameter.IsNotNull(child, nameof(child));
-            CheckNotDisposed();
-
-            lock (child)
-                if (!FChildren.TryRemove(child, out _))
-                    return false;
-
-            Interlocked.Decrement(ref FCount);
-            return true;
-        }
-
-        bool ICollection<TInterface>.Contains(TInterface child) 
-        {
-            Ensure.Parameter.IsNotNull(child, nameof(child));
-            CheckNotDisposed();
-
-            return FChildren.ContainsKey(child);
-        }
-
-        void ICollection<TInterface>.Clear() => throw new NotImplementedException();
-
-        void ICollection<TInterface>.CopyTo(TInterface[] array, int arrayIndex)
-        {
-            Ensure.Parameter.IsNotNull(array, nameof(array));
-            CheckNotDisposed();
-
-            FChildren.Keys.CopyTo(array, arrayIndex);
-        }
-
-        IEnumerator<TInterface> IEnumerable<TInterface>.GetEnumerator()
-        {
-            CheckNotDisposed();
-
-            return FChildren.Keys.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() => Children.GetEnumerator();
         #endregion
     }
 }

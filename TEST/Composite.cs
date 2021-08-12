@@ -18,12 +18,13 @@ namespace Solti.Utils.Primitives.Patterns.Tests
     [TestFixture]
     public sealed class CompositeTests
     {
-        private interface IMyComposite : IComposite<IMyComposite>
+        private interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose
         {
         }
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
+            public MyComposite(IMyComposite parent = null, int maxChildCount = int.MaxValue) : base(parent, maxChildCount) { }
         }
 
         [Test]
@@ -31,8 +32,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite 
                 root = new MyComposite(),
-                child = new MyComposite { Parent = root },
-                grandChild = new MyComposite { Parent = child };
+                child = new MyComposite(root),
+                grandChild = new MyComposite(child);
 
             root.Dispose();
 
@@ -45,8 +46,8 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite { Parent = root },
-                grandChild = new MyComposite { Parent = child };
+                child = new MyComposite(root),
+                grandChild = new MyComposite(child);
 
             await root.DisposeAsync();
 
@@ -59,9 +60,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite { Parent = root };
+                child = new MyComposite(root);
 
-            new MyComposite { Parent = root }; // harmadik
+            new MyComposite(root); // harmadik
 
             Assert.That(root.Children.Count, Is.EqualTo(2));
             child.Dispose();
@@ -73,9 +74,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         {
             IMyComposite
                 root = new MyComposite(),
-                child = new MyComposite { Parent = root };
+                child = new MyComposite(root);
 
-            new MyComposite { Parent = root }; // harmadik
+            new MyComposite(root); // harmadik
 
             Assert.That(root.Children.Count, Is.EqualTo(2));
             await child.DisposeAsync();
@@ -85,13 +86,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         [Test]
         public void AddChild_ShouldValidate() 
         {
-            IMyComposite 
-                root = new MyComposite(),
-                child = new MyComposite();
+            IMyComposite root = new MyComposite();
 
             Assert.Throws<ArgumentNullException>(() => root.Children.Add(null));
-            Assert.DoesNotThrow(() => child.Parent = root);
-            Assert.Throws<InvalidOperationException>(() => root.Children.Add(child), Resources.ITEM_ALREADY_ADDED);
         }
 
         [Test]
@@ -101,11 +98,11 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
             Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 50).Select(_ => Task.Run(() =>
             {
-                MyComposite child = new() { Parent = root };
+                MyComposite child = new(root);
                 Random rnd = new();
 
-                Thread.Sleep(rnd.Next(0, 5));
-                child.Parent = null;
+                Thread.Sleep(rnd.Next(0, 2));
+                child.Dispose();
             }))));
 
             Assert.That(root.Children, Is.Empty);
@@ -114,28 +111,10 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         [Test]
         public void Children_MayBeLimited() 
         {
-            IMyComposite root = new MyComposite { MaxChildCount = 1 };
+            IMyComposite root = new MyComposite(maxChildCount: 1);
 
-            Assert.DoesNotThrow(() => new MyComposite { Parent = root });
-            Assert.Throws<InvalidOperationException>(() => new MyComposite { Parent = root }, Resources.MAX_SIZE_REACHED);
-        }
-
-        [Test]
-        public void RemoveChild_ShouldValidate()
-        {
-            IMyComposite
-                root = new MyComposite(),
-                child = new MyComposite { Parent = root };
-
-            Assert.Throws<ArgumentNullException>(() => root.Children.Remove(null));
-            Assert.That(() => root.Children.Remove(new MyComposite()), Is.False);
-
-            //
-            // Nem lett felszabaditva.
-            //
-
-            Assert.DoesNotThrow(child.Dispose);
-            Assert.That(root.Children.Count, Is.EqualTo(0));
+            Assert.DoesNotThrow(() => new MyComposite(root));
+            Assert.Throws<InvalidOperationException>(() => new MyComposite(root), Resources.MAX_SIZE_REACHED);
         }
 
         [Test]
@@ -152,7 +131,7 @@ namespace Solti.Utils.Primitives.Patterns.Tests
             Assert.That(root.Children.Contains(child));
         }
 
-        public interface IRealComposite : IComposite<IRealComposite> 
+        public interface IRealComposite : IComposite<IRealComposite>, INotifyOnDispose
         {
             void Foo(int arg);
             string Bar();
@@ -191,21 +170,9 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                 result
                     .Setup(i => i.Foo(1986));
 
-                IComposite<IRealComposite> parent = null;
-
-                result
-                    .SetupGet(i => i.Parent)
-                    .Returns(() => parent);
-
-#pragma warning disable CS0618 // Type or member is obsolete
-                result
-                    .SetupSet(i => i.Parent)
-#pragma warning restore CS0618
-                    .Callback(val => parent = val);
-
                 result
                     .Setup(i => i.Dispose())
-                    .Callback(() => root.Children.Remove(result.Object));
+                    .Raises(i => i.OnDispose += null, this, EventArgs.Empty);
 
                 return result;
             }
@@ -239,18 +206,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
                 .Setup(i => i.Bar())
                 .Returns("cica");
 
-            IComposite<IRealComposite> parent = null;
-
-            mockGrandChild
-                .SetupGet(i => i.Parent)
-                .Returns(() => parent);
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            mockGrandChild
-                .SetupSet(i => i.Parent)
-#pragma warning restore CS0618
-                    .Callback(val => parent = val);
-
             child.Children.Add(mockGrandChild.Object);
             root.Children.Add(child);
 
@@ -269,13 +224,14 @@ namespace Solti.Utils.Primitives.Patterns.Tests
 
         private class BadComposite : Composite<IMyComposite> 
         {
+            public BadComposite(BadComposite parent = null) : base(parent) { }
         }
 
         [Test]
         public void Parent_ShouldThrowIfTheInterfaceIsNotImplemented() =>
-            Assert.Throws<NotSupportedException>(() => new BadComposite { Parent = new BadComposite() }, Resources.INTERFACE_NOT_SUPPORTED);
+            Assert.Throws<NotSupportedException>(() => new BadComposite(new BadComposite()), Resources.INTERFACE_NOT_SUPPORTED);
 
-        public interface IGeneric: IComposite<IGeneric>
+        public interface IGeneric: IComposite<IGeneric>, INotifyOnDispose
         {
             void Foo<T>(T p);
         }
@@ -289,18 +245,6 @@ namespace Solti.Utils.Primitives.Patterns.Tests
         public void Dispatch_ShouldSupportGenericMethods() 
         {
             var mockChild = new Mock<IGeneric>(MockBehavior.Strict);
-
-            IComposite<IGeneric> parent = null;
-
-            mockChild
-                .SetupGet(i => i.Parent)
-                .Returns(() => parent);
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            mockChild
-                .SetupSet(i => i.Parent)
-#pragma warning restore CS0618
-                    .Callback(val => parent = val);
 
             mockChild.Setup(i => i.Foo(1));
 

@@ -3,8 +3,6 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
-using System;
-
 using BenchmarkDotNet.Attributes;
 
 namespace Solti.Utils.Primitives.Perf
@@ -16,13 +14,14 @@ namespace Solti.Utils.Primitives.Perf
     [MemoryDiagnoser]
     public class Composite
     {
-        private interface IMyComposite : IComposite<IMyComposite> { }
+        public interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose { }
 
-        private class MyComposite : Composite<IMyComposite>, IMyComposite
+        public class MyComposite : Composite<IMyComposite>, IMyComposite
         {
+            public MyComposite(IMyComposite parent = null) : base(parent) { }
         }
 
-        IMyComposite Root { get; set; }
+        private IMyComposite Root { get; set; }
 
         [GlobalSetup(Target = nameof(Children_Add))]
         public void Setup_Children_Add()
@@ -37,10 +36,7 @@ namespace Solti.Utils.Primitives.Perf
         }
 
         [Benchmark]
-        public void Children_Add() 
-        {
-            Root.Children.Add(new MyComposite());
-        }
+        public MyComposite Children_Add() => new MyComposite(Root);
 /*
         public ConcurrentDictionary<object, byte> Dict { get; set; }
 
@@ -61,13 +57,14 @@ namespace Solti.Utils.Primitives.Perf
     [MemoryDiagnoser]
     public class Composite_Dispatch
     {
-        private interface IMyComposite : IComposite<IMyComposite> 
+        private interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose
         {
             void Foo(string arg);
         }
 
         private class MyComposite : Composite<IMyComposite>, IMyComposite
         {
+            public MyComposite(IMyComposite parent = null) : base(parent) { }
             void IMyComposite.Foo(string arg) => Dispatch(i => i.Foo(arg));
         }
 
@@ -88,7 +85,6 @@ namespace Solti.Utils.Primitives.Perf
             MyComposite.MaxDegreeOfParallelism = MaxDegreeOfParallelism;
 
             Root = new MyComposite();
-            GC.SuppressFinalize(Root);
 
             AddChildren(Root, 0);
 
@@ -96,13 +92,10 @@ namespace Solti.Utils.Primitives.Perf
             {
                 for (int i = 0; i < ChildCount; i++)
                 {
-                    IMyComposite child = new MyComposite();
-                    GC.SuppressFinalize(child);
+                    IMyComposite child = new MyComposite(current);
 
                     if (currentDepth < Depth)
                         AddChildren(child, currentDepth + 1);
-
-                    current.Children.Add(child);
                 }
             }
         }
@@ -114,6 +107,13 @@ namespace Solti.Utils.Primitives.Perf
             {
                 Root.Foo("cica");
             }
+        }
+
+        [GlobalCleanup]
+        public void Cleanup()
+        {
+            Root.Dispose();
+            Root = null;
         }
     }
 }
