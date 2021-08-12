@@ -35,7 +35,7 @@ namespace Solti.Utils.Primitives.Patterns
 
             private int FCount; // kulon kell szamon tartani
 
-            public int Count => FUnderlyingList.Count;
+            public int Count => FCount;
 
             public int MaxSize { get; init; }
 
@@ -46,8 +46,8 @@ namespace Solti.Utils.Primitives.Patterns
                 Ensure.Parameter.IsNotNull(item, nameof(item));
 
                 //
-                // Itt ne az Count-ra vizsgaljunk mert az ellenorzes pillanataban az ertek meg lehet h jo,
-                // viszont mire az Add()-hez jutunk mar lehet elromlik
+                // Itt ne az FUnderlyingList.Count-ra vizsgaljunk mert az az ellenorzes pillanataban meg lehet h jo,
+                // viszont mire az Add()-hez jutunk mar elromolhat.
                 // 
 
                 if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxSize) is null)
@@ -75,8 +75,8 @@ namespace Solti.Utils.Primitives.Patterns
             }
 
             public IEnumerator<TInterface> GetEnumerator() => FUnderlyingList
-                .Select(node => node.Value)
-                .GetEnumerator()!;
+                .Select(node => node.Value!)
+                .GetEnumerator();
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
