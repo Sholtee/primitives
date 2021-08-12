@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ConcurrentLinkedList
+    <title>Class ConcurrentLinkedList&lt;T&gt;
    | Primitives </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ConcurrentLinkedList
+    <meta name="title" content="Class ConcurrentLinkedList&lt;T&gt;
    | Primitives ">
     <meta name="generator" content="docfx 2.58.0.0">
     
@@ -37,10 +37,10 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList">
+            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1">
   
   
-  <h1 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList" class="text-break">Class ConcurrentLinkedList
+  <h1 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1" class="text-break">Class ConcurrentLinkedList&lt;T&gt;
   </h1>
   <div class="markdown level0 summary"><p>Represents a doubly linked list that can be shared across threads.</p>
 </div>
@@ -48,12 +48,12 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">ConcurrentLinkedList</span></div>
+    <div class="level1"><span class="xref">ConcurrentLinkedList&lt;T&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a>&gt;</div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a>&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
   </div>
   <div class="inheritedMembers">
@@ -82,14 +82,29 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Threading.html">Solti.Utils.Primitives.Threading</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
-  <h5 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_syntax">Syntax</h5>
+  <h5 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConcurrentLinkedList : ICollection&lt;LinkedListNode&gt;, IEnumerable&lt;LinkedListNode&gt;, IEnumerable</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConcurrentLinkedList&lt;T&gt; : ICollection&lt;LinkedListNode&lt;T&gt;&gt;, IEnumerable&lt;LinkedListNode&lt;T&gt;&gt;, IEnumerable</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Count_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Count*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Count" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Count">Count</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Count_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Count" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count">Count</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -111,14 +126,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Head_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Head" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Head">Head</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Head_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Head" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head">Head</h4>
   <div class="markdown level1 summary"><p>The head of this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LinkedListNode Head { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public LinkedListNode&lt;T&gt; Head { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -130,13 +145,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_IsReadOnly_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.IsReadOnly*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_IsReadOnly" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.IsReadOnly">IsReadOnly</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_IsReadOnly_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.IsReadOnly*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_IsReadOnly" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.IsReadOnly">IsReadOnly</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -160,13 +175,13 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Add_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Add*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Add_Solti_Utils_Primitives_Threading_LinkedListNode_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Add(Solti.Utils.Primitives.Threading.LinkedListNode)">Add(LinkedListNode)</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Add(LinkedListNode&lt;T&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add(LinkedListNode item)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Add(LinkedListNode&lt;T&gt; item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -179,27 +194,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
         <td><span class="parametername">item</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Clear_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Clear*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Clear" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Clear">Clear()</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Clear_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Clear" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear">Clear()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Contains_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Contains*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Contains_Solti_Utils_Primitives_Threading_LinkedListNode_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Contains(Solti.Utils.Primitives.Threading.LinkedListNode)">Contains(LinkedListNode)</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Contains(LinkedListNode&lt;T&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(LinkedListNode item)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Contains(LinkedListNode&lt;T&gt; item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -212,7 +227,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
         <td><span class="parametername">item</span></td>
         <td></td>
       </tr>
@@ -233,13 +248,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_CopyTo_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.CopyTo*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_CopyTo_Solti_Utils_Primitives_Threading_LinkedListNode___System_Int32_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode[],System.Int32)">CopyTo(LinkedListNode[], Int32)</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_Solti_Utils_Primitives_Threading_LinkedListNode__0____System_Int32_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode{`0}[],System.Int32)">CopyTo(LinkedListNode&lt;T&gt;[], Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CopyTo(LinkedListNode[] array, int arrayIndex)</code></pre>
+    <pre><code class="lang-csharp hljs">public void CopyTo(LinkedListNode&lt;T&gt;[] array, int arrayIndex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,7 +267,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a>[]</td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;[]</td>
         <td><span class="parametername">array</span></td>
         <td></td>
       </tr>
@@ -263,13 +278,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.GetEnumerator">GetEnumerator()</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator">GetEnumerator()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator&lt;LinkedListNode&gt; GetEnumerator()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;LinkedListNode&lt;T&gt;&gt; GetEnumerator()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,18 +296,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a>&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Remove_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Remove*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_Remove_Solti_Utils_Primitives_Threading_LinkedListNode_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.Remove(Solti.Utils.Primitives.Threading.LinkedListNode)">Remove(LinkedListNode)</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Remove(LinkedListNode&lt;T&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Remove(LinkedListNode item)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Remove(LinkedListNode&lt;T&gt; item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -305,7 +320,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode.html">LinkedListNode</a></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
         <td><span class="parametername">item</span></td>
         <td></td>
       </tr>
@@ -328,8 +343,8 @@
   </table>
   <h3 id="eii">Explicit Interface Implementations
   </h3>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_System_Collections_IEnumerable_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.System#Collections#IEnumerable#GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_System_Collections_IEnumerable_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
