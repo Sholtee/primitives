@@ -253,16 +253,15 @@ namespace Solti.Utils.Primitives.Threading
         /// <inheritdoc/>
         public bool Contains(LinkedListNode<T> item) => Ensure.Parameter.IsNotNull(item, nameof(item)).Owner == this;
 
-        /// <inheritdoc/>
-        public void CopyTo(LinkedListNode<T>[] array, int arrayIndex)
-        {
-            Ensure.Parameter.IsNotNull(array, nameof(array));
+        /// <summary>
+        /// NOT SUPPORTED
+        /// </summary>
+        public void CopyTo(LinkedListNode<T>[] array, int arrayIndex) =>            
+            //
+            // Nehez lehet biztonsaggal hivni mert az elemek szama felsorolas kozben is valtozhat.
+            //
 
-            foreach (LinkedListNode<T> node in this)
-            {
-                array[arrayIndex++] = node;
-            }
-        }
+            throw new NotSupportedException();
 
         /// <inheritdoc/>
         public IEnumerator<LinkedListNode<T>> GetEnumerator() => new Enumerator(this);
@@ -309,7 +308,14 @@ namespace Solti.Utils.Primitives.Threading
                 // Eresszuk el az elozo iteracioban zarolt node-ot
                 //
 
-                Current.Prev!.Release();
+                if (Current.Prev == Current)
+                    Assert(Current == head, "'Current' must point to the list head");
+                    //
+                    // Head ne legyen duplan felszabaditva [Dispose() is fel fogja szabaditani]
+                    //
+
+                else
+                    Current.Prev!.Release();
 
                 return Current != head;
             }
@@ -319,9 +325,7 @@ namespace Solti.Utils.Primitives.Threading
             protected override void Dispose(bool disposeManaged)
             {
                 if (disposeManaged)
-                {
                     Current?.Release();
-                }
 
                 base.Dispose(disposeManaged);
             }
