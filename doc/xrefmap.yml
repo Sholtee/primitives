@@ -629,6 +629,31 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.Disposable.Finalize
   nameWithType: Disposable.Finalize
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
+  name: DisposableSupportsNotifyOnDispose
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html
+  commentId: T:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
+  nameWithType: DisposableSupportsNotifyOnDispose
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose
+  name: BeforeDispose()
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_BeforeDispose
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose()
+  nameWithType: DisposableSupportsNotifyOnDispose.BeforeDispose()
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose*
+  name: BeforeDispose
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_BeforeDispose_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.BeforeDispose
+  nameWithType: DisposableSupportsNotifyOnDispose.BeforeDispose
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.OnDispose
+  name: OnDispose
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_OnDispose
+  commentId: E:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.OnDispose
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.OnDispose
+  nameWithType: DisposableSupportsNotifyOnDispose.OnDispose
 - uid: Solti.Utils.Primitives.Patterns.DisposeByRefObject
   name: DisposeByRefObject
   href: Solti.Utils.Primitives.Patterns.DisposeByRefObject.html
@@ -762,6 +787,18 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.IDisposableEx.Disposed
   nameWithType: IDisposableEx.Disposed
+- uid: Solti.Utils.Primitives.Patterns.INotifyOnDispose
+  name: INotifyOnDispose
+  href: Solti.Utils.Primitives.Patterns.INotifyOnDispose.html
+  commentId: T:Solti.Utils.Primitives.Patterns.INotifyOnDispose
+  fullName: Solti.Utils.Primitives.Patterns.INotifyOnDispose
+  nameWithType: INotifyOnDispose
+- uid: Solti.Utils.Primitives.Patterns.INotifyOnDispose.OnDispose
+  name: OnDispose
+  href: Solti.Utils.Primitives.Patterns.INotifyOnDispose.html#Solti_Utils_Primitives_Patterns_INotifyOnDispose_OnDispose
+  commentId: E:Solti.Utils.Primitives.Patterns.INotifyOnDispose.OnDispose
+  fullName: Solti.Utils.Primitives.Patterns.INotifyOnDispose.OnDispose
+  nameWithType: INotifyOnDispose.OnDispose
 - uid: Solti.Utils.Primitives.Patterns.IResettable
   name: IResettable
   href: Solti.Utils.Primitives.Patterns.IResettable.html
