@@ -61,7 +61,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_IComposite_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IComposite&lt;TInterface&gt; : IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IComposite&lt;TInterface&gt; : IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class, INotifyOnDispose</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -118,7 +118,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IComposite&lt;TInterface&gt; Parent { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">IComposite&lt;TInterface&gt; Parent { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

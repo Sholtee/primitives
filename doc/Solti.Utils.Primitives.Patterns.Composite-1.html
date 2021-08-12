@@ -49,13 +49,12 @@
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html">Disposable</a></div>
-    <div class="level2"><span class="xref">Composite&lt;TInterface&gt;</span></div>
+    <div class="level2"><a class="xref" href="Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html">DisposableSupportsNotifyOnDispose</a></div>
+    <div class="level3"><span class="xref">Composite&lt;TInterface&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;TInterface&gt;</div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TInterface&gt;</div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    <div><a class="xref" href="Solti.Utils.Primitives.Patterns.INotifyOnDispose.html">INotifyOnDispose</a></div>
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IComposite-1.html">IComposite</a>&lt;TInterface&gt;</div>
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
@@ -64,10 +63,13 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed">Disposable.Disposed</a>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_OnDispose">DisposableSupportsNotifyOnDispose.OnDispose</a>
     </div>
     <div>
-      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_BeforeDispose">Disposable.BeforeDispose()</a>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_BeforeDispose">DisposableSupportsNotifyOnDispose.BeforeDispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed">Disposable.Disposed</a>
     </div>
     <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_CheckNotDisposed">Disposable.CheckNotDisposed()</a>
@@ -104,7 +106,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_Composite_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class Composite&lt;TInterface&gt; : Disposable, ICollection&lt;TInterface&gt;, IEnumerable&lt;TInterface&gt;, IEnumerable, IComposite&lt;TInterface&gt;, IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class, IDisposableEx</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class Composite&lt;TInterface&gt; : DisposableSupportsNotifyOnDispose, INotifyOnDispose, IComposite&lt;TInterface&gt;, IDisposableEx, IDisposable, IAsyncDisposable where TInterface : class, IDisposableEx, INotifyOnDispose</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -125,14 +127,36 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Solti_Utils_Primitives_Patterns_Composite_1__ctor_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1__ctor" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor">Composite()</h4>
+  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1__ctor_Solti_Utils_Primitives_Patterns_IComposite__0__System_Int32_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.#ctor(Solti.Utils.Primitives.Patterns.IComposite{`0},System.Int32)">Composite(IComposite&lt;TInterface&gt;, Int32)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Patterns.Composite-1.html">Composite&lt;TInterface&gt;</a> instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Composite()</code></pre>
+    <pre><code class="lang-csharp hljs">protected Composite(IComposite&lt;TInterface&gt; parent = null, int maxChildCount = 2147483647)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.Patterns.IComposite-1.html">IComposite</a>&lt;TInterface&gt;</td>
+        <td><span class="parametername">parent</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxChildCount</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <a id="Solti_Utils_Primitives_Patterns_Composite_1_Children_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.Children*"></a>
@@ -155,30 +179,6 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;TInterface&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount">MaxChildCount</h4>
-  <div class="markdown level1 summary"><p>Returns the maximum child count that can be stored by this instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxChildCount { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -214,7 +214,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IComposite&lt;TInterface&gt; Parent { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IComposite&lt;TInterface&gt; Parent { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -371,252 +371,9 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Add_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Add__0_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Add(`0)">ICollection&lt;TInterface&gt;.Add(TInterface)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ICollection&lt;TInterface&gt;.Add(TInterface child)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TInterface</span></td>
-        <td><span class="parametername">child</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Clear_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Clear" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Clear">ICollection&lt;TInterface&gt;.Clear()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ICollection&lt;TInterface&gt;.Clear()</code></pre>
-  </div>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Contains_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Contains__0_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Contains(`0)">ICollection&lt;TInterface&gt;.Contains(TInterface)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ICollection&lt;TInterface&gt;.Contains(TInterface child)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TInterface</span></td>
-        <td><span class="parametername">child</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__CopyTo_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__CopyTo__0___System_Int32_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#CopyTo(`0[],System.Int32)">ICollection&lt;TInterface&gt;.CopyTo(TInterface[], Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ICollection&lt;TInterface&gt;.CopyTo(TInterface[] array, int arrayIndex)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>TInterface[]</td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">arrayIndex</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Count_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Count" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Count">ICollection&lt;TInterface&gt;.Count</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int ICollection&lt;TInterface&gt;.Count { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__IsReadOnly_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__IsReadOnly" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#IsReadOnly">ICollection&lt;TInterface&gt;.IsReadOnly</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ICollection&lt;TInterface&gt;.IsReadOnly { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Remove_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_ICollection_TInterface__Remove__0_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#ICollection{TInterface}#Remove(`0)">ICollection&lt;TInterface&gt;.Remove(TInterface)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool ICollection&lt;TInterface&gt;.Remove(TInterface child)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TInterface</span></td>
-        <td><span class="parametername">child</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_IEnumerable_TInterface__GetEnumerator_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_Generic_IEnumerable_TInterface__GetEnumerator" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#Generic#IEnumerable{TInterface}#GetEnumerator">IEnumerable&lt;TInterface&gt;.GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator&lt;TInterface&gt; IEnumerable&lt;TInterface&gt;.GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;TInterface&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Patterns_Composite_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Solti.Utils.Primitives.Patterns.Composite`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">System.Collections.Generic.ICollection&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">System.Collections.IEnumerable</a>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.INotifyOnDispose.html">INotifyOnDispose</a>
   </div>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IComposite-1.html">IComposite&lt;TInterface&gt;</a>
@@ -629,10 +386,6 @@
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">System.IAsyncDisposable</a>
-  </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0_System_Int32__">EnumerableExtensions.ForEach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T, Int32&gt;)</a>
   </div>
 </article>
           </div>
