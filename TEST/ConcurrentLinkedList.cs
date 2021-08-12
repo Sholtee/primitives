@@ -12,6 +12,8 @@ using NUnit.Framework;
 
 namespace Solti.Utils.Primitives.Threading.Tests
 {
+    using Properties;
+
     [TestFixture]
     public class ConcurrentLinkedListTests
     {
@@ -134,6 +136,16 @@ namespace Solti.Utils.Primitives.Threading.Tests
                 Assert.Throws<InvalidOperationException>(() => List.Remove(x));
 
             Assert.DoesNotThrow(node.Dispose);
+        }
+
+        [Test]
+        public void Add_ShouldThrowOnAlreadyOwnedNode()
+        {
+            LinkedListNode node = new();
+            List.Add(node);
+
+            Assert.Throws<ArgumentException>(() => List.Add(node), Resources.ALREADY_OWNED);
+            Assert.Throws<ArgumentException>(() => new ConcurrentLinkedList().Add(node), Resources.ALREADY_OWNED);
         }
 
         private class IntNode : LinkedListNode

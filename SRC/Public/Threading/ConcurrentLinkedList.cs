@@ -154,10 +154,10 @@ namespace Solti.Utils.Primitives.Threading
                 if (!Head.TryLock())
                     continue;
 
-                if (!Head.Next!.TryLock()) // ures listanal (Next == FHead) ez nem csinal semmit 
+                if (!Head.Next!.TryLock()) // ures listanal (Next == Head) ez nem csinal semmit 
                 {
                     //
-                    // TODO: [perf] Itt raprobalhatnank az FHead.Prev-re hatha az nincs zarolva
+                    // TODO: [perf] Itt raprobalhatnank a Head.Prev-re hatha az nincs zarolva
                     //
 
                     Head.Release();
@@ -170,7 +170,7 @@ namespace Solti.Utils.Primitives.Threading
             if (Head == Head.Next)
             {
                 //
-                // Ez azert van kulon hogy FHead-en ne legyen a Release() ketszer hivva (ezzel potencialisan
+                // Ez azert van kulon hogy Head-en ne legyen a Release() ketszer hivva (ezzel potencialisan
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
@@ -234,7 +234,7 @@ namespace Solti.Utils.Primitives.Threading
 
             if (item.Prev == Head && item.Next == Head)
                 //
-                // Ez azert van kulon hogy FHead-en ne legyen a Release() ketszer hivva (ezzel potencialisan
+                // Ez azert van kulon hogy Head-en ne legyen a Release() ketszer hivva (ezzel potencialisan
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
