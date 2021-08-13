@@ -71,10 +71,10 @@ namespace Solti.Utils.Primitives.Perf
             void IMyComposite.Foo(string arg) => Dispatch(i => i.Foo(arg));
         }
 
-        [Params(0, 1, 2, 4)]
+        [Params(0, 1, 2)]
         public int MaxDegreeOfParallelism { get; set; }
 
-        [Params(1, 2, 3)]
+        [Params(1, 2)]
         public int Depth { get; set; }
 
         [Params(1, 2, 5)]
