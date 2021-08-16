@@ -13,7 +13,6 @@ namespace Solti.Utils.Primitives.Perf
     using static Consts;
 
     [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, invocationCount: 10000)]
     public class Composite
     {
         public interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose { }
@@ -57,7 +56,6 @@ namespace Solti.Utils.Primitives.Perf
     }
 
     [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, invocationCount: 10000)]
     public class Composite_Dispatch
     {
         private interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose
