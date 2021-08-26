@@ -305,6 +305,23 @@ references:
   fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).Dispose
   nameWithType: Composite<TInterface>.Dispose
   nameWithType.vb: Composite(Of TInterface).Dispose
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
+  name: MaxChildCount
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount
+  commentId: P:Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.MaxChildCount
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).MaxChildCount
+  nameWithType: Composite<TInterface>.MaxChildCount
+  nameWithType.vb: Composite(Of TInterface).MaxChildCount
+- uid: Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount*
+  name: MaxChildCount
+  href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_MaxChildCount_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Composite`1.MaxChildCount
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Composite<TInterface>.MaxChildCount
+  fullName.vb: Solti.Utils.Primitives.Patterns.Composite(Of TInterface).MaxChildCount
+  nameWithType: Composite<TInterface>.MaxChildCount
+  nameWithType.vb: Composite(Of TInterface).MaxChildCount
 - uid: Solti.Utils.Primitives.Patterns.Composite`1.MaxDegreeOfParallelism
   name: MaxDegreeOfParallelism
   href: Solti.Utils.Primitives.Patterns.Composite-1.html#Solti_Utils_Primitives_Patterns_Composite_1_MaxDegreeOfParallelism
