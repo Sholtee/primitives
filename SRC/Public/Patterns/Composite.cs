@@ -35,9 +35,11 @@ namespace Solti.Utils.Primitives.Patterns
 
             private int FCount; // kulon kell szamon tartani
 
+            public ConcurrentChildCollection(int maxSize) => MaxSize = maxSize;
+
             public int Count => FCount;
 
-            public int MaxSize { get; init; }
+            public int MaxSize { get; }
 
             public bool IsReadOnly { get; }
 
@@ -211,10 +213,7 @@ namespace Solti.Utils.Primitives.Patterns
             Ensure.Type<TInterface>.IsInterface();
             TInterface self = Ensure.Type<TInterface>.IsSupportedBy(this);
 
-            FChildren = new ConcurrentChildCollection
-            {
-                MaxSize = maxChildCount
-            };
+            FChildren = new ConcurrentChildCollection(maxChildCount);
 
             Parent = parent;
             Parent?.Children.Add(self);
@@ -277,6 +276,11 @@ namespace Solti.Utils.Primitives.Patterns
         /// The parent of this entity. Can be null.
         /// </summary>
         public IComposite<TInterface>? Parent { get; private set; }
+
+        /// <summary>
+        /// The maximum number of children.
+        /// </summary>
+        public int MaxChildCount => FChildren.MaxSize;
 
         /// <summary>
         /// The children of this entity.
