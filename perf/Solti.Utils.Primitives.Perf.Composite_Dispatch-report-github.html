@@ -38,12 +38,13 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.0, OS=Windows 10.0.17763.2029 (1809/October2018Update/Redstone5)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2029 (1809/October2018Update/Redstone5)
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=5.0.301
-  [Host]     : .NET 5.0.7 (5.0.721.25508), X64 RyuJIT
-  DefaultJob : .NET 5.0.7 (5.0.721.25508), X64 RyuJIT
+.NET SDK=5.0.302
+  [Host]     : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
+  Job-YDUINP : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
 
+InvocationCount=1000  RunStrategy=Throughput  UnrollFactor=1  
 </code></pre><table>
 <thead>
 <tr>
@@ -54,9 +55,8 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
+<th style="text-align:right">Median</th>
 <th style="text-align:right">Gen 0</th>
-<th style="text-align:right">Gen 1</th>
-<th style="text-align:right">Gen 2</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
@@ -66,468 +66,216 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>0</strong></td>
 <td><strong>1</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>966.0 ns</strong></td>
-<td style="text-align:right"><strong>18.44 ns</strong></td>
-<td style="text-align:right"><strong>29.26 ns</strong></td>
-<td style="text-align:right"><strong>0.0791</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>1 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>1</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>2,472.8 ns</strong></td>
-<td style="text-align:right"><strong>32.65 ns</strong></td>
-<td style="text-align:right"><strong>28.94 ns</strong></td>
-<td style="text-align:right"><strong>0.1875</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>3 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>1</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>10,540.0 ns</strong></td>
-<td style="text-align:right"><strong>206.67 ns</strong></td>
-<td style="text-align:right"><strong>253.81 ns</strong></td>
-<td style="text-align:right"><strong>0.8281</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>15 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>1,360.4 ns</strong></td>
-<td style="text-align:right"><strong>18.56 ns</strong></td>
-<td style="text-align:right"><strong>17.36 ns</strong></td>
-<td style="text-align:right"><strong>0.1074</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>2.686 μs</strong></td>
+<td style="text-align:right"><strong>0.2468 μs</strong></td>
+<td style="text-align:right"><strong>0.7121 μs</strong></td>
+<td style="text-align:right"><strong>2.289 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>2 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
 <td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>5,293.0 ns</strong></td>
-<td style="text-align:right"><strong>102.48 ns</strong></td>
-<td style="text-align:right"><strong>140.28 ns</strong></td>
-<td style="text-align:right"><strong>0.3984</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>7 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>2</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>50,109.2 ns</strong></td>
-<td style="text-align:right"><strong>994.66 ns</strong></td>
-<td style="text-align:right"><strong>2,009.27 ns</strong></td>
-<td style="text-align:right"><strong>4.1875</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>75 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>3</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>1,568.8 ns</strong></td>
-<td style="text-align:right"><strong>31.35 ns</strong></td>
-<td style="text-align:right"><strong>54.08 ns</strong></td>
-<td style="text-align:right"><strong>0.1348</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>2 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>3</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>10,389.7 ns</strong></td>
-<td style="text-align:right"><strong>204.09 ns</strong></td>
-<td style="text-align:right"><strong>346.57 ns</strong></td>
-<td style="text-align:right"><strong>0.8281</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>15 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>0</strong></td>
-<td><strong>3</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>263,143.7 ns</strong></td>
-<td style="text-align:right"><strong>5,196.99 ns</strong></td>
-<td style="text-align:right"><strong>8,964.56 ns</strong></td>
-<td style="text-align:right"><strong>21.0000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>376 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
-<td><strong>1</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>3,378.5 ns</strong></td>
-<td style="text-align:right"><strong>56.19 ns</strong></td>
-<td style="text-align:right"><strong>52.56 ns</strong></td>
-<td style="text-align:right"><strong>0.0977</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>2 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
 <td><strong>1</strong></td>
 <td><strong>2</strong></td>
-<td style="text-align:right"><strong>3,746.8 ns</strong></td>
-<td style="text-align:right"><strong>74.29 ns</strong></td>
-<td style="text-align:right"><strong>111.20 ns</strong></td>
-<td style="text-align:right"><strong>0.2148</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>5.277 μs</strong></td>
+<td style="text-align:right"><strong>0.6654 μs</strong></td>
+<td style="text-align:right"><strong>1.9303 μs</strong></td>
+<td style="text-align:right"><strong>4.772 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>4 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
+<td><strong>0</strong></td>
 <td><strong>1</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>14,166.5 ns</strong></td>
-<td style="text-align:right"><strong>202.52 ns</strong></td>
-<td style="text-align:right"><strong>189.44 ns</strong></td>
-<td style="text-align:right"><strong>0.9219</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>17.565 μs</strong></td>
+<td style="text-align:right"><strong>0.7591 μs</strong></td>
+<td style="text-align:right"><strong>2.1781 μs</strong></td>
+<td style="text-align:right"><strong>16.532 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>17 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
+<td><strong>0</strong></td>
 <td><strong>2</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>5,789.5 ns</strong></td>
-<td style="text-align:right"><strong>106.87 ns</strong></td>
-<td style="text-align:right"><strong>99.96 ns</strong></td>
-<td style="text-align:right"><strong>0.1250</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>3.104 μs</strong></td>
+<td style="text-align:right"><strong>0.1920 μs</strong></td>
+<td style="text-align:right"><strong>0.5447 μs</strong></td>
+<td style="text-align:right"><strong>3.005 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>2 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
+<td><strong>0</strong></td>
 <td><strong>2</strong></td>
 <td><strong>2</strong></td>
-<td style="text-align:right"><strong>6,733.1 ns</strong></td>
-<td style="text-align:right"><strong>89.23 ns</strong></td>
-<td style="text-align:right"><strong>79.10 ns</strong></td>
-<td style="text-align:right"><strong>0.4453</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>9.808 μs</strong></td>
+<td style="text-align:right"><strong>0.6777 μs</strong></td>
+<td style="text-align:right"><strong>1.9554 μs</strong></td>
+<td style="text-align:right"><strong>8.935 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>8 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
+<td><strong>0</strong></td>
 <td><strong>2</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>61,376.4 ns</strong></td>
-<td style="text-align:right"><strong>1,192.95 ns</strong></td>
-<td style="text-align:right"><strong>1,115.89 ns</strong></td>
-<td style="text-align:right"><strong>4.5000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>81 KB</strong></td>
+<td style="text-align:right"><strong>88.570 μs</strong></td>
+<td style="text-align:right"><strong>1.5225 μs</strong></td>
+<td style="text-align:right"><strong>2.2788 μs</strong></td>
+<td style="text-align:right"><strong>89.131 μs</strong></td>
+<td style="text-align:right"><strong>4.0000</strong></td>
+<td style="text-align:right"><strong>86 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
 <td><strong>1</strong></td>
-<td><strong>3</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>7,907.7 ns</strong></td>
-<td style="text-align:right"><strong>129.92 ns</strong></td>
-<td style="text-align:right"><strong>108.49 ns</strong></td>
-<td style="text-align:right"><strong>0.1563</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>3 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
-<td><strong>3</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>12,886.0 ns</strong></td>
-<td style="text-align:right"><strong>232.78 ns</strong></td>
-<td style="text-align:right"><strong>194.38 ns</strong></td>
-<td style="text-align:right"><strong>0.9063</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>16 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>1</strong></td>
-<td><strong>3</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>302,136.1 ns</strong></td>
-<td style="text-align:right"><strong>4,381.02 ns</strong></td>
-<td style="text-align:right"><strong>4,098.01 ns</strong></td>
-<td style="text-align:right"><strong>22.5000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>402 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
 <td><strong>1</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>4,382.7 ns</strong></td>
-<td style="text-align:right"><strong>87.10 ns</strong></td>
-<td style="text-align:right"><strong>106.96 ns</strong></td>
-<td style="text-align:right"><strong>0.1094</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>7.054 μs</strong></td>
+<td style="text-align:right"><strong>0.8406 μs</strong></td>
+<td style="text-align:right"><strong>2.4521 μs</strong></td>
+<td style="text-align:right"><strong>6.234 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>2 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 <td><strong>1</strong></td>
 <td><strong>2</strong></td>
-<td style="text-align:right"><strong>10,244.5 ns</strong></td>
-<td style="text-align:right"><strong>182.15 ns</strong></td>
-<td style="text-align:right"><strong>170.38 ns</strong></td>
-<td style="text-align:right"><strong>0.2344</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>5.499 μs</strong></td>
+<td style="text-align:right"><strong>0.2032 μs</strong></td>
+<td style="text-align:right"><strong>0.5459 μs</strong></td>
+<td style="text-align:right"><strong>5.347 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>4 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 <td><strong>1</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>23,298.6 ns</strong></td>
-<td style="text-align:right"><strong>413.00 ns</strong></td>
-<td style="text-align:right"><strong>386.32 ns</strong></td>
-<td style="text-align:right"><strong>0.9375</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>17 KB</strong></td>
+<td style="text-align:right"><strong>24.450 μs</strong></td>
+<td style="text-align:right"><strong>0.6716 μs</strong></td>
+<td style="text-align:right"><strong>1.9589 μs</strong></td>
+<td style="text-align:right"><strong>24.161 μs</strong></td>
+<td style="text-align:right"><strong>1.0000</strong></td>
+<td style="text-align:right"><strong>19 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 <td><strong>2</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>8,223.6 ns</strong></td>
-<td style="text-align:right"><strong>159.33 ns</strong></td>
-<td style="text-align:right"><strong>177.10 ns</strong></td>
-<td style="text-align:right"><strong>0.1250</strong></td>
+<td style="text-align:right"><strong>10.003 μs</strong></td>
+<td style="text-align:right"><strong>0.4531 μs</strong></td>
+<td style="text-align:right"><strong>1.2780 μs</strong></td>
+<td style="text-align:right"><strong>9.752 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>2 KB</strong></td>
+<td style="text-align:right"><strong>3 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
+<td><strong>1</strong></td>
 <td><strong>2</strong></td>
 <td><strong>2</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>14,228.0 ns</strong></td>
-<td style="text-align:right"><strong>152.28 ns</strong></td>
-<td style="text-align:right"><strong>134.99 ns</strong></td>
-<td style="text-align:right"><strong>0.4688</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>12.358 μs</strong></td>
+<td style="text-align:right"><strong>0.7762 μs</strong></td>
+<td style="text-align:right"><strong>2.2019 μs</strong></td>
+<td style="text-align:right"><strong>11.396 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>9 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
+<td><strong>1</strong></td>
 <td><strong>2</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>72,942.0 ns</strong></td>
-<td style="text-align:right"><strong>1,346.26 ns</strong></td>
-<td style="text-align:right"><strong>1,259.29 ns</strong></td>
-<td style="text-align:right"><strong>4.5714</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>83 KB</strong></td>
+<td style="text-align:right"><strong>104.448 μs</strong></td>
+<td style="text-align:right"><strong>1.9815 μs</strong></td>
+<td style="text-align:right"><strong>4.6706 μs</strong></td>
+<td style="text-align:right"><strong>103.773 μs</strong></td>
+<td style="text-align:right"><strong>5.0000</strong></td>
+<td style="text-align:right"><strong>92 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
 <td><strong>2</strong></td>
-<td><strong>3</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>8,544.9 ns</strong></td>
-<td style="text-align:right"><strong>142.06 ns</strong></td>
-<td style="text-align:right"><strong>118.63 ns</strong></td>
-<td style="text-align:right"><strong>0.1563</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>3 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
-<td><strong>3</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>19,188.3 ns</strong></td>
-<td style="text-align:right"><strong>157.15 ns</strong></td>
-<td style="text-align:right"><strong>139.31 ns</strong></td>
-<td style="text-align:right"><strong>0.9375</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>17 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>2</strong></td>
-<td><strong>3</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>310,096.3 ns</strong></td>
-<td style="text-align:right"><strong>4,906.60 ns</strong></td>
-<td style="text-align:right"><strong>4,589.64 ns</strong></td>
-<td style="text-align:right"><strong>23.0000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>410 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
 <td><strong>1</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>4,356.6 ns</strong></td>
-<td style="text-align:right"><strong>81.62 ns</strong></td>
-<td style="text-align:right"><strong>111.73 ns</strong></td>
-<td style="text-align:right"><strong>0.1094</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>9.516 μs</strong></td>
+<td style="text-align:right"><strong>0.5155 μs</strong></td>
+<td style="text-align:right"><strong>1.4792 μs</strong></td>
+<td style="text-align:right"><strong>8.809 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>2 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
+<td><strong>2</strong></td>
 <td><strong>1</strong></td>
 <td><strong>2</strong></td>
-<td style="text-align:right"><strong>11,508.7 ns</strong></td>
-<td style="text-align:right"><strong>89.59 ns</strong></td>
-<td style="text-align:right"><strong>79.42 ns</strong></td>
-<td style="text-align:right"><strong>0.2656</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>14.339 μs</strong></td>
+<td style="text-align:right"><strong>0.6910 μs</strong></td>
+<td style="text-align:right"><strong>1.9715 μs</strong></td>
+<td style="text-align:right"><strong>13.474 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>5 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
+<td><strong>2</strong></td>
 <td><strong>1</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>20,474.4 ns</strong></td>
-<td style="text-align:right"><strong>375.66 ns</strong></td>
-<td style="text-align:right"><strong>351.39 ns</strong></td>
-<td style="text-align:right"><strong>0.9688</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>18 KB</strong></td>
+<td style="text-align:right"><strong>32.575 μs</strong></td>
+<td style="text-align:right"><strong>0.7832 μs</strong></td>
+<td style="text-align:right"><strong>2.2218 μs</strong></td>
+<td style="text-align:right"><strong>32.626 μs</strong></td>
+<td style="text-align:right"><strong>1.0000</strong></td>
+<td style="text-align:right"><strong>19 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
+<td><strong>2</strong></td>
 <td><strong>2</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>8,660.5 ns</strong></td>
-<td style="text-align:right"><strong>76.18 ns</strong></td>
-<td style="text-align:right"><strong>63.62 ns</strong></td>
-<td style="text-align:right"><strong>0.1406</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>10.743 μs</strong></td>
+<td style="text-align:right"><strong>0.5597 μs</strong></td>
+<td style="text-align:right"><strong>1.5969 μs</strong></td>
+<td style="text-align:right"><strong>9.955 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>3 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
 <td><strong>2</strong></td>
 <td><strong>2</strong></td>
-<td style="text-align:right"><strong>16,788.1 ns</strong></td>
-<td style="text-align:right"><strong>296.12 ns</strong></td>
-<td style="text-align:right"><strong>276.99 ns</strong></td>
-<td style="text-align:right"><strong>0.5313</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
+<td><strong>2</strong></td>
+<td style="text-align:right"><strong>19.212 μs</strong></td>
+<td style="text-align:right"><strong>0.5948 μs</strong></td>
+<td style="text-align:right"><strong>1.7443 μs</strong></td>
+<td style="text-align:right"><strong>18.926 μs</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>10 KB</strong></td>
 </tr>
 <tr>
 <td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
+<td><strong>2</strong></td>
 <td><strong>2</strong></td>
 <td><strong>5</strong></td>
-<td style="text-align:right"><strong>67,448.2 ns</strong></td>
-<td style="text-align:right"><strong>1,327.76 ns</strong></td>
-<td style="text-align:right"><strong>1,726.47 ns</strong></td>
-<td style="text-align:right"><strong>4.6667</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>86 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
-<td><strong>3</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>9,522.0 ns</strong></td>
-<td style="text-align:right"><strong>135.58 ns</strong></td>
-<td style="text-align:right"><strong>126.82 ns</strong></td>
-<td style="text-align:right"><strong>0.1875</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>3 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
-<td><strong>3</strong></td>
-<td><strong>2</strong></td>
-<td style="text-align:right"><strong>22,913.3 ns</strong></td>
-<td style="text-align:right"><strong>220.07 ns</strong></td>
-<td style="text-align:right"><strong>205.85 ns</strong></td>
-<td style="text-align:right"><strong>1.0000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>18 KB</strong></td>
-</tr>
-<tr>
-<td><strong>Dispatch</strong></td>
-<td><strong>4</strong></td>
-<td><strong>3</strong></td>
-<td><strong>5</strong></td>
-<td style="text-align:right"><strong>291,762.3 ns</strong></td>
-<td style="text-align:right"><strong>5,240.84 ns</strong></td>
-<td style="text-align:right"><strong>4,902.28 ns</strong></td>
-<td style="text-align:right"><strong>23.5000</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>422 KB</strong></td>
+<td style="text-align:right"><strong>117.926 μs</strong></td>
+<td style="text-align:right"><strong>2.3317 μs</strong></td>
+<td style="text-align:right"><strong>5.0688 μs</strong></td>
+<td style="text-align:right"><strong>117.271 μs</strong></td>
+<td style="text-align:right"><strong>5.0000</strong></td>
+<td style="text-align:right"><strong>94 KB</strong></td>
 </tr>
 </tbody>
 </table>
