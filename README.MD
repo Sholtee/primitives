@@ -10,7 +10,7 @@ Commonly used types:
 - [DisposeByRefObject](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposeByRefObject.html )
 - [ExclusiveBlock](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ExclusiveBlock.html )
 - [ObjectPool](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ObjectPool-1.html )
-- [Singleton](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Singleton.html )
+- [Singleton](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Singleton-1.html )
 
 [API docs](https://sholtee.github.io/primitives )
 
