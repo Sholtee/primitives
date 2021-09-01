@@ -6,10 +6,11 @@ Commonly used types:
 - [Composite](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Composite-1.html )
 - [ConcurrentLinkedList](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html )
 - [Disposable](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Disposable.html )
+- [DisposableSupportsNotifyOnDispose](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html )
 - [DisposeByRefObject](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposeByRefObject.html )
 - [ExclusiveBlock](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ExclusiveBlock.html )
 - [ObjectPool](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ObjectPool-1.html )
-
+- [Singleton](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Singleton.html )
 
 [API docs](https://sholtee.github.io/primitives )
 
