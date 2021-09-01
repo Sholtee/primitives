@@ -10,9 +10,8 @@ namespace Solti.Utils.Primitives.Perf
 {
     using Patterns;
 
-    using static Consts;
-
     [MemoryDiagnoser]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 1000)]
     public class Composite
     {
         public interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose { }
@@ -56,6 +55,7 @@ namespace Solti.Utils.Primitives.Perf
     }
 
     [MemoryDiagnoser]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 1000)]
     public class Composite_Dispatch
     {
         private interface IMyComposite : IComposite<IMyComposite>, INotifyOnDispose
@@ -101,16 +101,10 @@ namespace Solti.Utils.Primitives.Perf
             }
         }
 
-        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
-        public void Dispatch()
-        {
-            for (int i = 0; i < OperationsPerInvoke; i++)
-            {
-                Root.Foo("cica");
-            }
-        }
+        [Benchmark]
+        public void Dispatch() => Root.Foo("cica");
 
-        [GlobalCleanup]
+        [GlobalCleanup(Target = nameof(Dispatch))]
         public void Cleanup()
         {
             Root.Dispose();
