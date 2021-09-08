@@ -40,28 +40,40 @@
 <pre><code class="lang-ini">
 BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2029 (1809/October2018Update/Redstone5)
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=5.0.302
-  [Host]     : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
-  Job-YDUINP : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
+.NET SDK=5.0.400
+  [Host]     : .NET 5.0.9 (5.0.921.35908), X64 RyuJIT
+  DefaultJob : .NET 5.0.9 (5.0.921.35908), X64 RyuJIT
 
-InvocationCount=1000  RunStrategy=Throughput  UnrollFactor=1  
 </code></pre><table>
 <thead>
 <tr>
 <th>Method</th>
+<th>Features</th>
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
+<th style="text-align:right">Gen 0</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Children_Add</td>
-<td style="text-align:right">580.6 ns</td>
-<td style="text-align:right">25.63 ns</td>
-<td style="text-align:right">70.17 ns</td>
-<td style="text-align:right">328 B</td>
+<td><strong>EnterAndLeave</strong></td>
+<td><strong>None</strong></td>
+<td style="text-align:right"><strong>99.01 ns</strong></td>
+<td style="text-align:right"><strong>1.445 ns</strong></td>
+<td style="text-align:right"><strong>1.352 ns</strong></td>
+<td style="text-align:right"><strong>0.0017</strong></td>
+<td style="text-align:right"><strong>32 B</strong></td>
+</tr>
+<tr>
+<td><strong>EnterAndLeave</strong></td>
+<td><strong>SupportsRecursion</strong></td>
+<td style="text-align:right"><strong>142.45 ns</strong></td>
+<td style="text-align:right"><strong>2.528 ns</strong></td>
+<td style="text-align:right"><strong>3.460 ns</strong></td>
+<td style="text-align:right"><strong>0.0017</strong></td>
+<td style="text-align:right"><strong>32 B</strong></td>
 </tr>
 </tbody>
 </table>
