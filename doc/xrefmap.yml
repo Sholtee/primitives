@@ -880,15 +880,14 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T)
   nameWithType: ConcurrentLinkedList<T>
   nameWithType.vb: ConcurrentLinkedList(Of T)
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name: Add(LinkedListNode<T>)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_Solti_Utils_Primitives_Threading_LinkedListNode__0__
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name.vb: Add(LinkedListNode(Of T))
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Add(Solti.Utils.Primitives.Threading.LinkedListNode<T>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Add(Solti.Utils.Primitives.Threading.LinkedListNode(Of T))
-  nameWithType: ConcurrentLinkedList<T>.Add(LinkedListNode<T>)
-  nameWithType.vb: ConcurrentLinkedList(Of T).Add(LinkedListNode(Of T))
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(`0)
+  name: Add(T)
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add__0_
+  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(`0)
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Add(T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Add(T)
+  nameWithType: ConcurrentLinkedList<T>.Add(T)
+  nameWithType.vb: ConcurrentLinkedList(Of T).Add(T)
 - uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add*
   name: Add
   href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_
@@ -915,42 +914,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Clear
   nameWithType: ConcurrentLinkedList<T>.Clear
   nameWithType.vb: ConcurrentLinkedList(Of T).Clear
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name: Contains(LinkedListNode<T>)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_Solti_Utils_Primitives_Threading_LinkedListNode__0__
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name.vb: Contains(LinkedListNode(Of T))
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Contains(Solti.Utils.Primitives.Threading.LinkedListNode<T>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Contains(Solti.Utils.Primitives.Threading.LinkedListNode(Of T))
-  nameWithType: ConcurrentLinkedList<T>.Contains(LinkedListNode<T>)
-  nameWithType.vb: ConcurrentLinkedList(Of T).Contains(LinkedListNode(Of T))
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains*
-  name: Contains
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Contains
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Contains
-  nameWithType: ConcurrentLinkedList<T>.Contains
-  nameWithType.vb: ConcurrentLinkedList(Of T).Contains
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode{`0}[],System.Int32)
-  name: CopyTo(LinkedListNode<T>[], Int32)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_Solti_Utils_Primitives_Threading_LinkedListNode__0____System_Int32_
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode{`0}[],System.Int32)
-  name.vb: CopyTo(LinkedListNode(Of T)(), Int32)
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode<T>[], System.Int32)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode(Of T)(), System.Int32)
-  nameWithType: ConcurrentLinkedList<T>.CopyTo(LinkedListNode<T>[], Int32)
-  nameWithType.vb: ConcurrentLinkedList(Of T).CopyTo(LinkedListNode(Of T)(), Int32)
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo*
-  name: CopyTo
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.CopyTo
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).CopyTo
-  nameWithType: ConcurrentLinkedList<T>.CopyTo
-  nameWithType.vb: ConcurrentLinkedList(Of T).CopyTo
 - uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count
   name: Count
   href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Count
@@ -1056,6 +1019,24 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator
   nameWithType: ConcurrentLinkedList<T>.IEnumerable.GetEnumerator
   nameWithType.vb: ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)
+  name: TakeFirst(out T)
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst__0__
+  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)
+  name.vb: TakeFirst(ByRef T)
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.TakeFirst(out T)
+  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).TakeFirst(ByRef T)
+  nameWithType: ConcurrentLinkedList<T>.TakeFirst(out T)
+  nameWithType.vb: ConcurrentLinkedList(Of T).TakeFirst(ByRef T)
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst*
+  name: TakeFirst
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.TakeFirst
+  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).TakeFirst
+  nameWithType: ConcurrentLinkedList<T>.TakeFirst
+  nameWithType.vb: ConcurrentLinkedList(Of T).TakeFirst
 - uid: Solti.Utils.Primitives.Threading.ExclusiveBlock
   name: ExclusiveBlock
   href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html

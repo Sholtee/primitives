@@ -52,8 +52,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</div>
-    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
   </div>
   <div class="inheritedMembers">
@@ -84,7 +83,7 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConcurrentLinkedList&lt;T&gt; : ICollection&lt;LinkedListNode&lt;T&gt;&gt;, IEnumerable&lt;LinkedListNode&lt;T&gt;&gt;, IEnumerable</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConcurrentLinkedList&lt;T&gt; : IEnumerable&lt;T&gt;, IEnumerable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,12 +175,12 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Add(LinkedListNode&lt;T&gt;)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Add__0_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Add(`0)">Add(T)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Add(LinkedListNode&lt;T&gt; item)</code></pre>
+    <pre><code class="lang-csharp hljs">public LinkedListNode&lt;T&gt; Add(T item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -194,8 +193,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
+        <td><span class="xref">T</span></td>
         <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -208,13 +222,36 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Contains_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Contains(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Contains(LinkedListNode&lt;T&gt;)</h4>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator">GetEnumerator()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(LinkedListNode&lt;T&gt; item)</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Remove(LinkedListNode&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(LinkedListNode&lt;T&gt; node)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,7 +265,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
-        <td><span class="parametername">item</span></td>
+        <td><span class="parametername">node</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -248,14 +285,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_CopyTo_Solti_Utils_Primitives_Threading_LinkedListNode__0____System_Int32_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.CopyTo(Solti.Utils.Primitives.Threading.LinkedListNode{`0}[],System.Int32)">CopyTo(LinkedListNode&lt;T&gt;[], Int32)</h4>
-  <div class="markdown level1 summary"><p>NOT SUPPORTED</p>
+  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)">TakeFirst(out T)</h4>
+  <div class="markdown level1 summary"><p>Removes the first element from the list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CopyTo(LinkedListNode&lt;T&gt;[] array, int arrayIndex)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TakeFirst(out T item)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -268,60 +305,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;[]</td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">arrayIndex</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator&lt;LinkedListNode&lt;T&gt;&gt; GetEnumerator()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_Solti_Utils_Primitives_Threading_LinkedListNode__0__" data-uid="Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove(Solti.Utils.Primitives.Threading.LinkedListNode{`0})">Remove(LinkedListNode&lt;T&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Remove(LinkedListNode&lt;T&gt; item)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.LinkedListNode-1.html">LinkedListNode</a>&lt;T&gt;</td>
+        <td><span class="xref">T</span></td>
         <td><span class="parametername">item</span></td>
         <td></td>
       </tr>
@@ -368,9 +352,6 @@
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">System.Collections.Generic.ICollection&lt;T&gt;</a>
-  </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
   </div>
