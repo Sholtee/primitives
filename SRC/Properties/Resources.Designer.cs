@@ -61,15 +61,6 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The item is stored in an another list..
-        /// </summary>
-        internal static string ALREADY_OWNED {
-            get {
-                return ResourceManager.GetString("ALREADY_OWNED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Dispose can not be called directly..
         /// </summary>
         internal static string ARBITRARY_RELEASE {

@@ -113,7 +113,7 @@ namespace Solti.Utils.Primitives.Threading
     /// Represents a doubly linked list that can be shared across threads.
     /// </summary>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "The name is meaningful")]
-    public class ConcurrentLinkedList<T>: ICollection<LinkedListNode<T>>
+    public class ConcurrentLinkedList<T> : IEnumerable<T?>
     {
         private int FCount;
 
@@ -138,17 +138,18 @@ namespace Solti.Utils.Primitives.Threading
         public bool IsReadOnly { get; }
 
         /// <inheritdoc/>
-        public void Add(LinkedListNode<T> item)
+        public LinkedListNode<T> Add(T? item)
         {
-            Ensure.Parameter.IsNotNull(item, nameof(item));
-
-            if (item.Owner is not null)
-                throw new ArgumentException(Resources.ALREADY_OWNED, nameof(item));
+            LinkedListNode<T> node = new() { Value = item };
 
             for (; ; )
             {
                 if (!Head.TryLock())
                     continue;
+
+                //
+                // Mivel Head zarolva van, ezert annak Next-jet biztosan nem irtak mire ide eljutunk
+                //
 
                 if (!Head.Next!.TryLock()) // ures listanal (Next == Head) ez nem csinal semmit 
                 {
@@ -170,34 +171,33 @@ namespace Solti.Utils.Primitives.Threading
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
-                item.Next = item.Prev = Head;
-                Head.Next = Head.Prev = item;
-                item.Owner = this;
+                node.Next = node.Prev = Head;
+                Head.Next = Head.Prev = node;
+                node.Owner = this;
 
                 Head.Release();
             }
-            else 
+            else
             {
-                item.Next = Head.Next;
-                item.Prev = Head;
-                item.Next.Prev = item;
-                item.Prev.Next = item;
-                item.Owner = this;
+                node.Next = Head.Next;
+                node.Prev = Head;
+                node.Next.Prev = node;
+                node.Prev.Next = node;
+                node.Owner = this;
 
-                item.Prev.Release();
-                item.Next.Release();
+                node.Prev.Release();
+                node.Next.Release();
             }
 
             Increment(ref FCount);
+
+            return node;
         }
 
         /// <inheritdoc/>
-        public bool Remove(LinkedListNode<T> item)
+        public bool Remove(LinkedListNode<T> node)
         {
-            Ensure.Parameter.IsNotNull(item, nameof(item));
-
-            if (item.Owner != this) 
-                return false;
+            Ensure.Parameter.IsNotNull(node, nameof(node));
 
             //
             // INFO:
@@ -206,79 +206,153 @@ namespace Solti.Utils.Primitives.Threading
 
             for (; ; )
             {
-                if (!item.TryLock(allowRecursive: false))
+                if (!node.TryLock(allowRecursive: false))
                     continue;
 
-                if (!item.Prev!.TryLock())
+                //
+                // Kozben a TryTake() mar eltavolitotta?
+                //
+
+                if (node.Owner != this)
                 {
-                    item.Release();
+                    node.Invalidate();
+                    return false;
+                }
+
+                if (!node.Prev!.TryLock())
+                {
+                    node.Release();
                     continue;
                 }
 
-                if (!item.Next!.TryLock())
+                if (!node.Next!.TryLock())
                 {
-                    item.Prev.Release();
-                    item.Release();
+                    node.Prev.Release();
+                    node.Release();
                     continue;
                 }
 
                 break;
             }
 
-            item.Next.Prev = item.Prev;
-            item.Prev.Next = item.Next;
+            node.Next.Prev = node.Prev;
+            node.Prev.Next = node.Next;
 
-            if (item.Prev == Head && item.Next == Head)
+            if (node.Prev == Head && node.Next == Head)
                 //
                 // Ez azert van kulon hogy Head-en ne legyen a Release() ketszer hivva (ezzel potencialisan
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
                 Head.Release();
-            else 
+            else
             {
-                item.Prev.Release();
-                item.Next.Release();
+                node.Prev.Release();
+                node.Next.Release();
             }
 
-            item.Invalidate();
+            node.Invalidate();
 
             Decrement(ref FCount);
             return true;
         }
 
-        /// <inheritdoc/>
-        public void Clear() => throw new NotImplementedException();
-
-        /// <inheritdoc/>
-        public bool Contains(LinkedListNode<T> item) => Ensure.Parameter.IsNotNull(item, nameof(item)).Owner == this;
-
         /// <summary>
-        /// NOT SUPPORTED
+        /// Removes the first element from the list.
         /// </summary>
-        public void CopyTo(LinkedListNode<T>[] array, int arrayIndex) =>            
-            //
-            // Nehez lehet biztonsaggal hivni mert az elemek szama felsorolas kozben is valtozhat.
-            //
+        public bool TakeFirst(out T? item)
+        {
+            LinkedListNode<T> first;
 
-            throw new NotSupportedException();
+            for (; ; )
+            {
+                if (!Head.TryLock())
+                    continue;
+
+                //
+                // Mivel Head zarolva van ezert annak Next-jet biztosan nem modositottak mire ide eljutunk
+                //
+
+                first = Head.Next!;
+
+                if (first == Head)
+                {
+                    Head.Release();
+
+                    item = default;
+                    return false;
+                }
+
+                if (!first.TryLock())
+                {
+                    Head.Release();
+                    continue;
+                }
+
+                //
+                // Utolso elem?
+                //
+
+                if (first.Next == Head)
+                {
+                    item = first.Value;
+                    first.Invalidate();
+
+                    Head.Next = Head;
+                    Head.Prev = Head;
+                    Head.Release();
+
+                    return true;
+                }
+
+                if (!first.Next!.TryLock())
+                {
+                    Head.Next!.Release();
+                    Head.Release();
+                    continue;
+                }
+
+                break;
+            }
+
+            first.Next!.Prev = first.Prev;
+            first.Prev!.Next = first.Next;
+
+            first.Prev.Release();
+            first.Next.Release();
+
+            item = first.Value;
+            first.Invalidate();
+
+            return true;
+        }
 
         /// <inheritdoc/>
-        public IEnumerator<LinkedListNode<T>> GetEnumerator() => new Enumerator(this);
+        public void Clear()
+        {
+            while (TakeFirst(out _)) { }
+        }
+
+        /// <inheritdoc/>
+        public IEnumerator<T?> GetEnumerator() => new Enumerator(this);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private sealed class Enumerator : Disposable, IEnumerator<LinkedListNode<T>>
+        private sealed class Enumerator: IEnumerator<T?>
         {
             public ConcurrentLinkedList<T> Owner { get; }
 
-            public LinkedListNode<T> Current { get; private set; }
+            public LinkedListNode<T>? CurrentNode { get; private set; }
 
-            object IEnumerator.Current => Current;
+            T? IEnumerator<T?>.Current => CurrentNode is not null
+                ? CurrentNode.Value
+                : default;
 
-            #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+            object IEnumerator.Current => (CurrentNode is not null
+                ? CurrentNode.Value
+                : null)!;
+
             public Enumerator(ConcurrentLinkedList<T> owner) => Owner = owner;
-            #pragma warning restore CS8618
 
             public bool MoveNext()
             {
@@ -286,49 +360,43 @@ namespace Solti.Utils.Primitives.Threading
 
                 for (; ; )
                 {
-                    if (Current is null)
+                    if (CurrentNode is null)
                     {
                         if (!head.TryLock())
                             continue;
 
-                        Current = head;
+                        CurrentNode = head;
                     }
 
-                    Assert(Current.LockedBy == Thread.CurrentThread.ManagedThreadId, "Current item is not owned");
+                    Assert(CurrentNode.LockedBy == Thread.CurrentThread.ManagedThreadId, "Current item is not owned");
 
-                    if (!Current.Next!.TryLock())
+                    if (!CurrentNode.Next!.TryLock())
                         continue;
 
                     break;
                 }
 
-                Current = Current.Next;
+                CurrentNode = CurrentNode.Next;
 
                 //
                 // Eresszuk el az elozo iteracioban zarolt node-ot
                 //
 
-                if (Current.Prev == Current)
-                    Assert(Current == head, "'Current' must point to the list head");
+                if (CurrentNode.Prev == CurrentNode)
+                    Assert(CurrentNode == head, "'Current' must point to the list head");
                     //
                     // Head ne legyen duplan felszabaditva [Dispose() is fel fogja szabaditani]
                     //
 
                 else
-                    Current.Prev!.Release();
+                    CurrentNode.Prev!.Release();
 
-                return Current != head;
+                return CurrentNode != head;
             }
 
             public void Reset() => throw new NotImplementedException();
 
-            protected override void Dispose(bool disposeManaged)
-            {
-                if (disposeManaged)
-                    Current?.Release();
-
-                base.Dispose(disposeManaged);
-            }
+            public void Dispose() => CurrentNode?.Release();
         }
     }
 }

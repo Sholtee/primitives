@@ -5,15 +5,12 @@
 ********************************************************************************/
 using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 using NUnit.Framework;
 
 namespace Solti.Utils.Primitives.Threading.Tests
 {
-    using Properties;
-
     [TestFixture]
     public class ConcurrentLinkedListTests
     {
@@ -30,14 +27,10 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 100).Select((_, i) => Task.Run(() => 
             {
-                Thread.Sleep(new Random().Next(0, 2));
-
-                LinkedListNode<int>[] nodes = Enumerable.Repeat(0, 1000).Select(_ =>
-                {
-                    var res = new LinkedListNode<int> { Value = i };
-                    List.Add(res);
-                    return res;
-                }).ToArray();
+                LinkedListNode<int>[] nodes = Enumerable
+                    .Repeat(0, 3000)
+                    .Select(_ => List.Add(i))
+                    .ToArray();
 
                 foreach (LinkedListNode<int> node in nodes)
                 {
@@ -52,18 +45,35 @@ namespace Solti.Utils.Primitives.Threading.Tests
         }
 
         [Test]
+        public void ThreadingTest_UsingParallelAddAndTakeFirst()
+        {
+            Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 100).Select((_, _) => Task.Run(() =>
+            {
+                for (int i = 0; i < 3000; i++)
+                {
+                    List.Add(0);
+                }
+
+                for (int i = 0; i < 3000; i++)
+                {
+                    Assert.That(List.TakeFirst(out _));
+                }
+            }))));
+
+            Assert.That(List, Is.Empty);
+        }
+
+        [Test]
         public void ThreadingTest_UsingParallelAddAndForEach()
         {
             Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 100).Select((_, i) => Task.Run(() =>
             {
-                Thread.Sleep(new Random().Next(0, 2));
-
-                for (int j = 0; j < 1000; j++)
+                for (int j = 0; j < 3000; j++)
                 {
-                    List.Add(new LinkedListNode<int> { Value = i });
+                    List.Add(i);
                 }
 
-                Assert.That(List.Cast<LinkedListNode<int>>().Count(node => node.Value == i), Is.EqualTo(1000));
+                Assert.That(List.Count(x => x == i), Is.EqualTo(3000));
             }))));
         }
 
@@ -72,19 +82,10 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             Assert.DoesNotThrowAsync(() => Task.WhenAll(Enumerable.Repeat(0, 100).Select((_, i) => Task.Run(() =>
             {
-                Thread.Sleep(new Random().Next(0, 2));
-
-                for (int j = 0; j < 1000; j++)
-                {
-                    List.Add(new LinkedListNode<int> { Value = i });
-                }
-
-                LinkedListNode<int>[] toBeRemoved = List
-                    .Cast<LinkedListNode<int>>()
-                    .Where(node => node.Value == i)
+                LinkedListNode<int>[] toBeRemoved = Enumerable
+                    .Repeat(0, 3000)
+                    .Select((_, i) => List.Add(i))
                     .ToArray();
-
-                Assert.That(toBeRemoved.Length, Is.EqualTo(1000));
 
                 foreach (LinkedListNode<int> node in toBeRemoved)
                 {
@@ -95,7 +96,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
                 }                
             }))));
 
-            Assert.That(List.Count, Is.EqualTo(0));
+            Assert.That(List, Is.Empty);
         }
 
         [Test]
@@ -103,20 +104,17 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             Assert.DoesNotThrowAsync(() => Task.Run(() => List.Count()));
             Assert.That(List.Head.LockedBy, Is.EqualTo(0));
-            Assert.DoesNotThrow(() => List.Add(new LinkedListNode<int>()));
+            Assert.DoesNotThrow(() => List.Add(0));
         }
 
         [Test]
         public void Enumeration_MayBeBroken()
         {
             LinkedListNode<int>
-                node1 = new(),
-                node2 = new();
+                node1 = List.Add(0),
+                node2 = List.Add(1);
 
-            List.Add(node1);
-            List.Add(node2);
-
-            foreach (LinkedListNode<int> node in List)
+            foreach (int x in List)
             {
                 break;
             }
@@ -129,23 +127,14 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Remove_ShouldThrowInsideAForeachLoop()
         {
-            LinkedListNode<int> node = new();
-            List.Add(node);
+            LinkedListNode<int> node = List.Add(0);
 
-            foreach (LinkedListNode<int> x in List)
-                Assert.Throws<InvalidOperationException>(() => List.Remove(x));
+            foreach (int x in List)
+            {
+                Assert.Throws<InvalidOperationException>(() => List.Remove(node));
+            }
 
             Assert.DoesNotThrow(() => List.Remove(node));
-        }
-
-        [Test]
-        public void Add_ShouldThrowOnAlreadyOwnedNode()
-        {
-            LinkedListNode<int> node = new();
-            List.Add(node);
-
-            Assert.Throws<ArgumentException>(() => List.Add(node), Resources.ALREADY_OWNED);
-            Assert.Throws<ArgumentException>(() => new ConcurrentLinkedList<int>().Add(node), Resources.ALREADY_OWNED);
         }
     }
 }

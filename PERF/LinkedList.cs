@@ -31,7 +31,7 @@ namespace Solti.Utils.Primitives.Perf
         public void Add()
         {
             for (int i = 0; i < Count; i++)
-                List.Add(new LinkedListNode<int>());
+                List.Add(0);
         }
 
         [GlobalSetup(Target = nameof(UsingTheEnumerator))]
@@ -40,16 +40,16 @@ namespace Solti.Utils.Primitives.Perf
             List = new();
 
             for (int i = 0; i < Count; i++)
-                List.Add(new LinkedListNode<int> { Value = i });
+                List.Add(i);
         }
 
         [Benchmark]
         public void UsingTheEnumerator()
         {
-            using IEnumerator<LinkedListNode<int>> enumerator = List.GetEnumerator();
+            using IEnumerator<int> enumerator = List.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                _ = enumerator.Current.Value;
+                _ = enumerator.Current;
             }
         }
 
@@ -59,15 +59,15 @@ namespace Solti.Utils.Primitives.Perf
             List = new();
 
             for (int i = 0; i < Count; i++)
-                List.Add(new LinkedListNode<int> { Value = i });
+                List.Add(i);
         }
 
         [Benchmark]
         public void UsingForEach()
         {
-            foreach (LinkedListNode<int> node in List)
+            foreach (int x in List)
             {
-                _ = node.Value;
+                _ = x;
             }
         }
     }

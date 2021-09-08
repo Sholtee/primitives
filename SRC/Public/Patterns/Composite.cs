@@ -55,12 +55,7 @@ namespace Solti.Utils.Primitives.Patterns
                 if (InterlockedExtensions.IncrementIfLessThan(ref FCount, MaxSize) is null)
                     throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, MaxSize));
 
-                LinkedListNode<TInterface> node = new()
-                {
-                    Value = item
-                };
-
-                FUnderlyingList.Add(node);
+                LinkedListNode<TInterface> node = FUnderlyingList.Add(item);
 
                 item.OnDispose += (_, _) =>
                 {
@@ -73,12 +68,10 @@ namespace Solti.Utils.Primitives.Patterns
             {
                 Ensure.Parameter.IsNotNull(item, nameof(item));
 
-                return FUnderlyingList.Any(node => node.Value == item);
+                return FUnderlyingList.Any(node => node == item);
             }
 
-            public IEnumerator<TInterface> GetEnumerator() => FUnderlyingList
-                .Select(node => node.Value!)
-                .GetEnumerator();
+            public IEnumerator<TInterface> GetEnumerator() => FUnderlyingList.GetEnumerator()!;
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
