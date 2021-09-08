@@ -3,7 +3,6 @@
 
 Commonly used types:
 - [Cache](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Cache.html )
-- [Composite](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Composite-1.html )
 - [ConcurrentLinkedList](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html )
 - [Disposable](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Disposable.html )
 - [DisposableSupportsNotifyOnDispose](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html )
