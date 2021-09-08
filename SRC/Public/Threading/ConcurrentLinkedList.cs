@@ -113,7 +113,7 @@ namespace Solti.Utils.Primitives.Threading
     /// Represents a doubly linked list that can be shared across threads.
     /// </summary>
     [SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "The name is meaningful")]
-    public class ConcurrentLinkedList<T> : IEnumerable<T?>
+    public class ConcurrentLinkedList<T> : IEnumerable<T>
     {
         private int FCount;
 
@@ -139,7 +139,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Ads an element to the beginning of the list.
         /// </summary>
-        public LinkedListNode<T> AddFirst(T? item)
+        public LinkedListNode<T> AddFirst(T item)
         {
             LinkedListNode<T> node = new() { Value = item };
 
@@ -263,7 +263,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Removes the first element from the list.
         /// </summary>
-        public bool TakeFirst(out T? item)
+        public bool TakeFirst(out T item)
         {
             LinkedListNode<T> first;
 
@@ -282,7 +282,7 @@ namespace Solti.Utils.Primitives.Threading
                 {
                     Head.Release();
 
-                    item = default;
+                    item = default!;
                     return false;
                 }
 
@@ -298,7 +298,7 @@ namespace Solti.Utils.Primitives.Threading
 
                 if (first.Next == Head)
                 {
-                    item = first.Value;
+                    item = first.Value!;
                     first.Invalidate();
 
                     Head.Next = Head;
@@ -324,7 +324,7 @@ namespace Solti.Utils.Primitives.Threading
             first.Prev.Release();
             first.Next.Release();
 
-            item = first.Value;
+            item = first.Value!;
             first.Invalidate();
 
             return true;
@@ -339,23 +339,19 @@ namespace Solti.Utils.Primitives.Threading
         }
 
         /// <inheritdoc/>
-        public IEnumerator<T?> GetEnumerator() => new Enumerator(this);
+        public IEnumerator<T> GetEnumerator() => new Enumerator(this);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private sealed class Enumerator: Disposable, IEnumerator<T?>
+        private sealed class Enumerator: Disposable, IEnumerator<T>
         {
             public ConcurrentLinkedList<T> Owner { get; }
 
             public LinkedListNode<T>? CurrentNode { get; private set; }
 
-            T? IEnumerator<T?>.Current => CurrentNode is not null
-                ? CurrentNode.Value
-                : default;
+            public T Current => (CurrentNode is not null ? CurrentNode.Value : default)!;
 
-            object IEnumerator.Current => (CurrentNode is not null
-                ? CurrentNode.Value
-                : null)!;
+            object IEnumerator.Current => Current!;
 
             public Enumerator(ConcurrentLinkedList<T> owner) => Owner = owner;
 
