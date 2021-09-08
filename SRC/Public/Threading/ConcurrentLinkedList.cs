@@ -338,7 +338,7 @@ namespace Solti.Utils.Primitives.Threading
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private sealed class Enumerator: IEnumerator<T?>
+        private sealed class Enumerator: Disposable, IEnumerator<T?>
         {
             public ConcurrentLinkedList<T> Owner { get; }
 
@@ -396,7 +396,13 @@ namespace Solti.Utils.Primitives.Threading
 
             public void Reset() => throw new NotImplementedException();
 
-            public void Dispose() => CurrentNode?.Release();
+            protected override void Dispose(bool disposeManaged)
+            {
+                if (disposeManaged)
+                    CurrentNode?.Release();
+
+                base.Dispose(disposeManaged);
+            }
         }
     }
 }
