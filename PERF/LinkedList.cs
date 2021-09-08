@@ -14,21 +14,21 @@ namespace Solti.Utils.Primitives.Perf
 
     [MemoryDiagnoser]
     [SimpleJob(RunStrategy.Throughput, invocationCount: 3000)]
-    public class LinkedList
+    public class ConcurrentLinkedList
     {
         public ConcurrentLinkedList<int> List { get; set; }
 
         [Params(1, 10, 20, 100)]
         public int Count { get; set; }
 
-        [GlobalSetup(Target = nameof(Add))]
+        [GlobalSetup(Target = nameof(AddFirst))]
         public void SetupAdd()
         {
             List = new ConcurrentLinkedList<int>();
         }
 
         [Benchmark]
-        public void Add()
+        public void AddFirst()
         {
             for (int i = 0; i < Count; i++)
                 List.AddFirst(0);
