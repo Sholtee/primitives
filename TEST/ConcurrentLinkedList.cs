@@ -29,7 +29,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             {
                 LinkedListNode<int>[] nodes = Enumerable
                     .Repeat(0, 3000)
-                    .Select(_ => List.Add(i))
+                    .Select(_ => List.AddFirst(i))
                     .ToArray();
 
                 foreach (LinkedListNode<int> node in nodes)
@@ -51,7 +51,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             {
                 for (int i = 0; i < 3000; i++)
                 {
-                    List.Add(0);
+                    List.AddFirst(0);
                 }
 
                 for (int i = 0; i < 3000; i++)
@@ -70,7 +70,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             {
                 for (int j = 0; j < 3000; j++)
                 {
-                    List.Add(i);
+                    List.AddFirst(i);
                 }
 
                 Assert.That(List.Count(x => x == i), Is.EqualTo(3000));
@@ -84,7 +84,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             {
                 LinkedListNode<int>[] toBeRemoved = Enumerable
                     .Repeat(0, 3000)
-                    .Select((_, i) => List.Add(i))
+                    .Select((_, i) => List.AddFirst(i))
                     .ToArray();
 
                 foreach (LinkedListNode<int> node in toBeRemoved)
@@ -104,15 +104,15 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             Assert.DoesNotThrowAsync(() => Task.Run(() => List.Count()));
             Assert.That(List.Head.LockedBy, Is.EqualTo(0));
-            Assert.DoesNotThrow(() => List.Add(0));
+            Assert.DoesNotThrow(() => List.AddFirst(0));
         }
 
         [Test]
         public void Enumeration_MayBeBroken()
         {
             LinkedListNode<int>
-                node1 = List.Add(0),
-                node2 = List.Add(1);
+                node1 = List.AddFirst(0),
+                node2 = List.AddFirst(1);
 
             foreach (int x in List)
             {
@@ -127,7 +127,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Remove_ShouldThrowInsideAForeachLoop()
         {
-            LinkedListNode<int> node = List.Add(0);
+            LinkedListNode<int> node = List.AddFirst(0);
 
             foreach (int x in List)
             {

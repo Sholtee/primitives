@@ -31,7 +31,7 @@ namespace Solti.Utils.Primitives.Perf
         public void Add()
         {
             for (int i = 0; i < Count; i++)
-                List.Add(0);
+                List.AddFirst(0);
         }
 
         [GlobalSetup(Target = nameof(UsingTheEnumerator))]
@@ -40,7 +40,7 @@ namespace Solti.Utils.Primitives.Perf
             List = new();
 
             for (int i = 0; i < Count; i++)
-                List.Add(i);
+                List.AddFirst(i);
         }
 
         [Benchmark]
@@ -59,7 +59,7 @@ namespace Solti.Utils.Primitives.Perf
             List = new();
 
             for (int i = 0; i < Count; i++)
-                List.Add(i);
+                List.AddFirst(i);
         }
 
         [Benchmark]

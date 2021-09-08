@@ -131,14 +131,15 @@ namespace Solti.Utils.Primitives.Threading
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// The number of elements stored in the list.
+        /// </summary>
         public int Count => FCount;
 
-        /// <inheritdoc/>
-        public bool IsReadOnly { get; }
-
-        /// <inheritdoc/>
-        public LinkedListNode<T> Add(T? item)
+        /// <summary>
+        /// Ads an element to the beginning of the list.
+        /// </summary>
+        public LinkedListNode<T> AddFirst(T? item)
         {
             LinkedListNode<T> node = new() { Value = item };
 
@@ -194,7 +195,9 @@ namespace Solti.Utils.Primitives.Threading
             return node;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Removes the given <paramref name="node"/> from the list.
+        /// </summary>
         public bool Remove(LinkedListNode<T> node)
         {
             Ensure.Parameter.IsNotNull(node, nameof(node));
@@ -327,7 +330,9 @@ namespace Solti.Utils.Primitives.Threading
             return true;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Clears the list.
+        /// </summary>
         public void Clear()
         {
             while (TakeFirst(out _)) { }
