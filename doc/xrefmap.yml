@@ -1040,6 +1040,92 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).RecursionDetected
   nameWithType: ILifetimeManager<T>.RecursionDetected
   nameWithType.vb: ILifetimeManager(Of T).RecursionDetected
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions
+  name: InterlockedExtensions
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html
+  commentId: T:Solti.Utils.Primitives.Threading.InterlockedExtensions
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions
+  nameWithType: InterlockedExtensions
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan(System.Int32@,System.Int32)
+  name: DecrementIfGreaterThan(ref Int32, Int32)
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_DecrementIfGreaterThan_System_Int32__System_Int32_
+  commentId: M:Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan(System.Int32@,System.Int32)
+  name.vb: DecrementIfGreaterThan(ByRef Int32, Int32)
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan(ref System.Int32, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan(ByRef System.Int32, System.Int32)
+  nameWithType: InterlockedExtensions.DecrementIfGreaterThan(ref Int32, Int32)
+  nameWithType.vb: InterlockedExtensions.DecrementIfGreaterThan(ByRef Int32, Int32)
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan*
+  name: DecrementIfGreaterThan
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_DecrementIfGreaterThan_
+  commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.DecrementIfGreaterThan
+  nameWithType: InterlockedExtensions.DecrementIfGreaterThan
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan(System.Int32@,System.Int32)
+  name: IncrementIfGreaterThan(ref Int32, Int32)
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_IncrementIfGreaterThan_System_Int32__System_Int32_
+  commentId: M:Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan(System.Int32@,System.Int32)
+  name.vb: IncrementIfGreaterThan(ByRef Int32, Int32)
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan(ref System.Int32, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan(ByRef System.Int32, System.Int32)
+  nameWithType: InterlockedExtensions.IncrementIfGreaterThan(ref Int32, Int32)
+  nameWithType.vb: InterlockedExtensions.IncrementIfGreaterThan(ByRef Int32, Int32)
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan*
+  name: IncrementIfGreaterThan
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_IncrementIfGreaterThan_
+  commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreaterThan
+  nameWithType: InterlockedExtensions.IncrementIfGreaterThan
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan(System.Int32@,System.Int32)
+  name: IncrementIfLessThan(ref Int32, Int32)
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_IncrementIfLessThan_System_Int32__System_Int32_
+  commentId: M:Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan(System.Int32@,System.Int32)
+  name.vb: IncrementIfLessThan(ByRef Int32, Int32)
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan(ref System.Int32, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan(ByRef System.Int32, System.Int32)
+  nameWithType: InterlockedExtensions.IncrementIfLessThan(ref Int32, Int32)
+  nameWithType.vb: InterlockedExtensions.IncrementIfLessThan(ByRef Int32, Int32)
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan*
+  name: IncrementIfLessThan
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_IncrementIfLessThan_
+  commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan
+  nameWithType: InterlockedExtensions.IncrementIfLessThan
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.Max(System.Int32@,System.Int32)
+  name: Max(ref Int32, Int32)
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_Max_System_Int32__System_Int32_
+  commentId: M:Solti.Utils.Primitives.Threading.InterlockedExtensions.Max(System.Int32@,System.Int32)
+  name.vb: Max(ByRef Int32, Int32)
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.Max(ref System.Int32, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Threading.InterlockedExtensions.Max(ByRef System.Int32, System.Int32)
+  nameWithType: InterlockedExtensions.Max(ref Int32, Int32)
+  nameWithType.vb: InterlockedExtensions.Max(ByRef Int32, Int32)
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.Max*
+  name: Max
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_Max_
+  commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.Max
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.Max
+  nameWithType: InterlockedExtensions.Max
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or(System.Int32@,System.Int32)
+  name: Or(ref Int32, Int32)
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_Or_System_Int32__System_Int32_
+  commentId: M:Solti.Utils.Primitives.Threading.InterlockedExtensions.Or(System.Int32@,System.Int32)
+  name.vb: Or(ByRef Int32, Int32)
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or(ref System.Int32, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or(ByRef System.Int32, System.Int32)
+  nameWithType: InterlockedExtensions.Or(ref Int32, Int32)
+  nameWithType.vb: InterlockedExtensions.Or(ByRef Int32, Int32)
+- uid: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or*
+  name: Or
+  href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html#Solti_Utils_Primitives_Threading_InterlockedExtensions_Or_
+  commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.Or
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or
+  nameWithType: InterlockedExtensions.Or
 - uid: Solti.Utils.Primitives.Threading.LinkedListNode`1
   name: LinkedListNode<T>
   href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html
