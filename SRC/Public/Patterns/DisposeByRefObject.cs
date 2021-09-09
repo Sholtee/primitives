@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
 {
-    using static InterlockedExtensions;
+    using static Threading.InterlockedExtensions;
 
     using Properties;
 

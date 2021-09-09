@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 using NUnit.Framework;
 
-namespace Solti.Utils.Primitives.Tests
+namespace Solti.Utils.Primitives.Threading.Tests
 {
     [TestFixture]
     public class InterlockedExtensionsTests
@@ -26,11 +26,11 @@ namespace Solti.Utils.Primitives.Tests
 
             Assert.DoesNotThrowAsync(() => Task.WhenAll(tasks));
 
-            Assert.That(value, Is.EqualTo(5000));
+            Assert.That(value, Is.EqualTo(50000));
 
             void Increment()
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     InterlockedExtensions.IncrementIfGreaterThan(ref value, -1);
                 }
@@ -58,13 +58,13 @@ namespace Solti.Utils.Primitives.Tests
 
             Assert.DoesNotThrowAsync(() => Task.WhenAll(tasks));
 
-            Assert.That(value, Is.EqualTo(5000));
+            Assert.That(value, Is.EqualTo(50000));
 
             void Increment()
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 10000; i++)
                 {
-                    InterlockedExtensions.IncrementIfLessThan(ref value, 5001);
+                    InterlockedExtensions.IncrementIfLessThan(ref value, 50001);
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace Solti.Utils.Primitives.Tests
         [Test]
         public void DecrementIfGreaterThan_ShouldWorkParallelly()
         {
-            int value = 5000;
+            int value = 50000;
 
             Task[] tasks = Enumerable
                 .Repeat(0, 5)
@@ -94,7 +94,7 @@ namespace Solti.Utils.Primitives.Tests
 
             void Decrement()
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     InterlockedExtensions.DecrementIfGreaterThan(ref value, -1);
                 }
@@ -128,6 +128,38 @@ namespace Solti.Utils.Primitives.Tests
                 for (int i = 0; i < 31; i++)
                 {
                     InterlockedExtensions.Or(ref value, 1 << i);
+                }
+            }
+        }
+
+        [Test]
+        public void Max_ShouldDoNothingIfTheComparandLessThanOrEqualToTheOriginalValue([Values(0, 1)] int comparand)
+        {
+            int value = 1;
+
+            Assert.That(InterlockedExtensions.Max(ref value, comparand) is 1);
+            Assert.That(value, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Max_ShouldWorkParallelly()
+        {
+            int value = 0;
+
+            Task[] tasks = Enumerable
+                .Repeat(0, 5)
+                .Select((_, i) => Task.Run(() => Max(i)))
+                .ToArray();
+
+            Assert.DoesNotThrowAsync(() => Task.WhenAll(tasks));
+
+            Assert.That(value, Is.EqualTo(4));
+
+            void Max(int comparand)
+            {
+                for (int i = 0; i < 10000; i++)
+                {
+                    InterlockedExtensions.Max(ref value, comparand);
                 }
             }
         }

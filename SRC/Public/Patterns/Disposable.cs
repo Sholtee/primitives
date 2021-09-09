@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
 {
+    using static Threading.InterlockedExtensions;
+
     /// <summary>
     /// Implements the <see cref="IDisposable"/> and <see cref="IAsyncDisposable"/> interfaces.
     /// </summary>
@@ -81,7 +83,7 @@ namespace Solti.Utils.Primitives.Patterns
             // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
             //
 
-            if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
+            if ((Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
                 return;
 
             BeforeDispose();
@@ -102,7 +104,7 @@ namespace Solti.Utils.Primitives.Patterns
             // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
             //
 
-            if ((InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
+            if ((Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
                 return;
 
             BeforeDispose();
