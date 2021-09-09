@@ -79,6 +79,7 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Compares two integers and replaces the first value with the second one if the second value is bigger.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Max(ref int location, int comparand)
         {
             int snapshot;
