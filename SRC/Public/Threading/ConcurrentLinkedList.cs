@@ -154,10 +154,6 @@ namespace Solti.Utils.Primitives.Threading
 
                 if (!Head.Next!.TryLock()) // ures listanal (Next == Head) ez nem csinal semmit 
                 {
-                    //
-                    // TODO: [perf] Itt raprobalhatnank a Head.Prev-re hatha az nincs zarolva
-                    //
-
                     Head.Release();
                     continue;
                 }
