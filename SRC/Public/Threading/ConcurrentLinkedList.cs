@@ -301,6 +301,7 @@ namespace Solti.Utils.Primitives.Threading
                     Head.Prev = Head;
                     Head.Release();
 
+                    Decrement(ref FCount);
                     return true;
                 }
 
@@ -323,6 +324,7 @@ namespace Solti.Utils.Primitives.Threading
             item = first.Value!;
             first.Invalidate();
 
+            Decrement(ref FCount);
             return true;
         }
 
