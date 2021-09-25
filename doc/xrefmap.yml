@@ -399,49 +399,6 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.DisposeByRefObject.ReleaseAsync
   nameWithType: DisposeByRefObject.ReleaseAsync
-- uid: Solti.Utils.Primitives.Patterns.IComposite`1
-  name: IComposite<TInterface>
-  href: Solti.Utils.Primitives.Patterns.IComposite-1.html
-  commentId: T:Solti.Utils.Primitives.Patterns.IComposite`1
-  name.vb: IComposite(Of TInterface)
-  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>
-  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface)
-  nameWithType: IComposite<TInterface>
-  nameWithType.vb: IComposite(Of TInterface)
-- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Children
-  name: Children
-  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Children
-  commentId: P:Solti.Utils.Primitives.Patterns.IComposite`1.Children
-  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Children
-  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Children
-  nameWithType: IComposite<TInterface>.Children
-  nameWithType.vb: IComposite(Of TInterface).Children
-- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Children*
-  name: Children
-  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Children_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.IComposite`1.Children
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Children
-  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Children
-  nameWithType: IComposite<TInterface>.Children
-  nameWithType.vb: IComposite(Of TInterface).Children
-- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Parent
-  name: Parent
-  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Parent
-  commentId: P:Solti.Utils.Primitives.Patterns.IComposite`1.Parent
-  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Parent
-  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Parent
-  nameWithType: IComposite<TInterface>.Parent
-  nameWithType.vb: IComposite(Of TInterface).Parent
-- uid: Solti.Utils.Primitives.Patterns.IComposite`1.Parent*
-  name: Parent
-  href: Solti.Utils.Primitives.Patterns.IComposite-1.html#Solti_Utils_Primitives_Patterns_IComposite_1_Parent_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.IComposite`1.Parent
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.IComposite<TInterface>.Parent
-  fullName.vb: Solti.Utils.Primitives.Patterns.IComposite(Of TInterface).Parent
-  nameWithType: IComposite<TInterface>.Parent
-  nameWithType.vb: IComposite(Of TInterface).Parent
 - uid: Solti.Utils.Primitives.Patterns.IDisposableEx
   name: IDisposableEx
   href: Solti.Utils.Primitives.Patterns.IDisposableEx.html
