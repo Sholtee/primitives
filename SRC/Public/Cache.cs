@@ -22,7 +22,7 @@ namespace Solti.Utils.Primitives
             // Dictionary performs mutch better against int keys
             //
 
-            private static ConcurrentDictionary<int, LazySlim> FImplementation { get; } = new();
+            private static readonly ConcurrentDictionary<int, LazySlim> FImplementation = new();
 
             //
             // We don't use factory function here since it may get called more than once if the GetOrAdd()
@@ -73,7 +73,6 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
-
         public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") => Backend<TKey, TValue>.GetOrAdd(key, factory, scope);
     }
 }
