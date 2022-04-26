@@ -13,22 +13,6 @@ references:
   commentId: T:Solti.Utils.Primitives.Cache
   fullName: Solti.Utils.Primitives.Cache
   nameWithType: Cache
-- uid: Solti.Utils.Primitives.Cache.AsDictionary*
-  name: AsDictionary
-  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_AsDictionary_
-  commentId: Overload:Solti.Utils.Primitives.Cache.AsDictionary
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Cache.AsDictionary
-  nameWithType: Cache.AsDictionary
-- uid: Solti.Utils.Primitives.Cache.AsDictionary``2
-  name: AsDictionary<TKey, TValue>()
-  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_AsDictionary__2
-  commentId: M:Solti.Utils.Primitives.Cache.AsDictionary``2
-  name.vb: AsDictionary(Of TKey, TValue)()
-  fullName: Solti.Utils.Primitives.Cache.AsDictionary<TKey, TValue>()
-  fullName.vb: Solti.Utils.Primitives.Cache.AsDictionary(Of TKey, TValue)()
-  nameWithType: Cache.AsDictionary<TKey, TValue>()
-  nameWithType.vb: Cache.AsDictionary(Of TKey, TValue)()
 - uid: Solti.Utils.Primitives.Cache.Clear*
   name: Clear
   href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_Clear_
@@ -52,15 +36,15 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Cache.GetOrAdd
   nameWithType: Cache.GetOrAdd
-- uid: Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``1},System.String)
-  name: GetOrAdd<TKey, TValue>(TKey, Func<TValue>, String)
-  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd__2___0_Func___1__System_String_
-  commentId: M:Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``1},System.String)
-  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TValue), String)
-  fullName: Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey, Func<TValue>, System.String)
-  fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TValue), System.String)
-  nameWithType: Cache.GetOrAdd<TKey, TValue>(TKey, Func<TValue>, String)
-  nameWithType.vb: Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TValue), String)
+- uid: Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``0,``1},System.String)
+  name: GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd__2___0_Func___0___1__System_String_
+  commentId: M:Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``0,``1},System.String)
+  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
+  fullName: Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, System.String)
+  fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), System.String)
+  nameWithType: Cache.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
+  nameWithType.vb: Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
 - uid: Solti.Utils.Primitives.ComparerBase`2
   name: ComparerBase<TConcreteComparer, T>
   href: Solti.Utils.Primitives.ComparerBase-2.html
