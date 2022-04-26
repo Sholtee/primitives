@@ -36,14 +36,14 @@ namespace Solti.Utils.Primitives.Threading
             Ensure.Parameter.IsNotNull(returnType, nameof(returnType));
 
             return (Task) Cache
-                .GetOrAdd((typeof(T), returnType), () =>
+                .GetOrAdd((typeof(T), returnType), static k =>
                 {
                     MethodInfo cast = ((MethodCallExpression) ((Expression<Action>) (() => Cast<object, object>(null!))).Body)
                         .Method
                         .GetGenericMethodDefinition();
 
                     return cast
-                        .MakeGenericMethod(typeof(T), returnType)
+                        .MakeGenericMethod(k.Item1, k.returnType)
                         .ToStaticDelegate();
                 })
                 .Invoke(new object[] { task });

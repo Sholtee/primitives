@@ -21,7 +21,7 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(src, nameof(src));
 
-            return Cache.GetOrAdd(src, () =>
+            return Cache.GetOrAdd(src, static src =>
             {
                 ParameterExpression p = Expression.Parameter(typeof(object), "instance");
 
@@ -49,7 +49,7 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(src, nameof(src));
 
-            return Cache.GetOrAdd(src, () =>
+            return Cache.GetOrAdd(src, static src =>
             {
                 ParameterExpression
                     inst = Expression.Parameter(typeof(object), "instance"),

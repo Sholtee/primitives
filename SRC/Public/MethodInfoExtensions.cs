@@ -32,7 +32,7 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(method, nameof(method));
 
-            return Cache.GetOrAdd(method, () =>
+            return Cache.GetOrAdd(method, static method =>
             {
                 ParameterExpression
                     instance = Expression.Parameter(typeof(object), nameof(instance)),
@@ -65,7 +65,7 @@ namespace Solti.Utils.Primitives
         {
             Ensure.Parameter.IsNotNull(methodBase, nameof(methodBase));
 
-            return Cache.GetOrAdd(methodBase, () =>
+            return Cache.GetOrAdd(methodBase, static methodBase =>
             {
                 ParameterExpression paramz = Expression.Parameter(typeof(object?[]), nameof(paramz));
 

@@ -20,14 +20,14 @@ namespace Solti.Utils.Primitives.Tests
             Assert.AreNotSame(CacheUsage_1(), CacheUsage_2());
         }
 
-        private static object CacheUsage_1() => Cache.GetOrAdd(key, () => new object());
-        private static object CacheUsage_2() => Cache.GetOrAdd(key, () => new object());
+        private static object CacheUsage_1() => Cache.GetOrAdd(key, _ => new object());
+        private static object CacheUsage_2() => Cache.GetOrAdd(key, _ => new object());
 
         [Test]
         public void Cache_ShouldHandleComplexKeys() 
         {
-            Assert.AreSame(Cache.GetOrAdd(new {k1 = typeof(object), k2 = "cica"}, () => new object()), Cache.GetOrAdd(new { k1 = typeof(object), k2 = "cica" }, () => new object()));
-            Assert.AreSame(Cache.GetOrAdd((typeof(object), "cica"), () => new object()), Cache.GetOrAdd((typeof(object), "cica"), () => new object()));
+            Assert.AreSame(Cache.GetOrAdd(new {k1 = typeof(object), k2 = "cica"}, _ => new object()), Cache.GetOrAdd(new { k1 = typeof(object), k2 = "cica" }, _ => new object()));
+            Assert.AreSame(Cache.GetOrAdd((typeof(object), "cica"), _ => new object()), Cache.GetOrAdd((typeof(object), "cica"), _ => new object()));
         }
     }
 }
