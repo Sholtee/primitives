@@ -42,7 +42,7 @@
   
   <h1 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1" class="text-break">Class SafeEnumerator&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Thread safe <see cref="!:IEnumerator&lt;T>"></see> implementation.</p>
+  <div class="markdown level0 summary"><p>Thread safe <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator&lt;T&gt;</a> implementation.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -54,9 +54,10 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
-    <div><span class="xref">IDisposable</span></div>
-    <div><span class="xref">IAsyncDisposable</span></div>
-    <div><span class="xref">IEnumerator</span>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -78,12 +79,33 @@
     <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_DisposeAsync">Disposable.DisposeAsync()</a>
     </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Threading.html">Solti.Utils.Primitives.Threading</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class SafeEnumerator&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, IEnumerator&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class SafeEnumerator&lt;T&gt; : Disposable, IDisposableEx, IAsyncDisposable, IEnumerator&lt;T&gt;, IEnumerator, IDisposable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -103,7 +125,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_IEnumerable__0__ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(IEnumerable{`0},ReaderWriterLockSlim)">SafeEnumerator(IEnumerable&lt;T&gt;, ReaderWriterLockSlim)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_System_Collections_Generic_IEnumerable__0__System_Threading_ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Threading.ReaderWriterLockSlim)">SafeEnumerator(IEnumerable&lt;T&gt;, ReaderWriterLockSlim)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Threading.SafeEnumerator-1.html">SafeEnumerator&lt;T&gt;</a> instane.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -122,12 +144,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</td>
         <td><span class="parametername">src</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ReaderWriterLockSlim</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.readerwriterlockslim">ReaderWriterLockSlim</a></td>
         <td><span class="parametername">lock</span></td>
         <td></td>
       </tr>
@@ -137,7 +159,7 @@
   </h3>
   <a id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_Current_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_Current" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.Current">Current</h4>
-  <div class="markdown level1 summary"><p>See <see cref="!:IEnumerator&lt;T>.Current"></see>.</p>
+  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1.current#system-collections-generic-ienumerator-1-current">Current</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -191,7 +213,7 @@
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
   <a id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_MoveNext_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_MoveNext" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.MoveNext">MoveNext()</h4>
-  <div class="markdown level1 summary"><p>See <see cref="!:IEnumerator.MoveNext"></see>.</p>
+  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator.movenext#system-collections-ienumerator-movenext">MoveNext()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -215,25 +237,54 @@
   </table>
   <a id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_Reset_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_Reset" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.Reset">Reset()</h4>
-  <div class="markdown level1 summary"><p>See <see cref="!:IEnumerator.Reset"></see>.</p>
+  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator.reset#system-collections-ienumerator-reset">Reset()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
   </div>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current_" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current" data-uid="Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current">IEnumerator.Current</h4>
+  <div class="markdown level1 summary"><p>See <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator.current#system-collections-ienumerator-current">Current</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object IEnumerator.Current { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">System.IAsyncDisposable</a>
   </div>
   <div>
-      <span class="xref">IAsyncDisposable</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">System.Collections.Generic.IEnumerator&lt;T&gt;</a>
   </div>
   <div>
-      <span class="xref">IEnumerator&lt;&gt;</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">System.Collections.IEnumerator</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
   </div>
 </article>
           </div>

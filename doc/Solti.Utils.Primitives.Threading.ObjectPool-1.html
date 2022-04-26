@@ -54,9 +54,11 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a></div>
-    <div><span class="xref">IDisposable</span></div>
-    <div><span class="xref">IAsyncDisposable</span></div>
-    <div><span class="xref">IReadOnlyCollection</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(, )</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -78,12 +80,33 @@
     <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_DisposeAsync">Disposable.DisposeAsync()</a>
     </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Threading.html">Solti.Utils.Primitives.Threading</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_ObjectPool_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ObjectPool&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, IReadOnlyCollection&lt;(int OwnerThread, T Object)&gt; where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public class ObjectPool&lt;T&gt; : Disposable, IDisposableEx, IDisposable, IAsyncDisposable, IReadOnlyCollection&lt;(int OwnerThread, T Object)&gt;, IEnumerable&lt;(int OwnerThread, T Object)&gt;, IEnumerable where T : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -103,44 +126,13 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Func__0__System_Nullable_System_Int32__" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Func{`0},System.Nullable{System.Int32})">ObjectPool(Func&lt;T&gt;, Nullable&lt;Int32&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPool-1.html">ObjectPool&lt;T&gt;</a> object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ObjectPool(Func&lt;T&gt; factory, int? maxPoolSize = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Func</span>&lt;T&gt;</td>
-        <td><span class="parametername">factory</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
-        <td><span class="parametername">maxPoolSize</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Solti_Utils_Primitives_Threading_ILifetimeManager__0__System_Nullable_System_Int32__" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},System.Nullable{System.Int32})">ObjectPool(ILifetimeManager&lt;T&gt;, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPool-1.html">ObjectPool&lt;T&gt;</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ObjectPool(ILifetimeManager&lt;T&gt; lifetimeManager, int? maxPoolSize = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public ObjectPool(ILifetimeManager&lt;T&gt; lifetimeManager, int? maxPoolSize = default(int? ))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -155,6 +147,37 @@
       <tr>
         <td><a class="xref" href="Solti.Utils.Primitives.Threading.ILifetimeManager-1.html">ILifetimeManager</a>&lt;T&gt;</td>
         <td><span class="parametername">lifetimeManager</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</td>
+        <td><span class="parametername">maxPoolSize</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Func__0__System_Nullable_System_Int32__" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},System.Nullable{System.Int32})">ObjectPool(Func&lt;T&gt;, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPool-1.html">ObjectPool&lt;T&gt;</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObjectPool(Func&lt;T&gt; factory, int? maxPoolSize = default(int? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;T&gt;</td>
+        <td><span class="parametername">factory</span></td>
         <td></td>
       </tr>
       <tr>
@@ -262,7 +285,7 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">disposeManaged</span></td>
-        <td><p>It is set to true on <see cref="!:IDisposable.Dispose"></see> call.</p>
+        <td><p>It is set to true on <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable.dispose#system-idisposable-dispose">Dispose()</a> call.</p>
 </td>
       </tr>
     </tbody>
@@ -270,13 +293,13 @@
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Dispose_System_Boolean_">Disposable.Dispose(Boolean)</a></div>
   <a id="Solti_Utils_Primitives_Threading_ObjectPool_1_Get_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Get*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_CancellationToken_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,CancellationToken)">Get(CheckoutPolicy, CancellationToken)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)">Get(CheckoutPolicy, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a value from the pool.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public T Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -294,7 +317,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellation</span></td>
         <td></td>
       </tr>
@@ -334,7 +357,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerator</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(, )</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.valuetuple-2">(T1, T2)</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, T&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -365,22 +388,56 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
   </div>
   <div>
-      <span class="xref">IAsyncDisposable</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncdisposable">System.IAsyncDisposable</a>
   </div>
   <div>
-      <span class="xref">IReadOnlyCollection&lt;&gt;</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">System.Collections.IEnumerable</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_CancellationToken_">ObjectPoolExtensions.GetItem&lt;T&gt;(ObjectPool&lt;T&gt;, CheckoutPolicy, CancellationToken)</a>
+      <a class="xref" href="Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0_System_Int32__">EnumerableExtensions.ForEach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T, Int32&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_">ObjectPoolExtensions.GetItem&lt;T&gt;(ObjectPool&lt;T&gt;, CheckoutPolicy, CancellationToken)</a>
   </div>
 </article>
           </div>

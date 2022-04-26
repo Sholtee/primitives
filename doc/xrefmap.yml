@@ -36,13 +36,13 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Cache.GetOrAdd
   nameWithType: Cache.GetOrAdd
-- uid: Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``0,``1},System.String)
+- uid: Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
   name: GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
-  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd__2___0_Func___0___1__System_String_
-  commentId: M:Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,Func{``0,``1},System.String)
+  href: Solti.Utils.Primitives.Cache.html#Solti_Utils_Primitives_Cache_GetOrAdd__2___0_System_Func___0___1__System_String_
+  commentId: M:Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
   name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
-  fullName: Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, System.String)
-  fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), System.String)
+  fullName: Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey, System.Func<TKey, TValue>, System.String)
+  fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TKey, TValue), System.String)
   nameWithType: Cache.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
   nameWithType.vb: Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
 - uid: Solti.Utils.Primitives.ComparerBase`2
@@ -118,13 +118,13 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach
   nameWithType: EnumerableExtensions.ForEach
-- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(IEnumerable{``0},Action{``0,System.Int32})
+- uid: Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
   name: ForEach<T>(IEnumerable<T>, Action<T, Int32>)
-  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_IEnumerable___0__Action___0_System_Int32__
-  commentId: M:Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(IEnumerable{``0},Action{``0,System.Int32})
+  href: Solti.Utils.Primitives.EnumerableExtensions.html#Solti_Utils_Primitives_EnumerableExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0_System_Int32__
+  commentId: M:Solti.Utils.Primitives.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})
   name.vb: ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
-  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach<T>(IEnumerable<T>, Action<T, System.Int32>)
-  fullName.vb: Solti.Utils.Primitives.EnumerableExtensions.ForEach(Of T)(IEnumerable(Of T), Action(Of T, System.Int32))
+  fullName: Solti.Utils.Primitives.EnumerableExtensions.ForEach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T, System.Int32>)
+  fullName.vb: Solti.Utils.Primitives.EnumerableExtensions.ForEach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T, System.Int32))
   nameWithType: EnumerableExtensions.ForEach<T>(IEnumerable<T>, Action<T, Int32>)
   nameWithType.vb: EnumerableExtensions.ForEach(Of T)(IEnumerable(Of T), Action(Of T, Int32))
 - uid: Solti.Utils.Primitives.ExpressionExtensions
@@ -133,11 +133,11 @@ references:
   commentId: T:Solti.Utils.Primitives.ExpressionExtensions
   fullName: Solti.Utils.Primitives.ExpressionExtensions
   nameWithType: ExpressionExtensions
-- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(Expression)
+- uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
   name: GetDebugView(Expression)
-  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_Expression_
-  commentId: M:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(Expression)
-  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(Expression)
+  href: Solti.Utils.Primitives.ExpressionExtensions.html#Solti_Utils_Primitives_ExpressionExtensions_GetDebugView_System_Linq_Expressions_Expression_
+  commentId: M:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
+  fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(System.Linq.Expressions.Expression)
   nameWithType: ExpressionExtensions.GetDebugView(Expression)
 - uid: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView*
   name: GetDebugView
@@ -152,11 +152,11 @@ references:
   commentId: T:Solti.Utils.Primitives.MethodInfoExtensions
   fullName: Solti.Utils.Primitives.MethodInfoExtensions
   nameWithType: MethodInfoExtensions
-- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(MethodInfo)
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
   name: ToInstanceDelegate(MethodInfo)
-  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToInstanceDelegate_MethodInfo_
-  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(MethodInfo)
-  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(MethodInfo)
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToInstanceDelegate_System_Reflection_MethodInfo_
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(System.Reflection.MethodInfo)
   nameWithType: MethodInfoExtensions.ToInstanceDelegate(MethodInfo)
 - uid: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate*
   name: ToInstanceDelegate
@@ -165,11 +165,11 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate
   nameWithType: MethodInfoExtensions.ToInstanceDelegate
-- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(MethodBase)
+- uid: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
   name: ToStaticDelegate(MethodBase)
-  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToStaticDelegate_MethodBase_
-  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(MethodBase)
-  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(MethodBase)
+  href: Solti.Utils.Primitives.MethodInfoExtensions.html#Solti_Utils_Primitives_MethodInfoExtensions_ToStaticDelegate_System_Reflection_MethodBase_
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
+  fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(System.Reflection.MethodBase)
   nameWithType: MethodInfoExtensions.ToStaticDelegate(MethodBase)
 - uid: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate*
   name: ToStaticDelegate
@@ -600,11 +600,11 @@ references:
   commentId: T:Solti.Utils.Primitives.PropertyInfoExtensions
   fullName: Solti.Utils.Primitives.PropertyInfoExtensions
   nameWithType: PropertyInfoExtensions
-- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(PropertyInfo)
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
   name: ToGetter(PropertyInfo)
-  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToGetter_PropertyInfo_
-  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(PropertyInfo)
-  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(PropertyInfo)
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToGetter_System_Reflection_PropertyInfo_
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(System.Reflection.PropertyInfo)
   nameWithType: PropertyInfoExtensions.ToGetter(PropertyInfo)
 - uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter*
   name: ToGetter
@@ -613,11 +613,11 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter
   nameWithType: PropertyInfoExtensions.ToGetter
-- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(PropertyInfo)
+- uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
   name: ToSetter(PropertyInfo)
-  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToSetter_PropertyInfo_
-  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(PropertyInfo)
-  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(PropertyInfo)
+  href: Solti.Utils.Primitives.PropertyInfoExtensions.html#Solti_Utils_Primitives_PropertyInfoExtensions_ToSetter_System_Reflection_PropertyInfo_
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
+  fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(System.Reflection.PropertyInfo)
   nameWithType: PropertyInfoExtensions.ToSetter(PropertyInfo)
 - uid: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter*
   name: ToSetter
@@ -768,6 +768,25 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Remove
   nameWithType: ConcurrentLinkedList<T>.Remove
   nameWithType.vb: ConcurrentLinkedList(Of T).Remove
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ConcurrentLinkedList<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ConcurrentLinkedList<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: ConcurrentLinkedList(Of T).System.Collections.IEnumerable.GetEnumerator
 - uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)
   name: TakeFirst(out T)
   href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst__0__
@@ -937,13 +956,13 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default
   nameWithType: ILifetimeManager<T>.Default
   nameWithType.vb: ILifetimeManager(Of T).Default
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.#ctor(Func{`0})
+- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.#ctor(System.Func{`0})
   name: Default(Func<T>)
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.Default.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Default__ctor_Func__0__
-  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.#ctor(Func{`0})
+  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.Default.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Default__ctor_System_Func__0__
+  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.#ctor(System.Func{`0})
   name.vb: Default(Func(Of T))
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.Default(Func<T>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default.Default(Func(Of T))
+  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.Default(System.Func<T>)
+  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default.Default(System.Func(Of T))
   nameWithType: ILifetimeManager<T>.Default.Default(Func<T>)
   nameWithType.vb: ILifetimeManager(Of T).Default.Default(Func(Of T))
 - uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.#ctor*
@@ -1280,15 +1299,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T)
   nameWithType: ObjectPool<T>
   nameWithType.vb: ObjectPool(Of T)
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Func{`0},System.Nullable{System.Int32})
-  name: ObjectPool(Func<T>, Nullable<Int32>)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Func__0__System_Nullable_System_Int32__
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Func{`0},System.Nullable{System.Int32})
-  name.vb: ObjectPool(Func(Of T), Nullable(Of Int32))
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(Func<T>, System.Nullable<System.Int32>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(Func(Of T), System.Nullable(Of System.Int32))
-  nameWithType: ObjectPool<T>.ObjectPool(Func<T>, Nullable<Int32>)
-  nameWithType.vb: ObjectPool(Of T).ObjectPool(Func(Of T), Nullable(Of Int32))
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},System.Nullable{System.Int32})
   name: ObjectPool(ILifetimeManager<T>, Nullable<Int32>)
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Solti_Utils_Primitives_Threading_ILifetimeManager__0__System_Nullable_System_Int32__
@@ -1298,6 +1308,15 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager(Of T), System.Nullable(Of System.Int32))
   nameWithType: ObjectPool<T>.ObjectPool(ILifetimeManager<T>, Nullable<Int32>)
   nameWithType.vb: ObjectPool(Of T).ObjectPool(ILifetimeManager(Of T), Nullable(Of Int32))
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},System.Nullable{System.Int32})
+  name: ObjectPool(Func<T>, Nullable<Int32>)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Func__0__System_Nullable_System_Int32__
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},System.Nullable{System.Int32})
+  name.vb: ObjectPool(Func(Of T), Nullable(Of Int32))
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Func<T>, System.Nullable<System.Int32>)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Func(Of T), System.Nullable(Of System.Int32))
+  nameWithType: ObjectPool<T>.ObjectPool(Func<T>, Nullable<Int32>)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(Func(Of T), Nullable(Of Int32))
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*
   name: ObjectPool
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_
@@ -1358,12 +1377,12 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Dispose
   nameWithType: ObjectPool<T>.Dispose
   nameWithType.vb: ObjectPool(Of T).Dispose
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
   name: Get(CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,CancellationToken)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
   nameWithType: ObjectPool<T>.Get(CheckoutPolicy, CancellationToken)
   nameWithType.vb: ObjectPool(Of T).Get(CheckoutPolicy, CancellationToken)
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get*
@@ -1426,6 +1445,25 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Return
   nameWithType: ObjectPool<T>.Return
   nameWithType.vb: ObjectPool(Of T).Return
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ObjectPool<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ObjectPool<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: ObjectPool(Of T).System.Collections.IEnumerable.GetEnumerator
 - uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions
   name: ObjectPoolExtensions
   href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html
@@ -1439,13 +1477,13 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem
   nameWithType: ObjectPoolExtensions.GetItem
-- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
   name: GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
   name.vb: GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(Solti.Utils.Primitives.Threading.ObjectPool<T>, Solti.Utils.Primitives.Threading.CheckoutPolicy, CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem(Of T)(Solti.Utils.Primitives.Threading.ObjectPool(Of T), Solti.Utils.Primitives.Threading.CheckoutPolicy, CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(Solti.Utils.Primitives.Threading.ObjectPool<T>, Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem(Of T)(Solti.Utils.Primitives.Threading.ObjectPool(Of T), Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
   nameWithType: ObjectPoolExtensions.GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
   nameWithType.vb: ObjectPoolExtensions.GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
 - uid: Solti.Utils.Primitives.Threading.PoolItem`1
@@ -1514,11 +1552,11 @@ references:
   commentId: T:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
   fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
   nameWithType: ReaderWriterLockExtensions
-- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
   name: AcquireReaderLock(ReaderWriterLockSlim)
-  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_ReaderWriterLockSlim_
-  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)
-  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)
   nameWithType: ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)
 - uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock*
   name: AcquireReaderLock
@@ -1527,11 +1565,11 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock
   nameWithType: ReaderWriterLockExtensions.AcquireReaderLock
-- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
   name: AcquireWriterLock(ReaderWriterLockSlim)
-  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_ReaderWriterLockSlim_
-  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)
-  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.html#Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)
   nameWithType: ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)
 - uid: Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock*
   name: AcquireWriterLock
@@ -1549,13 +1587,13 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T)
   nameWithType: SafeEnumerator<T>
   nameWithType.vb: SafeEnumerator(Of T)
-- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(IEnumerable{`0},ReaderWriterLockSlim)
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Threading.ReaderWriterLockSlim)
   name: SafeEnumerator(IEnumerable<T>, ReaderWriterLockSlim)
-  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_IEnumerable__0__ReaderWriterLockSlim_
-  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(IEnumerable{`0},ReaderWriterLockSlim)
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1__ctor_System_Collections_Generic_IEnumerable__0__System_Threading_ReaderWriterLockSlim_
+  commentId: M:Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Threading.ReaderWriterLockSlim)
   name.vb: SafeEnumerator(IEnumerable(Of T), ReaderWriterLockSlim)
-  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.SafeEnumerator(IEnumerable<T>, ReaderWriterLockSlim)
-  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).SafeEnumerator(IEnumerable(Of T), ReaderWriterLockSlim)
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.SafeEnumerator(System.Collections.Generic.IEnumerable<T>, System.Threading.ReaderWriterLockSlim)
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).SafeEnumerator(System.Collections.Generic.IEnumerable(Of T), System.Threading.ReaderWriterLockSlim)
   nameWithType: SafeEnumerator<T>.SafeEnumerator(IEnumerable<T>, ReaderWriterLockSlim)
   nameWithType.vb: SafeEnumerator(Of T).SafeEnumerator(IEnumerable(Of T), ReaderWriterLockSlim)
 - uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.#ctor*
@@ -1635,6 +1673,25 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).Reset
   nameWithType: SafeEnumerator<T>.Reset
   nameWithType.vb: SafeEnumerator(Of T).Reset
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  name: IEnumerator.Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current
+  commentId: P:Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  name.vb: System.Collections.IEnumerator.Current
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.System.Collections.IEnumerator.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+  nameWithType: SafeEnumerator<T>.IEnumerator.Current
+  nameWithType.vb: SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+- uid: Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current*
+  name: IEnumerator.Current
+  href: Solti.Utils.Primitives.Threading.SafeEnumerator-1.html#Solti_Utils_Primitives_Threading_SafeEnumerator_1_System_Collections_IEnumerator_Current_
+  commentId: Overload:Solti.Utils.Primitives.Threading.SafeEnumerator`1.System#Collections#IEnumerator#Current
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerator.Current
+  fullName: Solti.Utils.Primitives.Threading.SafeEnumerator<T>.System.Collections.IEnumerator.Current
+  fullName.vb: Solti.Utils.Primitives.Threading.SafeEnumerator(Of T).System.Collections.IEnumerator.Current
+  nameWithType: SafeEnumerator<T>.IEnumerator.Current
+  nameWithType.vb: SafeEnumerator(Of T).System.Collections.IEnumerator.Current
 - uid: Solti.Utils.Primitives.Threading.TaskExtensions
   name: TaskExtensions
   href: Solti.Utils.Primitives.Threading.TaskExtensions.html
@@ -1648,22 +1705,22 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast
   nameWithType: TaskExtensions.Cast
-- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(Task{``0},Type)
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(System.Threading.Tasks.Task{``0},System.Type)
   name: Cast<T>(Task<T>, Type)
-  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__1_Task___0__Type_
-  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(Task{``0},Type)
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__1_System_Threading_Tasks_Task___0__System_Type_
+  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``1(System.Threading.Tasks.Task{``0},System.Type)
   name.vb: Cast(Of T)(Task(Of T), Type)
-  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T>(Task<T>, Type)
-  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T)(Task(Of T), Type)
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T>(System.Threading.Tasks.Task<T>, System.Type)
+  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T)(System.Threading.Tasks.Task(Of T), System.Type)
   nameWithType: TaskExtensions.Cast<T>(Task<T>, Type)
   nameWithType.vb: TaskExtensions.Cast(Of T)(Task(Of T), Type)
-- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(Task{``0})
+- uid: Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(System.Threading.Tasks.Task{``0})
   name: Cast<T, TT>(Task<T>)
-  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__2_Task___0__
-  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(Task{``0})
+  href: Solti.Utils.Primitives.Threading.TaskExtensions.html#Solti_Utils_Primitives_Threading_TaskExtensions_Cast__2_System_Threading_Tasks_Task___0__
+  commentId: M:Solti.Utils.Primitives.Threading.TaskExtensions.Cast``2(System.Threading.Tasks.Task{``0})
   name.vb: Cast(Of T, TT)(Task(Of T))
-  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T, TT>(Task<T>)
-  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T, TT)(Task(Of T))
+  fullName: Solti.Utils.Primitives.Threading.TaskExtensions.Cast<T, TT>(System.Threading.Tasks.Task<T>)
+  fullName.vb: Solti.Utils.Primitives.Threading.TaskExtensions.Cast(Of T, TT)(System.Threading.Tasks.Task(Of T))
   nameWithType: TaskExtensions.Cast<T, TT>(Task<T>)
   nameWithType.vb: TaskExtensions.Cast(Of T, TT)(Task(Of T))
 - uid: Solti.Utils.Primitives.TypeExtensions
@@ -1672,11 +1729,11 @@ references:
   commentId: T:Solti.Utils.Primitives.TypeExtensions
   fullName: Solti.Utils.Primitives.TypeExtensions
   nameWithType: TypeExtensions
-- uid: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(Type)
+- uid: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
   name: GetFriendlyName(Type)
-  href: Solti.Utils.Primitives.TypeExtensions.html#Solti_Utils_Primitives_TypeExtensions_GetFriendlyName_Type_
-  commentId: M:Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(Type)
-  fullName: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(Type)
+  href: Solti.Utils.Primitives.TypeExtensions.html#Solti_Utils_Primitives_TypeExtensions_GetFriendlyName_System_Type_
+  commentId: M:Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
+  fullName: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(System.Type)
   nameWithType: TypeExtensions.GetFriendlyName(Type)
 - uid: Solti.Utils.Primitives.TypeExtensions.GetFriendlyName*
   name: GetFriendlyName
