@@ -42,7 +42,7 @@
   
   <h1 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions" class="text-break">Class ReaderWriterLockExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Exposes several handy methods related to <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.readerwriterlockslim">ReaderWriterLockSlim</a>.</p>
+  <div class="markdown level0 summary"><p>Exposes several handy methods related to <see cref="!:ReaderWriterLockSlim"></see>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -50,40 +50,16 @@
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">ReaderWriterLockExtensions</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Threading.html">Solti.Utils.Primitives.Threading</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class ReaderWriterLockExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class ReaderWriterLockExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_System_Threading_ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(System.Threading.ReaderWriterLockSlim)">AcquireReaderLock(ReaderWriterLockSlim)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireReaderLock_ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(ReaderWriterLockSlim)">AcquireReaderLock(ReaderWriterLockSlim)</h4>
   <div class="markdown level1 summary"><p>Enters the lock in read mode.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -102,7 +78,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.readerwriterlockslim">ReaderWriterLockSlim</a></td>
+        <td><span class="xref">ReaderWriterLockSlim</span></td>
         <td><span class="parametername">src</span></td>
         <td></td>
       </tr>
@@ -118,13 +94,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></td>
+        <td><span class="xref">IDisposable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_System_Threading_ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(System.Threading.ReaderWriterLockSlim)">AcquireWriterLock(ReaderWriterLockSlim)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_ReaderWriterLockExtensions_AcquireWriterLock_ReaderWriterLockSlim_" data-uid="Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(ReaderWriterLockSlim)">AcquireWriterLock(ReaderWriterLockSlim)</h4>
   <div class="markdown level1 summary"><p>Enters the lock in write mode.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -143,7 +119,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.readerwriterlockslim">ReaderWriterLockSlim</a></td>
+        <td><span class="xref">ReaderWriterLockSlim</span></td>
         <td><span class="parametername">src</span></td>
         <td></td>
       </tr>
@@ -159,7 +135,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></td>
+        <td><span class="xref">IDisposable</span></td>
         <td></td>
       </tr>
     </tbody>
