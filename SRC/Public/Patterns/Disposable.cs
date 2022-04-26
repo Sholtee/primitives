@@ -43,7 +43,9 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         protected virtual ValueTask AsyncDispose() 
         {
+            #pragma warning disable CA1849 // Call async methods when in an async method
             Dispose(true);
+            #pragma warning restore CA1849 // Call async methods when in an async method
             return default;
         }
 

@@ -33,7 +33,7 @@ namespace Solti.Utils.Primitives.Threading
             get => FPrev;
             internal set
             {
-                Assert(FLockedBy is 0 || Thread.CurrentThread.ManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
+                Assert(FLockedBy is 0 || Environment.CurrentManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
                 FPrev = value;
             }
         }
@@ -48,7 +48,7 @@ namespace Solti.Utils.Primitives.Threading
             get => FNext;
             internal set
             {
-                Assert(FLockedBy is 0 || Thread.CurrentThread.ManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
+                Assert(FLockedBy is 0 || Environment.CurrentManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
                 FNext = value;
             }
         }
@@ -73,9 +73,9 @@ namespace Solti.Utils.Primitives.Threading
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool TryLock(bool allowRecursive = true)
         {
-            int prev = CompareExchange(ref FLockedBy, Thread.CurrentThread.ManagedThreadId, 0);
+            int prev = CompareExchange(ref FLockedBy, Environment.CurrentManagedThreadId, 0);
 
-            if (prev == Thread.CurrentThread.ManagedThreadId && !allowRecursive)
+            if (prev == Environment.CurrentManagedThreadId && !allowRecursive)
                 throw new InvalidOperationException(Resources.RECURSIVE_LOCK);
 
             //
@@ -83,7 +83,7 @@ namespace Solti.Utils.Primitives.Threading
             // felvetelekor).
             //
 
-            return prev == 0 || prev == Thread.CurrentThread.ManagedThreadId;
+            return prev == 0 || prev == Environment.CurrentManagedThreadId;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -93,15 +93,15 @@ namespace Solti.Utils.Primitives.Threading
             // Csak az a szal eresztheti el az elemet aki magat a lock-ot is kerelmezte.
             //
 
-            int prev = CompareExchange(ref FLockedBy, 0, Thread.CurrentThread.ManagedThreadId);
+            int prev = CompareExchange(ref FLockedBy, 0, Environment.CurrentManagedThreadId);
 
-            Assert(prev == Thread.CurrentThread.ManagedThreadId, "Attempt to release a not-owned node");
+            Assert(prev == Environment.CurrentManagedThreadId, "Attempt to release a not-owned node");
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void Invalidate()
         {
-            Assert(FLockedBy == Thread.CurrentThread.ManagedThreadId, "Attempt to invalidate a not-owned node");
+            Assert(FLockedBy == Environment.CurrentManagedThreadId, "Attempt to invalidate a not-owned node");
 
             Prev = Next = null;
             Owner = null;
@@ -367,7 +367,7 @@ namespace Solti.Utils.Primitives.Threading
                         CurrentNode = head;
                     }
 
-                    Assert(CurrentNode.LockedBy == Thread.CurrentThread.ManagedThreadId, "Current item is not owned");
+                    Assert(CurrentNode.LockedBy == Environment.CurrentManagedThreadId, "Current item is not owned");
 
                     if (!CurrentNode.Next!.TryLock())
                         continue;

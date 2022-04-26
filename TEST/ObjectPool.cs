@@ -22,7 +22,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldReturnTheSameObjectIfPossible() 
         {
-            using var pool = new ObjectPool<object>(1, () => new object());
+            using var pool = new ObjectPool<object>(() => new object());
 
             object
                 a, b;
@@ -50,7 +50,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldCreateANewObjectIfRequired()
         {
-            using var pool = new ObjectPool<object>(2, () => new object());
+            using var pool = new ObjectPool<object>(() => new object(), 2);
 
             Assert.AreNotSame(pool.Get(), pool.Get());
         }
@@ -58,7 +58,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldRevertTheCheckoutProcessIfTheFactoryThrows() 
         {
-            using var pool = new ObjectPool<object>(2, () => throw new Exception());
+            using var pool = new ObjectPool<object>(() => throw new Exception(), 2);
 
             Assert.Throws<Exception>(() => pool.Get(CheckoutPolicy.Block));
             Assert.That(pool, Is.Empty);
@@ -67,7 +67,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldThrowIfThereIsNoMoreSpaceInThePool() 
         {
-            using var pool = new ObjectPool<object>(1, () => new object());
+            using var pool = new ObjectPool<object>(() => new object(), 1);
 
             using (pool.GetItem(CheckoutPolicy.Throw))
             {
@@ -79,7 +79,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         public void Get_ShouldThrowOnRecursiveFactory([Values(CheckoutPolicy.Block, CheckoutPolicy.Discard, CheckoutPolicy.Throw)] CheckoutPolicy policy)
         {
             ObjectPool<object> pool = null;
-            using (pool = new ObjectPool<object>(1, () => pool.Get()))
+            using (pool = new ObjectPool<object>(() => pool.Get()))
             {
                 Assert.Throws<InvalidOperationException>(() => pool.Get(policy), Resources.RECURSIVE_FACTORY);
             }
@@ -88,7 +88,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldReturnNullIfThereIsNoMoreSpaceInThePool()
         {
-            using var pool = new ObjectPool<object>(1, () => new object());
+            using var pool = new ObjectPool<object>(() => new object(), 1);
 
             using (pool.GetItem(CheckoutPolicy.Throw))
             {
@@ -99,7 +99,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldBlockIfThereIsNoMoreSpaceInThePool() 
         {
-            using var pool = new ObjectPool<object>(1, () => new object());
+            using var pool = new ObjectPool<object>(() => new object(), 1);
 
             var evt = new ManualResetEventSlim();
 
@@ -150,7 +150,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
                 .SetupGet(r => r.Dirty)
                 .Returns(() => dirty);
 
-            using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
+            using var pool = new ObjectPool<IResettable>(() => mockResettable.Object);
 
             using (pool.GetItem()) 
             {          
@@ -169,7 +169,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
                 .SetupGet(r => r.Dirty)
                 .Returns(true);
 
-            using var pool = new ObjectPool<IResettable>(1, () => mockResettable.Object);
+            using var pool = new ObjectPool<IResettable>(() => mockResettable.Object);
 
             IResettable val = pool.Get();
             Assert.Throws<InvalidOperationException>(() => pool.Return(val), Resources.RESET_FAILED);
@@ -181,7 +181,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             var mockDisposable = new Mock<IDisposable>(MockBehavior.Strict);
             mockDisposable.Setup(d => d.Dispose());
 
-            using (var pool = new ObjectPool<IDisposable>(1, () => mockDisposable.Object))
+            using (var pool = new ObjectPool<IDisposable>(() => mockDisposable.Object))
             {
                 if (returned)
                     using (pool.GetItem()) { }
@@ -214,7 +214,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void ThreadingTest([Values(1, 2, 3, 10, 100)] int poolSize) 
         { 
-            Pool = new ObjectPool<MyObject>(poolSize, () => new MyObject());
+            Pool = new ObjectPool<MyObject>(() => new MyObject(), poolSize);
             Terminated = false;
             ErrorFound = false;
 

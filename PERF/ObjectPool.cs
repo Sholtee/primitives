@@ -6,14 +6,16 @@
 using System;
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Engines;
+
 using Microsoft.Extensions.ObjectPool;
 
 namespace Solti.Utils.Primitives.Perf
 {
-    using static Consts;
     using Threading;
 
     [MemoryDiagnoser]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 10000000)]
     public class ObjectPool_Comparison
     {
         private sealed class SimplePoolPolicy : IPooledObjectPolicy<object>
@@ -32,14 +34,11 @@ namespace Solti.Utils.Primitives.Perf
 
         public DefaultObjectPool<object> TheirPool { get; set; }
 
-        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+        [Benchmark]
         public void MS_Extensions_ObjectPool_GetAndReturn()
         {
-            for (int i = 0; i < OperationsPerInvoke; i++)
-            {
-                object obj = TheirPool.Get();
-                TheirPool.Return(obj);
-            }
+            object obj = TheirPool.Get();
+            TheirPool.Return(obj);
         }
 
         private sealed class SimpleLifetimeManager<T> : ILifetimeManager<T> where T: class, new()
@@ -66,20 +65,17 @@ namespace Solti.Utils.Primitives.Perf
         [GlobalSetup(Target = nameof(Solti_Utils_ObjectPool_GetAndReturn))]
         public void Setup_OurPool()
         {
-            OurPool = new ObjectPool<object>(1, new SimpleLifetimeManager<object>());
+            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>());
             GC.SuppressFinalize(OurPool);
         }
 
         public ObjectPool<object> OurPool { get; set; }
 
-        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+        [Benchmark]
         public void Solti_Utils_ObjectPool_GetAndReturn()
         {
-            for (int i = 0; i < OperationsPerInvoke; i++)
-            {
-                object obj = OurPool.Get(CheckoutPolicy.Throw);
-                OurPool.Return(obj);
-            }
+            object obj = OurPool.Get(CheckoutPolicy.Throw);
+            OurPool.Return(obj);
         }
     }
 }
