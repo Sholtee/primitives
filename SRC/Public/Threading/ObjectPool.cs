@@ -19,18 +19,29 @@ namespace Solti.Utils.Primitives.Threading
     /// <summary>
     /// Represents a requested pool item.
     /// </summary>
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public class PoolItem<T> : Disposable, IWrapped<T> where T : class
     {
         /// <summary>
+        /// Creates a new <see cref="PoolItem{T}"/> instance.
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public PoolItem(ObjectPool<T> owner, T value)
+        {
+            Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            Value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
         /// The owner of this item.
         /// </summary>
-        public ObjectPool<T> Owner { get; init; }
+        public ObjectPool<T> Owner { get; }
 
         /// <summary>
         /// The value of this item.
         /// </summary>
-        public T Value { get; init; }
+        public T Value { get; }
 
         /// <inheritdoc/>
         protected override void Dispose(bool disposeManaged)
@@ -41,7 +52,6 @@ namespace Solti.Utils.Primitives.Threading
             base.Dispose(disposeManaged);
         }
     }
-    #pragma warning restore CS8618
 
     /// <summary>
     /// Defines some extensions for the <see cref="ObjectPool{T}"/> class.
@@ -59,11 +69,7 @@ namespace Solti.Utils.Primitives.Threading
 
             return value is null
                 ? null
-                : new PoolItem<T>
-                {
-                    Value = value,
-                    Owner = self
-                };
+                : new PoolItem<T>(self, value);
         }
     }
 
