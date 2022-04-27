@@ -13,61 +13,33 @@ namespace Solti.Utils.Primitives.Perf
     using Threading;
 
     [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, invocationCount: 40000)]
+    [SimpleJob(RunStrategy.Throughput, targetCount: 15, invocationCount: 300000)]
     public class ConcurrentLinkedList
     {
         public ConcurrentLinkedList<int> List { get; set; }
 
-        [Params(1, 10, 20, 100)]
-        public int Count { get; set; }
-
         [GlobalSetup(Target = nameof(AddFirst))]
-        public void SetupAdd()
-        {
-            List = new ConcurrentLinkedList<int>();
-        }
+        public void SetupAdd() => List = new ConcurrentLinkedList<int>();
 
         [Benchmark]
-        public void AddFirst()
-        {
-            for (int i = 0; i < Count; i++)
-                List.AddFirst(0);
-        }
+        public LinkedListNode<int> AddFirst() => List.AddFirst(0);
 
-        [GlobalSetup(Target = nameof(UsingTheEnumerator))]
-        public void SetupEnumerator()
+        [GlobalSetup(Target = nameof(Enumerate_MoveNext))]
+        public void SetupEnumerate()
         {
             List = new();
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < 500; i++)
                 List.AddFirst(i);
         }
 
-        [Benchmark]
-        public void UsingTheEnumerator()
+        [Benchmark(OperationsPerInvoke = 500)]
+        public void Enumerate_MoveNext()
         {
             using IEnumerator<int> enumerator = List.GetEnumerator();
             while (enumerator.MoveNext())
             {
                 _ = enumerator.Current;
-            }
-        }
-
-        [GlobalSetup(Target = nameof(UsingForEach))]
-        public void SetupForEach()
-        {
-            List = new();
-
-            for (int i = 0; i < Count; i++)
-                List.AddFirst(i);
-        }
-
-        [Benchmark]
-        public void UsingForEach()
-        {
-            foreach (int x in List)
-            {
-                _ = x;
             }
         }
     }
