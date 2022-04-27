@@ -17,34 +17,37 @@ namespace Solti.Utils.Primitives
     /// </summary>
     public static class TypeExtensions
     {
-        private static readonly Regex Replacer = new Regex("[<>]", RegexOptions.Compiled);
+        private static readonly Regex Replacer = new("[<>]", RegexOptions.Compiled);
 
         /// <summary>
         /// Gets the friendly name of the given type.
         /// </summary>
         public static string GetFriendlyName(this Type src)
         {
-            if (src == null)
+            if (src is null)
                 throw new ArgumentNullException(nameof(src));
 
-            using CodeDomProvider codeDomProvider = CodeDomProvider.CreateProvider("C#");
-            var typeReferenceExpression = new CodeTypeReferenceExpression(new CodeTypeReference(src));
-
-            using var writer = new StringWriter();
-
-            codeDomProvider.GenerateCodeFromExpression(typeReferenceExpression, writer, new CodeGeneratorOptions());
-
-            //
-            // Ezt a nevet meg nem lehet eleresi utvonalakban hasznalni (tartalmaz "<" es ">" karaktereket).
-            //
-
-            string unsafeName = writer.GetStringBuilder().ToString();
-
-            return Replacer.Replace(unsafeName, m => m.Groups[0].Value switch
+            return Cache.GetOrAdd(src, static src =>
             {
-                "<" => "{",
-                ">" => "}",
-                _ => throw new NotImplementedException()
+                using CodeDomProvider codeDomProvider = CodeDomProvider.CreateProvider("C#");
+                CodeTypeReferenceExpression typeReferenceExpression = new(new CodeTypeReference(src));
+
+                using StringWriter writer = new();
+
+                codeDomProvider.GenerateCodeFromExpression(typeReferenceExpression, writer, new CodeGeneratorOptions());
+
+                //
+                // Ezt a nevet meg nem lehet eleresi utvonalakban hasznalni (tartalmaz "<" es ">" karaktereket).
+                //
+
+                string unsafeName = writer.GetStringBuilder().ToString();
+
+                return Replacer.Replace(unsafeName, m => m.Groups[0].Value switch
+                {
+                    "<" => "{",
+                    ">" => "}",
+                    _ => throw new NotImplementedException()
+                });
             });
         }
     }
