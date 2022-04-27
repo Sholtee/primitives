@@ -46,7 +46,7 @@ namespace Solti.Utils.Primitives.Threading
                         .MakeGenericMethod(k.Item1, k.returnType)
                         .ToStaticDelegate();
                 })
-                .Invoke(new object[] { task });
+                .Invoke(task)!;
         }
     }
 }

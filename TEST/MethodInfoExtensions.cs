@@ -39,14 +39,14 @@ namespace Solti.Utils.Primitives.Tests
 
         [Test]
         public void ToInstanceDelegate_ShouldHandleParameters() =>
-            Assert.That(GetType().GetMethod(nameof(ParameterizedInstance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this, new object[] { true }), Is.True);
+            Assert.That(GetType().GetMethod(nameof(ParameterizedInstance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this, true), Is.True);
 
         [Test]
         public void ToInstanceDelegate_ShouldHandleNoParameters() =>
-            Assert.That(GetType().GetMethod(nameof(Instance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this, new object[0] { }), Is.True);
+            Assert.That(GetType().GetMethod(nameof(Instance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this), Is.True);
 
         [Test]
         public void ToInstanceDelegate_ShouldHandleVoidReturn() =>
-            Assert.That(GetType().GetMethod(nameof(VoidInstance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this, new object[0] { }), Is.Null);
+            Assert.That(GetType().GetMethod(nameof(VoidInstance), BindingFlags.Instance | BindingFlags.NonPublic).ToInstanceDelegate().Invoke(this), Is.Null);
     }
 }

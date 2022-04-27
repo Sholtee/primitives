@@ -12,6 +12,16 @@ using System.Reflection;
 namespace Solti.Utils.Primitives
 {
     /// <summary>
+    /// Represents an abastract instance method.
+    /// </summary>
+    public delegate object? InstanceMethod(object instance, params object?[] paramz);
+
+    /// <summary>
+    /// Represents an abastract static method.
+    /// </summary>
+    public delegate object? StaticMethod(params object?[] paramz);
+
+    /// <summary>
     /// Helper class for creating delegates from <see cref="MethodInfo"/>.
     /// </summary>
     public static class MethodInfoExtensions
@@ -28,7 +38,7 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Creates a new instance delegate from the given <see cref="MethodInfo"/>.
         /// </summary>
-        public static Func<object, object?[], object> ToInstanceDelegate(this MethodInfo method)
+        public static InstanceMethod ToInstanceDelegate(this MethodInfo method)
         {
             Ensure.Parameter.IsNotNull(method, nameof(method));
 
@@ -44,10 +54,10 @@ namespace Solti.Utils.Primitives
                     GetInvocationArguments(method, paramz));
 
                 call = method.ReturnType != typeof(void)
-                    ? (Expression)Expression.Convert(call, typeof(object))
+                    ? (Expression) Expression.Convert(call, typeof(object))
                     : Expression.Block(typeof(object), call, Expression.Default(typeof(object)));
 
-                return Expression.Lambda<Func<object, object?[], object>>
+                return Expression.Lambda<InstanceMethod>
                 (
                     call,
                     instance,
@@ -61,7 +71,7 @@ namespace Solti.Utils.Primitives
         /// </summary>
         /// <param name="methodBase"></param>
         /// <returns></returns>
-        public static Func<object?[], object> ToStaticDelegate(this MethodBase methodBase)
+        public static StaticMethod ToStaticDelegate(this MethodBase methodBase)
         {
             Ensure.Parameter.IsNotNull(methodBase, nameof(methodBase));
 
@@ -92,7 +102,7 @@ namespace Solti.Utils.Primitives
                     _ => throw new NotSupportedException() // TODO
                 };
 
-                return Expression.Lambda<Func<object?[], object>>
+                return Expression.Lambda<StaticMethod>
                 (
                     call, 
                     paramz
