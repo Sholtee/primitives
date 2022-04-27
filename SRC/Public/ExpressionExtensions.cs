@@ -14,7 +14,7 @@ namespace Solti.Utils.Primitives
     /// </summary>
     public static class ExpressionExtensions
     {
-        private static readonly Func<object, object?> GetDebugViewCore = typeof(Expression)
+        private static readonly InstanceMethod GetDebugViewCore = typeof(Expression)
             .GetProperty("DebugView", BindingFlags.Instance | BindingFlags.NonPublic) // DebugView property internal, tudja fasz miert
             .ToGetter();
 
