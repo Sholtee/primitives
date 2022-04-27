@@ -38,11 +38,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2029 (1809/October2018Update/Redstone5)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Redstone5)
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=5.0.400
-  [Host]     : .NET 5.0.9 (5.0.921.35908), X64 RyuJIT
-  Job-QLJVSM : .NET 5.0.9 (5.0.921.35908), X64 RyuJIT
+.NET SDK=6.0.201
+  [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+  Job-SGKYOF : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
 
 InvocationCount=3000  RunStrategy=Throughput  UnrollFactor=1  
 </code></pre><table>
@@ -61,109 +61,109 @@ InvocationCount=3000  RunStrategy=Throughput  UnrollFactor=1
 <tr>
 <td><strong>AddFirst</strong></td>
 <td><strong>1</strong></td>
-<td style="text-align:right"><strong>112.1 ns</strong></td>
-<td style="text-align:right"><strong>2.47 ns</strong></td>
-<td style="text-align:right"><strong>6.89 ns</strong></td>
-<td style="text-align:right"><strong>113.0 ns</strong></td>
+<td style="text-align:right"><strong>81.31 ns</strong></td>
+<td style="text-align:right"><strong>3.271 ns</strong></td>
+<td style="text-align:right"><strong>9.592 ns</strong></td>
+<td style="text-align:right"><strong>81.27 ns</strong></td>
 <td style="text-align:right"><strong>48 B</strong></td>
 </tr>
 <tr>
 <td>UsingTheEnumerator</td>
 <td>1</td>
-<td style="text-align:right">248.0 ns</td>
-<td style="text-align:right">6.35 ns</td>
-<td style="text-align:right">18.53 ns</td>
-<td style="text-align:right">249.4 ns</td>
+<td style="text-align:right">192.70 ns</td>
+<td style="text-align:right">3.893 ns</td>
+<td style="text-align:right">8.707 ns</td>
+<td style="text-align:right">190.97 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td>UsingForEach</td>
 <td>1</td>
-<td style="text-align:right">246.2 ns</td>
-<td style="text-align:right">6.53 ns</td>
-<td style="text-align:right">19.24 ns</td>
-<td style="text-align:right">243.8 ns</td>
+<td style="text-align:right">198.64 ns</td>
+<td style="text-align:right">5.162 ns</td>
+<td style="text-align:right">14.728 ns</td>
+<td style="text-align:right">195.60 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td><strong>AddFirst</strong></td>
 <td><strong>10</strong></td>
-<td style="text-align:right"><strong>926.8 ns</strong></td>
-<td style="text-align:right"><strong>31.42 ns</strong></td>
-<td style="text-align:right"><strong>90.66 ns</strong></td>
-<td style="text-align:right"><strong>881.3 ns</strong></td>
+<td style="text-align:right"><strong>757.32 ns</strong></td>
+<td style="text-align:right"><strong>41.322 ns</strong></td>
+<td style="text-align:right"><strong>121.191 ns</strong></td>
+<td style="text-align:right"><strong>692.60 ns</strong></td>
 <td style="text-align:right"><strong>480 B</strong></td>
 </tr>
 <tr>
 <td>UsingTheEnumerator</td>
 <td>10</td>
-<td style="text-align:right">536.9 ns</td>
-<td style="text-align:right">18.78 ns</td>
-<td style="text-align:right">52.67 ns</td>
-<td style="text-align:right">511.7 ns</td>
+<td style="text-align:right">412.05 ns</td>
+<td style="text-align:right">14.867 ns</td>
+<td style="text-align:right">42.894 ns</td>
+<td style="text-align:right">392.98 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td>UsingForEach</td>
 <td>10</td>
-<td style="text-align:right">542.1 ns</td>
-<td style="text-align:right">21.75 ns</td>
-<td style="text-align:right">60.62 ns</td>
-<td style="text-align:right">513.4 ns</td>
+<td style="text-align:right">402.81 ns</td>
+<td style="text-align:right">12.168 ns</td>
+<td style="text-align:right">33.514 ns</td>
+<td style="text-align:right">393.88 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td><strong>AddFirst</strong></td>
 <td><strong>20</strong></td>
-<td style="text-align:right"><strong>1,753.5 ns</strong></td>
-<td style="text-align:right"><strong>28.64 ns</strong></td>
-<td style="text-align:right"><strong>48.64 ns</strong></td>
-<td style="text-align:right"><strong>1,743.3 ns</strong></td>
+<td style="text-align:right"><strong>1,467.32 ns</strong></td>
+<td style="text-align:right"><strong>67.219 ns</strong></td>
+<td style="text-align:right"><strong>198.197 ns</strong></td>
+<td style="text-align:right"><strong>1,381.77 ns</strong></td>
 <td style="text-align:right"><strong>960 B</strong></td>
 </tr>
 <tr>
 <td>UsingTheEnumerator</td>
 <td>20</td>
-<td style="text-align:right">838.3 ns</td>
-<td style="text-align:right">16.01 ns</td>
-<td style="text-align:right">19.67 ns</td>
-<td style="text-align:right">834.9 ns</td>
+<td style="text-align:right">598.05 ns</td>
+<td style="text-align:right">19.639 ns</td>
+<td style="text-align:right">53.096 ns</td>
+<td style="text-align:right">595.32 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td>UsingForEach</td>
 <td>20</td>
-<td style="text-align:right">826.1 ns</td>
-<td style="text-align:right">16.00 ns</td>
-<td style="text-align:right">22.95 ns</td>
-<td style="text-align:right">825.1 ns</td>
+<td style="text-align:right">619.12 ns</td>
+<td style="text-align:right">20.932 ns</td>
+<td style="text-align:right">58.003 ns</td>
+<td style="text-align:right">615.70 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td><strong>AddFirst</strong></td>
 <td><strong>100</strong></td>
-<td style="text-align:right"><strong>7,796.9 ns</strong></td>
-<td style="text-align:right"><strong>197.34 ns</strong></td>
-<td style="text-align:right"><strong>556.61 ns</strong></td>
-<td style="text-align:right"><strong>7,765.6 ns</strong></td>
+<td style="text-align:right"><strong>6,516.57 ns</strong></td>
+<td style="text-align:right"><strong>152.170 ns</strong></td>
+<td style="text-align:right"><strong>441.472 ns</strong></td>
+<td style="text-align:right"><strong>6,573.70 ns</strong></td>
 <td style="text-align:right"><strong>4,800 B</strong></td>
 </tr>
 <tr>
 <td>UsingTheEnumerator</td>
 <td>100</td>
-<td style="text-align:right">3,053.8 ns</td>
-<td style="text-align:right">94.09 ns</td>
-<td style="text-align:right">266.90 ns</td>
-<td style="text-align:right">3,037.2 ns</td>
+<td style="text-align:right">2,175.54 ns</td>
+<td style="text-align:right">83.706 ns</td>
+<td style="text-align:right">246.809 ns</td>
+<td style="text-align:right">2,080.47 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td>UsingForEach</td>
 <td>100</td>
-<td style="text-align:right">3,089.2 ns</td>
-<td style="text-align:right">112.19 ns</td>
-<td style="text-align:right">320.10 ns</td>
-<td style="text-align:right">3,023.8 ns</td>
+<td style="text-align:right">2,273.64 ns</td>
+<td style="text-align:right">101.264 ns</td>
+<td style="text-align:right">298.579 ns</td>
+<td style="text-align:right">2,200.90 ns</td>
 <td style="text-align:right">40 B</td>
 </tr>
 </tbody>
