@@ -8,7 +8,9 @@ Commonly used types:
 - [DisposableSupportsNotifyOnDispose](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html )
 - [DisposeByRefObject](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposeByRefObject.html )
 - [ExclusiveBlock](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ExclusiveBlock.html )
+- [MethodInfoExtensions](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.MethodInfoExtensions.html )
 - [ObjectPool](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ObjectPool-1.html )
+- [PropertyInfoExtensions](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.PropertyInfoExtensions.html )
 - [Singleton](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Singleton-1.html )
 
 [API docs](https://sholtee.github.io/primitives )
