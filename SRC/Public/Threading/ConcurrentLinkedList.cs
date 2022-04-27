@@ -23,35 +23,15 @@ namespace Solti.Utils.Primitives.Threading
     /// </summary>
     public class LinkedListNode<T>
     {
-        private LinkedListNode<T>? FPrev;
-
         /// <summary>
         /// The previous node.
         /// </summary>
-        public LinkedListNode<T>? Prev
-        {
-            get => FPrev;
-            internal set
-            {
-                Assert(FLockedBy is 0 || Environment.CurrentManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
-                FPrev = value;
-            }
-        }
-
-        private LinkedListNode<T>? FNext;
+        public LinkedListNode<T>? Prev { get; internal set; }
 
         /// <summary>
         /// The next node.
         /// </summary>
-        public LinkedListNode<T>? Next
-        {
-            get => FNext;
-            internal set
-            {
-                Assert(FLockedBy is 0 || Environment.CurrentManagedThreadId == FLockedBy, "Attempt to write a not-owned node");
-                FNext = value;
-            }
-        }
+        public LinkedListNode<T>? Next { get; internal set; }
 
         /// <summary>
         /// The owner of this node.
@@ -71,11 +51,11 @@ namespace Solti.Utils.Primitives.Threading
         public T? Value {get; init;}
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal bool TryLock(bool allowRecursive = true)
+        internal bool TryLock(int threadId, bool allowRecursive = true)
         {
-            int prev = CompareExchange(ref FLockedBy, Environment.CurrentManagedThreadId, 0);
+            int prev = CompareExchange(ref FLockedBy, threadId, 0);
 
-            if (prev == Environment.CurrentManagedThreadId && !allowRecursive)
+            if (prev == threadId && !allowRecursive)
                 throw new InvalidOperationException(Resources.RECURSIVE_LOCK);
 
             //
@@ -83,25 +63,25 @@ namespace Solti.Utils.Primitives.Threading
             // felvetelekor).
             //
 
-            return prev == 0 || prev == Environment.CurrentManagedThreadId;
+            return prev == 0 || prev == threadId;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void Release()
+        internal void Release(int threadId)
         {
             //
             // Csak az a szal eresztheti el az elemet aki magat a lock-ot is kerelmezte.
             //
 
-            int prev = CompareExchange(ref FLockedBy, 0, Environment.CurrentManagedThreadId);
+            int prev = CompareExchange(ref FLockedBy, 0, threadId);
 
-            Assert(prev == Environment.CurrentManagedThreadId, "Attempt to release a not-owned node");
+            Assert(prev == threadId, "Attempt to release a not-owned node");
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void Invalidate()
+        internal void Invalidate(int threadId)
         {
-            Assert(FLockedBy == Environment.CurrentManagedThreadId, "Attempt to invalidate a not-owned node");
+            Assert(FLockedBy == threadId, "Attempt to invalidate a not-owned node");
 
             Prev = Next = null;
             Owner = null;
@@ -143,18 +123,20 @@ namespace Solti.Utils.Primitives.Threading
         {
             LinkedListNode<T> node = new() { Value = item };
 
+            int threadId = Environment.CurrentManagedThreadId; // time consuming
+
             for (; ; )
             {
-                if (!Head.TryLock())
+                if (!Head.TryLock(threadId))
                     continue;
 
                 //
                 // Mivel Head zarolva van, ezert annak Next-jet biztosan nem irtak mire ide eljutunk
                 //
 
-                if (!Head.Next!.TryLock()) // ures listanal (Next == Head) ez nem csinal semmit 
+                if (!Head.Next!.TryLock(threadId)) // ures listanal (Next == Head) ez nem csinal semmit 
                 {
-                    Head.Release();
+                    Head.Release(threadId);
                     continue;
                 }
 
@@ -172,7 +154,7 @@ namespace Solti.Utils.Primitives.Threading
                 Head.Next = Head.Prev = node;
                 node.Owner = this;
 
-                Head.Release();
+                Head.Release(threadId);
             }
             else
             {
@@ -182,8 +164,8 @@ namespace Solti.Utils.Primitives.Threading
                 node.Prev.Next = node;
                 node.Owner = this;
 
-                node.Prev.Release();
-                node.Next.Release();
+                node.Prev.Release(threadId);
+                node.Next.Release(threadId);
             }
 
             Increment(ref FCount);
@@ -198,6 +180,8 @@ namespace Solti.Utils.Primitives.Threading
         {
             Ensure.Parameter.IsNotNull(node, nameof(node));
 
+            int threadId = Environment.CurrentManagedThreadId; // time consuming
+
             //
             // INFO:
             //   Ez nem tamogatja azt az esetet ha ugyanazt az elemet akarnank parhuzamosan eltavolitani.
@@ -205,7 +189,7 @@ namespace Solti.Utils.Primitives.Threading
 
             for (; ; )
             {
-                if (!node.TryLock(allowRecursive: false))
+                if (!node.TryLock(threadId, allowRecursive: false))
                     continue;
 
                 //
@@ -214,20 +198,20 @@ namespace Solti.Utils.Primitives.Threading
 
                 if (node.Owner != this)
                 {
-                    node.Invalidate();
+                    node.Invalidate(threadId);
                     return false;
                 }
 
-                if (!node.Prev!.TryLock())
+                if (!node.Prev!.TryLock(threadId))
                 {
-                    node.Release();
+                    node.Release(threadId);
                     continue;
                 }
 
-                if (!node.Next!.TryLock())
+                if (!node.Next!.TryLock(threadId))
                 {
-                    node.Prev.Release();
-                    node.Release();
+                    node.Prev.Release(threadId);
+                    node.Release(threadId);
                     continue;
                 }
 
@@ -243,14 +227,14 @@ namespace Solti.Utils.Primitives.Threading
                 // asszertacios hibat okozva ha az elso Release() utan mar vki lock-olja a fejlecet).
                 //
 
-                Head.Release();
+                Head.Release(threadId);
             else
             {
-                node.Prev.Release();
-                node.Next.Release();
+                node.Prev.Release(threadId);
+                node.Next.Release(threadId);
             }
 
-            node.Invalidate();
+            node.Invalidate(threadId);
 
             Decrement(ref FCount);
             return true;
@@ -263,9 +247,11 @@ namespace Solti.Utils.Primitives.Threading
         {
             LinkedListNode<T> first;
 
+            int threadId = Environment.CurrentManagedThreadId; // time consuming
+
             for (; ; )
             {
-                if (!Head.TryLock())
+                if (!Head.TryLock(threadId))
                     continue;
 
                 //
@@ -276,15 +262,15 @@ namespace Solti.Utils.Primitives.Threading
 
                 if (first == Head)
                 {
-                    Head.Release();
+                    Head.Release(threadId);
 
                     item = default!;
                     return false;
                 }
 
-                if (!first.TryLock())
+                if (!first.TryLock(threadId))
                 {
-                    Head.Release();
+                    Head.Release(threadId);
                     continue;
                 }
 
@@ -295,20 +281,20 @@ namespace Solti.Utils.Primitives.Threading
                 if (first.Next == Head)
                 {
                     item = first.Value!;
-                    first.Invalidate();
+                    first.Invalidate(threadId);
 
                     Head.Next = Head;
                     Head.Prev = Head;
-                    Head.Release();
+                    Head.Release(threadId);
 
                     Decrement(ref FCount);
                     return true;
                 }
 
-                if (!first.Next!.TryLock())
+                if (!first.Next!.TryLock(threadId))
                 {
-                    Head.Next!.Release();
-                    Head.Release();
+                    Head.Next!.Release(threadId);
+                    Head.Release(threadId);
                     continue;
                 }
 
@@ -318,11 +304,11 @@ namespace Solti.Utils.Primitives.Threading
             first.Next!.Prev = first.Prev;
             first.Prev!.Next = first.Next;
 
-            first.Prev.Release();
-            first.Next.Release();
+            first.Prev.Release(threadId);
+            first.Next.Release(threadId);
 
             item = first.Value!;
-            first.Invalidate();
+            first.Invalidate(threadId);
 
             Decrement(ref FCount);
             return true;
@@ -357,19 +343,21 @@ namespace Solti.Utils.Primitives.Threading
             {
                 LinkedListNode<T> head = Owner.Head;
 
+                int threadId = Environment.CurrentManagedThreadId; // time consuming
+
                 for (; ; )
                 {
                     if (CurrentNode is null)
                     {
-                        if (!head.TryLock())
+                        if (!head.TryLock(threadId))
                             continue;
 
                         CurrentNode = head;
                     }
 
-                    Assert(CurrentNode.LockedBy == Environment.CurrentManagedThreadId, "Current item is not owned");
+                    Assert(CurrentNode.LockedBy == threadId, "Current item is not owned");
 
-                    if (!CurrentNode.Next!.TryLock())
+                    if (!CurrentNode.Next!.TryLock(threadId))
                         continue;
 
                     break;
@@ -388,7 +376,7 @@ namespace Solti.Utils.Primitives.Threading
                     //
 
                 else
-                    CurrentNode.Prev!.Release();
+                    CurrentNode.Prev!.Release(threadId);
 
                 return CurrentNode != head;
             }
@@ -398,7 +386,7 @@ namespace Solti.Utils.Primitives.Threading
             protected override void Dispose(bool disposeManaged)
             {
                 if (disposeManaged)
-                    CurrentNode?.Release();
+                    CurrentNode?.Release(Environment.CurrentManagedThreadId);
 
                 base.Dispose(disposeManaged);
             }
