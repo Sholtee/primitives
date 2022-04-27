@@ -1507,6 +1507,24 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T)
   nameWithType: PoolItem<T>
   nameWithType.vb: PoolItem(Of T)
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.#ctor(Solti.Utils.Primitives.Threading.ObjectPool{`0},`0)
+  name: PoolItem(ObjectPool<T>, T)
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1__ctor_Solti_Utils_Primitives_Threading_ObjectPool__0___0_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolItem`1.#ctor(Solti.Utils.Primitives.Threading.ObjectPool{`0},`0)
+  name.vb: PoolItem(ObjectPool(Of T), T)
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.PoolItem(Solti.Utils.Primitives.Threading.ObjectPool<T>, T)
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).PoolItem(Solti.Utils.Primitives.Threading.ObjectPool(Of T), T)
+  nameWithType: PoolItem<T>.PoolItem(ObjectPool<T>, T)
+  nameWithType.vb: PoolItem(Of T).PoolItem(ObjectPool(Of T), T)
+- uid: Solti.Utils.Primitives.Threading.PoolItem`1.#ctor*
+  name: PoolItem
+  href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolItem`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Threading.PoolItem<T>.PoolItem
+  fullName.vb: Solti.Utils.Primitives.Threading.PoolItem(Of T).PoolItem
+  nameWithType: PoolItem<T>.PoolItem
+  nameWithType.vb: PoolItem(Of T).PoolItem
 - uid: Solti.Utils.Primitives.Threading.PoolItem`1.Dispose(System.Boolean)
   name: Dispose(Boolean)
   href: Solti.Utils.Primitives.Threading.PoolItem-1.html#Solti_Utils_Primitives_Threading_PoolItem_1_Dispose_System_Boolean_
