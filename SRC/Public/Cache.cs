@@ -19,7 +19,7 @@ namespace Solti.Utils.Primitives
         private static class Backend<TKey, TValue> 
         {
             //
-            // Dictionary performs mutch better against int keys
+            // Dictionary performs much better against int keys
             //
 
             private static readonly ConcurrentDictionary<int, LazySlim> FImplementation = new();
