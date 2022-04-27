@@ -40,7 +40,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.CodeDom" Version="6.*" />
+    <PackageReference Include="System.CodeDom" Version="5.*" />
   </ItemGroup>
 
   <ItemGroup>
