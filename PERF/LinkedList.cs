@@ -13,7 +13,7 @@ namespace Solti.Utils.Primitives.Perf
     using Threading;
 
     [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, invocationCount: 3000)]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 40000)]
     public class ConcurrentLinkedList
     {
         public ConcurrentLinkedList<int> List { get; set; }
