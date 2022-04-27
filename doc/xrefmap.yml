@@ -146,6 +146,12 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
   nameWithType: ExpressionExtensions.GetDebugView
+- uid: Solti.Utils.Primitives.InstanceMethod
+  name: InstanceMethod
+  href: Solti.Utils.Primitives.InstanceMethod.html
+  commentId: T:Solti.Utils.Primitives.InstanceMethod
+  fullName: Solti.Utils.Primitives.InstanceMethod
+  nameWithType: InstanceMethod
 - uid: Solti.Utils.Primitives.MethodInfoExtensions
   name: MethodInfoExtensions
   href: Solti.Utils.Primitives.MethodInfoExtensions.html
@@ -626,6 +632,12 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
   nameWithType: PropertyInfoExtensions.ToSetter
+- uid: Solti.Utils.Primitives.StaticMethod
+  name: StaticMethod
+  href: Solti.Utils.Primitives.StaticMethod.html
+  commentId: T:Solti.Utils.Primitives.StaticMethod
+  fullName: Solti.Utils.Primitives.StaticMethod
+  nameWithType: StaticMethod
 - uid: Solti.Utils.Primitives.Threading
   name: Solti.Utils.Primitives.Threading
   href: Solti.Utils.Primitives.Threading.html
