@@ -42,129 +42,33 @@ BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Reds
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 .NET SDK=6.0.201
   [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
-  Job-SGKYOF : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+  Job-JUTGOZ : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
 
-InvocationCount=3000  RunStrategy=Throughput  UnrollFactor=1  
+InvocationCount=300000  IterationCount=15  RunStrategy=Throughput  
 </code></pre><table>
 <thead>
 <tr>
 <th>Method</th>
-<th>Count</th>
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
-<th style="text-align:right">Median</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>AddFirst</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:right"><strong>81.31 ns</strong></td>
-<td style="text-align:right"><strong>3.271 ns</strong></td>
-<td style="text-align:right"><strong>9.592 ns</strong></td>
-<td style="text-align:right"><strong>81.27 ns</strong></td>
-<td style="text-align:right"><strong>48 B</strong></td>
+<td>AddFirst</td>
+<td style="text-align:right">63.16 ns</td>
+<td style="text-align:right">6.413 ns</td>
+<td style="text-align:right">5.685 ns</td>
+<td style="text-align:right">48 B</td>
 </tr>
 <tr>
-<td>UsingTheEnumerator</td>
-<td>1</td>
-<td style="text-align:right">192.70 ns</td>
-<td style="text-align:right">3.893 ns</td>
-<td style="text-align:right">8.707 ns</td>
-<td style="text-align:right">190.97 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td>UsingForEach</td>
-<td>1</td>
-<td style="text-align:right">198.64 ns</td>
-<td style="text-align:right">5.162 ns</td>
-<td style="text-align:right">14.728 ns</td>
-<td style="text-align:right">195.60 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td><strong>AddFirst</strong></td>
-<td><strong>10</strong></td>
-<td style="text-align:right"><strong>757.32 ns</strong></td>
-<td style="text-align:right"><strong>41.322 ns</strong></td>
-<td style="text-align:right"><strong>121.191 ns</strong></td>
-<td style="text-align:right"><strong>692.60 ns</strong></td>
-<td style="text-align:right"><strong>480 B</strong></td>
-</tr>
-<tr>
-<td>UsingTheEnumerator</td>
-<td>10</td>
-<td style="text-align:right">412.05 ns</td>
-<td style="text-align:right">14.867 ns</td>
-<td style="text-align:right">42.894 ns</td>
-<td style="text-align:right">392.98 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td>UsingForEach</td>
-<td>10</td>
-<td style="text-align:right">402.81 ns</td>
-<td style="text-align:right">12.168 ns</td>
-<td style="text-align:right">33.514 ns</td>
-<td style="text-align:right">393.88 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td><strong>AddFirst</strong></td>
-<td><strong>20</strong></td>
-<td style="text-align:right"><strong>1,467.32 ns</strong></td>
-<td style="text-align:right"><strong>67.219 ns</strong></td>
-<td style="text-align:right"><strong>198.197 ns</strong></td>
-<td style="text-align:right"><strong>1,381.77 ns</strong></td>
-<td style="text-align:right"><strong>960 B</strong></td>
-</tr>
-<tr>
-<td>UsingTheEnumerator</td>
-<td>20</td>
-<td style="text-align:right">598.05 ns</td>
-<td style="text-align:right">19.639 ns</td>
-<td style="text-align:right">53.096 ns</td>
-<td style="text-align:right">595.32 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td>UsingForEach</td>
-<td>20</td>
-<td style="text-align:right">619.12 ns</td>
-<td style="text-align:right">20.932 ns</td>
-<td style="text-align:right">58.003 ns</td>
-<td style="text-align:right">615.70 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td><strong>AddFirst</strong></td>
-<td><strong>100</strong></td>
-<td style="text-align:right"><strong>6,516.57 ns</strong></td>
-<td style="text-align:right"><strong>152.170 ns</strong></td>
-<td style="text-align:right"><strong>441.472 ns</strong></td>
-<td style="text-align:right"><strong>6,573.70 ns</strong></td>
-<td style="text-align:right"><strong>4,800 B</strong></td>
-</tr>
-<tr>
-<td>UsingTheEnumerator</td>
-<td>100</td>
-<td style="text-align:right">2,175.54 ns</td>
-<td style="text-align:right">83.706 ns</td>
-<td style="text-align:right">246.809 ns</td>
-<td style="text-align:right">2,080.47 ns</td>
-<td style="text-align:right">40 B</td>
-</tr>
-<tr>
-<td>UsingForEach</td>
-<td>100</td>
-<td style="text-align:right">2,273.64 ns</td>
-<td style="text-align:right">101.264 ns</td>
-<td style="text-align:right">298.579 ns</td>
-<td style="text-align:right">2,200.90 ns</td>
-<td style="text-align:right">40 B</td>
+<td>Enumerate_MoveNext</td>
+<td style="text-align:right">18.25 ns</td>
+<td style="text-align:right">0.686 ns</td>
+<td style="text-align:right">0.573 ns</td>
+<td style="text-align:right">-</td>
 </tr>
 </tbody>
 </table>
