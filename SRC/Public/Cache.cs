@@ -66,7 +66,7 @@ namespace Solti.Utils.Primitives
                         that.FHashCode == FHashCode &&
 
                         //
-                        // Comparing the hashcode is not enough since special types (e.g.: delegates) cannot be distinguished by hash.
+                        // Comparing the hashcodes is not enough since special types (e.g.: delegates) cannot be distinguished by hash.
                         //
 
                         EqualityComparer<TKey>.Default.Equals(that.FKey, FKey) && 
