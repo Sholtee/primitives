@@ -4,6 +4,7 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
+using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
 {
@@ -13,13 +14,20 @@ namespace Solti.Utils.Primitives.Patterns
     public class DisposableSupportsNotifyOnDispose : Disposable, INotifyOnDispose
     {
         /// <inheritdoc/>
-        public event EventHandler? OnDispose;
+        public event EventHandler<bool>? OnDispose;
 
         /// <inheritdoc/>
-        protected override void BeforeDispose()
+        protected override void Dispose(bool disposeManaged)
         {
-            base.BeforeDispose();
-            OnDispose?.Invoke(this, EventArgs.Empty);
+            OnDispose?.Invoke(this, disposeManaged);
+            base.Dispose(disposeManaged);
+        }
+
+        /// <inheritdoc/>
+        protected override ValueTask AsyncDispose()
+        {
+            OnDispose?.Invoke(this, true);
+            return default;
         }
     }
 }

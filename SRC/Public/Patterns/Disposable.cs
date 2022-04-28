@@ -6,11 +6,12 @@
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Solti.Utils.Primitives.Patterns
 {
-    using static Threading.InterlockedExtensions;
+    using Threading;
 
     /// <summary>
     /// Implements the <see cref="IDisposable"/> and <see cref="IAsyncDisposable"/> interfaces.
@@ -18,7 +19,7 @@ namespace Solti.Utils.Primitives.Patterns
     public class Disposable : IDisposableEx
     {
         [Flags]
-        private enum DisposableStates
+        private enum DisposableStates: int
         {
             Default = 0,
             Disposing = 1,
@@ -27,10 +28,29 @@ namespace Solti.Utils.Primitives.Patterns
 
         private int FState;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private bool SetDisposing()
+        {
+            //
+            // According to MSDN, we can't throw ObjectDisposedException is the Dispose() being called
+            // more then once.
+            // Interlocked to support parallel case.
+            //
+
+            int prevState = InterlockedExtensions.Or(ref FState, (int) DisposableStates.Disposing);
+
+            return (prevState & (int) DisposableStates.Disposing) is 0;
+        }
+
         /// <summary>
         /// Indicates whether the object was disposed or not.
         /// </summary>
         public bool Disposed => (FState & (int) DisposableStates.Disposed) is not 0;
+
+        /// <summary>
+        /// Indicates whether the object disposal logic has already been invoked or not.
+        /// </summary>
+        public bool Disposing => (FState & (int) DisposableStates.Disposing) is not 0;
 
         /// <summary>
         /// Method to be overridden to implement custom disposal logic.
@@ -45,23 +65,18 @@ namespace Solti.Utils.Primitives.Patterns
         {
             #pragma warning disable CA1849 // Call async methods when in an async method
             Dispose(true);
-            #pragma warning restore CA1849 // Call async methods when in an async method
+            #pragma warning restore CA1849
             return default;
-        }
-
-        /// <summary>
-        /// Invoked before actual disposal logic.
-        /// </summary>
-        protected virtual void BeforeDispose()
-        {
         }
 
         /// <summary>
         /// Throws if the current instance has already been disposed.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void CheckNotDisposed() 
         {
-            if (Disposed) throw new ObjectDisposedException(null);
+            if (Disposed)
+                throw new ObjectDisposedException(null);
         }
 
         /// <summary>
@@ -80,20 +95,13 @@ namespace Solti.Utils.Primitives.Patterns
         [SuppressMessage("Design", "CA1063:Implement IDisposable Correctly", Justification = "The method is implemented correctly.")]
         public void Dispose()
         {
-            //
-            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva
-            // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
-            //
+            if (SetDisposing())
+            {
+                Dispose(disposeManaged: true);
 
-            if ((Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
-                return;
-
-            BeforeDispose();
-
-            Dispose(disposeManaged: true);
-
-            GC.SuppressFinalize(this);
-            FState |= (int) DisposableStates.Disposed;
+                GC.SuppressFinalize(this);
+                FState |= (int) DisposableStates.Disposed;
+            }
         }
 
         /// <summary>
@@ -101,20 +109,13 @@ namespace Solti.Utils.Primitives.Patterns
         /// </summary>
         public async ValueTask DisposeAsync()
         {
-            //
-            // MSDN szerint nem dobhatunk ObjectDisposedException-t ha a metodus egynel tobbszor volt meghivva
-            // (Interlocked hogy a parhuzamos eseteket is jol kezeljuk)
-            //
+            if (SetDisposing())
+            {
+                await AsyncDispose();
 
-            if ((Or(ref FState, (int) DisposableStates.Disposing) & (int) DisposableStates.Disposing) is not 0)
-                return;
-
-            BeforeDispose();
-
-            await AsyncDispose();
-
-            GC.SuppressFinalize(this);
-            FState |= (int) DisposableStates.Disposed;
+                GC.SuppressFinalize(this);
+                FState |= (int) DisposableStates.Disposed;
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Fires if the object is about to dispose.
         /// </summary>
-        event EventHandler? OnDispose;
+        #pragma warning disable CA1003 // Use generic event handler instances
+        event EventHandler<bool>? OnDispose;
+        #pragma warning restore CA1003
     }
 }
