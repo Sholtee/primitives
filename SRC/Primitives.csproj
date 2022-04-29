@@ -6,7 +6,7 @@
     <Version>7.0.0-preview4</Version>
     <AssemblyName>Solti.Utils.Primitives</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives</RootNamespace>
-    <Configurations>Debug;Release;Perf</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>

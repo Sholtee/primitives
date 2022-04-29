@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <TargetFramework>net6.0</TargetFramework>
-    <Configurations>Debug;Perf</Configurations>
+    <Configurations>Debug;Release;</Configurations>
     <!--BenchmarkDotNet requires the exe and csproj name to be equal-->
     <AssemblyName>Primitives.Perf</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives.Perf</RootNamespace>
