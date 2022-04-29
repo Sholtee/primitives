@@ -45,6 +45,44 @@ references:
   fullName.vb: Solti.Utils.Primitives.Cache.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TKey, TValue), System.String)
   nameWithType: Cache.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
   nameWithType.vb: Cache.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
+- uid: Solti.Utils.Primitives.CacheSlim
+  name: CacheSlim
+  href: Solti.Utils.Primitives.CacheSlim.html
+  commentId: T:Solti.Utils.Primitives.CacheSlim
+  fullName: Solti.Utils.Primitives.CacheSlim
+  nameWithType: CacheSlim
+- uid: Solti.Utils.Primitives.CacheSlim.Clear*
+  name: Clear
+  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_Clear_
+  commentId: Overload:Solti.Utils.Primitives.CacheSlim.Clear
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.CacheSlim.Clear
+  nameWithType: CacheSlim.Clear
+- uid: Solti.Utils.Primitives.CacheSlim.Clear``2
+  name: Clear<TKey, TValue>()
+  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_Clear__2
+  commentId: M:Solti.Utils.Primitives.CacheSlim.Clear``2
+  name.vb: Clear(Of TKey, TValue)()
+  fullName: Solti.Utils.Primitives.CacheSlim.Clear<TKey, TValue>()
+  fullName.vb: Solti.Utils.Primitives.CacheSlim.Clear(Of TKey, TValue)()
+  nameWithType: CacheSlim.Clear<TKey, TValue>()
+  nameWithType.vb: CacheSlim.Clear(Of TKey, TValue)()
+- uid: Solti.Utils.Primitives.CacheSlim.GetOrAdd*
+  name: GetOrAdd
+  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_GetOrAdd_
+  commentId: Overload:Solti.Utils.Primitives.CacheSlim.GetOrAdd
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.CacheSlim.GetOrAdd
+  nameWithType: CacheSlim.GetOrAdd
+- uid: Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
+  name: GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
+  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_GetOrAdd__2___0_System_Func___0___1__System_String_
+  commentId: M:Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
+  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
+  fullName: Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey, System.Func<TKey, TValue>, System.String)
+  fullName.vb: Solti.Utils.Primitives.CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TKey, TValue), System.String)
+  nameWithType: CacheSlim.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
+  nameWithType.vb: CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
 - uid: Solti.Utils.Primitives.ComparerBase`2
   name: ComparerBase<TConcreteComparer, T>
   href: Solti.Utils.Primitives.ComparerBase-2.html
