@@ -42,13 +42,14 @@ BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Reds
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 .NET SDK=6.0.201
   [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
-  Job-MGWUHV : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+  Job-LKHRJR : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
 
 InvocationCount=10000000  RunStrategy=Throughput  
 </code></pre><table>
 <thead>
 <tr>
 <th>Method</th>
+<th>SupportFinalizer</th>
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
@@ -58,12 +59,22 @@ InvocationCount=10000000  RunStrategy=Throughput
 </thead>
 <tbody>
 <tr>
-<td>CreateAndDispose</td>
-<td style="text-align:right">83.32 ns</td>
-<td style="text-align:right">0.983 ns</td>
-<td style="text-align:right">0.821 ns</td>
-<td style="text-align:right">0.0013</td>
-<td style="text-align:right">24 B</td>
+<td><strong>CreateAndDispose</strong></td>
+<td><strong>False</strong></td>
+<td style="text-align:right"><strong>19.60 ns</strong></td>
+<td style="text-align:right"><strong>0.259 ns</strong></td>
+<td style="text-align:right"><strong>0.230 ns</strong></td>
+<td style="text-align:right"><strong>0.0017</strong></td>
+<td style="text-align:right"><strong>32 B</strong></td>
+</tr>
+<tr>
+<td><strong>CreateAndDispose</strong></td>
+<td><strong>True</strong></td>
+<td style="text-align:right"><strong>91.44 ns</strong></td>
+<td style="text-align:right"><strong>1.232 ns</strong></td>
+<td style="text-align:right"><strong>1.152 ns</strong></td>
+<td style="text-align:right"><strong>0.0030</strong></td>
+<td style="text-align:right"><strong>56 B</strong></td>
 </tr>
 </tbody>
 </table>
