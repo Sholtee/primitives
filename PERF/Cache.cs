@@ -20,5 +20,14 @@ namespace Solti.Utils.Primitives.Perf
                 Primitives.Cache.GetOrAdd(i, _ => new object());
             }
         }
+
+        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+        public void GetOrAddSlim()
+        {
+            for (int i = 0; i < OperationsPerInvoke; i++)
+            {
+                Primitives.CacheSlim.GetOrAdd(i, _ => new object());
+            }
+        }
     }
 }
