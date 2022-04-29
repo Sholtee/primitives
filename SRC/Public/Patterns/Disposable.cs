@@ -18,6 +18,23 @@ namespace Solti.Utils.Primitives.Patterns
     /// </summary>
     public class Disposable : IDisposableEx
     {
+        //
+        // Constructing objects having finalizer may take long (see benchmarks).
+        //
+
+        private sealed class FinalizerImplementation
+        {
+            public readonly Disposable Target;
+
+            public FinalizerImplementation(Disposable target) => Target = target;
+
+            ~FinalizerImplementation()
+            {
+                Trace.WriteLine($"{Target.GetType().GetFriendlyName()} is disposed by GC. You may be missing a Dispose() call.");
+                Target.Dispose(false);
+            }
+        }
+
         [Flags]
         private enum DisposableStates: int
         {
@@ -28,11 +45,13 @@ namespace Solti.Utils.Primitives.Patterns
 
         private int FState;
 
+        private readonly FinalizerImplementation? FFinalizer;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool SetDisposing()
         {
             //
-            // According to MSDN, we can't throw ObjectDisposedException is the Dispose() being called
+            // According to MSDN, we can't throw ObjectDisposedException in Dispose() being called
             // more then once.
             // Interlocked to support parallel case.
             //
@@ -58,14 +77,14 @@ namespace Solti.Utils.Primitives.Patterns
         /// <param name="disposeManaged">It is set to true on <see cref="IDisposable.Dispose"/> call.</param>
         protected virtual void Dispose(bool disposeManaged) { }
 
+
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting resources asynchronously
         /// </summary>
+        [SuppressMessage("Performance", "CA1849:Call async methods when in an async method")]
         protected virtual ValueTask AsyncDispose() 
         {
-            #pragma warning disable CA1849 // Call async methods when in an async method
             Dispose(true);
-            #pragma warning restore CA1849
             return default;
         }
 
@@ -80,26 +99,28 @@ namespace Solti.Utils.Primitives.Patterns
         }
 
         /// <summary>
-        /// Destructor of this class.
+        /// Creates a new <see cref="Disposable"/> instance.
         /// </summary>
-        [SuppressMessage("Design", "CA1063:Implement IDisposable Correctly", Justification = "The method is implemented correctly.")]
-        ~Disposable()
+        public Disposable(bool supportFinalizer = false)
         {
-            Trace.WriteLine($"{GetType().GetFriendlyName()} is disposed by GC. You may be missing a Dispose() call.");
-            Dispose(disposeManaged: false);
+            if (supportFinalizer)
+                FFinalizer = new FinalizerImplementation(this);
         }
 
         /// <summary>
         /// Implements the <see cref="IDisposable.Dispose"/> method.
         /// </summary>
         [SuppressMessage("Design", "CA1063:Implement IDisposable Correctly", Justification = "The method is implemented correctly.")]
+        [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize", Justification = "SuppressFinalize is called on the outsourced implementation")]
         public void Dispose()
         {
             if (SetDisposing())
             {
                 Dispose(disposeManaged: true);
 
-                GC.SuppressFinalize(this);
+                if (FFinalizer is not null)
+                    GC.SuppressFinalize(FFinalizer);
+
                 FState |= (int) DisposableStates.Disposed;
             }
         }
@@ -107,13 +128,16 @@ namespace Solti.Utils.Primitives.Patterns
         /// <summary>
         /// Implements the <see cref="IAsyncDisposable.DisposeAsync"/> method.
         /// </summary>
+        [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize", Justification = "SuppressFinalize is called on the outsourced implementation")]
         public async ValueTask DisposeAsync()
         {
             if (SetDisposing())
             {
                 await AsyncDispose();
 
-                GC.SuppressFinalize(this);
+                if (FFinalizer is not null)
+                    GC.SuppressFinalize(FFinalizer);
+
                 FState |= (int) DisposableStates.Disposed;
             }
         }

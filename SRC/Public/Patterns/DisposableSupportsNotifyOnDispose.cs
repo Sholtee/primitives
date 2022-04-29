@@ -13,6 +13,11 @@ namespace Solti.Utils.Primitives.Patterns
     /// </summary>
     public class DisposableSupportsNotifyOnDispose : Disposable, INotifyOnDispose
     {
+        /// <summary>
+        /// Creates a new <see cref="DisposableSupportsNotifyOnDispose"/> instance.
+        /// </summary>
+        public DisposableSupportsNotifyOnDispose(bool supportFinalizer = false) : base(supportFinalizer) { }
+
         /// <inheritdoc/>
         public event EventHandler<bool>? OnDispose;
 
