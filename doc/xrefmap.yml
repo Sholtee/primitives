@@ -196,6 +196,19 @@ references:
   commentId: T:Solti.Utils.Primitives.Patterns.Disposable
   fullName: Solti.Utils.Primitives.Patterns.Disposable
   nameWithType: Disposable
+- uid: Solti.Utils.Primitives.Patterns.Disposable.#ctor(System.Boolean)
+  name: Disposable(Boolean)
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable__ctor_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.#ctor(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Disposable(System.Boolean)
+  nameWithType: Disposable.Disposable(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.Disposable.#ctor*
+  name: Disposable
+  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.Disposable.Disposable
+  nameWithType: Disposable.Disposable
 - uid: Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose
   name: AsyncDispose()
   href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_AsyncDispose
@@ -280,25 +293,25 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.Patterns.Disposable.Disposing
   nameWithType: Disposable.Disposing
-- uid: Solti.Utils.Primitives.Patterns.Disposable.Finalize
-  name: Finalize()
-  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Finalize
-  commentId: M:Solti.Utils.Primitives.Patterns.Disposable.Finalize
-  fullName: Solti.Utils.Primitives.Patterns.Disposable.Finalize()
-  nameWithType: Disposable.Finalize()
-- uid: Solti.Utils.Primitives.Patterns.Disposable.Finalize*
-  name: Finalize
-  href: Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Finalize_
-  commentId: Overload:Solti.Utils.Primitives.Patterns.Disposable.Finalize
-  isSpec: "True"
-  fullName: Solti.Utils.Primitives.Patterns.Disposable.Finalize
-  nameWithType: Disposable.Finalize
 - uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
   name: DisposableSupportsNotifyOnDispose
   href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html
   commentId: T:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
   fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose
   nameWithType: DisposableSupportsNotifyOnDispose
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.#ctor(System.Boolean)
+  name: DisposableSupportsNotifyOnDispose(Boolean)
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose__ctor_System_Boolean_
+  commentId: M:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.#ctor(System.Boolean)
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.DisposableSupportsNotifyOnDispose(System.Boolean)
+  nameWithType: DisposableSupportsNotifyOnDispose.DisposableSupportsNotifyOnDispose(Boolean)
+- uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.#ctor*
+  name: DisposableSupportsNotifyOnDispose
+  href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.DisposableSupportsNotifyOnDispose
+  nameWithType: DisposableSupportsNotifyOnDispose.DisposableSupportsNotifyOnDispose
 - uid: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.AsyncDispose
   name: AsyncDispose()
   href: Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html#Solti_Utils_Primitives_Patterns_DisposableSupportsNotifyOnDispose_AsyncDispose
