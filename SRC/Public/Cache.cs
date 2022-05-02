@@ -106,7 +106,7 @@ namespace Solti.Utils.Primitives
             // Dictionary performs much better against int keys.
             //
 
-            private static readonly ConcurrentDictionary<int, CacheEntry> FImplementation = new();
+            private static readonly ConcurrentDictionary<long, CacheEntry> FImplementation = new();
 
             //
             // We don't use factory function here since it may get called more than once if the GetOrAdd()
@@ -141,7 +141,7 @@ namespace Solti.Utils.Primitives
             public static TValue GetOrAdd(TKey key, string scope, Func<TKey, TValue> factory) => FImplementation.GetOrAdd
             (
                 #pragma warning disable CA1307 // Specify StringComparison for clarity
-                unchecked((key?.GetHashCode() ?? 0) ^ (scope?.GetHashCode() ?? 0)),
+                (((long) (key?.GetHashCode() ?? 0)) << 32) | ((uint) (scope?.GetHashCode() ?? 0)),
                 #pragma warning restore CA1307
                 new CacheEntry(key, factory)
             ).Value;
