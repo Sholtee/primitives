@@ -222,6 +222,30 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate
   nameWithType: MethodInfoExtensions.ToStaticDelegate
+- uid: Solti.Utils.Primitives.NodeColor
+  name: NodeColor
+  href: Solti.Utils.Primitives.NodeColor.html
+  commentId: T:Solti.Utils.Primitives.NodeColor
+  fullName: Solti.Utils.Primitives.NodeColor
+  nameWithType: NodeColor
+- uid: Solti.Utils.Primitives.NodeColor.Black
+  name: Black
+  href: Solti.Utils.Primitives.NodeColor.html#Solti_Utils_Primitives_NodeColor_Black
+  commentId: F:Solti.Utils.Primitives.NodeColor.Black
+  fullName: Solti.Utils.Primitives.NodeColor.Black
+  nameWithType: NodeColor.Black
+- uid: Solti.Utils.Primitives.NodeColor.Red
+  name: Red
+  href: Solti.Utils.Primitives.NodeColor.html#Solti_Utils_Primitives_NodeColor_Red
+  commentId: F:Solti.Utils.Primitives.NodeColor.Red
+  fullName: Solti.Utils.Primitives.NodeColor.Red
+  nameWithType: NodeColor.Red
+- uid: Solti.Utils.Primitives.NodeColor.Unspecified
+  name: Unspecified
+  href: Solti.Utils.Primitives.NodeColor.html#Solti_Utils_Primitives_NodeColor_Unspecified
+  commentId: F:Solti.Utils.Primitives.NodeColor.Unspecified
+  fullName: Solti.Utils.Primitives.NodeColor.Unspecified
+  nameWithType: NodeColor.Unspecified
 - uid: Solti.Utils.Primitives.Patterns
   name: Solti.Utils.Primitives.Patterns
   href: Solti.Utils.Primitives.Patterns.html
@@ -709,6 +733,238 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
   nameWithType: PropertyInfoExtensions.ToSetter
+- uid: Solti.Utils.Primitives.RedBlackTree`1
+  name: RedBlackTree<TNode>
+  href: Solti.Utils.Primitives.RedBlackTree-1.html
+  commentId: T:Solti.Utils.Primitives.RedBlackTree`1
+  name.vb: RedBlackTree(Of TNode)
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode)
+  nameWithType: RedBlackTree<TNode>
+  nameWithType.vb: RedBlackTree(Of TNode)
+- uid: Solti.Utils.Primitives.RedBlackTree`1.#ctor(System.Collections.Generic.IComparer{`0})
+  name: RedBlackTree(IComparer<TNode>)
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1__ctor_System_Collections_Generic_IComparer__0__
+  commentId: M:Solti.Utils.Primitives.RedBlackTree`1.#ctor(System.Collections.Generic.IComparer{`0})
+  name.vb: RedBlackTree(IComparer(Of TNode))
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.RedBlackTree(System.Collections.Generic.IComparer<TNode>)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).RedBlackTree(System.Collections.Generic.IComparer(Of TNode))
+  nameWithType: RedBlackTree<TNode>.RedBlackTree(IComparer<TNode>)
+  nameWithType.vb: RedBlackTree(Of TNode).RedBlackTree(IComparer(Of TNode))
+- uid: Solti.Utils.Primitives.RedBlackTree`1.#ctor*
+  name: RedBlackTree
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.RedBlackTree
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).RedBlackTree
+  nameWithType: RedBlackTree<TNode>.RedBlackTree
+  nameWithType.vb: RedBlackTree(Of TNode).RedBlackTree
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Add(`0)
+  name: Add(TNode)
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Add__0_
+  commentId: M:Solti.Utils.Primitives.RedBlackTree`1.Add(`0)
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Add(TNode)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Add(TNode)
+  nameWithType: RedBlackTree<TNode>.Add(TNode)
+  nameWithType.vb: RedBlackTree(Of TNode).Add(TNode)
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Add*
+  name: Add
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Add_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.Add
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Add
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Add
+  nameWithType: RedBlackTree<TNode>.Add
+  nameWithType.vb: RedBlackTree(Of TNode).Add
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Comparer
+  name: Comparer
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Comparer
+  commentId: P:Solti.Utils.Primitives.RedBlackTree`1.Comparer
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Comparer
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Comparer
+  nameWithType: RedBlackTree<TNode>.Comparer
+  nameWithType.vb: RedBlackTree(Of TNode).Comparer
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Comparer*
+  name: Comparer
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Comparer_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.Comparer
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Comparer
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Comparer
+  nameWithType: RedBlackTree<TNode>.Comparer
+  nameWithType.vb: RedBlackTree(Of TNode).Comparer
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Count
+  name: Count
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Count
+  commentId: P:Solti.Utils.Primitives.RedBlackTree`1.Count
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Count
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Count
+  nameWithType: RedBlackTree<TNode>.Count
+  nameWithType.vb: RedBlackTree(Of TNode).Count
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Count*
+  name: Count
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Count_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.Count
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Count
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Count
+  nameWithType: RedBlackTree<TNode>.Count
+  nameWithType.vb: RedBlackTree(Of TNode).Count
+- uid: Solti.Utils.Primitives.RedBlackTree`1.GetEnumerator
+  name: GetEnumerator()
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.RedBlackTree`1.GetEnumerator
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).GetEnumerator()
+  nameWithType: RedBlackTree<TNode>.GetEnumerator()
+  nameWithType.vb: RedBlackTree(Of TNode).GetEnumerator()
+- uid: Solti.Utils.Primitives.RedBlackTree`1.GetEnumerator*
+  name: GetEnumerator
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.GetEnumerator
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).GetEnumerator
+  nameWithType: RedBlackTree<TNode>.GetEnumerator
+  nameWithType.vb: RedBlackTree(Of TNode).GetEnumerator
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Root
+  name: Root
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Root
+  commentId: P:Solti.Utils.Primitives.RedBlackTree`1.Root
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Root
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Root
+  nameWithType: RedBlackTree<TNode>.Root
+  nameWithType.vb: RedBlackTree(Of TNode).Root
+- uid: Solti.Utils.Primitives.RedBlackTree`1.Root*
+  name: Root
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_Root_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.Root
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.Root
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).Root
+  nameWithType: RedBlackTree<TNode>.Root
+  nameWithType.vb: RedBlackTree(Of TNode).Root
+- uid: Solti.Utils.Primitives.RedBlackTree`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:Solti.Utils.Primitives.RedBlackTree`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: RedBlackTree<TNode>.IEnumerable.GetEnumerator()
+  nameWithType.vb: RedBlackTree(Of TNode).System.Collections.IEnumerable.GetEnumerator()
+- uid: Solti.Utils.Primitives.RedBlackTree`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: RedBlackTree<TNode>.IEnumerable.GetEnumerator
+  nameWithType.vb: RedBlackTree(Of TNode).System.Collections.IEnumerable.GetEnumerator
+- uid: Solti.Utils.Primitives.RedBlackTree`1.With(`0)
+  name: With(TNode)
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_With__0_
+  commentId: M:Solti.Utils.Primitives.RedBlackTree`1.With(`0)
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.With(TNode)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).With(TNode)
+  nameWithType: RedBlackTree<TNode>.With(TNode)
+  nameWithType.vb: RedBlackTree(Of TNode).With(TNode)
+- uid: Solti.Utils.Primitives.RedBlackTree`1.With*
+  name: With
+  href: Solti.Utils.Primitives.RedBlackTree-1.html#Solti_Utils_Primitives_RedBlackTree_1_With_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTree`1.With
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTree<TNode>.With
+  fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TNode).With
+  nameWithType: RedBlackTree<TNode>.With
+  nameWithType.vb: RedBlackTree(Of TNode).With
+- uid: Solti.Utils.Primitives.RedBlackTreeNode
+  name: RedBlackTreeNode
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html
+  commentId: T:Solti.Utils.Primitives.RedBlackTreeNode
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode
+  nameWithType: RedBlackTreeNode
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.#ctor(Solti.Utils.Primitives.NodeColor)
+  name: RedBlackTreeNode(NodeColor)
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode__ctor_Solti_Utils_Primitives_NodeColor_
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeNode.#ctor(Solti.Utils.Primitives.NodeColor)
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.RedBlackTreeNode(Solti.Utils.Primitives.NodeColor)
+  nameWithType: RedBlackTreeNode.RedBlackTreeNode(NodeColor)
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.#ctor*
+  name: RedBlackTreeNode
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode__ctor_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.#ctor
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.RedBlackTreeNode
+  nameWithType: RedBlackTreeNode.RedBlackTreeNode
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Color
+  name: Color
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Color
+  commentId: P:Solti.Utils.Primitives.RedBlackTreeNode.Color
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Color
+  nameWithType: RedBlackTreeNode.Color
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Color*
+  name: Color
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Color_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.Color
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Color
+  nameWithType: RedBlackTreeNode.Color
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.DeepClone
+  name: DeepClone()
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_DeepClone
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeNode.DeepClone
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.DeepClone()
+  nameWithType: RedBlackTreeNode.DeepClone()
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.DeepClone*
+  name: DeepClone
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_DeepClone_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.DeepClone
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.DeepClone
+  nameWithType: RedBlackTreeNode.DeepClone
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Left
+  name: Left
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Left
+  commentId: P:Solti.Utils.Primitives.RedBlackTreeNode.Left
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Left
+  nameWithType: RedBlackTreeNode.Left
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Left*
+  name: Left
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Left_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.Left
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Left
+  nameWithType: RedBlackTreeNode.Left
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Right
+  name: Right
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Right
+  commentId: P:Solti.Utils.Primitives.RedBlackTreeNode.Right
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Right
+  nameWithType: RedBlackTreeNode.Right
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.Right*
+  name: Right
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_Right_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.Right
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.Right
+  nameWithType: RedBlackTreeNode.Right
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone
+  name: ShallowClone()
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_ShallowClone
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone()
+  nameWithType: RedBlackTreeNode.ShallowClone()
+- uid: Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone*
+  name: ShallowClone
+  href: Solti.Utils.Primitives.RedBlackTreeNode.html#Solti_Utils_Primitives_RedBlackTreeNode_ShallowClone_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone
+  isSpec: "True"
+  fullName: Solti.Utils.Primitives.RedBlackTreeNode.ShallowClone
+  nameWithType: RedBlackTreeNode.ShallowClone
 - uid: Solti.Utils.Primitives.StaticMethod
   name: StaticMethod
   href: Solti.Utils.Primitives.StaticMethod.html
