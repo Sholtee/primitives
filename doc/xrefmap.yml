@@ -74,15 +74,15 @@ references:
   isSpec: "True"
   fullName: Solti.Utils.Primitives.CacheSlim.GetOrAdd
   nameWithType: CacheSlim.GetOrAdd
-- uid: Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
-  name: GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
-  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_GetOrAdd__2___0_System_Func___0___1__System_String_
-  commentId: M:Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1},System.String)
-  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
-  fullName: Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey, System.Func<TKey, TValue>, System.String)
-  fullName.vb: Solti.Utils.Primitives.CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TKey, TValue), System.String)
-  nameWithType: CacheSlim.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>, String)
-  nameWithType.vb: CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue), String)
+- uid: Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1})
+  name: GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>)
+  href: Solti.Utils.Primitives.CacheSlim.html#Solti_Utils_Primitives_CacheSlim_GetOrAdd__2___0_System_Func___0___1__
+  commentId: M:Solti.Utils.Primitives.CacheSlim.GetOrAdd``2(``0,System.Func{``0,``1})
+  name.vb: GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue))
+  fullName: Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey, System.Func<TKey, TValue>)
+  fullName.vb: Solti.Utils.Primitives.CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, System.Func(Of TKey, TValue))
+  nameWithType: CacheSlim.GetOrAdd<TKey, TValue>(TKey, Func<TKey, TValue>)
+  nameWithType.vb: CacheSlim.GetOrAdd(Of TKey, TValue)(TKey, Func(Of TKey, TValue))
 - uid: Solti.Utils.Primitives.ComparerBase`2
   name: ComparerBase<TConcreteComparer, T>
   href: Solti.Utils.Primitives.ComparerBase-2.html
