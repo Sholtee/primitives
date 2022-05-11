@@ -11,7 +11,7 @@ Commonly used types:
 - [MethodInfoExtensions](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.MethodInfoExtensions.html )
 - [ObjectPool](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Threading.ObjectPool-1.html )
 - [PropertyInfoExtensions](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.PropertyInfoExtensions.html )
-- [RedBlackTree](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.RedBlackTree.html )
+- [RedBlackTree](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.RedBlackTree-1.html )
 - [Singleton](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Singleton-1.html )
 
 [API docs](https://sholtee.github.io/primitives )
