@@ -102,11 +102,7 @@ namespace Solti.Utils.Primitives
     {
         private static class Backend<TKey, TValue>
         {
-            //
-            // Dictionary performs much better against int keys.
-            //
-
-            private static readonly ConcurrentDictionary<long, CacheEntry> FImplementation = new();
+            private static readonly ConcurrentDictionary<TKey, CacheEntry> FImplementation = new();
 
             //
             // We don't use factory function here since it may get called more than once if the GetOrAdd()
@@ -138,11 +134,9 @@ namespace Solti.Utils.Primitives
                 }
             }
 
-            public static TValue GetOrAdd(TKey key, string scope, Func<TKey, TValue> factory) => FImplementation.GetOrAdd
+            public static TValue GetOrAdd(TKey key, Func<TKey, TValue> factory) => FImplementation.GetOrAdd
             (
-                #pragma warning disable CA1307 // Specify StringComparison for clarity
-                (((long) (key?.GetHashCode() ?? 0)) << 32) | ((uint) (scope?.GetHashCode() ?? 0)),
-                #pragma warning restore CA1307
+                key,
                 new CacheEntry(key, factory)
             ).Value;
 
@@ -157,6 +151,6 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
-        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") => Backend<TKey, TValue>.GetOrAdd(key, scope, factory);
+        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory) => Backend<TKey, TValue>.GetOrAdd(key, factory);
     }
 }
