@@ -16,7 +16,7 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Implements the <see cref="IEqualityComparer{T}.Equals(T, T)"/> method.
         /// </summary>
-        public virtual bool Equals(T x, T y) => ReferenceEquals(x, y) || GetHashCode(x) == GetHashCode(y);
+        public virtual bool Equals(T x, T y) => ReferenceEquals(x, y);
 
         /// <summary>
         /// The abstract implementation for the <see cref="IEqualityComparer{T}.GetHashCode(T)"/> method.
