@@ -16,25 +16,9 @@ namespace Solti.Utils.Primitives.Tests
     [TestFixture]
     public sealed class RedBlackTreeTests
     {
-        private sealed class IntNode : RedBlackTreeNode
+        private sealed class IntComparer : Singleton<IntComparer>, IComparer<int>
         {
-            public int Value { get; }
-
-            public IntNode(int value) : this(value, NodeColor.Unspecified)
-            {
-            }
-
-            public IntNode(int value, NodeColor color) : base(color)
-            {
-                Value = value;
-            }
-
-            public override RedBlackTreeNode ShallowClone() => new IntNode(Value, Color);
-        }
-
-        private sealed class IntNodeComparer : Singleton<IntNodeComparer>, IComparer<IntNode>
-        {
-            public int Compare(IntNode x, IntNode y) => x.Value.CompareTo(y.Value);
+            public int Compare(int x, int y) => x.CompareTo(y);
         }
 
         public IEnumerable<int> Values
@@ -55,15 +39,15 @@ namespace Solti.Utils.Primitives.Tests
         {
             List<int> values = new(Values.Take(take));
 
-            RedBlackTree<IntNode> tree = new(IntNodeComparer.Instance);
+            RedBlackTree<int> tree = new(IntComparer.Instance);
 
             foreach (int value in values)
             {
-                tree.Add(new IntNode(value));
+                tree.Add(value);
             }
 
             Assert.That(tree.Count, Is.EqualTo(take));
-            Assert.That(tree.Select(node => node.Value).SequenceEqual(values.OrderBy(v => v)));
+            Assert.That(tree.Select(node => node.Data).SequenceEqual(values.OrderBy(v => v)));
         }
 
         [Test]
@@ -71,23 +55,23 @@ namespace Solti.Utils.Primitives.Tests
         {
             List<int> values = new(Values.Take(take));
 
-            RedBlackTree<IntNode> tree = new(IntNodeComparer.Instance);
+            RedBlackTree<int> tree = new(IntComparer.Instance);
 
             foreach (int value in values)
             {
-                tree = tree.With(new IntNode(value));
+                tree = tree.With(value);
             }
 
             Assert.That(tree.Count, Is.EqualTo(take));
-            Assert.That(tree.Select(node => node.Value).SequenceEqual(values.OrderBy(v => v)));
+            Assert.That(tree.Select(node => node.Data).SequenceEqual(values.OrderBy(v => v)));
         }
 
         [Test]
         public void With_ShouldThrowIfTheNodeAlreadyContained()
         {
-            RedBlackTree<IntNode> tree = new(IntNodeComparer.Instance);
-            tree = tree.With(new IntNode(1));
-            Assert.Throws<InvalidOperationException>(() => tree.With(new IntNode(1)));
+            RedBlackTree<int> tree = new(IntComparer.Instance);
+            tree = tree.With(1);
+            Assert.Throws<InvalidOperationException>(() => tree.With(1));
         }
     }
 }

@@ -40,22 +40,31 @@ namespace Solti.Utils.Primitives
     /// <summary>
     /// Represents a red-black tree node.
     /// </summary>
-    public class RedBlackTreeNode
+    public class RedBlackTreeNode<TData>
     {
         /// <summary>
         /// Creates a new node.
         /// </summary>
-        public RedBlackTreeNode(NodeColor color) => Color = color;
+        public RedBlackTreeNode(TData data, NodeColor color = NodeColor.Unspecified)
+        {
+            Color = color;
+            Data = data;
+        }
 
         /// <summary>
         /// The left child of this node.
         /// </summary>
-        public RedBlackTreeNode? Left { get; internal set; }
+        public RedBlackTreeNode<TData>? Left { get; internal set; }
 
         /// <summary>
         /// The right child of this node.
         /// </summary>
-        public RedBlackTreeNode? Right { get; internal set; }
+        public RedBlackTreeNode<TData>? Right { get; internal set; }
+
+        /// <summary>
+        /// The associated data.
+        /// </summary>
+        public TData Data { get; }
 
         /// <summary>
         /// The color of this node.
@@ -67,18 +76,18 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Clones the whole hierarchy starting from this node.
         /// </summary>
-        public RedBlackTreeNode DeepClone()
+        public RedBlackTreeNode<TData> DeepClone()
         {
-            RedBlackTreeNode newRoot = ShallowClone();
+            RedBlackTreeNode<TData> newRoot = ShallowClone();
 
-            Stack<(RedBlackTreeNode source, RedBlackTreeNode target)> pendingNodes = new();
+            Stack<(RedBlackTreeNode<TData> source, RedBlackTreeNode<TData> target)> pendingNodes = new();
             pendingNodes.Push((this, newRoot));
 
             while (pendingNodes.Count > 0)
             {
-                (RedBlackTreeNode source, RedBlackTreeNode target) = pendingNodes.Pop();
+                (RedBlackTreeNode<TData> source, RedBlackTreeNode<TData> target) = pendingNodes.Pop();
 
-                RedBlackTreeNode clonedNode;
+                RedBlackTreeNode<TData> clonedNode;
 
                 if (source.Left is not null)
                 {
@@ -101,7 +110,7 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Clones the actual node only.
         /// </summary>
-        public virtual RedBlackTreeNode ShallowClone() => new(Color);
+        public RedBlackTreeNode<TData> ShallowClone() => new(Data, Color);
 
         internal void Split4Node()
         {
@@ -112,18 +121,18 @@ namespace Solti.Utils.Primitives
             Right!.Color = Left!.Color = NodeColor.Black;
         }
 
-        internal RedBlackTreeNode RotateLeft()
+        internal RedBlackTreeNode<TData> RotateLeft()
         {
-            RedBlackTreeNode child = Right!;
+            RedBlackTreeNode<TData> child = Right!;
 
             Right = child.Left;
             child.Left = this;
             return child;
         }
 
-        internal RedBlackTreeNode RotateLeftRight()
+        internal RedBlackTreeNode<TData> RotateLeftRight()
         {
-            RedBlackTreeNode
+            RedBlackTreeNode<TData>
                 child = Left!,
                 grandChild = child.Right!;
 
@@ -134,18 +143,18 @@ namespace Solti.Utils.Primitives
             return grandChild;
         }
 
-        internal RedBlackTreeNode RotateRight()
+        internal RedBlackTreeNode<TData> RotateRight()
         {
-            RedBlackTreeNode child = Left!;
+            RedBlackTreeNode<TData> child = Left!;
 
             Left = child.Right;
             child.Right = this;
             return child;
         }
 
-        internal RedBlackTreeNode RotateRightLeft()
+        internal RedBlackTreeNode<TData> RotateRightLeft()
         {
-            RedBlackTreeNode 
+            RedBlackTreeNode<TData>
                 child = Right!,
                 grandChild = child.Left!;
 
@@ -156,7 +165,7 @@ namespace Solti.Utils.Primitives
             return grandChild;
         }
 
-        internal void ReplaceChild(RedBlackTreeNode child, RedBlackTreeNode newChild)
+        internal void ReplaceChild(RedBlackTreeNode<TData> child, RedBlackTreeNode<TData> newChild)
         {
             Assert(HasChild(child));
 
@@ -166,13 +175,13 @@ namespace Solti.Utils.Primitives
                 Right = newChild;
         }
 
-        internal bool HasChild(RedBlackTreeNode child) => child == Left || child == Right;
+        internal bool HasChild(RedBlackTreeNode<TData> child) => child == Left || child == Right;
     }
 
     /// <summary>
     /// Represents a generic red-black tree
     /// </summary>
-    public class RedBlackTree<TNode>: IEnumerable<TNode> where TNode : RedBlackTreeNode
+    public class RedBlackTree<TData> : IEnumerable<RedBlackTreeNode<TData>>
     {
         /// <summary>
         /// The number of leaves.
@@ -182,34 +191,41 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// The root of this tree.
         /// </summary>
-        public TNode? Root { get; private set; }
+        public RedBlackTreeNode<TData>? Root { get; private set; }
 
         /// <summary>
         /// The related comparer..
         /// </summary>
-        public IComparer<TNode> Comparer { get; }
+        public IComparer<TData> Comparer { get; }
 
         /// <summary>
-        /// Creates a new <see cref="RedBlackTree{TNode}"/> instance.
+        /// Creates a new <see cref="RedBlackTree{TData}"/> instance.
         /// </summary>
-        public RedBlackTree(IComparer<TNode> comparer) =>
-            Comparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
+        public RedBlackTree(IComparer<TData> comparer) => Comparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
 
         /// <summary>
-        /// Creates a new tree containing the new node.
+        /// Creates a new tree containing the new <paramref name="data"/>.
         /// </summary>
-        public RedBlackTree<TNode> With(TNode node)
+        public RedBlackTree<TData> With(TData data) => With(new RedBlackTreeNode<TData>(data));
+
+        /// <summary>
+        /// Creates a new tree containing the new <paramref name="node"/>.
+        /// </summary>
+        public RedBlackTree<TData> With(RedBlackTreeNode<TData> node)
         {
+            if (node is null)
+                throw new ArgumentNullException(nameof(node));
+
             if (Root is null)
-                return new RedBlackTree<TNode>(Comparer) 
+                return new RedBlackTree<TData>(Comparer) 
                 { 
                     Root = node,
                     Count = 1
                 };
 
-            RedBlackTree<TNode> result = new(Comparer) 
+            RedBlackTree<TData> result = new(Comparer) 
             { 
-                Root = (TNode) Root.DeepClone(),
+                Root = Root.DeepClone(),
                 Count = Count
             };
 
@@ -220,9 +236,14 @@ namespace Solti.Utils.Primitives
         }
 
         /// <summary>
-        /// Adds a new node to this tree.
+        /// Adds a new <paramref name="data"/> to this tree.
         /// </summary>
-        public bool Add(TNode node)
+        public bool Add(TData data) => Add(new RedBlackTreeNode<TData>(data));
+
+        /// <summary>
+        /// Adds a new <paramref name="node"/> to this tree.
+        /// </summary>
+        public bool Add(RedBlackTreeNode<TData> node)
         {
             if (node is null)
                 throw new ArgumentNullException(nameof(node));
@@ -241,7 +262,7 @@ namespace Solti.Utils.Primitives
             // We split 4-nodes along the search path.
             //
 
-            TNode?
+            RedBlackTreeNode<TData>?
                 current = Root,
                 parent = null,
                 grandParent = null,
@@ -250,7 +271,7 @@ namespace Solti.Utils.Primitives
             int order = 0;
             while (current is not null)
             {
-                order = Comparer.Compare(node, current);
+                order = Comparer.Compare(node.Data, current.Data);
                 if (order is 0)
                 {
                     //
@@ -278,8 +299,8 @@ namespace Solti.Utils.Primitives
                 grandParent = parent;
                 parent = current;
                 current = order < 0
-                    ? (TNode?) current.Left 
-                    : (TNode?) current.Right;
+                    ? current.Left 
+                    : current.Right;
             }
 
             Assert(parent is not null);
@@ -310,7 +331,7 @@ namespace Solti.Utils.Primitives
             return true;
         }
 
-        private void InsertionBalance(TNode current, ref TNode parent, TNode grandParent, TNode greatGrandParent)
+        private void InsertionBalance(RedBlackTreeNode<TData> current, ref RedBlackTreeNode<TData> parent, RedBlackTreeNode<TData> grandParent, RedBlackTreeNode<TData> greatGrandParent)
         {
             Assert(parent is not null);
             Assert(grandParent is not null);
@@ -319,7 +340,7 @@ namespace Solti.Utils.Primitives
                 parentIsOnRight = grandParent!.Right == parent,
                 currentIsOnRight = parent!.Right == current;
 
-            RedBlackTreeNode newChildOfGreatGrandParent;
+            RedBlackTreeNode<TData> newChildOfGreatGrandParent;
             if (parentIsOnRight == currentIsOnRight)
                 //
                 // Same orientation, single rotation
@@ -351,10 +372,10 @@ namespace Solti.Utils.Primitives
             grandParent.Color = NodeColor.Red;
             newChildOfGreatGrandParent.Color = NodeColor.Black;
 
-            ReplaceChildOrRoot(greatGrandParent, grandParent, (TNode) newChildOfGreatGrandParent);
+            ReplaceChildOrRoot(greatGrandParent, grandParent, newChildOfGreatGrandParent);
         }
 
-        private void ReplaceChildOrRoot(TNode? parent, TNode child, TNode newChild)
+        private void ReplaceChildOrRoot(RedBlackTreeNode<TData>? parent, RedBlackTreeNode<TData> child, RedBlackTreeNode<TData> newChild)
         {
             if (parent is not null)
                 parent.ReplaceChild(child, newChild);
@@ -363,32 +384,32 @@ namespace Solti.Utils.Primitives
         }
 
         /// <inheritdoc/>
-        public IEnumerator<TNode> GetEnumerator() => new Enumertor(Root);
+        public IEnumerator<RedBlackTreeNode<TData>> GetEnumerator() => new Enumertor(Root);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private sealed class Enumertor : IEnumerator<TNode>
+        private sealed class Enumertor : IEnumerator<RedBlackTreeNode<TData>>
         {
-            public TNode? Root { get; }
+            public RedBlackTreeNode<TData>? Root { get; }
 
-            public TNode Current { get; private set; }
+            public RedBlackTreeNode<TData> Current { get; private set; }
 
             object IEnumerator.Current => Current;
 
-            private readonly Stack<TNode> FStack = new();
+            private readonly Stack<RedBlackTreeNode<TData>> FStack = new();
 
             #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-            public Enumertor(TNode? root)
+            public Enumertor(RedBlackTreeNode<TData>? root)
             #pragma warning restore CS8618
             {
                 Root = root;
 
-                TNode? node = Root;
+                RedBlackTreeNode<TData>? node = Root;
 
                 while (node is not null)
                 {
                     FStack.Push(node);
-                    node = (TNode?) node.Left;
+                    node = node.Left;
                 }
             }
 
@@ -402,12 +423,12 @@ namespace Solti.Utils.Primitives
                 }
 
                 Current = FStack.Pop();
-                TNode? node = (TNode?) Current.Right;
+                RedBlackTreeNode<TData>? node = Current.Right;
  
                 while (node is not null)
                 {
                     FStack.Push(node);
-                    node = (TNode?) node.Left;
+                    node = node.Left;
                 }
 
                 return true;
