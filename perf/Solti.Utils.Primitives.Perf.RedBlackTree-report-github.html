@@ -42,9 +42,10 @@ BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/R
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 .NET SDK=6.0.302
   [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
-  Job-BULUPL : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+  Job-EMWOTY : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
 
-InvocationCount=300000  IterationCount=15  RunStrategy=Throughput  
+InvocationCount=300  IterationCount=15  RunStrategy=Throughput  
+UnrollFactor=1  
 </code></pre><table>
 <thead>
 <tr>
@@ -52,22 +53,37 @@ InvocationCount=300000  IterationCount=15  RunStrategy=Throughput
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
+<th style="text-align:right">Gen0</th>
+<th style="text-align:right">Gen1</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>AddFirst</td>
-<td style="text-align:right">74.60 ns</td>
-<td style="text-align:right">10.511 ns</td>
-<td style="text-align:right">9.832 ns</td>
-<td style="text-align:right">48 B</td>
+<td>Add</td>
+<td style="text-align:right">127.96 ns</td>
+<td style="text-align:right">2.948 ns</td>
+<td style="text-align:right">2.757 ns</td>
+<td style="text-align:right">0.0020</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">40 B</td>
+</tr>
+<tr>
+<td>With</td>
+<td style="text-align:right">7,687.49 ns</td>
+<td style="text-align:right">51.206 ns</td>
+<td style="text-align:right">45.393 ns</td>
+<td style="text-align:right">0.5733</td>
+<td style="text-align:right">0.0467</td>
+<td style="text-align:right">10568 B</td>
 </tr>
 <tr>
 <td>Enumerate_MoveNext</td>
-<td style="text-align:right">20.29 ns</td>
-<td style="text-align:right">0.262 ns</td>
-<td style="text-align:right">0.245 ns</td>
+<td style="text-align:right">17.35 ns</td>
+<td style="text-align:right">0.577 ns</td>
+<td style="text-align:right">0.512 ns</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
 <td style="text-align:right">-</td>
 </tr>
 </tbody>

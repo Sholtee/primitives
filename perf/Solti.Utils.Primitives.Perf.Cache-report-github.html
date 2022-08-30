@@ -8,7 +8,7 @@
     <title> | Benchmark Results </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content=" | Benchmark Results ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -38,11 +38,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Redstone5)
+BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=6.0.201
-  [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
-  DefaultJob : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+.NET SDK=6.0.302
+  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+  DefaultJob : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
 
 </code></pre><table>
 <thead>
@@ -51,24 +51,24 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
-<th style="text-align:right">Gen 0</th>
+<th style="text-align:right">Gen0</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>GetOrAdd</td>
-<td style="text-align:right">48.84 ns</td>
-<td style="text-align:right">0.704 ns</td>
-<td style="text-align:right">0.658 ns</td>
+<td style="text-align:right">55.69 ns</td>
+<td style="text-align:right">1.101 ns</td>
+<td style="text-align:right">1.986 ns</td>
 <td style="text-align:right">0.0025</td>
 <td style="text-align:right">48 B</td>
 </tr>
 <tr>
 <td>GetOrAddSlim</td>
-<td style="text-align:right">41.66 ns</td>
-<td style="text-align:right">0.792 ns</td>
-<td style="text-align:right">0.702 ns</td>
+<td style="text-align:right">29.78 ns</td>
+<td style="text-align:right">0.551 ns</td>
+<td style="text-align:right">1.021 ns</td>
 <td style="text-align:right">0.0021</td>
 <td style="text-align:right">40 B</td>
 </tr>

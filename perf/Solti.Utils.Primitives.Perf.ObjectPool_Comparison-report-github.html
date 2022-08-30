@@ -8,7 +8,7 @@
     <title> | Benchmark Results </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content=" | Benchmark Results ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -38,11 +38,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Redstone5)
+BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=6.0.201
-  [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
-  Job-LKHRJR : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+.NET SDK=6.0.302
+  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+  Job-TQEBNT : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
 
 InvocationCount=10000000  RunStrategy=Throughput  
 </code></pre><table>
@@ -58,16 +58,16 @@ InvocationCount=10000000  RunStrategy=Throughput
 <tbody>
 <tr>
 <td>MS_Extensions_ObjectPool_GetAndReturn</td>
-<td style="text-align:right">23.39 ns</td>
-<td style="text-align:right">0.146 ns</td>
-<td style="text-align:right">0.122 ns</td>
+<td style="text-align:right">23.41 ns</td>
+<td style="text-align:right">0.363 ns</td>
+<td style="text-align:right">0.645 ns</td>
 <td style="text-align:right">-</td>
 </tr>
 <tr>
 <td>Solti_Utils_ObjectPool_GetAndReturn</td>
-<td style="text-align:right">25.55 ns</td>
-<td style="text-align:right">0.137 ns</td>
-<td style="text-align:right">0.122 ns</td>
+<td style="text-align:right">26.14 ns</td>
+<td style="text-align:right">0.469 ns</td>
+<td style="text-align:right">0.392 ns</td>
 <td style="text-align:right">-</td>
 </tr>
 </tbody>

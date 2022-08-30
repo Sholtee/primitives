@@ -8,7 +8,7 @@
     <title> | Benchmark Results </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content=" | Benchmark Results ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -38,11 +38,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.17763.2366 (1809/October2018Update/Redstone5)
+BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=6.0.201
-  [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
-  Job-LKHRJR : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
+.NET SDK=6.0.302
+  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+  Job-TQEBNT : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
 
 InvocationCount=10000000  RunStrategy=Throughput  
 </code></pre><table>
@@ -53,7 +53,7 @@ InvocationCount=10000000  RunStrategy=Throughput
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
-<th style="text-align:right">Gen 0</th>
+<th style="text-align:right">Gen0</th>
 <th style="text-align:right">Allocated</th>
 </tr>
 </thead>
@@ -61,18 +61,18 @@ InvocationCount=10000000  RunStrategy=Throughput
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>19.60 ns</strong></td>
-<td style="text-align:right"><strong>0.259 ns</strong></td>
-<td style="text-align:right"><strong>0.230 ns</strong></td>
+<td style="text-align:right"><strong>20.34 ns</strong></td>
+<td style="text-align:right"><strong>0.434 ns</strong></td>
+<td style="text-align:right"><strong>0.579 ns</strong></td>
 <td style="text-align:right"><strong>0.0017</strong></td>
 <td style="text-align:right"><strong>32 B</strong></td>
 </tr>
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>91.44 ns</strong></td>
-<td style="text-align:right"><strong>1.232 ns</strong></td>
-<td style="text-align:right"><strong>1.152 ns</strong></td>
+<td style="text-align:right"><strong>92.67 ns</strong></td>
+<td style="text-align:right"><strong>1.816 ns</strong></td>
+<td style="text-align:right"><strong>1.783 ns</strong></td>
 <td style="text-align:right"><strong>0.0030</strong></td>
 <td style="text-align:right"><strong>56 B</strong></td>
 </tr>
