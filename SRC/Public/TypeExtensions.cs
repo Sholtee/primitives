@@ -22,12 +22,8 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Gets the friendly name of the given type.
         /// </summary>
-        public static string GetFriendlyName(this Type src)
-        {
-            if (src is null)
-                throw new ArgumentNullException(nameof(src));
-
-            return Cache.GetOrAdd(src, static src =>
+        public static string GetFriendlyName(this Type src) =>
+            Cache.GetOrAdd(src ?? throw new ArgumentNullException(nameof(src)), static src =>
             {
                 using CodeDomProvider codeDomProvider = CodeDomProvider.CreateProvider("C#");
                 CodeTypeReferenceExpression typeReferenceExpression = new(new CodeTypeReference(src));
@@ -42,13 +38,12 @@ namespace Solti.Utils.Primitives
 
                 string unsafeName = writer.GetStringBuilder().ToString();
 
-                return Replacer.Replace(unsafeName, m => m.Groups[0].Value switch
+                return Replacer.Replace(unsafeName, static m => m.Groups[0].Value switch
                 {
                     "<" => "{",
                     ">" => "}",
                     _ => throw new NotImplementedException()
                 });
             });
-        }
     }
 }
