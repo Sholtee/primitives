@@ -24,11 +24,6 @@
     <OutputPath>..\BIN\$(Configuration)</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Perf|AnyCPU'">
-    <Optimize>true</Optimize>
-    <OutputPath>..\BIN\$(Configuration)</OutputPath>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Remove="docfx.json" />
     <None Remove="index.md" />
