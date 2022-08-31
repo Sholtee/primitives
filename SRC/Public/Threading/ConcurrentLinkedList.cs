@@ -322,7 +322,9 @@ namespace Solti.Utils.Primitives.Threading
             while (TakeFirst(out _)) { }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns an enumerator that iterates through the elements.
+        /// </summary>
         public IEnumerator<T> GetEnumerator() => new Enumerator(this);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

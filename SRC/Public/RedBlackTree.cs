@@ -383,7 +383,9 @@ namespace Solti.Utils.Primitives
                 Root = newChild;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns an enumerator that iterates through the nodes.
+        /// </summary>
         public IEnumerator<RedBlackTreeNode<TData>> GetEnumerator() => new Enumertor(Root);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
