@@ -60,12 +60,6 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed">Disposable.Disposed</a>
-    </div>
-    <div>
-      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposing">Disposable.Disposing</a>
-    </div>
-    <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_CheckNotDisposed">Disposable.CheckNotDisposed()</a>
     </div>
     <div>
@@ -75,32 +69,27 @@
       <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_DisposeAsync">Disposable.DisposeAsync()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposed">Disposable.Disposed</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+      <a class="xref" href="Solti.Utils.Primitives.Patterns.Disposable.html#Solti_Utils_Primitives_Patterns_Disposable_Disposing">Disposable.Disposing</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.Patterns.html">Solti.Utils.Primitives.Patterns</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Patterns_DisposeByRefObject_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DisposeByRefObject : Disposable, IDisposableEx, IDisposable, IAsyncDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class DisposeByRefObject : Disposable, IDisposableEx</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Solti_Utils_Primitives_Patterns_DisposeByRefObject__ctor_" data-uid="Solti.Utils.Primitives.Patterns.DisposeByRefObject.#ctor*"></a>
+  <h4 id="Solti_Utils_Primitives_Patterns_DisposeByRefObject__ctor" data-uid="Solti.Utils.Primitives.Patterns.DisposeByRefObject.#ctor">DisposeByRefObject()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DisposeByRefObject()</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -242,7 +231,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;int&gt; ReleaseAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; ReleaseAsync()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">

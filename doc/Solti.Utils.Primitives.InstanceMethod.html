@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Delegate InstanceMethod
+    <title>Class InstanceMethod
    | Primitives </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Delegate InstanceMethod
+    <meta name="title" content="Class InstanceMethod
    | Primitives ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -40,16 +40,158 @@
             <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.InstanceMethod">
   
   
-  <h1 id="Solti_Utils_Primitives_InstanceMethod" data-uid="Solti.Utils.Primitives.InstanceMethod" class="text-break">Delegate InstanceMethod
+  <h1 id="Solti_Utils_Primitives_InstanceMethod" data-uid="Solti.Utils.Primitives.InstanceMethod" class="text-break">Class InstanceMethod
   </h1>
   <div class="markdown level0 summary"><p>Represents an abastract instance method.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">InstanceMethod</span></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.html">Solti.Utils.Primitives</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_InstanceMethod_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate object InstanceMethod(object instance, params object[] paramz);</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class InstanceMethod : MulticastDelegate</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Solti_Utils_Primitives_InstanceMethod__ctor_" data-uid="Solti.Utils.Primitives.InstanceMethod.#ctor*"></a>
+  <h4 id="Solti_Utils_Primitives_InstanceMethod__ctor_System_Object_System_IntPtr_" data-uid="Solti.Utils.Primitives.InstanceMethod.#ctor(System.Object,System.IntPtr)">InstanceMethod(Object, IntPtr)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InstanceMethod(object object, IntPtr method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">object</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.intptr">IntPtr</a></td>
+        <td><span class="parametername">method</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Solti_Utils_Primitives_InstanceMethod_BeginInvoke_" data-uid="Solti.Utils.Primitives.InstanceMethod.BeginInvoke*"></a>
+  <h4 id="Solti_Utils_Primitives_InstanceMethod_BeginInvoke_System_Object_System_Object___System_AsyncCallback_System_Object_" data-uid="Solti.Utils.Primitives.InstanceMethod.BeginInvoke(System.Object,System.Object[],System.AsyncCallback,System.Object)">BeginInvoke(Object, Object[], AsyncCallback, Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IAsyncResult BeginInvoke(object instance, object[] paramz, AsyncCallback callback, object object)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>[]</td>
+        <td><span class="parametername">paramz</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.asynccallback">AsyncCallback</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncresult">IAsyncResult</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_InstanceMethod_EndInvoke_" data-uid="Solti.Utils.Primitives.InstanceMethod.EndInvoke*"></a>
+  <h4 id="Solti_Utils_Primitives_InstanceMethod_EndInvoke_System_IAsyncResult_" data-uid="Solti.Utils.Primitives.InstanceMethod.EndInvoke(System.IAsyncResult)">EndInvoke(IAsyncResult)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual object EndInvoke(IAsyncResult result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iasyncresult">IAsyncResult</a></td>
+        <td><span class="parametername">result</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_InstanceMethod_Invoke_" data-uid="Solti.Utils.Primitives.InstanceMethod.Invoke*"></a>
+  <h4 id="Solti_Utils_Primitives_InstanceMethod_Invoke_System_Object_System_Object___" data-uid="Solti.Utils.Primitives.InstanceMethod.Invoke(System.Object,System.Object[])">Invoke(Object, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual object Invoke(object instance, params object[] paramz)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
