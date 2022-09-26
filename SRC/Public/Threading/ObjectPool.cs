@@ -331,9 +331,11 @@ namespace Solti.Utils.Primitives.Threading
                     LifetimeManager.CheckIn(holder.Object!);
                     Interlocked.Exchange(ref holder.OwnerThread, 0);
 
-                    break;
+                    return;
                 }
             }
+
+            Trace.WriteLine("Attempt to return a foreign instance");
         }
 
         /// <summary>
