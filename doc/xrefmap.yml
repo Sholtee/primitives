@@ -938,6 +938,72 @@ references:
   fullName.vb: Solti.Utils.Primitives.RedBlackTree(Of TData).With
   nameWithType: RedBlackTree<TData>.With
   nameWithType.vb: RedBlackTree(Of TData).With
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions
+  name: RedBlackTreeExtensions
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html
+  commentId: T:Solti.Utils.Primitives.RedBlackTreeExtensions
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions
+  nameWithType: RedBlackTreeExtensions
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.Clone*
+  name: Clone
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_Clone_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeExtensions.Clone
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.Clone
+  nameWithType: RedBlackTreeExtensions.Clone
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.Clone``1(Solti.Utils.Primitives.RedBlackTree{``0})
+  name: Clone<TData>(RedBlackTree<TData>)
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_Clone__1_Solti_Utils_Primitives_RedBlackTree___0__
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeExtensions.Clone``1(Solti.Utils.Primitives.RedBlackTree{``0})
+  name.vb: Clone(Of TData)(RedBlackTree(Of TData))
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.Clone<TData>(Solti.Utils.Primitives.RedBlackTree<TData>)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTreeExtensions.Clone(Of TData)(Solti.Utils.Primitives.RedBlackTree(Of TData))
+  nameWithType: RedBlackTreeExtensions.Clone<TData>(RedBlackTree<TData>)
+  nameWithType.vb: RedBlackTreeExtensions.Clone(Of TData)(RedBlackTree(Of TData))
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup*
+  name: CreateLookup
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_CreateLookup_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup
+  nameWithType: RedBlackTreeExtensions.CreateLookup
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup``2
+  name: CreateLookup<TKey, TValue>()
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_CreateLookup__2
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup``2
+  name.vb: CreateLookup(Of TKey, TValue)()
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup<TKey, TValue>()
+  fullName.vb: Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup(Of TKey, TValue)()
+  nameWithType: RedBlackTreeExtensions.CreateLookup<TKey, TValue>()
+  nameWithType.vb: RedBlackTreeExtensions.CreateLookup(Of TKey, TValue)()
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd*
+  name: TryAdd
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_TryAdd_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd
+  nameWithType: RedBlackTreeExtensions.TryAdd
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1)
+  name: TryAdd<TKey, TValue>(RedBlackTree<KeyValuePair<TKey, TValue>>, TKey, TValue)
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_TryAdd__2_Solti_Utils_Primitives_RedBlackTree_System_Collections_Generic_KeyValuePair___0___1_____0___1_
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1)
+  name.vb: TryAdd(Of TKey, TValue)(RedBlackTree(Of KeyValuePair(Of TKey, TValue)), TKey, TValue)
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd<TKey, TValue>(Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>, TKey, TValue)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd(Of TKey, TValue)(Solti.Utils.Primitives.RedBlackTree(Of System.Collections.Generic.KeyValuePair(Of TKey, TValue)), TKey, TValue)
+  nameWithType: RedBlackTreeExtensions.TryAdd<TKey, TValue>(RedBlackTree<KeyValuePair<TKey, TValue>>, TKey, TValue)
+  nameWithType.vb: RedBlackTreeExtensions.TryAdd(Of TKey, TValue)(RedBlackTree(Of KeyValuePair(Of TKey, TValue)), TKey, TValue)
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet*
+  name: TryGet
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_TryGet_
+  commentId: Overload:Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet
+  nameWithType: RedBlackTreeExtensions.TryGet
+- uid: Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1@)
+  name: TryGet<TKey, TValue>(RedBlackTree<KeyValuePair<TKey, TValue>>, TKey, out TValue)
+  href: Solti.Utils.Primitives.RedBlackTreeExtensions.html#Solti_Utils_Primitives_RedBlackTreeExtensions_TryGet__2_Solti_Utils_Primitives_RedBlackTree_System_Collections_Generic_KeyValuePair___0___1_____0___1__
+  commentId: M:Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1@)
+  name.vb: TryGet(Of TKey, TValue)(RedBlackTree(Of KeyValuePair(Of TKey, TValue)), TKey, ByRef TValue)
+  fullName: Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet<TKey, TValue>(Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>, TKey, out TValue)
+  fullName.vb: Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet(Of TKey, TValue)(Solti.Utils.Primitives.RedBlackTree(Of System.Collections.Generic.KeyValuePair(Of TKey, TValue)), TKey, ByRef TValue)
+  nameWithType: RedBlackTreeExtensions.TryGet<TKey, TValue>(RedBlackTree<KeyValuePair<TKey, TValue>>, TKey, out TValue)
+  nameWithType.vb: RedBlackTreeExtensions.TryGet(Of TKey, TValue)(RedBlackTree(Of KeyValuePair(Of TKey, TValue)), TKey, ByRef TValue)
 - uid: Solti.Utils.Primitives.RedBlackTreeNode`1
   name: RedBlackTreeNode<TData>
   href: Solti.Utils.Primitives.RedBlackTreeNode-1.html

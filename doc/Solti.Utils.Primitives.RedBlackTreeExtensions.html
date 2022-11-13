@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RedBlackTreeExtensions
+   | Primitives </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RedBlackTreeExtensions
+   | Primitives ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions">
+  
+  
+  <h1 id="Solti_Utils_Primitives_RedBlackTreeExtensions" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions" class="text-break">Class RedBlackTreeExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Defines some extensions against the <a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree&lt;TData&gt;</a> class</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">RedBlackTreeExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.html">Solti.Utils.Primitives</a></h6>
+  <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
+  <h5 id="Solti_Utils_Primitives_RedBlackTreeExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class RedBlackTreeExtensions : Object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Solti_Utils_Primitives_RedBlackTreeExtensions_Clone_" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.Clone*"></a>
+  <h4 id="Solti_Utils_Primitives_RedBlackTreeExtensions_Clone__1_Solti_Utils_Primitives_RedBlackTree___0__" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.Clone``1(Solti.Utils.Primitives.RedBlackTree{``0})">Clone&lt;TData&gt;(RedBlackTree&lt;TData&gt;)</h4>
+  <div class="markdown level1 summary"><p>Clones the given tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static RedBlackTree&lt;TData&gt; Clone&lt;TData&gt;(this RedBlackTree&lt;TData&gt; src)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree</a>&lt;TData&gt;</td>
+        <td><span class="parametername">src</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree</a>&lt;TData&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_RedBlackTreeExtensions_CreateLookup_" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup*"></a>
+  <h4 id="Solti_Utils_Primitives_RedBlackTreeExtensions_CreateLookup__2" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup``2">CreateLookup&lt;TKey, TValue&gt;()</h4>
+  <div class="markdown level1 summary"><p>Creates a red-black tree intended for value lookup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static RedBlackTree&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; CreateLookup&lt;TKey, TValue&gt;()
+    where TKey : IComparable&lt;TKey&gt;</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, TValue&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_RedBlackTreeExtensions_TryAdd_" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd*"></a>
+  <h4 id="Solti_Utils_Primitives_RedBlackTreeExtensions_TryAdd__2_Solti_Utils_Primitives_RedBlackTree_System_Collections_Generic_KeyValuePair___0___1_____0___1_" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1)">TryAdd&lt;TKey, TValue&gt;(RedBlackTree&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;, TKey, TValue)</h4>
+  <div class="markdown level1 summary"><p>Tries to add a value to the lookup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryAdd&lt;TKey, TValue&gt;(this RedBlackTree&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; src, TKey key, TValue value)
+    where TKey : IComparable&lt;TKey&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, TValue&gt;&gt;</td>
+        <td><span class="parametername">src</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Solti_Utils_Primitives_RedBlackTreeExtensions_TryGet_" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet*"></a>
+  <h4 id="Solti_Utils_Primitives_RedBlackTreeExtensions_TryGet__2_Solti_Utils_Primitives_RedBlackTree_System_Collections_Generic_KeyValuePair___0___1_____0___1__" data-uid="Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet``2(Solti.Utils.Primitives.RedBlackTree{System.Collections.Generic.KeyValuePair{``0,``1}},``0,``1@)">TryGet&lt;TKey, TValue&gt;(RedBlackTree&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;, TKey, out TValue)</h4>
+  <div class="markdown level1 summary"><p>Tries to get a value associated with the given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGet&lt;TKey, TValue&gt;(this RedBlackTree&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; src, TKey key, out TValue result)
+    where TKey : IComparable&lt;TKey&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.RedBlackTree-1.html">RedBlackTree</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, TValue&gt;&gt;</td>
+        <td><span class="parametername">src</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">result</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
