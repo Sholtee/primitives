@@ -1,0 +1,1 @@
+static Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd<TKey, TValue>(this Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>! src, TKey key, TValue value) -> bool

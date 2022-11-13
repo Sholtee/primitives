@@ -165,3 +165,7 @@ static Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(this System.Type! s
 virtual Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Equals(T x, T y) -> bool
 virtual Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose() -> System.Threading.Tasks.ValueTask
 virtual Solti.Utils.Primitives.Patterns.Disposable.Dispose(bool disposeManaged) -> void
+Solti.Utils.Primitives.RedBlackTreeExtensions
+static Solti.Utils.Primitives.RedBlackTreeExtensions.Clone<TData>(this Solti.Utils.Primitives.RedBlackTree<TData>! src) -> Solti.Utils.Primitives.RedBlackTree<TData>!
+static Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup<TKey, TValue>() -> Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>!
+static Solti.Utils.Primitives.RedBlackTreeExtensions.TryGet<TKey, TValue>(this Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>! src, TKey key, out TValue result) -> bool
