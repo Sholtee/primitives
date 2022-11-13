@@ -3,6 +3,8 @@
 *                                                                               *
 * Author: Denes Solti                                                           *
 ********************************************************************************/
+#pragma warning disable RS0026 // Do not add multiple public overloads with optional parameters
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
