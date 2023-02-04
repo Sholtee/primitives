@@ -13,7 +13,7 @@ namespace Solti.Utils.Primitives.Perf
     using Patterns;
 
     [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, targetCount: 15, invocationCount: 300)]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 300)]
     public class RedBlackTree
     {
         private sealed class IntComparer : Singleton<IntComparer>, IComparer<int>
