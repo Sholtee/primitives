@@ -48,11 +48,11 @@ namespace Solti.Utils.Primitives.Threading.Tests
         }
 
         [Test]
-        public void Get_ShouldCreateANewObjectIfRequired()
+        public void Get_ShouldReturnTheSameObjectInTheSameThread([Values(1, 2, 3)] int size)
         {
-            using var pool = new ObjectPool<object>(() => new object(), 2);
+            using var pool = new ObjectPool<object>(() => new object(), size);
 
-            Assert.AreNotSame(pool.Get(), pool.Get());
+            Assert.AreSame(pool.Get(), pool.Get());
         }
 
         [Test]

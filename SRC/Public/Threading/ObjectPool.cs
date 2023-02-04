@@ -251,23 +251,24 @@ namespace Solti.Utils.Primitives.Threading
             {
                 cancellation.ThrowIfCancellationRequested();
 
-                //
-                // Megprobalunk szabad helyet keresni a pool-ban
-                //
-
                 for (int i = 0; i < Capacity; i++)
                 {
                     ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
 
-                    if (holder.OwnerThread == currentThread && holder.Object is null)
+                    if (holder.OwnerThread == currentThread)
+                    {
+                        if (holder.Object is null)
+                            LifetimeManager.RecursionDetected();
+
                         //
-                        // Object lehet NULL ha a factory maga is elemet akarna kivenni a pool-bol
+                        // The same thread already requested this instance... Return it again
                         //
 
-                        LifetimeManager.RecursionDetected();
+                        return holder.Object;
+                    }
 
                     //
-                    // Az elso olyan elem ami meg nincs kicsekkolva
+                    // Find the first unused slot
                     //
 
                     if (Interlocked.CompareExchange(ref holder.OwnerThread, currentThread, 0) == 0)
@@ -275,7 +276,7 @@ namespace Solti.Utils.Primitives.Threading
                         try
                         {
                             //
-                            // Lehet h meg nem is vt legyartva hozza elem, akkor legyartjuk
+                            // Create the value (if it hasn't been...)
                             //
 
                             T result = (holder.Object ??= LifetimeManager.Create());
@@ -287,7 +288,7 @@ namespace Solti.Utils.Primitives.Threading
                         catch
                         {
                             //
-                            // Ha hiba vt a factory-ban akkor az elem ne maradjon kicsekkolva.
+                            // Revert the slot back to "unused" if there was an error.
                             //
 
                             Interlocked.Exchange(ref holder.OwnerThread, 0);
