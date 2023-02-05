@@ -1221,145 +1221,6 @@ references:
   commentId: F:Solti.Utils.Primitives.Threading.CheckoutPolicy.value__
   fullName: Solti.Utils.Primitives.Threading.CheckoutPolicy.value__
   nameWithType: CheckoutPolicy.value__
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1
-  name: ConcurrentLinkedList<T>
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html
-  commentId: T:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1
-  name.vb: ConcurrentLinkedList(Of T)
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T)
-  nameWithType: ConcurrentLinkedList<T>
-  nameWithType.vb: ConcurrentLinkedList(Of T)
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.#ctor
-  name: ConcurrentLinkedList()
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1__ctor
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.#ctor
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.ConcurrentLinkedList()
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).ConcurrentLinkedList()
-  nameWithType: ConcurrentLinkedList<T>.ConcurrentLinkedList()
-  nameWithType.vb: ConcurrentLinkedList(Of T).ConcurrentLinkedList()
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.#ctor*
-  name: ConcurrentLinkedList
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1__ctor_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.#ctor
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.ConcurrentLinkedList
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).ConcurrentLinkedList
-  nameWithType: ConcurrentLinkedList<T>.ConcurrentLinkedList
-  nameWithType.vb: ConcurrentLinkedList(Of T).ConcurrentLinkedList
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.AddFirst(`0)
-  name: AddFirst(T)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_AddFirst__0_
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.AddFirst(`0)
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.AddFirst(T)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).AddFirst(T)
-  nameWithType: ConcurrentLinkedList<T>.AddFirst(T)
-  nameWithType.vb: ConcurrentLinkedList(Of T).AddFirst(T)
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.AddFirst*
-  name: AddFirst
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_AddFirst_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.AddFirst
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.AddFirst
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).AddFirst
-  nameWithType: ConcurrentLinkedList<T>.AddFirst
-  nameWithType.vb: ConcurrentLinkedList(Of T).AddFirst
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear
-  name: Clear()
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Clear
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Clear()
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Clear()
-  nameWithType: ConcurrentLinkedList<T>.Clear()
-  nameWithType.vb: ConcurrentLinkedList(Of T).Clear()
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear*
-  name: Clear
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Clear_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Clear
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Clear
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Clear
-  nameWithType: ConcurrentLinkedList<T>.Clear
-  nameWithType.vb: ConcurrentLinkedList(Of T).Clear
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count
-  name: Count
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Count
-  commentId: P:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Count
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Count
-  nameWithType: ConcurrentLinkedList<T>.Count
-  nameWithType.vb: ConcurrentLinkedList(Of T).Count
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count*
-  name: Count
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Count_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Count
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Count
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Count
-  nameWithType: ConcurrentLinkedList<T>.Count
-  nameWithType.vb: ConcurrentLinkedList(Of T).Count
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator
-  name: GetEnumerator()
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.GetEnumerator()
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).GetEnumerator()
-  nameWithType: ConcurrentLinkedList<T>.GetEnumerator()
-  nameWithType.vb: ConcurrentLinkedList(Of T).GetEnumerator()
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator*
-  name: GetEnumerator
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_GetEnumerator_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.GetEnumerator
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.GetEnumerator
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).GetEnumerator
-  nameWithType: ConcurrentLinkedList<T>.GetEnumerator
-  nameWithType.vb: ConcurrentLinkedList(Of T).GetEnumerator
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head
-  name: Head
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Head
-  commentId: P:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Head
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Head
-  nameWithType: ConcurrentLinkedList<T>.Head
-  nameWithType.vb: ConcurrentLinkedList(Of T).Head
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head*
-  name: Head
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Head_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Head
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Head
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Head
-  nameWithType: ConcurrentLinkedList<T>.Head
-  nameWithType.vb: ConcurrentLinkedList(Of T).Head
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name: Remove(LinkedListNode<T>)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_Solti_Utils_Primitives_Threading_LinkedListNode__0__
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove(Solti.Utils.Primitives.Threading.LinkedListNode{`0})
-  name.vb: Remove(LinkedListNode(Of T))
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Remove(Solti.Utils.Primitives.Threading.LinkedListNode<T>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Remove(Solti.Utils.Primitives.Threading.LinkedListNode(Of T))
-  nameWithType: ConcurrentLinkedList<T>.Remove(LinkedListNode<T>)
-  nameWithType.vb: ConcurrentLinkedList(Of T).Remove(LinkedListNode(Of T))
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove*
-  name: Remove
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_Remove_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.Remove
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.Remove
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).Remove
-  nameWithType: ConcurrentLinkedList<T>.Remove
-  nameWithType.vb: ConcurrentLinkedList(Of T).Remove
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)
-  name: TakeFirst(out T)
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst__0__
-  commentId: M:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst(`0@)
-  name.vb: TakeFirst(ByRef T)
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.TakeFirst(out T)
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).TakeFirst(ByRef T)
-  nameWithType: ConcurrentLinkedList<T>.TakeFirst(out T)
-  nameWithType.vb: ConcurrentLinkedList(Of T).TakeFirst(ByRef T)
-- uid: Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst*
-  name: TakeFirst
-  href: Solti.Utils.Primitives.Threading.ConcurrentLinkedList-1.html#Solti_Utils_Primitives_Threading_ConcurrentLinkedList_1_TakeFirst_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ConcurrentLinkedList`1.TakeFirst
-  fullName: Solti.Utils.Primitives.Threading.ConcurrentLinkedList<T>.TakeFirst
-  fullName.vb: Solti.Utils.Primitives.Threading.ConcurrentLinkedList(Of T).TakeFirst
-  nameWithType: ConcurrentLinkedList<T>.TakeFirst
-  nameWithType.vb: ConcurrentLinkedList(Of T).TakeFirst
 - uid: Solti.Utils.Primitives.Threading.ExclusiveBlock
   name: ExclusiveBlock
   href: Solti.Utils.Primitives.Threading.ExclusiveBlock.html
@@ -1607,22 +1468,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default.Factory
   nameWithType: ILifetimeManager<T>.Default.Factory
   nameWithType.vb: ILifetimeManager(Of T).Default.Factory
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.RecursionDetected
-  name: RecursionDetected()
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.Default.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Default_RecursionDetected
-  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.RecursionDetected
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.RecursionDetected()
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default.RecursionDetected()
-  nameWithType: ILifetimeManager<T>.Default.RecursionDetected()
-  nameWithType.vb: ILifetimeManager(Of T).Default.RecursionDetected()
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.RecursionDetected*
-  name: RecursionDetected
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.Default.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Default_RecursionDetected_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.Default.RecursionDetected
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.RecursionDetected
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Default.RecursionDetected
-  nameWithType: ILifetimeManager<T>.Default.RecursionDetected
-  nameWithType.vb: ILifetimeManager(Of T).Default.RecursionDetected
 - uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.Dispose(`0)
   name: Dispose(T)
   href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_Dispose__0_
@@ -1639,22 +1484,6 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).Dispose
   nameWithType: ILifetimeManager<T>.Dispose
   nameWithType.vb: ILifetimeManager(Of T).Dispose
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
-  name: RecursionDetected()
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected
-  commentId: M:Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.RecursionDetected()
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).RecursionDetected()
-  nameWithType: ILifetimeManager<T>.RecursionDetected()
-  nameWithType.vb: ILifetimeManager(Of T).RecursionDetected()
-- uid: Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected*
-  name: RecursionDetected
-  href: Solti.Utils.Primitives.Threading.ILifetimeManager-1.html#Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected
-  fullName: Solti.Utils.Primitives.Threading.ILifetimeManager<T>.RecursionDetected
-  fullName.vb: Solti.Utils.Primitives.Threading.ILifetimeManager(Of T).RecursionDetected
-  nameWithType: ILifetimeManager<T>.RecursionDetected
-  nameWithType.vb: ILifetimeManager(Of T).RecursionDetected
 - uid: Solti.Utils.Primitives.Threading.InterlockedExtensions
   name: InterlockedExtensions
   href: Solti.Utils.Primitives.Threading.InterlockedExtensions.html
@@ -1736,111 +1565,6 @@ references:
   commentId: Overload:Solti.Utils.Primitives.Threading.InterlockedExtensions.Or
   fullName: Solti.Utils.Primitives.Threading.InterlockedExtensions.Or
   nameWithType: InterlockedExtensions.Or
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1
-  name: LinkedListNode<T>
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html
-  commentId: T:Solti.Utils.Primitives.Threading.LinkedListNode`1
-  name.vb: LinkedListNode(Of T)
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T)
-  nameWithType: LinkedListNode<T>
-  nameWithType.vb: LinkedListNode(Of T)
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.#ctor
-  name: LinkedListNode()
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1__ctor
-  commentId: M:Solti.Utils.Primitives.Threading.LinkedListNode`1.#ctor
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.LinkedListNode()
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).LinkedListNode()
-  nameWithType: LinkedListNode<T>.LinkedListNode()
-  nameWithType.vb: LinkedListNode(Of T).LinkedListNode()
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.#ctor*
-  name: LinkedListNode
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1__ctor_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.#ctor
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.LinkedListNode
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).LinkedListNode
-  nameWithType: LinkedListNode<T>.LinkedListNode
-  nameWithType.vb: LinkedListNode(Of T).LinkedListNode
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.LockedBy
-  name: LockedBy
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_LockedBy
-  commentId: P:Solti.Utils.Primitives.Threading.LinkedListNode`1.LockedBy
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.LockedBy
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).LockedBy
-  nameWithType: LinkedListNode<T>.LockedBy
-  nameWithType.vb: LinkedListNode(Of T).LockedBy
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.LockedBy*
-  name: LockedBy
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_LockedBy_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.LockedBy
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.LockedBy
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).LockedBy
-  nameWithType: LinkedListNode<T>.LockedBy
-  nameWithType.vb: LinkedListNode(Of T).LockedBy
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Next
-  name: Next
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Next
-  commentId: P:Solti.Utils.Primitives.Threading.LinkedListNode`1.Next
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Next
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Next
-  nameWithType: LinkedListNode<T>.Next
-  nameWithType.vb: LinkedListNode(Of T).Next
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Next*
-  name: Next
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Next_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.Next
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Next
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Next
-  nameWithType: LinkedListNode<T>.Next
-  nameWithType.vb: LinkedListNode(Of T).Next
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Owner
-  name: Owner
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Owner
-  commentId: P:Solti.Utils.Primitives.Threading.LinkedListNode`1.Owner
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Owner
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Owner
-  nameWithType: LinkedListNode<T>.Owner
-  nameWithType.vb: LinkedListNode(Of T).Owner
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Owner*
-  name: Owner
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Owner_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.Owner
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Owner
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Owner
-  nameWithType: LinkedListNode<T>.Owner
-  nameWithType.vb: LinkedListNode(Of T).Owner
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Prev
-  name: Prev
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Prev
-  commentId: P:Solti.Utils.Primitives.Threading.LinkedListNode`1.Prev
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Prev
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Prev
-  nameWithType: LinkedListNode<T>.Prev
-  nameWithType.vb: LinkedListNode(Of T).Prev
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Prev*
-  name: Prev
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Prev_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.Prev
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Prev
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Prev
-  nameWithType: LinkedListNode<T>.Prev
-  nameWithType.vb: LinkedListNode(Of T).Prev
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Value
-  name: Value
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Value
-  commentId: P:Solti.Utils.Primitives.Threading.LinkedListNode`1.Value
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Value
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Value
-  nameWithType: LinkedListNode<T>.Value
-  nameWithType.vb: LinkedListNode(Of T).Value
-- uid: Solti.Utils.Primitives.Threading.LinkedListNode`1.Value*
-  name: Value
-  href: Solti.Utils.Primitives.Threading.LinkedListNode-1.html#Solti_Utils_Primitives_Threading_LinkedListNode_1_Value_
-  commentId: Overload:Solti.Utils.Primitives.Threading.LinkedListNode`1.Value
-  fullName: Solti.Utils.Primitives.Threading.LinkedListNode<T>.Value
-  fullName.vb: Solti.Utils.Primitives.Threading.LinkedListNode(Of T).Value
-  nameWithType: LinkedListNode<T>.Value
-  nameWithType.vb: LinkedListNode(Of T).Value
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1
   name: ObjectPool<T>
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html
@@ -1850,24 +1574,24 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T)
   nameWithType: ObjectPool<T>
   nameWithType.vb: ObjectPool(Of T)
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},System.Nullable{System.Int32})
-  name: ObjectPool(ILifetimeManager<T>, Nullable<Int32>)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Solti_Utils_Primitives_Threading_ILifetimeManager__0__System_Nullable_System_Int32__
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},System.Nullable{System.Int32})
-  name.vb: ObjectPool(ILifetimeManager(Of T), Nullable(Of Int32))
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager<T>, System.Nullable<System.Int32>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager(Of T), System.Nullable(Of System.Int32))
-  nameWithType: ObjectPool<T>.ObjectPool(ILifetimeManager<T>, Nullable<Int32>)
-  nameWithType.vb: ObjectPool(Of T).ObjectPool(ILifetimeManager(Of T), Nullable(Of Int32))
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},System.Nullable{System.Int32})
-  name: ObjectPool(Func<T>, Nullable<Int32>)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Func__0__System_Nullable_System_Int32__
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},System.Nullable{System.Int32})
-  name.vb: ObjectPool(Func(Of T), Nullable(Of Int32))
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Func<T>, System.Nullable<System.Int32>)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Func(Of T), System.Nullable(Of System.Int32))
-  nameWithType: ObjectPool<T>.ObjectPool(Func<T>, Nullable<Int32>)
-  nameWithType.vb: ObjectPool(Of T).ObjectPool(Func(Of T), Nullable(Of Int32))
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},Solti.Utils.Primitives.Threading.PoolConfig)
+  name: ObjectPool(ILifetimeManager<T>, PoolConfig)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_Solti_Utils_Primitives_Threading_ILifetimeManager__0__Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(Solti.Utils.Primitives.Threading.ILifetimeManager{`0},Solti.Utils.Primitives.Threading.PoolConfig)
+  name.vb: ObjectPool(ILifetimeManager(Of T), PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager<T>, Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager(Of T), Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: ObjectPool<T>.ObjectPool(ILifetimeManager<T>, PoolConfig)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(ILifetimeManager(Of T), PoolConfig)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},Solti.Utils.Primitives.Threading.PoolConfig)
+  name: ObjectPool(Func<T>, PoolConfig)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_System_Func__0__Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor(System.Func{`0},Solti.Utils.Primitives.Threading.PoolConfig)
+  name.vb: ObjectPool(Func(Of T), PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Func<T>, Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool(System.Func(Of T), Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: ObjectPool<T>.ObjectPool(Func<T>, PoolConfig)
+  nameWithType.vb: ObjectPool(Of T).ObjectPool(Func(Of T), PoolConfig)
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.#ctor*
   name: ObjectPool
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1__ctor_
@@ -1876,22 +1600,22 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).ObjectPool
   nameWithType: ObjectPool<T>.ObjectPool
   nameWithType.vb: ObjectPool(Of T).ObjectPool
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
-  name: Capacity
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Capacity
-  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Capacity
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Capacity
-  nameWithType: ObjectPool<T>.Capacity
-  nameWithType.vb: ObjectPool(Of T).Capacity
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity*
-  name: Capacity
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Capacity_
-  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Capacity
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Capacity
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Capacity
-  nameWithType: ObjectPool<T>.Capacity
-  nameWithType.vb: ObjectPool(Of T).Capacity
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Config
+  name: Config
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Config
+  commentId: P:Solti.Utils.Primitives.Threading.ObjectPool`1.Config
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Config
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Config
+  nameWithType: ObjectPool<T>.Config
+  nameWithType.vb: ObjectPool(Of T).Config
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Config*
+  name: Config
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Config_
+  commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPool`1.Config
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Config
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Config
+  nameWithType: ObjectPool<T>.Config
+  nameWithType.vb: ObjectPool(Of T).Config
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Count
   name: Count
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Count
@@ -1924,14 +1648,14 @@ references:
   fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Dispose
   nameWithType: ObjectPool<T>.Dispose
   nameWithType.vb: ObjectPool(Of T).Dispose
-- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  name: Get(CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get(Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  nameWithType: ObjectPool<T>.Get(CheckoutPolicy, CancellationToken)
-  nameWithType.vb: ObjectPool(Of T).Get(CheckoutPolicy, CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get(System.Threading.CancellationToken)
+  name: Get(CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPool`1.Get(System.Threading.CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPool(Of T).Get(System.Threading.CancellationToken)
+  nameWithType: ObjectPool<T>.Get(CancellationToken)
+  nameWithType.vb: ObjectPool(Of T).Get(CancellationToken)
 - uid: Solti.Utils.Primitives.Threading.ObjectPool`1.Get*
   name: Get
   href: Solti.Utils.Primitives.Threading.ObjectPool-1.html#Solti_Utils_Primitives_Threading_ObjectPool_1_Get_
@@ -2000,15 +1724,189 @@ references:
   commentId: Overload:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem
   fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem
   nameWithType: ObjectPoolExtensions.GetItem
-- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  name: GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
-  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_
-  commentId: M:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)
-  name.vb: GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
-  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(Solti.Utils.Primitives.Threading.ObjectPool<T>, Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem(Of T)(Solti.Utils.Primitives.Threading.ObjectPool(Of T), Solti.Utils.Primitives.Threading.CheckoutPolicy, System.Threading.CancellationToken)
-  nameWithType: ObjectPoolExtensions.GetItem<T>(ObjectPool<T>, CheckoutPolicy, CancellationToken)
-  nameWithType.vb: ObjectPoolExtensions.GetItem(Of T)(ObjectPool(Of T), CheckoutPolicy, CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},System.Threading.CancellationToken)
+  name: GetItem<T>(ObjectPool<T>, CancellationToken)
+  href: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__System_Threading_CancellationToken_
+  commentId: M:Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},System.Threading.CancellationToken)
+  name.vb: GetItem(Of T)(ObjectPool(Of T), CancellationToken)
+  fullName: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(Solti.Utils.Primitives.Threading.ObjectPool<T>, System.Threading.CancellationToken)
+  fullName.vb: Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem(Of T)(Solti.Utils.Primitives.Threading.ObjectPool(Of T), System.Threading.CancellationToken)
+  nameWithType: ObjectPoolExtensions.GetItem<T>(ObjectPool<T>, CancellationToken)
+  nameWithType.vb: ObjectPoolExtensions.GetItem(Of T)(ObjectPool(Of T), CancellationToken)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig
+  name: PoolConfig
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html
+  commentId: T:Solti.Utils.Primitives.Threading.PoolConfig
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig
+  nameWithType: PoolConfig
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.#ctor
+  name: PoolConfig()
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig__ctor
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.#ctor
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.PoolConfig()
+  nameWithType: PoolConfig.PoolConfig()
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.#ctor(Solti.Utils.Primitives.Threading.PoolConfig)
+  name: PoolConfig(PoolConfig)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig__ctor_Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.#ctor(Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.PoolConfig(Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: PoolConfig.PoolConfig(PoolConfig)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.#ctor*
+  name: PoolConfig
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig__ctor_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.#ctor
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.PoolConfig
+  nameWithType: PoolConfig.PoolConfig
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.{Clone}$
+  name: <Clone>$()
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig__Clone__
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.{Clone}$
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.<Clone>$()
+  nameWithType: PoolConfig.<Clone>$()
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.{Clone}$*
+  name: <Clone>$
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig__Clone___
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.{Clone}$
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.<Clone>$
+  nameWithType: PoolConfig.<Clone>$
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Capacity
+  name: Capacity
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Capacity
+  commentId: P:Solti.Utils.Primitives.Threading.PoolConfig.Capacity
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Capacity
+  nameWithType: PoolConfig.Capacity
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Capacity*
+  name: Capacity
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Capacity_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.Capacity
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Capacity
+  nameWithType: PoolConfig.Capacity
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy
+  name: CheckoutPolicy
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_CheckoutPolicy
+  commentId: P:Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy
+  nameWithType: PoolConfig.CheckoutPolicy
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy*
+  name: CheckoutPolicy
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_CheckoutPolicy_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy
+  nameWithType: PoolConfig.CheckoutPolicy
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Default
+  name: Default
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Default
+  commentId: P:Solti.Utils.Primitives.Threading.PoolConfig.Default
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Default
+  nameWithType: PoolConfig.Default
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Default*
+  name: Default
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Default_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.Default
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Default
+  nameWithType: PoolConfig.Default
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract
+  name: EqualityContract
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_EqualityContract
+  commentId: P:Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract
+  nameWithType: PoolConfig.EqualityContract
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract*
+  name: EqualityContract
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_EqualityContract_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.EqualityContract
+  nameWithType: PoolConfig.EqualityContract
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Equals(Solti.Utils.Primitives.Threading.PoolConfig)
+  name: Equals(PoolConfig)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Equals_Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.Equals(Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Equals(Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: PoolConfig.Equals(PoolConfig)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Equals(System.Object)
+  name: Equals(Object)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Equals_System_Object_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.Equals(System.Object)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Equals(System.Object)
+  nameWithType: PoolConfig.Equals(Object)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Equals*
+  name: Equals
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Equals_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.Equals
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Equals
+  nameWithType: PoolConfig.Equals
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode
+  name: GetHashCode()
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_GetHashCode
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode()
+  nameWithType: PoolConfig.GetHashCode()
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode*
+  name: GetHashCode
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_GetHashCode_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.GetHashCode
+  nameWithType: PoolConfig.GetHashCode
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.op_Equality(Solti.Utils.Primitives.Threading.PoolConfig,Solti.Utils.Primitives.Threading.PoolConfig)
+  name: Equality(PoolConfig, PoolConfig)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_op_Equality_Solti_Utils_Primitives_Threading_PoolConfig_Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.op_Equality(Solti.Utils.Primitives.Threading.PoolConfig,Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Equality(Solti.Utils.Primitives.Threading.PoolConfig, Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: PoolConfig.Equality(PoolConfig, PoolConfig)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.op_Equality*
+  name: Equality
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_op_Equality_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.op_Equality
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Equality
+  nameWithType: PoolConfig.Equality
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.op_Inequality(Solti.Utils.Primitives.Threading.PoolConfig,Solti.Utils.Primitives.Threading.PoolConfig)
+  name: Inequality(PoolConfig, PoolConfig)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_op_Inequality_Solti_Utils_Primitives_Threading_PoolConfig_Solti_Utils_Primitives_Threading_PoolConfig_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.op_Inequality(Solti.Utils.Primitives.Threading.PoolConfig,Solti.Utils.Primitives.Threading.PoolConfig)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Inequality(Solti.Utils.Primitives.Threading.PoolConfig, Solti.Utils.Primitives.Threading.PoolConfig)
+  nameWithType: PoolConfig.Inequality(PoolConfig, PoolConfig)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.op_Inequality*
+  name: Inequality
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_op_Inequality_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.op_Inequality
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Inequality
+  nameWithType: PoolConfig.Inequality
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Permissive
+  name: Permissive
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Permissive
+  commentId: P:Solti.Utils.Primitives.Threading.PoolConfig.Permissive
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Permissive
+  nameWithType: PoolConfig.Permissive
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.Permissive*
+  name: Permissive
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_Permissive_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.Permissive
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.Permissive
+  nameWithType: PoolConfig.Permissive
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers(System.Text.StringBuilder)
+  name: PrintMembers(StringBuilder)
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_PrintMembers_System_Text_StringBuilder_
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers(System.Text.StringBuilder)
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers(System.Text.StringBuilder)
+  nameWithType: PoolConfig.PrintMembers(StringBuilder)
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers*
+  name: PrintMembers
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_PrintMembers_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.PrintMembers
+  nameWithType: PoolConfig.PrintMembers
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.ToString
+  name: ToString()
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_ToString
+  commentId: M:Solti.Utils.Primitives.Threading.PoolConfig.ToString
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.ToString()
+  nameWithType: PoolConfig.ToString()
+- uid: Solti.Utils.Primitives.Threading.PoolConfig.ToString*
+  name: ToString
+  href: Solti.Utils.Primitives.Threading.PoolConfig.html#Solti_Utils_Primitives_Threading_PoolConfig_ToString_
+  commentId: Overload:Solti.Utils.Primitives.Threading.PoolConfig.ToString
+  fullName: Solti.Utils.Primitives.Threading.PoolConfig.ToString
+  nameWithType: PoolConfig.ToString
 - uid: Solti.Utils.Primitives.Threading.PoolItem`1
   name: PoolItem<T>
   href: Solti.Utils.Primitives.Threading.PoolItem-1.html

@@ -59,13 +59,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem_" data-uid="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__Solti_Utils_Primitives_Threading_CheckoutPolicy_System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},Solti.Utils.Primitives.Threading.CheckoutPolicy,System.Threading.CancellationToken)">GetItem&lt;T&gt;(ObjectPool&lt;T&gt;, CheckoutPolicy, CancellationToken)</h4>
+  <h4 id="Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__System_Threading_CancellationToken_" data-uid="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem``1(Solti.Utils.Primitives.Threading.ObjectPool{``0},System.Threading.CancellationToken)">GetItem&lt;T&gt;(ObjectPool&lt;T&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets an item from the pool.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PoolItem&lt;T&gt; GetItem&lt;T&gt;(this ObjectPool&lt;T&gt; self, CheckoutPolicy checkoutPolicy, CancellationToken cancellation = null)
+    <pre><code class="lang-csharp hljs">public static PoolItem&lt;T&gt; GetItem&lt;T&gt;(this ObjectPool&lt;T&gt; self, CancellationToken cancellation = null)
     where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -81,11 +81,6 @@
       <tr>
         <td><a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPool-1.html">ObjectPool</a>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Solti.Utils.Primitives.Threading.CheckoutPolicy.html">CheckoutPolicy</a></td>
-        <td><span class="parametername">checkoutPolicy</span></td>
         <td></td>
       </tr>
       <tr>

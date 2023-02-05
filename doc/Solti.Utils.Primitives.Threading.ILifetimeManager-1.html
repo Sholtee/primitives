@@ -49,7 +49,8 @@
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
   <h5 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ILifetimeManager&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ILifetimeManager&lt;T&gt;
+    where T : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,15 +171,6 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected_" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ILifetimeManager_1_RecursionDetected" data-uid="Solti.Utils.Primitives.Threading.ILifetimeManager`1.RecursionDetected">RecursionDetected()</h4>
-  <div class="markdown level1 summary"><p>Defines a handler that is called when recursive factory is detected. </p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RecursionDetected()</code></pre>
-  </div>
 </article>
           </div>
           
