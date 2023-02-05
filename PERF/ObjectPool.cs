@@ -8,39 +8,14 @@ using System;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
 
-using Microsoft.Extensions.ObjectPool;
-
 namespace Solti.Utils.Primitives.Perf
 {
     using Threading;
 
     [MemoryDiagnoser]
     [SimpleJob(RunStrategy.Throughput, invocationCount: 10000000)]
-    public class ObjectPool_Comparison
+    public class ObjectPool
     {
-        private sealed class SimplePoolPolicy : IPooledObjectPolicy<object>
-        {
-            public object Create() => new object();
-
-            public bool Return(object obj) => true;
-        }
-
-        [GlobalSetup(Target = nameof(MS_Extensions_ObjectPool_GetAndReturn))]
-        public void Setup_TheirPool()
-        {
-            TheirPool = new DefaultObjectPool<object>(new SimplePoolPolicy());
-            GC.SuppressFinalize(TheirPool);
-        }
-
-        public DefaultObjectPool<object> TheirPool { get; set; }
-
-        [Benchmark]
-        public void MS_Extensions_ObjectPool_GetAndReturn()
-        {
-            object obj = TheirPool.Get();
-            TheirPool.Return(obj);
-        }
-
         private sealed class SimpleLifetimeManager<T> : ILifetimeManager<T> where T: class, new()
         {
             public T Create() => new();
@@ -62,17 +37,20 @@ namespace Solti.Utils.Primitives.Perf
             }
         }
 
-        [GlobalSetup(Target = nameof(Solti_Utils_ObjectPool_GetAndReturn))]
-        public void Setup_OurPool()
+        [Params(true, false)]
+        public bool Permissive { get; set; }
+
+        [GlobalSetup(Target = nameof(GetAndReturn))]
+        public void Setup()
         {
-            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>(), PoolConfig.Default with { CheckoutPolicy = CheckoutPolicy.Throw });
+            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>(), PoolConfig.Default with { CheckoutPolicy = CheckoutPolicy.Throw, Permissive = Permissive });
             GC.SuppressFinalize(OurPool);
         }
 
         public ObjectPool<object> OurPool { get; set; }
 
         [Benchmark]
-        public void Solti_Utils_ObjectPool_GetAndReturn()
+        public void GetAndReturn()
         {
             object obj = OurPool.Get();
             OurPool.Return(obj);

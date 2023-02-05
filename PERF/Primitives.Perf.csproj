@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.*" />
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="6.*" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(LibVersion)' != ''">
