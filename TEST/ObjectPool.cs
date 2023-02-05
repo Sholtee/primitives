@@ -20,37 +20,39 @@ namespace Solti.Utils.Primitives.Threading.Tests
     public class ObjectPoolTests 
     {
         [Test]
-        public void Get_ShouldReturnTheSameObjectIfPossible() 
+        public void Get_ShouldReturnTheSameObjectIfThePoolIsNotPermissive() 
         {
-            using var pool = new ObjectPool<object>(() => new object());
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2, Permissive = false });
 
-            object
-                a, b;
-
-            Assert.That(pool.Count, Is.EqualTo(0));
-
-            using (PoolItem<object> item = pool.GetItem()) 
-            {
-                Assert.That(pool.Count, Is.EqualTo(1));
-                a = item.Value;
-            }
-
-            Assert.That(pool.Count, Is.EqualTo(0));
-
-            using (PoolItem<object> item = pool.GetItem())
-            {
-                Assert.That(pool.Count, Is.EqualTo(1));
-                b = item.Value;
-            }
-
-            Assert.That(pool.Count, Is.EqualTo(0));
-            Assert.AreSame(a, b);
+            Assert.AreEqual(pool.Get(), pool.Get());
+            Assert.That(pool.Count, Is.EqualTo(1));
         }
 
         [Test]
-        public void Get_ShouldReturnTheSameObjectInTheSameThread([Values(1, 2, 3)] int size)
+        public void Get_ShouldNotReturnTheSameObjectIfThePoolIsPermissive()
         {
-            using var pool = new ObjectPool<object>(() => new object(), size);
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2, Permissive = true });
+
+            Assert.AreNotEqual(pool.Get(), pool.Get());
+            Assert.That(pool.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Return_ShouldThrowIfTheCheckinNotAllowed()
+        {
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Permissive = false });
+
+            object obj = null;
+
+            Task.Factory.StartNew(() => obj = pool.Get()).Wait();
+
+            Assert.Throws<InvalidOperationException>(() => pool.Return(obj));
+        }
+
+        [Test]
+        public void Get_ShouldReturnTheSameObjectInTheSameThread([Values(1, 2, 3)] int capacity)
+        {
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = capacity });
 
             Assert.AreSame(pool.Get(), pool.Get());
         }
@@ -58,48 +60,38 @@ namespace Solti.Utils.Primitives.Threading.Tests
         [Test]
         public void Get_ShouldRevertTheCheckoutProcessIfTheFactoryThrows() 
         {
-            using var pool = new ObjectPool<object>(() => throw new Exception(), 2);
+            using var pool = new ObjectPool<object>(() => throw new Exception(), PoolConfig.Default with { Capacity = 2, CheckoutPolicy = CheckoutPolicy.Block });
 
-            Assert.Throws<Exception>(() => pool.Get(CheckoutPolicy.Block));
+            Assert.Throws<Exception>(() => pool.Get());
             Assert.That(pool, Is.Empty);
         }
 
         [Test]
         public void Get_ShouldThrowIfThereIsNoMoreSpaceInThePool() 
         {
-            using var pool = new ObjectPool<object>(() => new object(), 1);
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 1, CheckoutPolicy = CheckoutPolicy.Throw });
 
-            using (pool.GetItem(CheckoutPolicy.Throw))
+            using (pool.GetItem())
             {
-                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(CheckoutPolicy.Throw), Resources.MAX_SIZE_REACHED)));
-            }
-        }
-
-        [Test]
-        public void Get_ShouldThrowOnRecursiveFactory([Values(CheckoutPolicy.Block, CheckoutPolicy.Discard, CheckoutPolicy.Throw)] CheckoutPolicy policy)
-        {
-            ObjectPool<object> pool = null;
-            using (pool = new ObjectPool<object>(() => pool.Get()))
-            {
-                Assert.Throws<InvalidOperationException>(() => pool.Get(policy), Resources.RECURSIVE_FACTORY);
+                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(), Resources.MAX_SIZE_REACHED)));
             }
         }
 
         [Test]
         public void Get_ShouldReturnNullIfThereIsNoMoreSpaceInThePool()
         {
-            using var pool = new ObjectPool<object>(() => new object(), 1);
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 1, CheckoutPolicy = CheckoutPolicy.Discard });
 
-            using (pool.GetItem(CheckoutPolicy.Throw))
+            using (pool.GetItem())
             {
-                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.IsNull(pool.Get(CheckoutPolicy.Discard))));
+                Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.IsNull(pool.Get())));
             }
         }
 
         [Test]
         public void Get_ShouldBlockIfThereIsNoMoreSpaceInThePool() 
         {
-            using var pool = new ObjectPool<object>(() => new object(), 1);
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 1, CheckoutPolicy = CheckoutPolicy.Block });
 
             var evt = new ManualResetEventSlim();
 
@@ -117,7 +109,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.GetItem(CheckoutPolicy.Block))
+                    using (pool.GetItem())
                     {
                     }
                 }).Wait(10)
@@ -129,7 +121,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.GetItem(CheckoutPolicy.Block))
+                    using (pool.GetItem())
                     {
                     }
                 }).Wait(10)
@@ -212,9 +204,9 @@ namespace Solti.Utils.Primitives.Threading.Tests
         private ObjectPool<MyObject> Pool { get; set; }
 
         [Test]
-        public void ThreadingTest([Values(1, 2, 3, 10, 100)] int poolSize) 
+        public void ThreadingTest([Values(1, 2, 3, 10, 100)] int capacity) 
         { 
-            Pool = new ObjectPool<MyObject>(() => new MyObject(), poolSize);
+            Pool = new ObjectPool<MyObject>(() => new MyObject(), PoolConfig.Default with { Capacity = capacity });
             Terminated = false;
             ErrorFound = false;
 

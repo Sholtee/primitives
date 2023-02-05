@@ -19,7 +19,7 @@ namespace Solti.Utils.Primitives.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -124,29 +124,20 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A pool factory cannot be recursive..
-        /// </summary>
-        internal static string RECURSIVE_FACTORY {
-            get {
-                return ResourceManager.GetString("RECURSIVE_FACTORY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The node had already been locked previously..
-        /// </summary>
-        internal static string RECURSIVE_LOCK {
-            get {
-                return ResourceManager.GetString("RECURSIVE_LOCK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to State could not be reverted..
         /// </summary>
         internal static string RESET_FAILED {
             get {
                 return ResourceManager.GetString("RESET_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returning item from a different thread is not allowed..
+        /// </summary>
+        internal static string RETURN_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("RETURN_NOT_ALLOWED", resourceCulture);
             }
         }
         

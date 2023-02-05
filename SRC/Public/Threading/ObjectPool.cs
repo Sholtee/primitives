@@ -7,10 +7,10 @@
 
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
@@ -63,11 +63,11 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Gets an item from the pool.
         /// </summary>
-        public static PoolItem<T>? GetItem<T>(this ObjectPool<T> self, CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default) where T : class
+        public static PoolItem<T>? GetItem<T>(this ObjectPool<T> self, CancellationToken cancellation = default) where T : class
         {
             Ensure.Parameter.IsNotNull(self, nameof(self));
 
-            T? value = self.Get(checkoutPolicy, cancellation);
+            T? value = self.Get(cancellation);
 
             return value is null
                 ? null
@@ -76,7 +76,7 @@ namespace Solti.Utils.Primitives.Threading
     }
 
     /// <summary>
-    /// Describes the <see cref="ObjectPool{T}.Get(CheckoutPolicy, CancellationToken)"/> behavior when the request can not be granted.
+    /// Describes the <see cref="ObjectPool{T}.Get(CancellationToken)"/> behavior when the request can not be granted.
     /// </summary>
     public enum CheckoutPolicy 
     {
@@ -99,7 +99,7 @@ namespace Solti.Utils.Primitives.Threading
     /// <summary>
     /// Describes how to manage the lifetime of pool items.
     /// </summary>
-    public interface ILifetimeManager<T>
+    public interface ILifetimeManager<T> where T : class
     {
         /// <summary>
         /// Creates a new pool item.
@@ -117,20 +117,13 @@ namespace Solti.Utils.Primitives.Threading
         void CheckIn(T item);
 
         /// <summary>
-        /// Defines a handler that is called when recursive factory is detected. 
-        /// </summary>
-        void RecursionDetected();
-
-        /// <summary>
         /// Disposes a pool item.
         /// </summary>
         void Dispose(T item);
 
-
         /// <summary>
         /// The default lifetime manager
         /// </summary>
-        [SuppressMessage("Design", "CA1034:Nested types should not be visible")]
         [SuppressMessage("Naming", "CA1716:Identifiers should not match keywords")]
         public sealed class Default : ILifetimeManager<T>
         {
@@ -168,45 +161,81 @@ namespace Solti.Utils.Primitives.Threading
                         throw new InvalidOperationException(Resources.RESET_FAILED);
                 }
             }
-
-            /// <inheritdoc/>
-            public void RecursionDetected() => throw new InvalidOperationException(Resources.RECURSIVE_FACTORY);
         }
+    }
+
+    /// <summary>
+    /// Poll configuration.
+    /// </summary>
+    public record PoolConfig
+    {
+        /// <summary>
+        /// Describes how to checkout items from the pool.
+        /// </summary>
+        public CheckoutPolicy CheckoutPolicy { get; init; } = CheckoutPolicy.Block;
+
+        /// <summary>
+        /// Specifies whether the pool checkout ios permissive or not.
+        /// </summary>
+        /// <remarks>Permissive pool let the same thread checkout multiple items from the pool simultaneously.</remarks>
+        public bool Permissive { get; init; }
+
+        /// <summary>
+        /// The maximum capacity.
+        /// </summary>
+        public int Capacity { get; init; } = Environment.ProcessorCount;
+
+        /// <summary>
+        /// The default value.
+        /// </summary>
+        public static PoolConfig Default { get; } = new();
     }
 
     /// <summary>
     /// Describes a simple object pool.
     /// </summary>
-    public class ObjectPool<T>: Disposable, IReadOnlyCollection<(int OwnerThread, T Object)> where T: class
+    public class ObjectPool<T>: Disposable, IReadOnlyCollection<T> where T: class
     {
-        private readonly (int OwnerThread, T? Object)[] FObjects;
+        private readonly ConcurrentBag<T?> FUnusedItems = new();
+
+        private readonly ConcurrentBag<T> FCreatedItems = new();
+
+        private readonly ThreadLocal<T?>? FCurrentItem;
 
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
-        public ObjectPool(ILifetimeManager<T> lifetimeManager, int? maxPoolSize = null)
+        public ObjectPool(ILifetimeManager<T> lifetimeManager, PoolConfig? config = null)
         {
-            Capacity = maxPoolSize ?? Environment.ProcessorCount;
-            FObjects = new (int OwnerThread, T? Object)[Capacity]; // mivel Tuple-k ertek tipusok ezert nincs gond az inicialassal
+            Config = config ?? PoolConfig.Default;
+
+            if (!Config.Permissive)
+                FCurrentItem = new ThreadLocal<T?>(trackAllValues: false);
+
+            for (int i = 0; i < Config.Capacity; i++)
+            {
+                FUnusedItems.Add(null);
+            }
+
             LifetimeManager = Ensure.Parameter.IsNotNull(lifetimeManager, nameof(lifetimeManager));     
         }
 
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
         /// </summary>
-        public ObjectPool(Func<T> factory, int? maxPoolSize = null) : this
+        public ObjectPool(Func<T> factory, PoolConfig? config = null) : this
         (
             new ILifetimeManager<T>.Default
             (
                 Ensure.Parameter.IsNotNull(factory, nameof(factory))
             ),
-            maxPoolSize
+            config
         ) { }
 
         /// <summary>
-        /// The maximum number of objects that can be checked out in the same time.
+        /// The pool configuration.
         /// </summary>
-        public int Capacity { get; }
+        public PoolConfig Config { get; }
 
         /// <summary>
         /// The <see cref="ILifetimeManager{T}"/> of the items exposed by this pool.
@@ -218,19 +247,18 @@ namespace Solti.Utils.Primitives.Threading
         {
             if (disposeManaged)
             {
-                foreach ((int _, T Object) item in this)
+                foreach (T item in this)
                 {
                     try
                     {
-                        LifetimeManager.Dispose(item.Object);
+                        LifetimeManager.Dispose(item);
                     }
-                    #pragma warning disable CA1031 // This method should not throw.
                     catch (Exception e)
-                    #pragma warning restore CA1031
                     {
                         Trace.WriteLine($"Can't dispose pool item: {e}");
                     }
                 }
+                FCurrentItem?.Dispose();
             }
 
             base.Dispose(disposeManaged);
@@ -239,70 +267,65 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Gets a value from the pool.
         /// </summary>
-        public T? Get(CheckoutPolicy checkoutPolicy = CheckoutPolicy.Block, CancellationToken cancellation = default)
+        public T? Get(CancellationToken cancellation = default)
         {
             CheckNotDisposed();
 
             SpinWait? spinWait = null;
 
-            int currentThread = Environment.CurrentManagedThreadId;
+            //
+            // Check if the requesting thread already has an instance
+            //
+
+            if (FCurrentItem?.Value is not null)
+                return FCurrentItem.Value;
+
+            //
+            // Nope... Grab one...
+            //
 
             do
             {
                 cancellation.ThrowIfCancellationRequested();
 
-                for (int i = 0; i < Capacity; i++)
+                if (FUnusedItems.TryTake(out T? item))
                 {
-                    ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
-
-                    if (holder.OwnerThread == currentThread)
+                    try
                     {
-                        if (holder.Object is null)
-                            LifetimeManager.RecursionDetected();
-
                         //
-                        // The same thread already requested this instance... Return it again
+                        // Create the value (if it hasn't been...)
                         //
 
-                        return holder.Object;
+                        if (item is null)
+                        {
+                            item = LifetimeManager.Create();
+                            FCreatedItems.Add(item);
+                        }
+
+                        LifetimeManager.CheckOut(item);
                     }
-
-                    //
-                    // Find the first unused slot
-                    //
-
-                    if (Interlocked.CompareExchange(ref holder.OwnerThread, currentThread, 0) == 0)
+                    catch
                     {
-                        try
-                        {
-                            //
-                            // Create the value (if it hasn't been...)
-                            //
+                        //
+                        // Revert the slot back to "unused" if there was an error.
+                        //
 
-                            T result = (holder.Object ??= LifetimeManager.Create());
-
-                            LifetimeManager.CheckOut(holder.Object);
-
-                            return result;
-                        }
-                        catch
-                        {
-                            //
-                            // Revert the slot back to "unused" if there was an error.
-                            //
-
-                            Interlocked.Exchange(ref holder.OwnerThread, 0);
-                            throw;
-                        }
+                        FUnusedItems.Add(item);
+                        throw;
                     }
+
+                    if (FCurrentItem is not null)
+                        FCurrentItem.Value = item;
+
+                    return item;
                 }
 
-                switch (checkoutPolicy)
+                switch (Config.CheckoutPolicy)
                 {
                     case CheckoutPolicy.Block:
                         break;
                     case CheckoutPolicy.Throw:
-                        throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, Capacity));
+                        throw new InvalidOperationException(string.Format(Resources.Culture, Resources.MAX_SIZE_REACHED, Config.Capacity));
                     case CheckoutPolicy.Discard:
                         return default;
                 }
@@ -320,59 +343,38 @@ namespace Solti.Utils.Primitives.Threading
 
             CheckNotDisposed();
 
-            int currentThread = Environment.CurrentManagedThreadId;
-
-            for (int i = 0; i < Capacity; i++)
+            if (FCurrentItem is not null)
             {
-                ref (int OwnerThread, T? Object) holder = ref FObjects[i]; // nem masolat
-
-                if (holder.Object == item)
-                {
-                    if (holder.OwnerThread != currentThread)
-                        Trace.WriteLine("Returning item from a different thread");
-
-                    LifetimeManager.CheckIn(holder.Object!);
-                    Interlocked.Exchange(ref holder.OwnerThread, 0);
-
-                    return;
-                }
+                if (FCurrentItem.Value != item)
+                    throw new InvalidOperationException(Resources.RETURN_NOT_ALLOWED);
+                FCurrentItem.Value = null;
             }
 
-            Trace.WriteLine("Attempt to return a foreign instance");
+            LifetimeManager.CheckIn(item);
+            FUnusedItems.Add(item);
         }
 
         /// <summary>
         /// Enumerates the already produced items.
         /// </summary>
-        public IEnumerator<(int OwnerThread, T Object)> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             CheckNotDisposed();
-
-            for (int i = 0; i < Capacity; i++)
-            {
-                //
-                // Masolat, ami nekunk jo is mert igy a visszaadott elem szabadon modosithato
-                //
-
-                (int OwnerThread, T? Object) holder = FObjects[i];
-
-                //
-                // Mivel a Get() mindig a legelso meg ures tarolot tolti fel, ezert ha ures tarolohoz
-                // ertunk nem kell folytatni a felsorolast.
-                //
-
-                if (holder.Object is null)
-                    yield break;
-                                    
-                yield return holder!;
-            }
+            return FCreatedItems.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
-        /// The count of checked out objects.
+        /// The count of crested objects.
         /// </summary>
-        public int Count => this.Count(entry => entry.OwnerThread is not 0);
+        public int Count
+        {
+            get 
+            {
+                CheckNotDisposed();
+                return FCreatedItems.Count;
+            }
+        }
     }
 }

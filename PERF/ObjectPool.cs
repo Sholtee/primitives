@@ -65,7 +65,7 @@ namespace Solti.Utils.Primitives.Perf
         [GlobalSetup(Target = nameof(Solti_Utils_ObjectPool_GetAndReturn))]
         public void Setup_OurPool()
         {
-            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>());
+            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>(), PoolConfig.Default with { CheckoutPolicy = CheckoutPolicy.Throw });
             GC.SuppressFinalize(OurPool);
         }
 
@@ -74,8 +74,23 @@ namespace Solti.Utils.Primitives.Perf
         [Benchmark]
         public void Solti_Utils_ObjectPool_GetAndReturn()
         {
-            object obj = OurPool.Get(CheckoutPolicy.Throw);
+            object obj = OurPool.Get();
             OurPool.Return(obj);
         }
+    }
+
+    [MemoryDiagnoser]
+    [SimpleJob(RunStrategy.Throughput, invocationCount: 10000000)]
+    public class ThreadLocal
+    {
+        private readonly System.Threading.ThreadLocal<object> FThreadLocal = new(static () => null);
+
+        private readonly object FValue = new();
+
+        [Benchmark]
+        public object GetValue() => FThreadLocal.Value;
+
+        [Benchmark]
+        public void SetValue() => FThreadLocal.Value = FValue;
     }
 }
