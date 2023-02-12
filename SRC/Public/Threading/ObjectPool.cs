@@ -259,7 +259,7 @@ namespace Solti.Utils.Primitives.Threading
                     catch
                     {
                         //
-                        // Revert the slot back to "unused" if there was an error.
+                        // Revert the checkout
                         //
 
                         FUnusedItems.Push(item);
