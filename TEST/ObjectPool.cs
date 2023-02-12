@@ -20,41 +20,12 @@ namespace Solti.Utils.Primitives.Threading.Tests
     public class ObjectPoolTests 
     {
         [Test]
-        public void Get_ShouldReturnTheSameObjectIfThePoolIsNotPermissive() 
+        public void Get_ShouldNotReturnTheSameObjectIfThePool()
         {
-            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2, Permissive = false });
-
-            Assert.AreEqual(pool.Get(), pool.Get());
-            Assert.That(pool.Count, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void Get_ShouldNotReturnTheSameObjectIfThePoolIsPermissive()
-        {
-            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2, Permissive = true });
+            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2 });
 
             Assert.AreNotEqual(pool.Get(), pool.Get());
             Assert.That(pool.Count, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void Return_ShouldThrowIfTheCheckinNotAllowed()
-        {
-            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Permissive = false });
-
-            object obj = null;
-
-            Task.Factory.StartNew(() => obj = pool.Get()).Wait();
-
-            Assert.Throws<InvalidOperationException>(() => pool.Return(obj));
-        }
-
-        [Test]
-        public void Get_ShouldReturnTheSameObjectInTheSameThread([Values(1, 2, 3)] int capacity)
-        {
-            using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = capacity });
-
-            Assert.AreSame(pool.Get(), pool.Get());
         }
 
         [Test]
@@ -71,7 +42,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 1, CheckoutPolicy = CheckoutPolicy.Throw });
 
-            using (pool.GetItem())
+            using (pool.Get())
             {
                 Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.Throws<InvalidOperationException>(() => pool.Get(), Resources.MAX_SIZE_REACHED)));
             }
@@ -82,7 +53,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 1, CheckoutPolicy = CheckoutPolicy.Discard });
 
-            using (pool.GetItem())
+            using (pool.Get())
             {
                 Assert.DoesNotThrowAsync(() => Task.Run(() => Assert.IsNull(pool.Get())));
             }
@@ -97,7 +68,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
 
             Task.Run(() => 
             {
-                using (pool.GetItem())
+                using (pool.Get())
                 {
                     evt.Wait();
                 }       
@@ -109,7 +80,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.GetItem())
+                    using (pool.Get())
                     {
                     }
                 }).Wait(10)
@@ -121,7 +92,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             (
                 Task.Run(() =>
                 {
-                    using (pool.GetItem())
+                    using (pool.Get())
                     {
                     }
                 }).Wait(10)
@@ -144,7 +115,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
 
             using var pool = new ObjectPool<IResettable>(() => mockResettable.Object);
 
-            using (pool.GetItem()) 
+            using (pool.Get()) 
             {          
             }
 
@@ -163,8 +134,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
 
             using var pool = new ObjectPool<IResettable>(() => mockResettable.Object);
 
-            IResettable val = pool.Get();
-            Assert.Throws<InvalidOperationException>(() => pool.Return(val), Resources.RESET_FAILED);
+            Assert.Throws<InvalidOperationException>(pool.Get().Dispose, Resources.RESET_FAILED);
         }
 
         [Test]
@@ -176,7 +146,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
             using (var pool = new ObjectPool<IDisposable>(() => mockDisposable.Object))
             {
                 if (returned)
-                    using (pool.GetItem()) { }
+                    using (pool.Get()) { }
                 else
                     pool.Get();
             }
@@ -237,7 +207,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
         {
             while (!Terminated)
             {
-                using (PoolItem<MyObject> poolItem = Pool.GetItem())
+                using (IPoolItem<MyObject> poolItem = Pool.Get())
                 {
 
                     if (poolItem.Value.Value != 0)
@@ -248,7 +218,7 @@ namespace Solti.Utils.Primitives.Threading.Tests
                     poolItem.Value.Value = 1986;
                 }
 
-                using (PoolItem<MyObject> poolItem = Pool.GetItem())
+                using (IPoolItem<MyObject> poolItem = Pool.Get())
                 {
                     if (poolItem.Value.Value != 0)
                     {

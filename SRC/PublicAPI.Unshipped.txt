@@ -4,7 +4,6 @@ override Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.Dispo
 override Solti.Utils.Primitives.Patterns.DisposeByRefObject.AsyncDispose() -> System.Threading.Tasks.ValueTask
 override Solti.Utils.Primitives.Patterns.DisposeByRefObject.Dispose(bool disposeManaged) -> void
 override Solti.Utils.Primitives.Threading.ObjectPool<T>.Dispose(bool disposeManaged) -> void
-override Solti.Utils.Primitives.Threading.PoolItem<T>.Dispose(bool disposeManaged) -> void
 Solti.Utils.Primitives.Cache
 Solti.Utils.Primitives.CacheSlim
 Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>
@@ -98,27 +97,21 @@ Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.Dispose(T item) -> 
 Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Default.Factory.get -> System.Func<T>
 Solti.Utils.Primitives.Threading.ILifetimeManager<T>.Dispose(T item) -> void
 Solti.Utils.Primitives.Threading.InterlockedExtensions
+Solti.Utils.Primitives.Threading.IPoolItem<T>
+Solti.Utils.Primitives.Threading.IPoolItem<T>.Value.get -> T
 Solti.Utils.Primitives.Threading.ObjectPool<T>
 Solti.Utils.Primitives.Threading.ObjectPool<T>.Config.get -> Solti.Utils.Primitives.Threading.PoolConfig
 Solti.Utils.Primitives.Threading.ObjectPool<T>.Count.get -> int
-Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(System.Threading.CancellationToken cancellation = default(System.Threading.CancellationToken)) -> T
+Solti.Utils.Primitives.Threading.ObjectPool<T>.Get(System.Threading.CancellationToken cancellation = default(System.Threading.CancellationToken)) -> Solti.Utils.Primitives.Threading.IPoolItem<T>
 Solti.Utils.Primitives.Threading.ObjectPool<T>.GetEnumerator() -> System.Collections.Generic.IEnumerator<T>
 Solti.Utils.Primitives.Threading.ObjectPool<T>.LifetimeManager.get -> Solti.Utils.Primitives.Threading.ILifetimeManager<T>
 Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(Solti.Utils.Primitives.Threading.ILifetimeManager<T> lifetimeManager, Solti.Utils.Primitives.Threading.PoolConfig config = null) -> void
 Solti.Utils.Primitives.Threading.ObjectPool<T>.ObjectPool(System.Func<T> factory, Solti.Utils.Primitives.Threading.PoolConfig config = null) -> void
-Solti.Utils.Primitives.Threading.ObjectPool<T>.Return(T item) -> void
-Solti.Utils.Primitives.Threading.ObjectPoolExtensions
 Solti.Utils.Primitives.Threading.PoolConfig
 Solti.Utils.Primitives.Threading.PoolConfig.Capacity.get -> int
 Solti.Utils.Primitives.Threading.PoolConfig.Capacity.init -> void
 Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy.get -> Solti.Utils.Primitives.Threading.CheckoutPolicy
 Solti.Utils.Primitives.Threading.PoolConfig.CheckoutPolicy.init -> void
-Solti.Utils.Primitives.Threading.PoolConfig.Permissive.get -> bool
-Solti.Utils.Primitives.Threading.PoolConfig.Permissive.init -> void
-Solti.Utils.Primitives.Threading.PoolItem<T>
-Solti.Utils.Primitives.Threading.PoolItem<T>.Owner.get -> Solti.Utils.Primitives.Threading.ObjectPool<T>
-Solti.Utils.Primitives.Threading.PoolItem<T>.PoolItem(Solti.Utils.Primitives.Threading.ObjectPool<T> owner, T value) -> void
-Solti.Utils.Primitives.Threading.PoolItem<T>.Value.get -> T
 Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions
 Solti.Utils.Primitives.Threading.SafeEnumerator<T>
 Solti.Utils.Primitives.Threading.SafeEnumerator<T>.Current.get -> T
@@ -148,7 +141,6 @@ static Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfGreater
 static Solti.Utils.Primitives.Threading.InterlockedExtensions.IncrementIfLessThan(ref int location, int comparand) -> int?
 static Solti.Utils.Primitives.Threading.InterlockedExtensions.Max(ref int location, int comparand) -> int
 static Solti.Utils.Primitives.Threading.InterlockedExtensions.Or(ref int location, int value) -> int
-static Solti.Utils.Primitives.Threading.ObjectPoolExtensions.GetItem<T>(this Solti.Utils.Primitives.Threading.ObjectPool<T> self, System.Threading.CancellationToken cancellation = default(System.Threading.CancellationToken)) -> Solti.Utils.Primitives.Threading.PoolItem<T>
 static Solti.Utils.Primitives.Threading.PoolConfig.Default.get -> Solti.Utils.Primitives.Threading.PoolConfig
 static Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireReaderLock(this System.Threading.ReaderWriterLockSlim src) -> System.IDisposable
 static Solti.Utils.Primitives.Threading.ReaderWriterLockExtensions.AcquireWriterLock(this System.Threading.ReaderWriterLockSlim src) -> System.IDisposable

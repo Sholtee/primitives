@@ -11,69 +11,13 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Threading;
 
 namespace Solti.Utils.Primitives.Threading
 {
     using Patterns;
     using Properties;
-
-    /// <summary>
-    /// Represents a requested pool item.
-    /// </summary>
-    public class PoolItem<T> : Disposable, IWrapped<T> where T : class
-    {
-        /// <summary>
-        /// Creates a new <see cref="PoolItem{T}"/> instance.
-        /// </summary>
-        /// <param name="owner"></param>
-        /// <param name="value"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public PoolItem(ObjectPool<T> owner, T value)
-        {
-            Owner = owner ?? throw new ArgumentNullException(nameof(owner));
-            Value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// The owner of this item.
-        /// </summary>
-        public ObjectPool<T> Owner { get; }
-
-        /// <summary>
-        /// The value of this item.
-        /// </summary>
-        public T Value { get; }
-
-        /// <inheritdoc/>
-        protected override void Dispose(bool disposeManaged)
-        {
-            if (disposeManaged)
-                Owner.Return(Value);
-
-            base.Dispose(disposeManaged);
-        }
-    }
-
-    /// <summary>
-    /// Defines some extensions for the <see cref="ObjectPool{T}"/> class.
-    /// </summary>
-    public static class ObjectPoolExtensions
-    {
-        /// <summary>
-        /// Gets an item from the pool.
-        /// </summary>
-        public static PoolItem<T>? GetItem<T>(this ObjectPool<T> self, CancellationToken cancellation = default) where T : class
-        {
-            Ensure.Parameter.IsNotNull(self, nameof(self));
-
-            T? value = self.Get(cancellation);
-
-            return value is null
-                ? null
-                : new PoolItem<T>(self, value);
-        }
-    }
 
     /// <summary>
     /// Describes the <see cref="ObjectPool{T}.Get(CancellationToken)"/> behavior when the request can not be granted.
@@ -141,11 +85,7 @@ namespace Solti.Utils.Primitives.Threading
             public T Create() => Factory();
 
             /// <inheritdoc/>
-            public void Dispose(T item)
-            {
-                if (item is IDisposable disposable)
-                    disposable.Dispose();
-            }
+            public void Dispose(T item) => (item as IDisposable)?.Dispose();
 
             /// <inheritdoc/>
             public void CheckOut(T item) { }
@@ -175,12 +115,6 @@ namespace Solti.Utils.Primitives.Threading
         public CheckoutPolicy CheckoutPolicy { get; init; } = CheckoutPolicy.Block;
 
         /// <summary>
-        /// Specifies whether the pool checkout ios permissive or not.
-        /// </summary>
-        /// <remarks>Permissive pool let the same thread checkout multiple items from the pool simultaneously.</remarks>
-        public bool Permissive { get; init; }
-
-        /// <summary>
         /// The maximum capacity.
         /// </summary>
         public int Capacity { get; init; } = Environment.ProcessorCount;
@@ -192,15 +126,61 @@ namespace Solti.Utils.Primitives.Threading
     }
 
     /// <summary>
+    /// Describes an abstract pool item.
+    /// </summary>
+    /// <remarks>Disposing this instance will return return the item to the pool.</remarks>
+    public interface IPoolItem<T> : IDisposable where T : class
+    {
+        /// <summary>
+        /// The value itself.
+        /// </summary>
+        T Value { get; }
+    }
+
+    /// <summary>
     /// Describes a simple object pool.
     /// </summary>
     public class ObjectPool<T>: Disposable, IReadOnlyCollection<T> where T: class
     {
-        private readonly ConcurrentBag<T?> FUnusedItems = new();
+        private sealed class PoolItem: IPoolItem<T>
+        {
+            public PoolItem(ObjectPool<T> owner, PoolItem? prev)
+            {
+                Owner = owner;
+                Prev = prev;
+                Value = null!;  // suppress warning
+            }
 
-        private readonly ConcurrentBag<T> FCreatedItems = new();
+            public PoolItem? Prev { get; }
 
-        private readonly ThreadLocal<T?>? FCurrentItem;
+            public ObjectPool<T> Owner { get; }
+
+            public T Value { get; private set; }
+
+            public bool CheckedOut { get; private set; }
+
+            public void Checkout()
+            {
+                Value ??= Owner.LifetimeManager.Create();
+                Owner.LifetimeManager.CheckOut(Value);
+                CheckedOut = true;
+            }
+
+            /// <inheritdoc/>
+            public void Dispose()
+            {
+                if (CheckedOut)
+                {
+                    if (Value is not null)
+                        Owner.LifetimeManager.CheckIn(Value);
+                    Owner.FUnusedItems.Add(this);
+                }
+            }
+        }
+
+        private readonly ConcurrentBag<PoolItem> FUnusedItems = new();
+
+        private PoolItem? Last { get; }
 
         /// <summary>
         /// Creates a new <see cref="ObjectPool{T}"/> object.
@@ -208,16 +188,14 @@ namespace Solti.Utils.Primitives.Threading
         public ObjectPool(ILifetimeManager<T> lifetimeManager, PoolConfig? config = null)
         {
             Config = config ?? PoolConfig.Default;
-
-            if (!Config.Permissive)
-                FCurrentItem = new ThreadLocal<T?>(trackAllValues: false);
+            LifetimeManager = Ensure.Parameter.IsNotNull(lifetimeManager, nameof(lifetimeManager));
 
             for (int i = 0; i < Config.Capacity; i++)
             {
-                FUnusedItems.Add(null);
-            }
-
-            LifetimeManager = Ensure.Parameter.IsNotNull(lifetimeManager, nameof(lifetimeManager));     
+                PoolItem item = new(this, Last);
+                Last = item;
+                FUnusedItems.Add(item);
+            }   
         }
 
         /// <summary>
@@ -258,7 +236,6 @@ namespace Solti.Utils.Primitives.Threading
                         Trace.WriteLine($"Can't dispose pool item: {e}");
                     }
                 }
-                FCurrentItem?.Dispose();
             }
 
             base.Dispose(disposeManaged);
@@ -267,42 +244,21 @@ namespace Solti.Utils.Primitives.Threading
         /// <summary>
         /// Gets a value from the pool.
         /// </summary>
-        public T? Get(CancellationToken cancellation = default)
+        public IPoolItem<T>? Get(CancellationToken cancellation = default)
         {
             CheckNotDisposed();
 
             SpinWait? spinWait = null;
 
-            //
-            // Check if the requesting thread already has an instance
-            //
-
-            if (FCurrentItem?.Value is not null)
-                return FCurrentItem.Value;
-
-            //
-            // Nope... Grab one...
-            //
-
             do
             {
                 cancellation.ThrowIfCancellationRequested();
 
-                if (FUnusedItems.TryTake(out T? item))
+                if (FUnusedItems.TryTake(out PoolItem item))
                 {
                     try
                     {
-                        //
-                        // Create the value (if it hasn't been...)
-                        //
-
-                        if (item is null)
-                        {
-                            item = LifetimeManager.Create();
-                            FCreatedItems.Add(item);
-                        }
-
-                        LifetimeManager.CheckOut(item);
+                        item.Checkout();
                     }
                     catch
                     {
@@ -313,9 +269,6 @@ namespace Solti.Utils.Primitives.Threading
                         FUnusedItems.Add(item);
                         throw;
                     }
-
-                    if (FCurrentItem is not null)
-                        FCurrentItem.Value = item;
 
                     return item;
                 }
@@ -335,45 +288,36 @@ namespace Solti.Utils.Primitives.Threading
         }
 
         /// <summary>
-        /// Returns the item to the pool, identified by its index.
-        /// </summary>
-        public void Return(T item) 
-        {
-            Ensure.Parameter.IsNotNull(item, nameof(item));
-
-            CheckNotDisposed();
-
-            if (FCurrentItem is not null)
-            {
-                if (FCurrentItem.Value != item)
-                    throw new InvalidOperationException(Resources.RETURN_NOT_ALLOWED);
-                FCurrentItem.Value = null;
-            }
-
-            LifetimeManager.CheckIn(item);
-            FUnusedItems.Add(item);
-        }
-
-        /// <summary>
         /// Enumerates the already produced items.
         /// </summary>
         public IEnumerator<T> GetEnumerator()
         {
             CheckNotDisposed();
-            return FCreatedItems.GetEnumerator();
+            return GetEnumerable().GetEnumerator();
+            
+            IEnumerable<T> GetEnumerable()
+            {
+                PoolItem? item = Last;
+                while (item is not null)
+                {
+                    if (item.Value is not null)
+                        yield return item.Value;
+                    item = item.Prev;
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
-        /// The count of crested objects.
+        /// The count of created objects.
         /// </summary>
         public int Count
         {
             get 
             {
                 CheckNotDisposed();
-                return FCreatedItems.Count;
+                return this.Count();
             }
         }
     }

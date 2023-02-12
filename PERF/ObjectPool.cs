@@ -37,38 +37,16 @@ namespace Solti.Utils.Primitives.Perf
             }
         }
 
-        [Params(true, false)]
-        public bool Permissive { get; set; }
-
         [GlobalSetup(Target = nameof(GetAndReturn))]
         public void Setup()
         {
-            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>(), PoolConfig.Default with { CheckoutPolicy = CheckoutPolicy.Throw, Permissive = Permissive });
+            OurPool = new ObjectPool<object>(new SimpleLifetimeManager<object>(), PoolConfig.Default with { CheckoutPolicy = CheckoutPolicy.Throw });
             GC.SuppressFinalize(OurPool);
         }
 
         public ObjectPool<object> OurPool { get; set; }
 
         [Benchmark]
-        public void GetAndReturn()
-        {
-            object obj = OurPool.Get();
-            OurPool.Return(obj);
-        }
-    }
-
-    [MemoryDiagnoser]
-    [SimpleJob(RunStrategy.Throughput, invocationCount: 10000000)]
-    public class ThreadLocal
-    {
-        private readonly System.Threading.ThreadLocal<object> FThreadLocal = new(static () => null);
-
-        private readonly object FValue = new();
-
-        [Benchmark]
-        public object GetValue() => FThreadLocal.Value;
-
-        [Benchmark]
-        public void SetValue() => FThreadLocal.Value = FValue;
+        public void GetAndReturn() => OurPool.Get().Dispose();
     }
 }
