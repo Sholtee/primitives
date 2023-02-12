@@ -194,7 +194,7 @@
   </table>
   <a id="Solti_Utils_Primitives_Threading_ObjectPool_1_Count_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Count*"></a>
   <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1_Count" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Count">Count</h4>
-  <div class="markdown level1 summary"><p>The count of crested objects.</p>
+  <div class="markdown level1 summary"><p>The count of created objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -278,7 +278,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T Get(CancellationToken cancellation = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public IPoolItem&lt;T&gt; Get(CancellationToken cancellation = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -307,7 +307,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">T</span></td>
+        <td><a class="xref" href="Solti.Utils.Primitives.Threading.IPoolItem-1.html">IPoolItem</a>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -336,32 +336,6 @@
       </tr>
     </tbody>
   </table>
-  <a id="Solti_Utils_Primitives_Threading_ObjectPool_1_Return_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Return*"></a>
-  <h4 id="Solti_Utils_Primitives_Threading_ObjectPool_1_Return__0_" data-uid="Solti.Utils.Primitives.Threading.ObjectPool`1.Return(`0)">Return(T)</h4>
-  <div class="markdown level1 summary"><p>Returns the item to the pool, identified by its index.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Return(T item)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Solti.Utils.Primitives.Patterns.IDisposableEx.html">IDisposableEx</a>
@@ -380,10 +354,6 @@
   </div>
   <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">System.Collections.IEnumerable</a>
-  </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Solti.Utils.Primitives.Threading.ObjectPoolExtensions.html#Solti_Utils_Primitives_Threading_ObjectPoolExtensions_GetItem__1_Solti_Utils_Primitives_Threading_ObjectPool___0__System_Threading_CancellationToken_">ObjectPoolExtensions.GetItem&lt;T&gt;(ObjectPool&lt;T&gt;, CancellationToken)</a>
   </div>
 </article>
           </div>
