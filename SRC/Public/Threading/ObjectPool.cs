@@ -173,12 +173,12 @@ namespace Solti.Utils.Primitives.Threading
                 {
                     if (Value is not null)
                         Owner.LifetimeManager.CheckIn(Value);
-                    Owner.FUnusedItems.Add(this);
+                    Owner.FUnusedItems.Push(this);
                 }
             }
         }
 
-        private readonly ConcurrentBag<PoolItem> FUnusedItems = new();
+        private readonly ConcurrentStack<PoolItem> FUnusedItems = new();
 
         private PoolItem? Last { get; }
 
@@ -191,11 +191,7 @@ namespace Solti.Utils.Primitives.Threading
             LifetimeManager = Ensure.Parameter.IsNotNull(lifetimeManager, nameof(lifetimeManager));
 
             for (int i = 0; i < Config.Capacity; i++)
-            {
-                PoolItem item = new(this, Last);
-                Last = item;
-                FUnusedItems.Add(item);
-            }   
+                FUnusedItems.Push(Last = new PoolItem(this, Last)); 
         }
 
         /// <summary>
@@ -254,7 +250,7 @@ namespace Solti.Utils.Primitives.Threading
             {
                 cancellation.ThrowIfCancellationRequested();
 
-                if (FUnusedItems.TryTake(out PoolItem item))
+                if (FUnusedItems.TryPop(out PoolItem item))
                 {
                     try
                     {
@@ -266,7 +262,7 @@ namespace Solti.Utils.Primitives.Threading
                         // Revert the slot back to "unused" if there was an error.
                         //
 
-                        FUnusedItems.Add(item);
+                        FUnusedItems.Push(item);
                         throw;
                     }
 
