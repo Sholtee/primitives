@@ -38,11 +38,11 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
+BenchmarkDotNet=v0.13.4, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=6.0.302
-  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
-  Job-DRAOKS : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+.NET SDK=7.0.100
+  [Host]     : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
+  Job-UNTFPE : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
 
 InvocationCount=10000000  RunStrategy=Throughput  
 </code></pre><table>
@@ -61,18 +61,18 @@ InvocationCount=10000000  RunStrategy=Throughput
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>21.50 ns</strong></td>
-<td style="text-align:right"><strong>0.468 ns</strong></td>
-<td style="text-align:right"><strong>1.267 ns</strong></td>
+<td style="text-align:right"><strong>22.22 ns</strong></td>
+<td style="text-align:right"><strong>0.463 ns</strong></td>
+<td style="text-align:right"><strong>0.433 ns</strong></td>
 <td style="text-align:right"><strong>0.0017</strong></td>
 <td style="text-align:right"><strong>32 B</strong></td>
 </tr>
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>105.40 ns</strong></td>
-<td style="text-align:right"><strong>2.229 ns</strong></td>
-<td style="text-align:right"><strong>6.361 ns</strong></td>
+<td style="text-align:right"><strong>86.35 ns</strong></td>
+<td style="text-align:right"><strong>1.677 ns</strong></td>
+<td style="text-align:right"><strong>2.802 ns</strong></td>
 <td style="text-align:right"><strong>0.0030</strong></td>
 <td style="text-align:right"><strong>56 B</strong></td>
 </tr>

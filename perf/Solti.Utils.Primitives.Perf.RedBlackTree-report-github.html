@@ -38,14 +38,13 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.2, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
+BenchmarkDotNet=v0.13.4, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=6.0.302
-  [Host]     : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
-  Job-CBOFXA : .NET 6.0.7 (6.0.722.32202), X64 RyuJIT AVX2
+.NET SDK=7.0.100
+  [Host]     : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
+  Job-RGGWNA : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
 
-InvocationCount=300  IterationCount=15  RunStrategy=Throughput  
-UnrollFactor=1  
+InvocationCount=300  RunStrategy=Throughput  UnrollFactor=1  
 </code></pre><table>
 <thead>
 <tr>
@@ -53,6 +52,7 @@ UnrollFactor=1
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
+<th style="text-align:right">Median</th>
 <th style="text-align:right">Gen0</th>
 <th style="text-align:right">Gen1</th>
 <th style="text-align:right">Allocated</th>
@@ -61,27 +61,30 @@ UnrollFactor=1
 <tbody>
 <tr>
 <td>Add</td>
-<td style="text-align:right">129.49 ns</td>
-<td style="text-align:right">3.161 ns</td>
-<td style="text-align:right">2.640 ns</td>
+<td style="text-align:right">123.29 ns</td>
+<td style="text-align:right">1.964 ns</td>
+<td style="text-align:right">1.837 ns</td>
+<td style="text-align:right">122.69 ns</td>
 <td style="text-align:right">0.0020</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">40 B</td>
 </tr>
 <tr>
 <td>With</td>
-<td style="text-align:right">7,695.23 ns</td>
-<td style="text-align:right">143.559 ns</td>
-<td style="text-align:right">134.285 ns</td>
+<td style="text-align:right">8,733.52 ns</td>
+<td style="text-align:right">557.712 ns</td>
+<td style="text-align:right">1,644.427 ns</td>
+<td style="text-align:right">7,773.02 ns</td>
 <td style="text-align:right">0.5733</td>
 <td style="text-align:right">0.0467</td>
 <td style="text-align:right">10568 B</td>
 </tr>
 <tr>
 <td>Enumerate_MoveNext</td>
-<td style="text-align:right">20.56 ns</td>
-<td style="text-align:right">0.606 ns</td>
-<td style="text-align:right">0.567 ns</td>
+<td style="text-align:right">16.01 ns</td>
+<td style="text-align:right">0.294 ns</td>
+<td style="text-align:right">0.275 ns</td>
+<td style="text-align:right">16.05 ns</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">-</td>
