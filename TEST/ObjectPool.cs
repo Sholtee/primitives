@@ -20,12 +20,30 @@ namespace Solti.Utils.Primitives.Threading.Tests
     public class ObjectPoolTests 
     {
         [Test]
-        public void Get_ShouldNotReturnTheSameObjectIfThePool()
+        public void Get_ShouldNotReturnTheSameObject()
         {
             using var pool = new ObjectPool<object>(() => new object(), PoolConfig.Default with { Capacity = 2 });
 
             Assert.AreNotEqual(pool.Get(), pool.Get());
             Assert.That(pool.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Get_ShouldCallTheFactoryOncePerItem()
+        {
+            Mock<Func<object>> mockFactory = new(MockBehavior.Strict);
+            mockFactory
+                .Setup(f => f())
+                .Returns(new object());
+
+            using var pool = new ObjectPool<object>(mockFactory.Object, PoolConfig.Default with { Capacity = 1 });
+
+            mockFactory.Verify(f => f(), Times.Never);  // check if the pool constructor not called the factory by accident
+
+            pool.Get().Dispose();
+            pool.Get().Dispose();  // get the same item twice
+
+            mockFactory.Verify(f => f(), Times.Once);
         }
 
         [Test]
