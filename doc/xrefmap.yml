@@ -152,6 +152,33 @@ references:
   fullName.vb: Solti.Utils.Primitives.ComparerBase(Of TConcreteComparer, T).Instance
   nameWithType: ComparerBase<TConcreteComparer, T>.Instance
   nameWithType.vb: ComparerBase(Of TConcreteComparer, T).Instance
+- uid: Solti.Utils.Primitives.ConstructorInfoExtractor
+  name: ConstructorInfoExtractor
+  href: Solti.Utils.Primitives.ConstructorInfoExtractor.html
+  commentId: T:Solti.Utils.Primitives.ConstructorInfoExtractor
+  fullName: Solti.Utils.Primitives.ConstructorInfoExtractor
+  nameWithType: ConstructorInfoExtractor
+- uid: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  name: Extract(LambdaExpression)
+  href: Solti.Utils.Primitives.ConstructorInfoExtractor.html#Solti_Utils_Primitives_ConstructorInfoExtractor_Extract_System_Linq_Expressions_LambdaExpression_
+  commentId: M:Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  fullName: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  nameWithType: ConstructorInfoExtractor.Extract(LambdaExpression)
+- uid: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract*
+  name: Extract
+  href: Solti.Utils.Primitives.ConstructorInfoExtractor.html#Solti_Utils_Primitives_ConstructorInfoExtractor_Extract_
+  commentId: Overload:Solti.Utils.Primitives.ConstructorInfoExtractor.Extract
+  fullName: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract
+  nameWithType: ConstructorInfoExtractor.Extract
+- uid: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Func{``0}})
+  name: Extract<T>(Expression<Func<T>>)
+  href: Solti.Utils.Primitives.ConstructorInfoExtractor.html#Solti_Utils_Primitives_ConstructorInfoExtractor_Extract__1_System_Linq_Expressions_Expression_System_Func___0___
+  commentId: M:Solti.Utils.Primitives.ConstructorInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Func{``0}})
+  name.vb: Extract(Of T)(Expression(Of Func(Of T)))
+  fullName: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>>)
+  fullName.vb: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(Of T)(System.Linq.Expressions.Expression(Of System.Func(Of T)))
+  nameWithType: ConstructorInfoExtractor.Extract<T>(Expression<Func<T>>)
+  nameWithType.vb: ConstructorInfoExtractor.Extract(Of T)(Expression(Of Func(Of T)))
 - uid: Solti.Utils.Primitives.EnumerableExtensions
   name: EnumerableExtensions
   href: Solti.Utils.Primitives.EnumerableExtensions.html
@@ -281,6 +308,42 @@ references:
   commentId: Overload:Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate
   fullName: Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate
   nameWithType: MethodInfoExtensions.ToStaticDelegate
+- uid: Solti.Utils.Primitives.MethodInfoExtractor
+  name: MethodInfoExtractor
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html
+  commentId: T:Solti.Utils.Primitives.MethodInfoExtractor
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor
+  nameWithType: MethodInfoExtractor
+- uid: Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression{System.Action})
+  name: Extract(Expression<Action>)
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html#Solti_Utils_Primitives_MethodInfoExtractor_Extract_System_Linq_Expressions_Expression_System_Action__
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression{System.Action})
+  name.vb: Extract(Expression(Of Action))
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression<System.Action>)
+  fullName.vb: Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression(Of System.Action))
+  nameWithType: MethodInfoExtractor.Extract(Expression<Action>)
+  nameWithType.vb: MethodInfoExtractor.Extract(Expression(Of Action))
+- uid: Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  name: Extract(LambdaExpression)
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html#Solti_Utils_Primitives_MethodInfoExtractor_Extract_System_Linq_Expressions_LambdaExpression_
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  nameWithType: MethodInfoExtractor.Extract(LambdaExpression)
+- uid: Solti.Utils.Primitives.MethodInfoExtractor.Extract*
+  name: Extract
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html#Solti_Utils_Primitives_MethodInfoExtractor_Extract_
+  commentId: Overload:Solti.Utils.Primitives.MethodInfoExtractor.Extract
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor.Extract
+  nameWithType: MethodInfoExtractor.Extract
+- uid: Solti.Utils.Primitives.MethodInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Action{``0}})
+  name: Extract<T>(Expression<Action<T>>)
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html#Solti_Utils_Primitives_MethodInfoExtractor_Extract__1_System_Linq_Expressions_Expression_System_Action___0___
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Action{``0}})
+  name.vb: Extract(Of T)(Expression(Of Action(Of T)))
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Action<T>>)
+  fullName.vb: Solti.Utils.Primitives.MethodInfoExtractor.Extract(Of T)(System.Linq.Expressions.Expression(Of System.Action(Of T)))
+  nameWithType: MethodInfoExtractor.Extract<T>(Expression<Action<T>>)
+  nameWithType.vb: MethodInfoExtractor.Extract(Of T)(Expression(Of Action(Of T)))
 - uid: Solti.Utils.Primitives.NodeColor
   name: NodeColor
   href: Solti.Utils.Primitives.NodeColor.html
@@ -798,6 +861,42 @@ references:
   commentId: Overload:Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
   fullName: Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter
   nameWithType: PropertyInfoExtensions.ToSetter
+- uid: Solti.Utils.Primitives.PropertyInfoExtractor
+  name: PropertyInfoExtractor
+  href: Solti.Utils.Primitives.PropertyInfoExtractor.html
+  commentId: T:Solti.Utils.Primitives.PropertyInfoExtractor
+  fullName: Solti.Utils.Primitives.PropertyInfoExtractor
+  nameWithType: PropertyInfoExtractor
+- uid: Solti.Utils.Primitives.PropertyInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  name: Extract(LambdaExpression)
+  href: Solti.Utils.Primitives.PropertyInfoExtractor.html#Solti_Utils_Primitives_PropertyInfoExtractor_Extract_System_Linq_Expressions_LambdaExpression_
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  fullName: Solti.Utils.Primitives.PropertyInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression)
+  nameWithType: PropertyInfoExtractor.Extract(LambdaExpression)
+- uid: Solti.Utils.Primitives.PropertyInfoExtractor.Extract*
+  name: Extract
+  href: Solti.Utils.Primitives.PropertyInfoExtractor.html#Solti_Utils_Primitives_PropertyInfoExtractor_Extract_
+  commentId: Overload:Solti.Utils.Primitives.PropertyInfoExtractor.Extract
+  fullName: Solti.Utils.Primitives.PropertyInfoExtractor.Extract
+  nameWithType: PropertyInfoExtractor.Extract
+- uid: Solti.Utils.Primitives.PropertyInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Func{``0}})
+  name: Extract<T>(Expression<Func<T>>)
+  href: Solti.Utils.Primitives.PropertyInfoExtractor.html#Solti_Utils_Primitives_PropertyInfoExtractor_Extract__1_System_Linq_Expressions_Expression_System_Func___0___
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtractor.Extract``1(System.Linq.Expressions.Expression{System.Func{``0}})
+  name.vb: Extract(Of T)(Expression(Of Func(Of T)))
+  fullName: Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>>)
+  fullName.vb: Solti.Utils.Primitives.PropertyInfoExtractor.Extract(Of T)(System.Linq.Expressions.Expression(Of System.Func(Of T)))
+  nameWithType: PropertyInfoExtractor.Extract<T>(Expression<Func<T>>)
+  nameWithType.vb: PropertyInfoExtractor.Extract(Of T)(Expression(Of Func(Of T)))
+- uid: Solti.Utils.Primitives.PropertyInfoExtractor.Extract``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  name: Extract<T, TT>(Expression<Func<T, TT>>)
+  href: Solti.Utils.Primitives.PropertyInfoExtractor.html#Solti_Utils_Primitives_PropertyInfoExtractor_Extract__2_System_Linq_Expressions_Expression_System_Func___0___1___
+  commentId: M:Solti.Utils.Primitives.PropertyInfoExtractor.Extract``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})
+  name.vb: Extract(Of T, TT)(Expression(Of Func(Of T, TT)))
+  fullName: Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Func<T, TT>>)
+  fullName.vb: Solti.Utils.Primitives.PropertyInfoExtractor.Extract(Of T, TT)(System.Linq.Expressions.Expression(Of System.Func(Of T, TT)))
+  nameWithType: PropertyInfoExtractor.Extract<T, TT>(Expression<Func<T, TT>>)
+  nameWithType.vb: PropertyInfoExtractor.Extract(Of T, TT)(Expression(Of Func(Of T, TT)))
 - uid: Solti.Utils.Primitives.RedBlackTree`1
   name: RedBlackTree<TData>
   href: Solti.Utils.Primitives.RedBlackTree-1.html
