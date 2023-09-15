@@ -5,6 +5,7 @@
 ********************************************************************************/
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 
 using NUnit.Framework;
@@ -19,6 +20,13 @@ namespace Solti.Utils.Primitives.Tests
         {
             MethodInfo meth = Primitives.MethodInfoExtractor.Extract<IList>(l => l.IndexOf(null!));
             Assert.That(meth, Is.EqualTo(typeof(IList).GetMethod("IndexOf")));
+        }
+
+        [Test]
+        public void Extract_ShouldExtractFromInstanceExpressionHavingOutParameter()
+        {
+            MethodInfo meth = Primitives.MethodInfoExtractor.Extract<Dictionary<string, object>, object>((dict, obj) => dict.TryGetValue(null!, out obj));
+            Assert.That(meth, Is.EqualTo(typeof(Dictionary<string, object>).GetMethod("TryGetValue")));
         }
 
         [Test]

@@ -28,5 +28,10 @@ namespace Solti.Utils.Primitives
         /// Extracts the underlying <see cref="MethodInfo"/> from the given <paramref name="exprression"/>
         /// </summary>
         public static MethodInfo Extract<T>(Expression<Action<T>> exprression) => Extract((LambdaExpression) exprression);
+
+        /// <summary>
+        /// Extracts the underlying <see cref="MethodInfo"/> from the given <paramref name="exprression"/>
+        /// </summary>
+        public static MethodInfo Extract<T, TT>(Expression<Action<T, TT>> exprression) => Extract((LambdaExpression) exprression);
     }
 }
