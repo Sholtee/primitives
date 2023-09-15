@@ -344,6 +344,15 @@ references:
   fullName.vb: Solti.Utils.Primitives.MethodInfoExtractor.Extract(Of T)(System.Linq.Expressions.Expression(Of System.Action(Of T)))
   nameWithType: MethodInfoExtractor.Extract<T>(Expression<Action<T>>)
   nameWithType.vb: MethodInfoExtractor.Extract(Of T)(Expression(Of Action(Of T)))
+- uid: Solti.Utils.Primitives.MethodInfoExtractor.Extract``2(System.Linq.Expressions.Expression{System.Action{``0,``1}})
+  name: Extract<T, TT>(Expression<Action<T, TT>>)
+  href: Solti.Utils.Primitives.MethodInfoExtractor.html#Solti_Utils_Primitives_MethodInfoExtractor_Extract__2_System_Linq_Expressions_Expression_System_Action___0___1___
+  commentId: M:Solti.Utils.Primitives.MethodInfoExtractor.Extract``2(System.Linq.Expressions.Expression{System.Action{``0,``1}})
+  name.vb: Extract(Of T, TT)(Expression(Of Action(Of T, TT)))
+  fullName: Solti.Utils.Primitives.MethodInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Action<T, TT>>)
+  fullName.vb: Solti.Utils.Primitives.MethodInfoExtractor.Extract(Of T, TT)(System.Linq.Expressions.Expression(Of System.Action(Of T, TT)))
+  nameWithType: MethodInfoExtractor.Extract<T, TT>(Expression<Action<T, TT>>)
+  nameWithType.vb: MethodInfoExtractor.Extract(Of T, TT)(Expression(Of Action(Of T, TT)))
 - uid: Solti.Utils.Primitives.NodeColor
   name: NodeColor
   href: Solti.Utils.Primitives.NodeColor.html
