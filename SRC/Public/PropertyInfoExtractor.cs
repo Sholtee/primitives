@@ -15,18 +15,18 @@ namespace Solti.Utils.Primitives
     public static class PropertyInfoExtractor
     {
         /// <summary>
-        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="exprression"/>
+        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="expression"/>
         /// </summary>
-        public static PropertyInfo Extract(LambdaExpression exprression) => (PropertyInfo) ((MemberExpression) exprression.Body).Member;
+        public static PropertyInfo Extract(LambdaExpression expression) => (PropertyInfo) ((MemberExpression) expression.Body).Member;
 
         /// <summary>
-        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="exprression"/>
+        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="expression"/>
         /// </summary>
-        public static PropertyInfo Extract<T>(Expression<Func<T>> exprression) => Extract((LambdaExpression) exprression);
+        public static PropertyInfo Extract<T>(Expression<Func<T>> expression) => Extract((LambdaExpression) expression);
 
         /// <summary>
-        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="exprression"/>
+        /// Extracts the underlying <see cref="PropertyInfo"/> from the given <paramref name="expression"/>
         /// </summary>
-        public static PropertyInfo Extract<T, TT>(Expression<Func<T, TT>> exprression) => Extract((LambdaExpression) exprression);
+        public static PropertyInfo Extract<T, TT>(Expression<Func<T, TT>> expression) => Extract((LambdaExpression) expression);
     }
 }

@@ -15,13 +15,13 @@ namespace Solti.Utils.Primitives
     public static class ConstructorInfoExtractor
     {
         /// <summary>
-        /// Extracts the underlying <see cref="ConstructorInfo"/> from the given <paramref name="exprression"/>
+        /// Extracts the underlying <see cref="ConstructorInfo"/> from the given <paramref name="expression"/>
         /// </summary>
-        public static ConstructorInfo Extract(LambdaExpression exprression) => ((NewExpression) exprression.Body).Constructor;
+        public static ConstructorInfo Extract(LambdaExpression expression) => ((NewExpression) expression.Body).Constructor;
 
         /// <summary>
-        /// Extracts the underlying <see cref="ConstructorInfo"/> from the given <paramref name="exprression"/>
+        /// Extracts the underlying <see cref="ConstructorInfo"/> from the given <paramref name="expression"/>
         /// </summary>
-        public static ConstructorInfo Extract<T>(Expression<Func<T>> exprression) => Extract((LambdaExpression) exprression);
+        public static ConstructorInfo Extract<T>(Expression<Func<T>> expression) => Extract((LambdaExpression) expression);
     }
 }

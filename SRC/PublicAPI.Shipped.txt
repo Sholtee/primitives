@@ -129,22 +129,22 @@ static Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey key, System.Func
 static Solti.Utils.Primitives.CacheSlim.Clear<TKey, TValue>() -> void
 static Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey key, System.Func<TKey, TValue> factory) -> TValue
 static Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Instance.get -> TConcreteComparer
-static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression exprression) -> System.Reflection.ConstructorInfo
-static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>> exprression) -> System.Reflection.ConstructorInfo
+static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression expression) -> System.Reflection.ConstructorInfo
+static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>> expression) -> System.Reflection.ConstructorInfo
 static Solti.Utils.Primitives.EnumerableExtensions.ForEach<T>(this System.Collections.Generic.IEnumerable<T> src, System.Action<T, int> callback) -> void
 static Solti.Utils.Primitives.ExpressionExtensions.GetDebugView(this System.Linq.Expressions.Expression expression) -> string
 static Solti.Utils.Primitives.MethodInfoExtensions.ToInstanceDelegate(this System.Reflection.MethodInfo method) -> Solti.Utils.Primitives.InstanceMethod
 static Solti.Utils.Primitives.MethodInfoExtensions.ToStaticDelegate(this System.Reflection.MethodBase methodBase) -> Solti.Utils.Primitives.StaticMethod
-static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression<System.Action> exprression) -> System.Reflection.MethodInfo
-static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression exprression) -> System.Reflection.MethodInfo
-static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Action<T>> exprression) -> System.Reflection.MethodInfo
-static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Action<T, TT>!>! exprression) -> System.Reflection.MethodInfo!
+static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.Expression<System.Action> expression) -> System.Reflection.MethodInfo
+static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression expression) -> System.Reflection.MethodInfo
+static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Action<T>> expression) -> System.Reflection.MethodInfo
+static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Action<T, TT>!>! expression) -> System.Reflection.MethodInfo!
 static Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Instance.get -> TConcrete
 static Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(this System.Reflection.PropertyInfo src) -> Solti.Utils.Primitives.InstanceMethod
 static Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(this System.Reflection.PropertyInfo src) -> Solti.Utils.Primitives.InstanceMethod
-static Solti.Utils.Primitives.PropertyInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression exprression) -> System.Reflection.PropertyInfo
-static Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Func<T, TT>> exprression) -> System.Reflection.PropertyInfo
-static Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>> exprression) -> System.Reflection.PropertyInfo
+static Solti.Utils.Primitives.PropertyInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression expression) -> System.Reflection.PropertyInfo
+static Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Func<T, TT>> expression) -> System.Reflection.PropertyInfo
+static Solti.Utils.Primitives.PropertyInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>> expression) -> System.Reflection.PropertyInfo
 static Solti.Utils.Primitives.RedBlackTreeExtensions.Clone<TData>(this Solti.Utils.Primitives.RedBlackTree<TData> src) -> Solti.Utils.Primitives.RedBlackTree<TData>
 static Solti.Utils.Primitives.RedBlackTreeExtensions.CreateLookup<TKey, TValue>() -> Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>>
 static Solti.Utils.Primitives.RedBlackTreeExtensions.TryAdd<TKey, TValue>(this Solti.Utils.Primitives.RedBlackTree<System.Collections.Generic.KeyValuePair<TKey, TValue>> src, TKey key, TValue value) -> bool
