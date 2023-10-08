@@ -132,6 +132,9 @@
   <data name="NOT_AN_INTERFACE" xml:space="preserve">
     <value>Type must be an interface.</value>
   </data>
+  <data name="NOT_COMPILED" xml:space="preserve">
+    <value>Delegate must be compiled.</value>
+  </data>
   <data name="NOT_EXCLUSIVE" xml:space="preserve">
     <value>Attempt to invoke non thread safe code parallelly.</value>
   </data>

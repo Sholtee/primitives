@@ -115,6 +115,15 @@ namespace Solti.Utils.Primitives.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delegate must be compiled..
+        /// </summary>
+        internal static string NOT_COMPILED {
+            get {
+                return ResourceManager.GetString("NOT_COMPILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attempt to invoke non thread safe code parallelly..
         /// </summary>
         internal static string NOT_EXCLUSIVE {

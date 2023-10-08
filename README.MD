@@ -3,6 +3,7 @@
 
 Commonly used types:
 - [Cache](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Cache.html )
+- [DelegateCompiler](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.DelegateCompiler.html )
 - [Disposable](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.Disposable.html )
 - [DisposableSupportsNotifyOnDispose](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposableSupportsNotifyOnDispose.html )
 - [DisposeByRefObject](https://sholtee.github.io/primitives/doc/Solti.Utils.Primitives.Patterns.DisposeByRefObject.html )
