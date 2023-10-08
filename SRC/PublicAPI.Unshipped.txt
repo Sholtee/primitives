@@ -1,8 +1,1 @@
-﻿Solti.Utils.Primitives.DelegateCompiler
-Solti.Utils.Primitives.DelegateCompiler.Compile() -> void
-Solti.Utils.Primitives.DelegateCompiler.DelegateCompiler() -> void
-Solti.Utils.Primitives.DelegateCompiler.Register<TDelegate>(System.Linq.Expressions.Expression<TDelegate!>! lambda) -> Solti.Utils.Primitives.FutureDelegate<TDelegate!>!
-Solti.Utils.Primitives.FutureDelegate<TDelegate>
-Solti.Utils.Primitives.FutureDelegate<TDelegate>.FutureDelegate() -> void
-Solti.Utils.Primitives.FutureDelegate<TDelegate>.IsCompiled.get -> bool
-Solti.Utils.Primitives.FutureDelegate<TDelegate>.Value.get -> TDelegate!
+﻿
