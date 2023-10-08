@@ -4,11 +4,7 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.IO;
-
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Solti.Utils.Primitives
 {
@@ -17,33 +13,21 @@ namespace Solti.Utils.Primitives
     /// </summary>
     public static class TypeExtensions
     {
-        private static readonly Regex Replacer = new("[<>]", RegexOptions.Compiled);
-
         /// <summary>
         /// Gets the friendly name of the given type.
         /// </summary>
-        public static string GetFriendlyName(this Type src) =>
-            Cache.GetOrAdd(src ?? throw new ArgumentNullException(nameof(src)), static src =>
+        public static string GetFriendlyName(this Type src)
+        {
+            if (src.IsGenericType)
             {
-                using CodeDomProvider codeDomProvider = CodeDomProvider.CreateProvider("C#");
-                CodeTypeReferenceExpression typeReferenceExpression = new(new CodeTypeReference(src));
+                string 
+                    namePrefix = src.FullName.Split(new char[] { '`' }, StringSplitOptions.RemoveEmptyEntries)[0],
+                    genericParameters = string.Join(", ", src.GetGenericArguments().Select(GetFriendlyName));
 
-                using StringWriter writer = new();
+                return namePrefix + "{" + genericParameters + "}";
+            }
 
-                codeDomProvider.GenerateCodeFromExpression(typeReferenceExpression, writer, new CodeGeneratorOptions());
-
-                //
-                // Ezt a nevet meg nem lehet eleresi utvonalakban hasznalni (tartalmaz "<" es ">" karaktereket).
-                //
-
-                string unsafeName = writer.GetStringBuilder().ToString();
-
-                return Replacer.Replace(unsafeName, static m => m.Groups[0].Value switch
-                {
-                    "<" => "{",
-                    ">" => "}",
-                    _ => throw new NotImplementedException()
-                });
-            });
+            return src.FullName ?? src.Name;
+        }
     }
 }
