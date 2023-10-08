@@ -179,6 +179,51 @@ references:
   fullName.vb: Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(Of T)(System.Linq.Expressions.Expression(Of System.Func(Of T)))
   nameWithType: ConstructorInfoExtractor.Extract<T>(Expression<Func<T>>)
   nameWithType.vb: ConstructorInfoExtractor.Extract(Of T)(Expression(Of Func(Of T)))
+- uid: Solti.Utils.Primitives.DelegateCompiler
+  name: DelegateCompiler
+  href: Solti.Utils.Primitives.DelegateCompiler.html
+  commentId: T:Solti.Utils.Primitives.DelegateCompiler
+  fullName: Solti.Utils.Primitives.DelegateCompiler
+  nameWithType: DelegateCompiler
+- uid: Solti.Utils.Primitives.DelegateCompiler.#ctor
+  name: DelegateCompiler()
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler__ctor
+  commentId: M:Solti.Utils.Primitives.DelegateCompiler.#ctor
+  fullName: Solti.Utils.Primitives.DelegateCompiler.DelegateCompiler()
+  nameWithType: DelegateCompiler.DelegateCompiler()
+- uid: Solti.Utils.Primitives.DelegateCompiler.#ctor*
+  name: DelegateCompiler
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler__ctor_
+  commentId: Overload:Solti.Utils.Primitives.DelegateCompiler.#ctor
+  fullName: Solti.Utils.Primitives.DelegateCompiler.DelegateCompiler
+  nameWithType: DelegateCompiler.DelegateCompiler
+- uid: Solti.Utils.Primitives.DelegateCompiler.Compile
+  name: Compile()
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler_Compile
+  commentId: M:Solti.Utils.Primitives.DelegateCompiler.Compile
+  fullName: Solti.Utils.Primitives.DelegateCompiler.Compile()
+  nameWithType: DelegateCompiler.Compile()
+- uid: Solti.Utils.Primitives.DelegateCompiler.Compile*
+  name: Compile
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler_Compile_
+  commentId: Overload:Solti.Utils.Primitives.DelegateCompiler.Compile
+  fullName: Solti.Utils.Primitives.DelegateCompiler.Compile
+  nameWithType: DelegateCompiler.Compile
+- uid: Solti.Utils.Primitives.DelegateCompiler.Register*
+  name: Register
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler_Register_
+  commentId: Overload:Solti.Utils.Primitives.DelegateCompiler.Register
+  fullName: Solti.Utils.Primitives.DelegateCompiler.Register
+  nameWithType: DelegateCompiler.Register
+- uid: Solti.Utils.Primitives.DelegateCompiler.Register``1(System.Linq.Expressions.Expression{``0})
+  name: Register<TDelegate>(Expression<TDelegate>)
+  href: Solti.Utils.Primitives.DelegateCompiler.html#Solti_Utils_Primitives_DelegateCompiler_Register__1_System_Linq_Expressions_Expression___0__
+  commentId: M:Solti.Utils.Primitives.DelegateCompiler.Register``1(System.Linq.Expressions.Expression{``0})
+  name.vb: Register(Of TDelegate)(Expression(Of TDelegate))
+  fullName: Solti.Utils.Primitives.DelegateCompiler.Register<TDelegate>(System.Linq.Expressions.Expression<TDelegate>)
+  fullName.vb: Solti.Utils.Primitives.DelegateCompiler.Register(Of TDelegate)(System.Linq.Expressions.Expression(Of TDelegate))
+  nameWithType: DelegateCompiler.Register<TDelegate>(Expression<TDelegate>)
+  nameWithType.vb: DelegateCompiler.Register(Of TDelegate)(Expression(Of TDelegate))
 - uid: Solti.Utils.Primitives.EnumerableExtensions
   name: EnumerableExtensions
   href: Solti.Utils.Primitives.EnumerableExtensions.html
@@ -218,6 +263,63 @@ references:
   commentId: Overload:Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
   fullName: Solti.Utils.Primitives.ExpressionExtensions.GetDebugView
   nameWithType: ExpressionExtensions.GetDebugView
+- uid: Solti.Utils.Primitives.FutureDelegate`1
+  name: FutureDelegate<TDelegate>
+  href: Solti.Utils.Primitives.FutureDelegate-1.html
+  commentId: T:Solti.Utils.Primitives.FutureDelegate`1
+  name.vb: FutureDelegate(Of TDelegate)
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate)
+  nameWithType: FutureDelegate<TDelegate>
+  nameWithType.vb: FutureDelegate(Of TDelegate)
+- uid: Solti.Utils.Primitives.FutureDelegate`1.#ctor
+  name: FutureDelegate()
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1__ctor
+  commentId: M:Solti.Utils.Primitives.FutureDelegate`1.#ctor
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.FutureDelegate()
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).FutureDelegate()
+  nameWithType: FutureDelegate<TDelegate>.FutureDelegate()
+  nameWithType.vb: FutureDelegate(Of TDelegate).FutureDelegate()
+- uid: Solti.Utils.Primitives.FutureDelegate`1.#ctor*
+  name: FutureDelegate
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1__ctor_
+  commentId: Overload:Solti.Utils.Primitives.FutureDelegate`1.#ctor
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.FutureDelegate
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).FutureDelegate
+  nameWithType: FutureDelegate<TDelegate>.FutureDelegate
+  nameWithType.vb: FutureDelegate(Of TDelegate).FutureDelegate
+- uid: Solti.Utils.Primitives.FutureDelegate`1.IsCompiled
+  name: IsCompiled
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1_IsCompiled
+  commentId: P:Solti.Utils.Primitives.FutureDelegate`1.IsCompiled
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.IsCompiled
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).IsCompiled
+  nameWithType: FutureDelegate<TDelegate>.IsCompiled
+  nameWithType.vb: FutureDelegate(Of TDelegate).IsCompiled
+- uid: Solti.Utils.Primitives.FutureDelegate`1.IsCompiled*
+  name: IsCompiled
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1_IsCompiled_
+  commentId: Overload:Solti.Utils.Primitives.FutureDelegate`1.IsCompiled
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.IsCompiled
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).IsCompiled
+  nameWithType: FutureDelegate<TDelegate>.IsCompiled
+  nameWithType.vb: FutureDelegate(Of TDelegate).IsCompiled
+- uid: Solti.Utils.Primitives.FutureDelegate`1.Value
+  name: Value
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1_Value
+  commentId: P:Solti.Utils.Primitives.FutureDelegate`1.Value
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.Value
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).Value
+  nameWithType: FutureDelegate<TDelegate>.Value
+  nameWithType.vb: FutureDelegate(Of TDelegate).Value
+- uid: Solti.Utils.Primitives.FutureDelegate`1.Value*
+  name: Value
+  href: Solti.Utils.Primitives.FutureDelegate-1.html#Solti_Utils_Primitives_FutureDelegate_1_Value_
+  commentId: Overload:Solti.Utils.Primitives.FutureDelegate`1.Value
+  fullName: Solti.Utils.Primitives.FutureDelegate<TDelegate>.Value
+  fullName.vb: Solti.Utils.Primitives.FutureDelegate(Of TDelegate).Value
+  nameWithType: FutureDelegate<TDelegate>.Value
+  nameWithType.vb: FutureDelegate(Of TDelegate).Value
 - uid: Solti.Utils.Primitives.InstanceMethod
   name: InstanceMethod
   href: Solti.Utils.Primitives.InstanceMethod.html
