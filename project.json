@@ -4,8 +4,8 @@
   "app": "\\SRC\\Primitives.csproj",
   "vendor": "\\Vendor",
   "tests": "\\TEST\\Primitives.Tests.csproj",
+  "coverage": ["Solti.Utils.Primitives.dll"],
   "artifacts": "\\Artifacts",
-  "coveragefilter": "+[Solti.Utils.Primitives*]* -[Solti.Utils.Primitives.Tests]*",
   "perftests": "\\PERF\\Primitives.Perf.csproj",
   "docsbranch": "gh-pages",
   "CI": "AppVeyor"
