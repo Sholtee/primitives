@@ -23,6 +23,13 @@ namespace Solti.Utils.Primitives.Tests
         }
 
         [Test]
+        public void Extract_ShouldExtractFromIndexerExpression()
+        {
+            MethodInfo meth = Primitives.MethodInfoExtractor.Extract<IList, object>(l => l[0]);
+            Assert.That(meth, Is.EqualTo(typeof(IList).GetMethod("get_Item")));
+        }
+
+        [Test]
         public void Extract_ShouldExtractFromInstanceExpressionHavingOutParameter()
         {
             MethodInfo meth = Primitives.MethodInfoExtractor.Extract<Dictionary<string, object>, object>((dict, obj) => dict.TryGetValue(null!, out obj));

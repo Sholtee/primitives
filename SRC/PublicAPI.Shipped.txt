@@ -147,6 +147,7 @@ static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expression
 static Solti.Utils.Primitives.MethodInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression! expression) -> System.Reflection.MethodInfo!
 static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Action<T, TT>!>! expression) -> System.Reflection.MethodInfo!
 static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Action<T>!>! expression) -> System.Reflection.MethodInfo!
+static Solti.Utils.Primitives.MethodInfoExtractor.Extract<T, TT>(System.Linq.Expressions.Expression<System.Func<T, TT>!>! expression) -> System.Reflection.MethodInfo!
 static Solti.Utils.Primitives.Patterns.Singleton<TConcrete>.Instance.get -> TConcrete!
 static Solti.Utils.Primitives.PropertyInfoExtensions.ToGetter(this System.Reflection.PropertyInfo! src) -> Solti.Utils.Primitives.InstanceMethod!
 static Solti.Utils.Primitives.PropertyInfoExtensions.ToSetter(this System.Reflection.PropertyInfo! src) -> Solti.Utils.Primitives.InstanceMethod!
