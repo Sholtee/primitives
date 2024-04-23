@@ -17,15 +17,17 @@ namespace Solti.Utils.Primitives
     [SuppressMessage("Naming", "CA1724:Type names should not match namespaces")]
     public static class Cache 
     {
-        private sealed class CompositeKey<TKey>(TKey key, string scope)
+        private sealed class CacheContext<TKey, TValue>(TKey key, string scope, Func<TKey, TValue> factory)
         {
             public TKey Key { get; } = key;
 
             public string Scope { get; } = scope;
 
+            public Func<TKey, TValue> Factory { get; } = factory;
+
             public override int GetHashCode() => unchecked((Key?.GetHashCode() ?? 0) ^ (Scope?.GetHashCode() ?? 0));
 
-            public override bool Equals(object obj) => obj is CompositeKey<TKey> other &&
+            public override bool Equals(object obj) => obj is CacheContext<TKey, TValue> other &&
                 EqualityComparer<TKey>.Default.Equals(other.Key, Key) && 
                 other.Scope == Scope;
         }
@@ -33,13 +35,13 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Clears the underlying store associated with the given key and value type.
         /// </summary>
-        public static void Clear<TKey, TValue>() where TValue: class => CacheSlim.Clear<CompositeKey<TKey>, TValue>();
+        public static void Clear<TKey, TValue>() where TValue: class => CacheSlim.Clear<CacheContext<TKey, TValue>, TValue>();
 
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
         public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") where TValue: class =>
-            CacheSlim.GetOrAdd(new CompositeKey<TKey>(key, scope), k => factory(k.Key));
+            CacheSlim.GetOrAdd(new CacheContext<TKey, TValue>(key, scope, factory), static ctx => ctx.Factory(ctx.Key));
     }
 
     /// <summary>
