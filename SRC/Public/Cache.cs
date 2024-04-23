@@ -17,82 +17,29 @@ namespace Solti.Utils.Primitives
     [SuppressMessage("Naming", "CA1724:Type names should not match namespaces")]
     public static class Cache 
     {
-        private static class Backend<TKey, TValue> 
+        private sealed class CompositeKey<TKey>(TKey key, string scope)
         {
-            private static readonly ConcurrentDictionary<CacheEntry, CacheEntry> FImplementation = new();
+            public TKey Key { get; } = key;
 
-            //
-            // We don't use factory function here since it may get called more than once if the GetOrAdd()
-            // invoked with the same key parallelly:
-            // https://docs.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentdictionary-2.getoradd
-            //
+            public string Scope { get; } = scope;
 
-            private sealed class CacheEntry
-            {
-                private readonly Func<TKey, TValue> FFactory;
-                private readonly TKey FKey;
-                private readonly string FScope;
-                private readonly int FHashCode;
-                private TValue? FValue;
+            public override int GetHashCode() => unchecked((Key?.GetHashCode() ?? 0) ^ (Scope?.GetHashCode() ?? 0));
 
-                public CacheEntry(TKey key, string scope, Func<TKey, TValue> factory)
-                {
-                    FFactory = factory;
-                    FKey = key;
-                    FScope = scope;
-                    #pragma warning disable CA1307 // Specify StringComparison for clarity
-                    FHashCode = unchecked((key?.GetHashCode() ?? 0) ^ (scope?.GetHashCode() ?? 0));
-                    #pragma warning restore CA1307
-                }
-
-                public TValue Value
-                {
-                    get
-                    {
-                        if (FValue is null)
-                            lock (FFactory)
-                                FValue ??= FFactory(FKey);
-                        return FValue;
-                    }
-                }
-
-                public override int GetHashCode() => FHashCode;
-
-                public override bool Equals(object obj)
-                {
-                    CacheEntry that = (CacheEntry) obj;
-
-                    return
-                        that.FHashCode == FHashCode &&
-
-                        //
-                        // Comparing the hashcodes is not enough since special types (e.g.: delegates) cannot be distinguished by hash.
-                        //
-
-                        EqualityComparer<TKey>.Default.Equals(that.FKey, FKey) && 
-                        that.FScope == FScope;
-                }
-            }
-
-            public static TValue GetOrAdd(TKey key, string scope, Func<TKey, TValue> factory)
-            {
-                CacheEntry entry = new(key, scope, factory);
-
-                return FImplementation.GetOrAdd(entry,  entry).Value;
-            }
-
-            public static void Clear() => FImplementation.Clear();
+            public override bool Equals(object obj) => obj is CompositeKey<TKey> other &&
+                EqualityComparer<TKey>.Default.Equals(other.Key, Key) && 
+                other.Scope == Scope;
         }
 
         /// <summary>
         /// Clears the underlying store associated with the given key and value type.
         /// </summary>
-        public static void Clear<TKey, TValue>() => Backend<TKey, TValue>.Clear();
+        public static void Clear<TKey, TValue>() where TValue: class => CacheSlim.Clear<CompositeKey<TKey>, TValue>();
 
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
-        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") => Backend<TKey, TValue>.GetOrAdd(key, scope, factory);
+        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") where TValue: class =>
+            CacheSlim.GetOrAdd(new CompositeKey<TKey>(key, scope), k => factory(k.Key));
     }
 
     /// <summary>
@@ -100,7 +47,7 @@ namespace Solti.Utils.Primitives
     /// </summary>
     public static class CacheSlim
     {
-        private static class Backend<TKey, TValue>
+        private static class Backend<TKey, TValue> where TValue: class
         {
             private static readonly ConcurrentDictionary<TKey, CacheEntry> FImplementation = new();
 
@@ -110,25 +57,17 @@ namespace Solti.Utils.Primitives
             // https://docs.microsoft.com/en-us/dotnet/api/system.collections.concurrent.concurrentdictionary-2.getoradd
             //
 
-            private sealed class CacheEntry
+            private sealed class CacheEntry(TKey key, Func<TKey, TValue> factory)
             {
-                private readonly Func<TKey, TValue> FFactory;
-                private readonly TKey FKey;
                 private TValue? FValue;
-
-                public CacheEntry(TKey key, Func<TKey, TValue> factory)
-                {
-                    FFactory = factory;
-                    FKey = key;
-                }
 
                 public TValue Value
                 {
                     get
                     {
                         if (FValue is null)
-                            lock (FFactory)
-                                FValue ??= FFactory(FKey);
+                            lock (factory)
+                                FValue ??= factory(key);
                         return FValue;
                     }
                 }
@@ -146,11 +85,11 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Clears the underlying store associated with the given key and value type.
         /// </summary>
-        public static void Clear<TKey, TValue>() => Backend<TKey, TValue>.Clear();
+        public static void Clear<TKey, TValue>() where TValue: class => Backend<TKey, TValue>.Clear();
 
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
-        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory) => Backend<TKey, TValue>.GetOrAdd(key, factory);
+        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory) where TValue : class => Backend<TKey, TValue>.GetOrAdd(key, factory);
     }
 }

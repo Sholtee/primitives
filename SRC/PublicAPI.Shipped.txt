@@ -133,9 +133,9 @@ Solti.Utils.Primitives.Threading.SafeEnumerator<T>.SafeEnumerator(System.Collect
 Solti.Utils.Primitives.Threading.TaskExtensions
 Solti.Utils.Primitives.TypeExtensions
 static Solti.Utils.Primitives.Cache.Clear<TKey, TValue>() -> void
-static Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey key, System.Func<TKey, TValue>! factory, string! scope = "") -> TValue
+static Solti.Utils.Primitives.Cache.GetOrAdd<TKey, TValue>(TKey key, System.Func<TKey, TValue!>! factory, string! scope = "") -> TValue!
 static Solti.Utils.Primitives.CacheSlim.Clear<TKey, TValue>() -> void
-static Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey key, System.Func<TKey, TValue>! factory) -> TValue
+static Solti.Utils.Primitives.CacheSlim.GetOrAdd<TKey, TValue>(TKey key, System.Func<TKey, TValue!>! factory) -> TValue!
 static Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Instance.get -> TConcreteComparer!
 static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract(System.Linq.Expressions.LambdaExpression! expression) -> System.Reflection.ConstructorInfo!
 static Solti.Utils.Primitives.ConstructorInfoExtractor.Extract<T>(System.Linq.Expressions.Expression<System.Func<T>!>! expression) -> System.Reflection.ConstructorInfo!

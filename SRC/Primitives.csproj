@@ -7,7 +7,7 @@
     <AssemblyName>Solti.Utils.Primitives</AssemblyName>
     <RootNamespace>Solti.Utils.Primitives</RootNamespace>
     <Configurations>Debug;Release</Configurations>
-    <LangVersion>9</LangVersion>
+    <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
