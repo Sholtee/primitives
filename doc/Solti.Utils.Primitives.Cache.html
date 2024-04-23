@@ -65,7 +65,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Clear&lt;TKey, TValue&gt;()</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Clear&lt;TKey, TValue&gt;()
+    where TValue : class</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -93,7 +94,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TValue GetOrAdd&lt;TKey, TValue&gt;(TKey key, Func&lt;TKey, TValue&gt; factory, string scope = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">public static TValue GetOrAdd&lt;TKey, TValue&gt;(TKey key, Func&lt;TKey, TValue&gt; factory, string scope = &quot;&quot;)
+    where TValue : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
