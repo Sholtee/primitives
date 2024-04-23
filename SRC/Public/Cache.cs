@@ -17,31 +17,62 @@ namespace Solti.Utils.Primitives
     [SuppressMessage("Naming", "CA1724:Type names should not match namespaces")]
     public static class Cache 
     {
-        private sealed class CacheContext<TKey, TValue>(TKey key, string scope, Func<TKey, TValue> factory)
+        private static class Backend<TKey, TValue> where TValue : class
         {
-            public TKey Key { get; } = key;
+            private static readonly ConcurrentDictionary<CacheContext, CacheContext> FImplementation = new();
 
-            public string Scope { get; } = scope;
+            private sealed class CacheContext(TKey key, string scope, Func<TKey, TValue> factory)
+            {
+                private TValue? FValue;
+                private readonly TKey FKey = key;
+                private readonly string FScope = scope;
+                private readonly Func<TKey, TValue> FFactory = factory;
 
-            public Func<TKey, TValue> Factory { get; } = factory;
+                public TValue Value
+                {
+                    get
+                    {
+                        if (FValue is null)
+                            //
+                            // This instance never gets exposed so it's safe to lock on it
+                            //
 
-            public override int GetHashCode() => unchecked((Key?.GetHashCode() ?? 0) ^ (Scope?.GetHashCode() ?? 0));
+                            lock (this)
+                                FValue ??= FFactory(FKey);
+                        return FValue;
+                    }
+                }
 
-            public override bool Equals(object obj) => obj is CacheContext<TKey, TValue> other &&
-                EqualityComparer<TKey>.Default.Equals(other.Key, Key) && 
-                other.Scope == Scope;
+                public override int GetHashCode() =>
+                    unchecked((FKey?.GetHashCode() ?? 0) ^ (FScope?.GetHashCode() ?? 0));
+
+                public override bool Equals(object obj) =>
+                    obj is CacheContext other && EqualityComparer<TKey>.Default.Equals(other.FKey, FKey) && other.FScope == FScope;
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static TValue GetOrAdd(TKey key, string scope, Func<TKey, TValue> factory)
+            {
+                CacheContext context = new(key, scope, factory);
+                return FImplementation.GetOrAdd(context, context).Value;
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static void Clear() => FImplementation.Clear();
         }
 
         /// <summary>
         /// Clears the underlying store associated with the given key and value type.
         /// </summary>
-        public static void Clear<TKey, TValue>() where TValue: class => CacheSlim.Clear<CacheContext<TKey, TValue>, TValue>();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Clear<TKey, TValue>() where TValue: class => Backend<TKey, TValue>.Clear();
 
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
-        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") where TValue: class =>
-            CacheSlim.GetOrAdd(new CacheContext<TKey, TValue>(key, scope, factory), static ctx => ctx.Factory(ctx.Key));
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory, [CallerMemberName] string scope = "") where TValue : class =>
+            Backend<TKey, TValue>.GetOrAdd(key, scope, factory);
     }
 
     /// <summary>
@@ -68,7 +99,11 @@ namespace Solti.Utils.Primitives
                     get
                     {
                         if (FValue is null)
-                            lock (factory)
+                            //
+                            // This instance never gets exposed so it's safe to lock on it
+                            //
+
+                            lock (this)
                                 FValue ??= factory(key);
                         return FValue;
                     }
@@ -87,11 +122,13 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Clears the underlying store associated with the given key and value type.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Clear<TKey, TValue>() where TValue: class => Backend<TKey, TValue>.Clear();
 
         /// <summary>
         /// Does what its name suggests.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TValue GetOrAdd<TKey, TValue>(TKey key, Func<TKey, TValue> factory) where TValue : class => Backend<TKey, TValue>.GetOrAdd(key, factory);
     }
 }
