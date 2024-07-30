@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> | Benchmark Results </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content=" | Benchmark Results ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.17763.5576/1809/October2018Update/Redstone5) (Hyper-V)
+Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
+.NET SDK 8.0.300
+  [Host]     : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
+
+</code></pre><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Input</th>
+<th style="text-align:right">Mean</th>
+<th style="text-align:right">Error</th>
+<th style="text-align:right">StdDev</th>
+<th style="text-align:right">Ratio</th>
+<th style="text-align:right">RatioSD</th>
+<th style="text-align:right">Allocated</th>
+<th style="text-align:right">Alloc Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td>****</td>
+<td style="text-align:right"><strong>4.3764 ns</strong></td>
+<td style="text-align:right"><strong>0.0699 ns</strong></td>
+<td style="text-align:right"><strong>0.0654 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExcept</td>
+<td></td>
+<td style="text-align:right">34.9837 ns</td>
+<td style="text-align:right">0.2504 ns</td>
+<td style="text-align:right">0.2091 ns</td>
+<td style="text-align:right">8.01</td>
+<td style="text-align:right">0.11</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td></td>
+<td style="text-align:right">0.3094 ns</td>
+<td style="text-align:right">0.0188 ns</td>
+<td style="text-align:right">0.0167 ns</td>
+<td style="text-align:right">0.07</td>
+<td style="text-align:right">0.00</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td><strong>0</strong></td>
+<td style="text-align:right"><strong>6.8474 ns</strong></td>
+<td style="text-align:right"><strong>0.0934 ns</strong></td>
+<td style="text-align:right"><strong>0.0828 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExcept</td>
+<td>0</td>
+<td style="text-align:right">37.6836 ns</td>
+<td style="text-align:right">0.5107 ns</td>
+<td style="text-align:right">0.4265 ns</td>
+<td style="text-align:right">5.50</td>
+<td style="text-align:right">0.08</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td>0</td>
+<td style="text-align:right">5.3663 ns</td>
+<td style="text-align:right">0.1455 ns</td>
+<td style="text-align:right">0.1732 ns</td>
+<td style="text-align:right">0.80</td>
+<td style="text-align:right">0.03</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td><strong>01</strong></td>
+<td style="text-align:right"><strong>9.9223 ns</strong></td>
+<td style="text-align:right"><strong>0.1119 ns</strong></td>
+<td style="text-align:right"><strong>0.1046 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExcept</td>
+<td>01</td>
+<td style="text-align:right">39.3440 ns</td>
+<td style="text-align:right">0.2485 ns</td>
+<td style="text-align:right">0.1940 ns</td>
+<td style="text-align:right">3.96</td>
+<td style="text-align:right">0.05</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td>01</td>
+<td style="text-align:right">10.2931 ns</td>
+<td style="text-align:right">0.1006 ns</td>
+<td style="text-align:right">0.0941 ns</td>
+<td style="text-align:right">1.04</td>
+<td style="text-align:right">0.01</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td><strong>01234</strong></td>
+<td style="text-align:right"><strong>18.0547 ns</strong></td>
+<td style="text-align:right"><strong>0.1514 ns</strong></td>
+<td style="text-align:right"><strong>0.1416 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExcept</td>
+<td>01234</td>
+<td style="text-align:right">45.1123 ns</td>
+<td style="text-align:right">0.5104 ns</td>
+<td style="text-align:right">0.4774 ns</td>
+<td style="text-align:right">2.50</td>
+<td style="text-align:right">0.02</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td>01234</td>
+<td style="text-align:right">23.7922 ns</td>
+<td style="text-align:right">0.3712 ns</td>
+<td style="text-align:right">0.3472 ns</td>
+<td style="text-align:right">1.32</td>
+<td style="text-align:right">0.02</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td><strong>01234(...)+-.eE [45]</strong></td>
+<td style="text-align:right"><strong>35.2128 ns</strong></td>
+<td style="text-align:right"><strong>0.2865 ns</strong></td>
+<td style="text-align:right"><strong>0.2680 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExcept</td>
+<td>01234(...)+-.eE [45]</td>
+<td style="text-align:right">127.6376 ns</td>
+<td style="text-align:right">0.6078 ns</td>
+<td style="text-align:right">0.5686 ns</td>
+<td style="text-align:right">3.62</td>
+<td style="text-align:right">0.02</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td>01234(...)+-.eE [45]</td>
+<td style="text-align:right">223.9127 ns</td>
+<td style="text-align:right">2.0619 ns</td>
+<td style="text-align:right">1.8278 ns</td>
+<td style="text-align:right">6.36</td>
+<td style="text-align:right">0.08</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

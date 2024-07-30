@@ -37,12 +37,12 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<pre><code class="lang-ini">
-BenchmarkDotNet=v0.13.4, OS=Windows 10 (10.0.17763.2366/1809/October2018Update/Redstone5), VM=Hyper-V
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.17763.5576/1809/October2018Update/Redstone5) (Hyper-V)
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
-.NET SDK=7.0.100
-  [Host]     : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
-  DefaultJob : .NET 6.0.11 (6.0.1122.52304), X64 RyuJIT AVX2
+.NET SDK 8.0.300
+  [Host]     : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
 
 </code></pre><table>
 <thead>
@@ -59,20 +59,20 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <tbody>
 <tr>
 <td>GetOrAdd</td>
-<td style="text-align:right">51.58 ns</td>
-<td style="text-align:right">0.401 ns</td>
-<td style="text-align:right">0.335 ns</td>
-<td style="text-align:right">51.52 ns</td>
+<td style="text-align:right">45.74 ns</td>
+<td style="text-align:right">3.068 ns</td>
+<td style="text-align:right">9.046 ns</td>
+<td style="text-align:right">40.07 ns</td>
 <td style="text-align:right">0.0025</td>
 <td style="text-align:right">48 B</td>
 </tr>
 <tr>
 <td>GetOrAddSlim</td>
-<td style="text-align:right">44.05 ns</td>
-<td style="text-align:right">2.220 ns</td>
-<td style="text-align:right">6.547 ns</td>
-<td style="text-align:right">46.81 ns</td>
-<td style="text-align:right">0.0021</td>
+<td style="text-align:right">17.65 ns</td>
+<td style="text-align:right">0.229 ns</td>
+<td style="text-align:right">0.192 ns</td>
+<td style="text-align:right">17.66 ns</td>
+<td style="text-align:right">0.0022</td>
 <td style="text-align:right">40 B</td>
 </tr>
 </tbody>
