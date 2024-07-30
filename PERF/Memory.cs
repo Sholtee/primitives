@@ -11,7 +11,7 @@ using BenchmarkDotNet.Attributes;
 namespace Solti.Utils.Primitives.Perf
 {
     [MemoryDiagnoser]
-    public class HashTests
+    public class MurmurHash
     {
         [Params("", "a", "ab", "abcd", "abcdefgh", "abcdefghijklmnopqrstuvwz")]
         public string Input { get; set; } = null!;
@@ -27,7 +27,7 @@ namespace Solti.Utils.Primitives.Perf
     }
 
     [MemoryDiagnoser]
-    public class IndexOfAnyExceptTests
+    public class IndexOfAnyExcept
     {
         const string TEST_STR = "0123456789+-.eE";
 
@@ -50,7 +50,7 @@ namespace Solti.Utils.Primitives.Perf
         public int IndexOfAnyExceptNative() => System.MemoryExtensions.IndexOfAnyExcept(Input.AsSpan(), TEST_STR.AsSpan());
 
         [Benchmark]
-        public int IndexOfAnyExcept() => MemoryExtensions.IndexOfAnyExceptFallback(Input.AsSpan(), TEST_STR.AsSpan());
+        public int IndexOfAnyExceptFallback() => MemoryExtensions.IndexOfAnyExceptFallback(Input.AsSpan(), TEST_STR.AsSpan());
 
         [Benchmark]
         public int IndexOfAnyExceptNotOptimized()
