@@ -172,3 +172,6 @@ static Solti.Utils.Primitives.TypeExtensions.GetFriendlyName(this System.Type! s
 virtual Solti.Utils.Primitives.ComparerBase<TConcreteComparer, T>.Equals(T x, T y) -> bool
 virtual Solti.Utils.Primitives.Patterns.Disposable.AsyncDispose() -> System.Threading.Tasks.ValueTask
 virtual Solti.Utils.Primitives.Patterns.Disposable.Dispose(bool disposeManaged) -> void
+Solti.Utils.Primitives.MemoryExtensions
+static Solti.Utils.Primitives.MemoryExtensions.GetHashCode(this System.ReadOnlySpan<char> self, bool ignoreCase, int seed = 1986) -> int
+static Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(this System.ReadOnlySpan<char> span, System.ReadOnlySpan<char> searchValues) -> int

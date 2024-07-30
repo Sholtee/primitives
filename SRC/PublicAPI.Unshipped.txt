@@ -1,3 +1,1 @@
-﻿Solti.Utils.Primitives.MemoryExtensions
-static Solti.Utils.Primitives.MemoryExtensions.GetHashCode(this System.ReadOnlySpan<char> self, bool ignoreCase, int seed = 1986) -> int
-static Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(this System.ReadOnlySpan<char> span, System.ReadOnlySpan<char> searchValues) -> int
+﻿
