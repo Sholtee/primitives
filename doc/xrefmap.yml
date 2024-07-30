@@ -380,6 +380,42 @@ references:
   commentId: Overload:Solti.Utils.Primitives.InstanceMethod.Invoke
   fullName: Solti.Utils.Primitives.InstanceMethod.Invoke
   nameWithType: InstanceMethod.Invoke
+- uid: Solti.Utils.Primitives.MemoryExtensions
+  name: MemoryExtensions
+  href: Solti.Utils.Primitives.MemoryExtensions.html
+  commentId: T:Solti.Utils.Primitives.MemoryExtensions
+  fullName: Solti.Utils.Primitives.MemoryExtensions
+  nameWithType: MemoryExtensions
+- uid: Solti.Utils.Primitives.MemoryExtensions.GetHashCode(System.ReadOnlySpan{System.Char},System.Boolean,System.Int32)
+  name: GetHashCode(ReadOnlySpan<Char>, Boolean, Int32)
+  href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_GetHashCode_System_ReadOnlySpan_System_Char__System_Boolean_System_Int32_
+  commentId: M:Solti.Utils.Primitives.MemoryExtensions.GetHashCode(System.ReadOnlySpan{System.Char},System.Boolean,System.Int32)
+  name.vb: GetHashCode(ReadOnlySpan(Of Char), Boolean, Int32)
+  fullName: Solti.Utils.Primitives.MemoryExtensions.GetHashCode(System.ReadOnlySpan<System.Char>, System.Boolean, System.Int32)
+  fullName.vb: Solti.Utils.Primitives.MemoryExtensions.GetHashCode(System.ReadOnlySpan(Of System.Char), System.Boolean, System.Int32)
+  nameWithType: MemoryExtensions.GetHashCode(ReadOnlySpan<Char>, Boolean, Int32)
+  nameWithType.vb: MemoryExtensions.GetHashCode(ReadOnlySpan(Of Char), Boolean, Int32)
+- uid: Solti.Utils.Primitives.MemoryExtensions.GetHashCode*
+  name: GetHashCode
+  href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_GetHashCode_
+  commentId: Overload:Solti.Utils.Primitives.MemoryExtensions.GetHashCode
+  fullName: Solti.Utils.Primitives.MemoryExtensions.GetHashCode
+  nameWithType: MemoryExtensions.GetHashCode
+- uid: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})
+  name: IndexOfAnyExcept(ReadOnlySpan<Char>, ReadOnlySpan<Char>)
+  href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_System_ReadOnlySpan_System_Char__System_ReadOnlySpan_System_Char__
+  commentId: M:Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})
+  name.vb: IndexOfAnyExcept(ReadOnlySpan(Of Char), ReadOnlySpan(Of Char))
+  fullName: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan<System.Char>, System.ReadOnlySpan<System.Char>)
+  fullName.vb: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan(Of System.Char), System.ReadOnlySpan(Of System.Char))
+  nameWithType: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan<Char>, ReadOnlySpan<Char>)
+  nameWithType.vb: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan(Of Char), ReadOnlySpan(Of Char))
+- uid: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept*
+  name: IndexOfAnyExcept
+  href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_
+  commentId: Overload:Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept
+  fullName: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept
+  nameWithType: MemoryExtensions.IndexOfAnyExcept
 - uid: Solti.Utils.Primitives.MethodInfoExtensions
   name: MethodInfoExtensions
   href: Solti.Utils.Primitives.MethodInfoExtensions.html

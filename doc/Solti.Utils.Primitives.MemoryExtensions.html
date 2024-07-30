@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Cache
+    <title>Class MemoryExtensions
    | Primitives </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Cache
+    <meta name="title" content="Class MemoryExtensions
    | Primitives ">
     <meta name="generator" content="docfx 2.59.3.0">
     
@@ -37,65 +37,35 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.Cache">
+            <article class="content wrap" id="_content" data-uid="Solti.Utils.Primitives.MemoryExtensions">
   
   
-  <h1 id="Solti_Utils_Primitives_Cache" data-uid="Solti.Utils.Primitives.Cache" class="text-break">Class Cache
+  <h1 id="Solti_Utils_Primitives_MemoryExtensions" data-uid="Solti.Utils.Primitives.MemoryExtensions" class="text-break">Class MemoryExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Represents a generic cache where the items have no expiration.</p>
+  <div class="markdown level0 summary"><p>Defines some extensions over the <span class="xref">System.ReadOnlySpan&lt;&gt;</span> type</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Cache</span></div>
+    <div class="level1"><span class="xref">MemoryExtensions</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Solti.Utils.Primitives.html">Solti.Utils.Primitives</a></h6>
   <h6><strong>Assembly</strong>: Solti.Utils.Primitives.dll</h6>
-  <h5 id="Solti_Utils_Primitives_Cache_syntax">Syntax</h5>
+  <h5 id="Solti_Utils_Primitives_MemoryExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class Cache : Object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class MemoryExtensions : Object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="Solti_Utils_Primitives_Cache_Clear_" data-uid="Solti.Utils.Primitives.Cache.Clear*"></a>
-  <h4 id="Solti_Utils_Primitives_Cache_Clear__2" data-uid="Solti.Utils.Primitives.Cache.Clear``2">Clear&lt;TKey, TValue&gt;()</h4>
-  <div class="markdown level1 summary"><p>Clears the underlying store associated with the given key and value type.</p>
+  <a id="Solti_Utils_Primitives_MemoryExtensions_GetHashCode_" data-uid="Solti.Utils.Primitives.MemoryExtensions.GetHashCode*"></a>
+  <h4 id="Solti_Utils_Primitives_MemoryExtensions_GetHashCode_System_ReadOnlySpan_System_Char__System_Boolean_System_Int32_" data-uid="Solti.Utils.Primitives.MemoryExtensions.GetHashCode(System.ReadOnlySpan{System.Char},System.Boolean,System.Int32)">GetHashCode(ReadOnlySpan&lt;Char&gt;, Boolean, Int32)</h4>
+  <div class="markdown level1 summary"><p>Hashes the given character span using MURMUR hash</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Clear&lt;TKey, TValue&gt;()
-    where TValue : class</code></pre>
-  </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Solti_Utils_Primitives_Cache_GetOrAdd_" data-uid="Solti.Utils.Primitives.Cache.GetOrAdd*"></a>
-  <h4 id="Solti_Utils_Primitives_Cache_GetOrAdd__2___0_System_Func___0___1__System_String_" data-uid="Solti.Utils.Primitives.Cache.GetOrAdd``2(``0,System.Func{``0,``1},System.String)">GetOrAdd&lt;TKey, TValue&gt;(TKey, Func&lt;TKey, TValue&gt;, String)</h4>
-  <div class="markdown level1 summary"><p>Does what its name suggests.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TValue GetOrAdd&lt;TKey, TValue&gt;(TKey key, Func&lt;TKey, TValue&gt; factory, string scope = &quot;&quot;)
-    where TValue : class</code></pre>
+    <pre><code class="lang-csharp hljs">public static int GetHashCode(this ReadOnlySpan&lt;char&gt; self, bool ignoreCase, int seed = 1986)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -108,18 +78,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<span class="xref">System.Char</span>&gt;</td>
+        <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;TKey, TValue&gt;</td>
-        <td><span class="parametername">factory</span></td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreCase</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">scope</span></td>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seed</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -134,26 +104,53 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TValue</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="typeParameters">Type Parameters</h5>
+  <a id="Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_" data-uid="Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept*"></a>
+  <h4 id="Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_System_ReadOnlySpan_System_Char__System_ReadOnlySpan_System_Char__" data-uid="Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char})">IndexOfAnyExcept(ReadOnlySpan&lt;Char&gt;, ReadOnlySpan&lt;Char&gt;)</h4>
+  <div class="markdown level1 summary"><p>Returns the index of the first character that is not in the <code data-dev-comment-type="paramref" class="paramref">searchValues</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int IndexOfAnyExcept(this ReadOnlySpan&lt;char&gt; span, ReadOnlySpan&lt;char&gt; searchValues)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
+        <th>Type</th>
         <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">TKey</span></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<span class="xref">System.Char</span>&gt;</td>
+        <td><span class="parametername">span</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="parametername">TValue</span></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<span class="xref">System.Char</span>&gt;</td>
+        <td><span class="parametername">searchValues</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
