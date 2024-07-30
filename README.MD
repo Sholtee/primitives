@@ -18,3 +18,6 @@ Commonly used types:
 [API docs](https://sholtee.github.io/primitives )
 
 [Benchmark Results](https://sholtee.github.io/primitives/perf/ )
+
+## Supported frameworks
+This project currently targets `netstandard2.0` as well as `netstandard2.1` and had been tested against `net472`, `netcoreapp3.1`, `net6.0`, and `net8.0`.
