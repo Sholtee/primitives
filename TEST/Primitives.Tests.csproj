@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net472;netcoreapp3.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net472;netcoreapp3.1;net6.0;net80</TargetFrameworks>
 	<CheckEolTargetFramework>false</CheckEolTargetFramework>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
@@ -9,7 +9,7 @@
     <RootNamespace>Solti.Utils.Primitives.Tests</RootNamespace>
     <Configurations>Debug</Configurations>
     <OutputType>Library</OutputType>
-    <LangVersion>9</LangVersion>
+    <LangVersion>12</LangVersion>
     <StartupObject />
     <OutputPath>..\BIN\$(Configuration)\</OutputPath>
   </PropertyGroup>
