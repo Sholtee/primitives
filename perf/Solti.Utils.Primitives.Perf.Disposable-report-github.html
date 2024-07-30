@@ -42,7 +42,7 @@ BenchmarkDotNet v0.13.12, Windows 10 (10.0.17763.5576/1809/October2018Update/Red
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 .NET SDK 8.0.300
   [Host]     : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
-  Job-LXUOGT : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
+  Job-LHJTPI : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
 
 InvocationCount=10000000  RunStrategy=Throughput  
 </code></pre><table>
@@ -61,18 +61,18 @@ InvocationCount=10000000  RunStrategy=Throughput
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>17.60 ns</strong></td>
-<td style="text-align:right"><strong>0.126 ns</strong></td>
-<td style="text-align:right"><strong>0.105 ns</strong></td>
+<td style="text-align:right"><strong>20.23 ns</strong></td>
+<td style="text-align:right"><strong>0.450 ns</strong></td>
+<td style="text-align:right"><strong>1.186 ns</strong></td>
 <td style="text-align:right"><strong>0.0017</strong></td>
 <td style="text-align:right"><strong>32 B</strong></td>
 </tr>
 <tr>
 <td><strong>CreateAndDispose</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>77.32 ns</strong></td>
-<td style="text-align:right"><strong>0.846 ns</strong></td>
-<td style="text-align:right"><strong>0.791 ns</strong></td>
+<td style="text-align:right"><strong>81.93 ns</strong></td>
+<td style="text-align:right"><strong>1.650 ns</strong></td>
+<td style="text-align:right"><strong>1.834 ns</strong></td>
 <td style="text-align:right"><strong>0.0030</strong></td>
 <td style="text-align:right"><strong>56 B</strong></td>
 </tr>

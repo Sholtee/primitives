@@ -52,6 +52,7 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <th style="text-align:right">Mean</th>
 <th style="text-align:right">Error</th>
 <th style="text-align:right">StdDev</th>
+<th style="text-align:right">Median</th>
 <th style="text-align:right">Ratio</th>
 <th style="text-align:right">RatioSD</th>
 <th style="text-align:right">Allocated</th>
@@ -62,39 +63,43 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <tr>
 <td><strong>IndexOfAnyExceptNative</strong></td>
 <td>****</td>
-<td style="text-align:right"><strong>4.3764 ns</strong></td>
-<td style="text-align:right"><strong>0.0699 ns</strong></td>
-<td style="text-align:right"><strong>0.0654 ns</strong></td>
+<td style="text-align:right"><strong>4.6090 ns</strong></td>
+<td style="text-align:right"><strong>0.1227 ns</strong></td>
+<td style="text-align:right"><strong>0.1760 ns</strong></td>
+<td style="text-align:right"><strong>4.5347 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
 <td style="text-align:right"><strong>0.00</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
 <tr>
-<td>IndexOfAnyExcept</td>
+<td>IndexOfAnyExceptFallback</td>
 <td></td>
-<td style="text-align:right">34.9837 ns</td>
-<td style="text-align:right">0.2504 ns</td>
-<td style="text-align:right">0.2091 ns</td>
+<td style="text-align:right">37.0617 ns</td>
+<td style="text-align:right">0.3710 ns</td>
+<td style="text-align:right">0.3289 ns</td>
+<td style="text-align:right">37.0705 ns</td>
 <td style="text-align:right">8.01</td>
-<td style="text-align:right">0.11</td>
+<td style="text-align:right">0.32</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td>IndexOfAnyExceptNotOptimized</td>
 <td></td>
-<td style="text-align:right">0.3094 ns</td>
-<td style="text-align:right">0.0188 ns</td>
-<td style="text-align:right">0.0167 ns</td>
-<td style="text-align:right">0.07</td>
-<td style="text-align:right">0.00</td>
+<td style="text-align:right">0.5087 ns</td>
+<td style="text-align:right">0.2701 ns</td>
+<td style="text-align:right">0.7965 ns</td>
+<td style="text-align:right">0.0000 ns</td>
+<td style="text-align:right">0.37</td>
+<td style="text-align:right">0.08</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
+<td style="text-align:right"></td>
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
@@ -106,32 +111,83 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <tr>
 <td><strong>IndexOfAnyExceptNative</strong></td>
 <td><strong>0</strong></td>
-<td style="text-align:right"><strong>6.8474 ns</strong></td>
-<td style="text-align:right"><strong>0.0934 ns</strong></td>
-<td style="text-align:right"><strong>0.0828 ns</strong></td>
+<td style="text-align:right"><strong>7.5770 ns</strong></td>
+<td style="text-align:right"><strong>0.1488 ns</strong></td>
+<td style="text-align:right"><strong>0.1319 ns</strong></td>
+<td style="text-align:right"><strong>7.5191 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
 <td style="text-align:right"><strong>0.00</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
 <tr>
-<td>IndexOfAnyExcept</td>
+<td>IndexOfAnyExceptFallback</td>
 <td>0</td>
-<td style="text-align:right">37.6836 ns</td>
-<td style="text-align:right">0.5107 ns</td>
-<td style="text-align:right">0.4265 ns</td>
-<td style="text-align:right">5.50</td>
-<td style="text-align:right">0.08</td>
+<td style="text-align:right">39.9071 ns</td>
+<td style="text-align:right">0.7904 ns</td>
+<td style="text-align:right">0.7394 ns</td>
+<td style="text-align:right">39.9798 ns</td>
+<td style="text-align:right">5.26</td>
+<td style="text-align:right">0.13</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td>IndexOfAnyExceptNotOptimized</td>
 <td>0</td>
-<td style="text-align:right">5.3663 ns</td>
-<td style="text-align:right">0.1455 ns</td>
-<td style="text-align:right">0.1732 ns</td>
-<td style="text-align:right">0.80</td>
+<td style="text-align:right">5.4254 ns</td>
+<td style="text-align:right">0.0873 ns</td>
+<td style="text-align:right">0.0774 ns</td>
+<td style="text-align:right">5.3916 ns</td>
+<td style="text-align:right">0.72</td>
+<td style="text-align:right">0.02</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>IndexOfAnyExceptNative</strong></td>
+<td><strong>01</strong></td>
+<td style="text-align:right"><strong>10.7148 ns</strong></td>
+<td style="text-align:right"><strong>0.2388 ns</strong></td>
+<td style="text-align:right"><strong>0.2117 ns</strong></td>
+<td style="text-align:right"><strong>10.6487 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptFallback</td>
+<td>01</td>
+<td style="text-align:right">42.1872 ns</td>
+<td style="text-align:right">0.7200 ns</td>
+<td style="text-align:right">0.6735 ns</td>
+<td style="text-align:right">42.0530 ns</td>
+<td style="text-align:right">3.93</td>
+<td style="text-align:right">0.09</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td>IndexOfAnyExceptNotOptimized</td>
+<td>01</td>
+<td style="text-align:right">10.8797 ns</td>
+<td style="text-align:right">0.2477 ns</td>
+<td style="text-align:right">0.2543 ns</td>
+<td style="text-align:right">10.8199 ns</td>
+<td style="text-align:right">1.02</td>
 <td style="text-align:right">0.03</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
@@ -146,87 +202,48 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>IndexOfAnyExceptNative</strong></td>
-<td><strong>01</strong></td>
-<td style="text-align:right"><strong>9.9223 ns</strong></td>
-<td style="text-align:right"><strong>0.1119 ns</strong></td>
-<td style="text-align:right"><strong>0.1046 ns</strong></td>
-<td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>NA</strong></td>
-</tr>
-<tr>
-<td>IndexOfAnyExcept</td>
-<td>01</td>
-<td style="text-align:right">39.3440 ns</td>
-<td style="text-align:right">0.2485 ns</td>
-<td style="text-align:right">0.1940 ns</td>
-<td style="text-align:right">3.96</td>
-<td style="text-align:right">0.05</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td>IndexOfAnyExceptNotOptimized</td>
-<td>01</td>
-<td style="text-align:right">10.2931 ns</td>
-<td style="text-align:right">0.1006 ns</td>
-<td style="text-align:right">0.0941 ns</td>
-<td style="text-align:right">1.04</td>
-<td style="text-align:right">0.01</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
 <td style="text-align:right"></td>
 </tr>
 <tr>
 <td><strong>IndexOfAnyExceptNative</strong></td>
 <td><strong>01234</strong></td>
-<td style="text-align:right"><strong>18.0547 ns</strong></td>
-<td style="text-align:right"><strong>0.1514 ns</strong></td>
-<td style="text-align:right"><strong>0.1416 ns</strong></td>
+<td style="text-align:right"><strong>18.8596 ns</strong></td>
+<td style="text-align:right"><strong>0.1634 ns</strong></td>
+<td style="text-align:right"><strong>0.1365 ns</strong></td>
+<td style="text-align:right"><strong>18.8968 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
 <td style="text-align:right"><strong>0.00</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
 <tr>
-<td>IndexOfAnyExcept</td>
+<td>IndexOfAnyExceptFallback</td>
 <td>01234</td>
-<td style="text-align:right">45.1123 ns</td>
-<td style="text-align:right">0.5104 ns</td>
-<td style="text-align:right">0.4774 ns</td>
-<td style="text-align:right">2.50</td>
-<td style="text-align:right">0.02</td>
+<td style="text-align:right">48.4580 ns</td>
+<td style="text-align:right">0.6178 ns</td>
+<td style="text-align:right">0.5779 ns</td>
+<td style="text-align:right">48.2841 ns</td>
+<td style="text-align:right">2.57</td>
+<td style="text-align:right">0.04</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td>IndexOfAnyExceptNotOptimized</td>
 <td>01234</td>
-<td style="text-align:right">23.7922 ns</td>
-<td style="text-align:right">0.3712 ns</td>
-<td style="text-align:right">0.3472 ns</td>
-<td style="text-align:right">1.32</td>
-<td style="text-align:right">0.02</td>
+<td style="text-align:right">25.0331 ns</td>
+<td style="text-align:right">0.5406 ns</td>
+<td style="text-align:right">0.4514 ns</td>
+<td style="text-align:right">24.8438 ns</td>
+<td style="text-align:right">1.33</td>
+<td style="text-align:right">0.03</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
+<td style="text-align:right"></td>
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
 <td style="text-align:right"></td>
@@ -238,33 +255,36 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <tr>
 <td><strong>IndexOfAnyExceptNative</strong></td>
 <td><strong>01234(...)+-.eE [45]</strong></td>
-<td style="text-align:right"><strong>35.2128 ns</strong></td>
-<td style="text-align:right"><strong>0.2865 ns</strong></td>
-<td style="text-align:right"><strong>0.2680 ns</strong></td>
+<td style="text-align:right"><strong>37.5217 ns</strong></td>
+<td style="text-align:right"><strong>0.6077 ns</strong></td>
+<td style="text-align:right"><strong>0.5075 ns</strong></td>
+<td style="text-align:right"><strong>37.4012 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
 <td style="text-align:right"><strong>0.00</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
 <tr>
-<td>IndexOfAnyExcept</td>
+<td>IndexOfAnyExceptFallback</td>
 <td>01234(...)+-.eE [45]</td>
-<td style="text-align:right">127.6376 ns</td>
-<td style="text-align:right">0.6078 ns</td>
-<td style="text-align:right">0.5686 ns</td>
+<td style="text-align:right">135.8660 ns</td>
+<td style="text-align:right">1.3922 ns</td>
+<td style="text-align:right">1.2341 ns</td>
+<td style="text-align:right">135.7669 ns</td>
 <td style="text-align:right">3.62</td>
-<td style="text-align:right">0.02</td>
+<td style="text-align:right">0.06</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
 <tr>
 <td>IndexOfAnyExceptNotOptimized</td>
 <td>01234(...)+-.eE [45]</td>
-<td style="text-align:right">223.9127 ns</td>
-<td style="text-align:right">2.0619 ns</td>
-<td style="text-align:right">1.8278 ns</td>
-<td style="text-align:right">6.36</td>
-<td style="text-align:right">0.08</td>
+<td style="text-align:right">238.3029 ns</td>
+<td style="text-align:right">2.7442 ns</td>
+<td style="text-align:right">2.5669 ns</td>
+<td style="text-align:right">238.1495 ns</td>
+<td style="text-align:right">6.35</td>
+<td style="text-align:right">0.09</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
