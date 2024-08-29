@@ -4,9 +4,6 @@
 * Author: Denes Solti                                                           *
 ********************************************************************************/
 using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 
 using static System.Diagnostics.Debug;
@@ -15,55 +12,38 @@ using static System.Runtime.InteropServices.MemoryMarshal;
 
 namespace Solti.Utils.Primitives
 {
+    using CharEntry = (char Char, int Next);
+
     /// <summary>
     /// Defines some extensions over the <see cref="ReadOnlySpan{T}"/> type
     /// </summary>
     public static class MemoryExtensions
     {
-        private delegate int IndexOfAnyExceptDelegate(ReadOnlySpan<char> span, ReadOnlySpan<char> searchValues);
-
-        private static readonly IndexOfAnyExceptDelegate FIndexOfAnyExceptImpl = GetIndexOfAnyExceptDelegate();
-
-        private static IndexOfAnyExceptDelegate GetIndexOfAnyExceptDelegate()
+        /// <summary>
+        /// Context used to speed up the <see cref="IndexOfAnyExcept(ReadOnlySpan{char}, ReadOnlySpan{char}, ref ParsedSearchValues)"/> method.
+        /// </summary>
+        public readonly ref struct ParsedSearchValues
         {
-            MethodInfo? nativeImpl = typeof(System.MemoryExtensions)
-                .GetMethods(BindingFlags.Static | BindingFlags.Public)
-                .Where
-                (
-                    static m =>
-                        m.Name == nameof(IndexOfAnyExcept) &&
-                        m.IsGenericMethodDefinition &&
-                        m
-                            .GetParameters()
-                            .Select(static p => p.ParameterType)
-                            .SequenceEqual
-                            (
-                                Enumerable.Repeat(typeof(ReadOnlySpan<>).MakeGenericType(m.GetGenericArguments().Single()), 2)
-                            )
-                )
-                .SingleOrDefault();
-            if (nativeImpl is null)
-                return IndexOfAnyExceptFallback;
+            internal ParsedSearchValues(int len)
+            {
+                //
+                // DO NOT merge these two arrays as it significantly degrades the performance
+                //
 
-            ParameterExpression
-                span = Expression.Parameter(typeof(ReadOnlySpan<>).MakeGenericType(typeof(char)), nameof(span)),
-                searchValues = Expression.Parameter(span.Type, nameof(searchValues));
+                Entries = new CharEntry[len];
+                Buckets = new int[len];
+            }
 
-            return Expression.Lambda<IndexOfAnyExceptDelegate>
-            (
-                Expression.Call(nativeImpl.MakeGenericMethod(typeof(char)), span, searchValues),
-                span,
-                searchValues
-            ).Compile();
+            internal readonly Span<CharEntry> Entries;
+
+            internal readonly Span<int> Buckets;
         }
 
-        private struct CharEntry
-        {
-            public char Char;
-            public int Next;
-        }
-
-        internal static int IndexOfAnyExceptFallback(this ReadOnlySpan<char> span, ReadOnlySpan<char> searchValues)
+        /// <summary>
+        /// Returns the index of the first character that is not in the <paramref name="searchValues"/>.
+        /// </summary>
+        /// <remarks>If <paramref name="searchValues"/> is not null this method assigns the <paramref name="parsedSearchValues"/> which can be used to speed up subsequent calls (against the same search values)</remarks>
+        public static int IndexOfAnyExcept(this ReadOnlySpan<char> span, ReadOnlySpan<char> searchValues, ref ParsedSearchValues parsedSearchValues)
         {
             /*
             for (int i = 0; i < span.Length; i++)
@@ -77,39 +57,32 @@ namespace Solti.Utils.Primitives
             return -1;
             */
 
-            int
-                searchValuesLen = searchValues.Length,
-                spanLength = span.Length,
-
-                //
-                // Round searchValuesLen up to next power of 2
-                //
-
-                bucketsLength = RoundUpToNextPowerOfTwo(searchValuesLen);
-
-            ref char searchValuesRef = ref GetReference(searchValues);  // to avoid boundary checks
-            ref CharEntry entriesRef = ref GetReference(stackalloc CharEntry[bucketsLength]);
-            ref int bucketsRef = ref GetReference(stackalloc int[bucketsLength]);
-
-            for (int i = 0; i < searchValuesLen; i++)
+            if (searchValues != default)
             {
-                char actual = Add(ref searchValuesRef, i);
-                ref int bucket = ref Add(ref bucketsRef, (actual | (actual << 16)) & (bucketsLength - 1));
+                parsedSearchValues = new ParsedSearchValues
+                (
+                    RoundUpToNextPowerOfTwo(searchValues.Length)
+                );
 
-                ref CharEntry entry = ref Add(ref entriesRef, i);
-                entry.Char = actual;
-                entry.Next = bucket - 1;
+                for (int i = 0; i < searchValues.Length; i++)
+                {
+                    char actual = searchValues[i];  // compiler will eliminate boundary checks
+                    ref int bucket = ref parsedSearchValues.Buckets[(actual | (actual << 16)) & (parsedSearchValues.Buckets.Length - 1)];
 
-                bucket = i + 1;
+                    ref CharEntry entry = ref parsedSearchValues.Entries[i];
+                    entry.Char = actual;
+                    entry.Next = bucket - 1;
+
+                    bucket = i + 1;
+                }
             }
 
-            ref char spanRef = ref GetReference(span);
-            for (int i = 0; i < spanLength; i++)
+            for (int i = 0; i < span.Length; i++)
             {
-                char actual = Add(ref spanRef, i);
-                for (int j = Add(ref bucketsRef, (actual | (actual << 16)) & (bucketsLength - 1)) - 1; (uint) j < bucketsLength;)
+                char actual = span[i];  // compiler will eliminate boundary checks
+                for (int j = parsedSearchValues.Buckets[(actual | (actual << 16)) & (parsedSearchValues.Buckets.Length - 1)] - 1; (uint) j < parsedSearchValues.Entries.Length;)
                 {
-                    CharEntry entry = Add(ref entriesRef, j);
+                    CharEntry entry = parsedSearchValues.Entries[j];
 
                     if (entry.Char == actual)
                         goto nextChar; 
@@ -139,8 +112,11 @@ namespace Solti.Utils.Primitives
         /// Returns the index of the first character that is not in the <paramref name="searchValues"/>.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int IndexOfAnyExcept(this ReadOnlySpan<char> span, ReadOnlySpan<char> searchValues) =>
-            FIndexOfAnyExceptImpl(span, searchValues);
+        public static int IndexOfAnyExcept(this ReadOnlySpan<char> span, ReadOnlySpan<char> searchValues)
+        {
+            ParsedSearchValues parsedSearchValues = default;
+            return span.IndexOfAnyExcept(searchValues, ref parsedSearchValues);
+        }
 
         /// <summary>
         /// Hashes the given character span using MURMUR hash

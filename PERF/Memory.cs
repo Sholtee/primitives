@@ -45,13 +45,28 @@ namespace Solti.Utils.Primitives.Perf
 
         [ParamsSource(nameof(Inputs))]
         public string Input { get; set; } = null!;
-
+/*
         [Benchmark(Baseline = true)]
         public int IndexOfAnyExceptNative() => System.MemoryExtensions.IndexOfAnyExcept(Input.AsSpan(), TEST_STR.AsSpan());
 
         [Benchmark]
-        public int IndexOfAnyExceptFallback() => MemoryExtensions.IndexOfAnyExceptFallback(Input.AsSpan(), TEST_STR.AsSpan());
+        public int IndexOfAnyExceptWithoutContext() => MemoryExtensions.IndexOfAnyExcept(Input.AsSpan(), TEST_STR.AsSpan());
+*/
+        private const int OperationsPerInvoke = 10000;
 
+        [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+        public void IndexOfAnyExceptWithContext()
+        {
+            MemoryExtensions.ParsedSearchValues parsedSearchValues = default;
+
+            _ = MemoryExtensions.IndexOfAnyExcept(Input.AsSpan(), TEST_STR.AsSpan(), ref parsedSearchValues);
+
+            for (int i = 0; i < OperationsPerInvoke; i++)
+            {
+                _ = MemoryExtensions.IndexOfAnyExcept(Input.AsSpan(), default, ref parsedSearchValues);
+            }
+        }
+/*
         [Benchmark]
         public int IndexOfAnyExceptNotOptimized()
         {
@@ -64,5 +79,6 @@ namespace Solti.Utils.Primitives.Perf
             }
             return -1;
         }
+*/
     }
 }
