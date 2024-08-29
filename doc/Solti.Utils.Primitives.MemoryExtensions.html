@@ -155,6 +155,60 @@
       </tr>
     </tbody>
   </table>
+  <a id="Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_" data-uid="Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept*"></a>
+  <h4 id="Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_System_ReadOnlySpan_System_Char__System_ReadOnlySpan_System_Char__Solti_Utils_Primitives_MemoryExtensions_ParsedSearchValues__" data-uid="Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues@)">IndexOfAnyExcept(ReadOnlySpan&lt;Char&gt;, ReadOnlySpan&lt;Char&gt;, ref MemoryExtensions.ParsedSearchValues)</h4>
+  <div class="markdown level1 summary"><p>Returns the index of the first character that is not in the <code data-dev-comment-type="paramref" class="paramref">searchValues</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int IndexOfAnyExcept(this ReadOnlySpan&lt;char&gt; span, ReadOnlySpan&lt;char&gt; searchValues, ref MemoryExtensions.ParsedSearchValues parsedSearchValues)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<span class="xref">System.Char</span>&gt;</td>
+        <td><span class="parametername">span</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<span class="xref">System.Char</span>&gt;</td>
+        <td><span class="parametername">searchValues</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues.html">MemoryExtensions.ParsedSearchValues</a></td>
+        <td><span class="parametername">parsedSearchValues</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_System_ReadOnlySpan_System_Char__System_ReadOnlySpan_System_Char__Solti_Utils_Primitives_MemoryExtensions_ParsedSearchValues___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If <code data-dev-comment-type="paramref" class="paramref">searchValues</code> is not null this method assigns the <code data-dev-comment-type="paramref" class="paramref">parsedSearchValues</code> which can be used to speed up subsequent calls (against the same search values)</p>
+</div>
 </article>
           </div>
           

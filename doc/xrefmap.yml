@@ -410,12 +410,27 @@ references:
   fullName.vb: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan(Of System.Char), System.ReadOnlySpan(Of System.Char))
   nameWithType: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan<Char>, ReadOnlySpan<Char>)
   nameWithType.vb: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan(Of Char), ReadOnlySpan(Of Char))
+- uid: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues@)
+  name: IndexOfAnyExcept(ReadOnlySpan<Char>, ReadOnlySpan<Char>, ref MemoryExtensions.ParsedSearchValues)
+  href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_System_ReadOnlySpan_System_Char__System_ReadOnlySpan_System_Char__Solti_Utils_Primitives_MemoryExtensions_ParsedSearchValues__
+  commentId: M:Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues@)
+  name.vb: IndexOfAnyExcept(ReadOnlySpan(Of Char), ReadOnlySpan(Of Char), ByRef MemoryExtensions.ParsedSearchValues)
+  fullName: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan<System.Char>, System.ReadOnlySpan<System.Char>, ref Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues)
+  fullName.vb: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(System.ReadOnlySpan(Of System.Char), System.ReadOnlySpan(Of System.Char), ByRef Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues)
+  nameWithType: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan<Char>, ReadOnlySpan<Char>, ref MemoryExtensions.ParsedSearchValues)
+  nameWithType.vb: MemoryExtensions.IndexOfAnyExcept(ReadOnlySpan(Of Char), ReadOnlySpan(Of Char), ByRef MemoryExtensions.ParsedSearchValues)
 - uid: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept*
   name: IndexOfAnyExcept
   href: Solti.Utils.Primitives.MemoryExtensions.html#Solti_Utils_Primitives_MemoryExtensions_IndexOfAnyExcept_
   commentId: Overload:Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept
   fullName: Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept
   nameWithType: MemoryExtensions.IndexOfAnyExcept
+- uid: Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues
+  name: MemoryExtensions.ParsedSearchValues
+  href: Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues.html
+  commentId: T:Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues
+  fullName: Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues
+  nameWithType: MemoryExtensions.ParsedSearchValues
 - uid: Solti.Utils.Primitives.MethodInfoExtensions
   name: MethodInfoExtensions
   href: Solti.Utils.Primitives.MethodInfoExtensions.html
