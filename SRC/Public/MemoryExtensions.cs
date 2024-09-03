@@ -22,29 +22,34 @@ namespace Solti.Utils.Primitives
         /// <summary>
         /// Context used to speed up the <see cref="IndexOfAnyExcept(ReadOnlySpan{char}, ReadOnlySpan{char}, ref ParsedSearchValues)"/> method.
         /// </summary>
-        public readonly ref struct ParsedSearchValues
+        public readonly struct ParsedSearchValues
         {
+            //
+            // DO NOT merge these two arrays as it significantly degrades the performance
+            //
+
+            private readonly CharEntry[] FEntries;
+
+            private readonly int[] FBuckets;
+
             internal ParsedSearchValues(ReadOnlySpan<char> searchValues)
             {
-                int len = RoundUpToNextPowerOfTwo(searchValues.Length);
+                Length = RoundUpToNextPowerOfTwo(searchValues.Length);
 
-                CharEntry[] entries = new CharEntry[len];
-                int[] buckets = new int[len];
+                FEntries = new CharEntry[Length];
+                FBuckets = new int[Length];
 
                 for (int i = 0; i < searchValues.Length; i++)
                 {
-                    char actual = searchValues[i];  // compiler will eliminate boundary checks
-                    ref int bucket = ref buckets[(actual | (actual << 16)) & (buckets.Length - 1)];
+                    char actual = searchValues[i];
+                    ref int bucket = ref FBuckets[(actual | (actual << 16)) & (Length - 1)];
 
-                    ref CharEntry entry = ref entries[i];
+                    ref CharEntry entry = ref FEntries[i];
                     entry.Char = actual;
                     entry.Next = bucket - 1;
 
                     bucket = i + 1;
                 }
-
-                Entries = entries;
-                Buckets = buckets;
 
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 static int RoundUpToNextPowerOfTwo(int val)
@@ -59,13 +64,11 @@ namespace Solti.Utils.Primitives
                 }
             }
 
-            //
-            // DO NOT merge these two arrays as it significantly degrades the performance
-            //
+            internal int Length { get; }
 
-            internal readonly ReadOnlySpan<CharEntry> Entries;
+            internal ReadOnlySpan<CharEntry> Entries => FEntries.AsSpan();
 
-            internal readonly ReadOnlySpan<int> Buckets;
+            internal ReadOnlySpan<int> Buckets => FBuckets.AsSpan();
         }
 
         /// <summary>
@@ -91,12 +94,16 @@ namespace Solti.Utils.Primitives
                 parsedSearchValues = new ParsedSearchValues(searchValues);
             }
 
+            ref int buckets = ref GetReference(parsedSearchValues.Buckets);
+            ref CharEntry entries = ref GetReference(parsedSearchValues.Entries);
+            ref char spanRef = ref GetReference(span);
+
             for (int i = 0; i < span.Length; i++)
             {
-                char actual = span[i];  // compiler will eliminate boundary checks
-                for (int j = parsedSearchValues.Buckets[(actual | (actual << 16)) & (parsedSearchValues.Buckets.Length - 1)] - 1; (uint) j < parsedSearchValues.Entries.Length;)
+                char actual = Add(ref spanRef, i);
+                for (int j = Add(ref buckets, (actual | (actual << 16)) & (parsedSearchValues.Length - 1)) - 1; (uint) j < parsedSearchValues.Length;)
                 {
-                    CharEntry entry = parsedSearchValues.Entries[j];
+                    CharEntry entry = Add(ref entries, j);
 
                     if (entry.Char == actual)
                         goto nextChar; 
