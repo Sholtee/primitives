@@ -24,19 +24,48 @@ namespace Solti.Utils.Primitives
         /// </summary>
         public readonly ref struct ParsedSearchValues
         {
-            internal ParsedSearchValues(int len)
+            internal ParsedSearchValues(ReadOnlySpan<char> searchValues)
             {
-                //
-                // DO NOT merge these two arrays as it significantly degrades the performance
-                //
+                int len = RoundUpToNextPowerOfTwo(searchValues.Length);
 
-                Entries = new CharEntry[len];
-                Buckets = new int[len];
+                CharEntry[] entries = new CharEntry[len];
+                int[] buckets = new int[len];
+
+                for (int i = 0; i < searchValues.Length; i++)
+                {
+                    char actual = searchValues[i];  // compiler will eliminate boundary checks
+                    ref int bucket = ref buckets[(actual | (actual << 16)) & (buckets.Length - 1)];
+
+                    ref CharEntry entry = ref entries[i];
+                    entry.Char = actual;
+                    entry.Next = bucket - 1;
+
+                    bucket = i + 1;
+                }
+
+                Entries = entries;
+                Buckets = buckets;
+
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                static int RoundUpToNextPowerOfTwo(int val)
+                {
+                    val--;
+                    val |= val >> 1;
+                    val |= val >> 2;
+                    val |= val >> 4;
+                    val |= val >> 8;
+                    val |= val >> 16;
+                    return val + 1;
+                }
             }
 
-            internal readonly Span<CharEntry> Entries;
+            //
+            // DO NOT merge these two arrays as it significantly degrades the performance
+            //
 
-            internal readonly Span<int> Buckets;
+            internal readonly ReadOnlySpan<CharEntry> Entries;
+
+            internal readonly ReadOnlySpan<int> Buckets;
         }
 
         /// <summary>
@@ -59,22 +88,7 @@ namespace Solti.Utils.Primitives
 
             if (searchValues != default)
             {
-                parsedSearchValues = new ParsedSearchValues
-                (
-                    RoundUpToNextPowerOfTwo(searchValues.Length)
-                );
-
-                for (int i = 0; i < searchValues.Length; i++)
-                {
-                    char actual = searchValues[i];  // compiler will eliminate boundary checks
-                    ref int bucket = ref parsedSearchValues.Buckets[(actual | (actual << 16)) & (parsedSearchValues.Buckets.Length - 1)];
-
-                    ref CharEntry entry = ref parsedSearchValues.Entries[i];
-                    entry.Char = actual;
-                    entry.Next = bucket - 1;
-
-                    bucket = i + 1;
-                }
+                parsedSearchValues = new ParsedSearchValues(searchValues);
             }
 
             for (int i = 0; i < span.Length; i++)
@@ -94,18 +108,6 @@ namespace Solti.Utils.Primitives
             }
 
             return -1;
-
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            static int RoundUpToNextPowerOfTwo(int val)
-            {
-                val--;
-                val |= val >> 1;
-                val |= val >> 2;
-                val |= val >> 4;
-                val |= val >> 8;
-                val |= val >> 16;
-                return val + 1;
-            }
         }
 
         /// <summary>
