@@ -175,3 +175,6 @@ virtual Solti.Utils.Primitives.Patterns.Disposable.Dispose(bool disposeManaged) 
 Solti.Utils.Primitives.MemoryExtensions
 static Solti.Utils.Primitives.MemoryExtensions.GetHashCode(this System.ReadOnlySpan<char> self, bool ignoreCase, int seed = 1986) -> int
 static Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(this System.ReadOnlySpan<char> span, System.ReadOnlySpan<char> searchValues) -> int
+Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues
+Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues.ParsedSearchValues() -> void
+static Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(this System.ReadOnlySpan<char> span, System.ReadOnlySpan<char> searchValues, ref Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues parsedSearchValues) -> int

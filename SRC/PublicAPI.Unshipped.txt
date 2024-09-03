@@ -1,3 +1,1 @@
-﻿Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues
-Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues.ParsedSearchValues() -> void
-static Solti.Utils.Primitives.MemoryExtensions.IndexOfAnyExcept(this System.ReadOnlySpan<char> span, System.ReadOnlySpan<char> searchValues, ref Solti.Utils.Primitives.MemoryExtensions.ParsedSearchValues parsedSearchValues) -> int
+﻿
