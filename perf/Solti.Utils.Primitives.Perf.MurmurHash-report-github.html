@@ -38,7 +38,7 @@
             <article class="content wrap" id="_content" data-uid="">
 
 <pre><code>
-BenchmarkDotNet v0.13.12, Windows 10 (10.0.17763.5576/1809/October2018Update/Redstone5) (Hyper-V)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.17763.5576/1809/October2018Update/Redstone5) (Hyper-V)
 Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 .NET SDK 8.0.300
   [Host]     : .NET 8.0.5 (8.0.524.21615), X64 RyuJIT AVX2
@@ -64,11 +64,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td>****</td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>5.337 ns</strong></td>
-<td style="text-align:right"><strong>0.1072 ns</strong></td>
-<td style="text-align:right"><strong>0.0895 ns</strong></td>
+<td style="text-align:right"><strong>5.156 ns</strong></td>
+<td style="text-align:right"><strong>0.0896 ns</strong></td>
+<td style="text-align:right"><strong>0.0838 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.02</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -76,11 +76,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td></td>
 <td>False</td>
-<td style="text-align:right">6.241 ns</td>
-<td style="text-align:right">0.1636 ns</td>
-<td style="text-align:right">0.1450 ns</td>
-<td style="text-align:right">1.17</td>
-<td style="text-align:right">0.04</td>
+<td style="text-align:right">6.315 ns</td>
+<td style="text-align:right">0.1004 ns</td>
+<td style="text-align:right">0.0939 ns</td>
+<td style="text-align:right">1.23</td>
+<td style="text-align:right">0.03</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
@@ -100,11 +100,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td>****</td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>5.038 ns</strong></td>
-<td style="text-align:right"><strong>0.1388 ns</strong></td>
-<td style="text-align:right"><strong>0.1159 ns</strong></td>
+<td style="text-align:right"><strong>4.881 ns</strong></td>
+<td style="text-align:right"><strong>0.1394 ns</strong></td>
+<td style="text-align:right"><strong>0.1304 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.04</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -112,9 +112,9 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td></td>
 <td>True</td>
-<td style="text-align:right">6.661 ns</td>
-<td style="text-align:right">0.1644 ns</td>
-<td style="text-align:right">0.1537 ns</td>
+<td style="text-align:right">6.427 ns</td>
+<td style="text-align:right">0.0993 ns</td>
+<td style="text-align:right">0.0929 ns</td>
 <td style="text-align:right">1.32</td>
 <td style="text-align:right">0.04</td>
 <td style="text-align:right">-</td>
@@ -136,11 +136,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>a</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>6.707 ns</strong></td>
-<td style="text-align:right"><strong>0.1816 ns</strong></td>
-<td style="text-align:right"><strong>0.2018 ns</strong></td>
+<td style="text-align:right"><strong>6.246 ns</strong></td>
+<td style="text-align:right"><strong>0.1694 ns</strong></td>
+<td style="text-align:right"><strong>0.1813 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.04</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -148,10 +148,10 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>a</td>
 <td>False</td>
-<td style="text-align:right">7.908 ns</td>
-<td style="text-align:right">0.1528 ns</td>
-<td style="text-align:right">0.1429 ns</td>
-<td style="text-align:right">1.18</td>
+<td style="text-align:right">7.983 ns</td>
+<td style="text-align:right">0.1795 ns</td>
+<td style="text-align:right">0.1679 ns</td>
+<td style="text-align:right">1.28</td>
 <td style="text-align:right">0.04</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
@@ -172,11 +172,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>a</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>7.574 ns</strong></td>
-<td style="text-align:right"><strong>0.1962 ns</strong></td>
-<td style="text-align:right"><strong>0.2552 ns</strong></td>
+<td style="text-align:right"><strong>6.958 ns</strong></td>
+<td style="text-align:right"><strong>0.0553 ns</strong></td>
+<td style="text-align:right"><strong>0.0490 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.01</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -184,155 +184,155 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>a</td>
 <td>True</td>
-<td style="text-align:right">9.110 ns</td>
-<td style="text-align:right">0.1215 ns</td>
+<td style="text-align:right">8.610 ns</td>
+<td style="text-align:right">0.0557 ns</td>
+<td style="text-align:right">0.0465 ns</td>
+<td style="text-align:right">1.24</td>
+<td style="text-align:right">0.01</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>GetNativeHashCode</strong></td>
+<td><strong>ab</strong></td>
+<td><strong>False</strong></td>
+<td style="text-align:right"><strong>7.596 ns</strong></td>
+<td style="text-align:right"><strong>0.1831 ns</strong></td>
+<td style="text-align:right"><strong>0.1713 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.03</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>GetMurmurHashCode</td>
+<td>ab</td>
+<td>False</td>
+<td style="text-align:right">8.308 ns</td>
+<td style="text-align:right">0.0850 ns</td>
+<td style="text-align:right">0.0710 ns</td>
+<td style="text-align:right">1.09</td>
+<td style="text-align:right">0.03</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>GetNativeHashCode</strong></td>
+<td><strong>ab</strong></td>
+<td><strong>True</strong></td>
+<td style="text-align:right"><strong>8.327 ns</strong></td>
+<td style="text-align:right"><strong>0.0572 ns</strong></td>
+<td style="text-align:right"><strong>0.0478 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.01</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>GetMurmurHashCode</td>
+<td>ab</td>
+<td>True</td>
+<td style="text-align:right">9.975 ns</td>
+<td style="text-align:right">0.0715 ns</td>
+<td style="text-align:right">0.0597 ns</td>
+<td style="text-align:right">1.20</td>
+<td style="text-align:right">0.01</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>GetNativeHashCode</strong></td>
+<td><strong>abcd</strong></td>
+<td><strong>False</strong></td>
+<td style="text-align:right"><strong>9.866 ns</strong></td>
+<td style="text-align:right"><strong>0.1973 ns</strong></td>
+<td style="text-align:right"><strong>0.1749 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.02</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>GetMurmurHashCode</td>
+<td>abcd</td>
+<td>False</td>
+<td style="text-align:right">8.643 ns</td>
+<td style="text-align:right">0.0883 ns</td>
+<td style="text-align:right">0.0825 ns</td>
+<td style="text-align:right">0.88</td>
+<td style="text-align:right">0.02</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">NA</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>GetNativeHashCode</strong></td>
+<td><strong>abcd</strong></td>
+<td><strong>True</strong></td>
+<td style="text-align:right"><strong>11.587 ns</strong></td>
+<td style="text-align:right"><strong>0.1819 ns</strong></td>
+<td style="text-align:right"><strong>0.1612 ns</strong></td>
+<td style="text-align:right"><strong>1.00</strong></td>
+<td style="text-align:right"><strong>0.02</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>NA</strong></td>
+</tr>
+<tr>
+<td>GetMurmurHashCode</td>
+<td>abcd</td>
+<td>True</td>
+<td style="text-align:right">10.635 ns</td>
 <td style="text-align:right">0.1077 ns</td>
-<td style="text-align:right">1.21</td>
-<td style="text-align:right">0.04</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>GetNativeHashCode</strong></td>
-<td><strong>ab</strong></td>
-<td><strong>False</strong></td>
-<td style="text-align:right"><strong>7.949 ns</strong></td>
-<td style="text-align:right"><strong>0.0942 ns</strong></td>
-<td style="text-align:right"><strong>0.0786 ns</strong></td>
-<td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>NA</strong></td>
-</tr>
-<tr>
-<td>GetMurmurHashCode</td>
-<td>ab</td>
-<td>False</td>
-<td style="text-align:right">8.743 ns</td>
-<td style="text-align:right">0.1729 ns</td>
-<td style="text-align:right">0.1617 ns</td>
-<td style="text-align:right">1.10</td>
-<td style="text-align:right">0.02</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>GetNativeHashCode</strong></td>
-<td><strong>ab</strong></td>
-<td><strong>True</strong></td>
-<td style="text-align:right"><strong>9.006 ns</strong></td>
-<td style="text-align:right"><strong>0.2168 ns</strong></td>
-<td style="text-align:right"><strong>0.2028 ns</strong></td>
-<td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>NA</strong></td>
-</tr>
-<tr>
-<td>GetMurmurHashCode</td>
-<td>ab</td>
-<td>True</td>
-<td style="text-align:right">10.877 ns</td>
-<td style="text-align:right">0.2438 ns</td>
-<td style="text-align:right">0.2162 ns</td>
-<td style="text-align:right">1.21</td>
-<td style="text-align:right">0.04</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>GetNativeHashCode</strong></td>
-<td><strong>abcd</strong></td>
-<td><strong>False</strong></td>
-<td style="text-align:right"><strong>10.364 ns</strong></td>
-<td style="text-align:right"><strong>0.1715 ns</strong></td>
-<td style="text-align:right"><strong>0.1605 ns</strong></td>
-<td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>NA</strong></td>
-</tr>
-<tr>
-<td>GetMurmurHashCode</td>
-<td>abcd</td>
-<td>False</td>
-<td style="text-align:right">10.827 ns</td>
-<td style="text-align:right">0.0854 ns</td>
-<td style="text-align:right">0.0799 ns</td>
-<td style="text-align:right">1.04</td>
-<td style="text-align:right">0.02</td>
-<td style="text-align:right">-</td>
-<td style="text-align:right">NA</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>GetNativeHashCode</strong></td>
-<td><strong>abcd</strong></td>
-<td><strong>True</strong></td>
-<td style="text-align:right"><strong>12.227 ns</strong></td>
-<td style="text-align:right"><strong>0.2150 ns</strong></td>
-<td style="text-align:right"><strong>0.2011 ns</strong></td>
-<td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
-<td style="text-align:right"><strong>-</strong></td>
-<td style="text-align:right"><strong>NA</strong></td>
-</tr>
-<tr>
-<td>GetMurmurHashCode</td>
-<td>abcd</td>
-<td>True</td>
-<td style="text-align:right">11.155 ns</td>
-<td style="text-align:right">0.2292 ns</td>
-<td style="text-align:right">0.2032 ns</td>
-<td style="text-align:right">0.91</td>
-<td style="text-align:right">0.02</td>
+<td style="text-align:right">0.0899 ns</td>
+<td style="text-align:right">0.92</td>
+<td style="text-align:right">0.01</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
@@ -352,9 +352,9 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>abcdefgh</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>13.295 ns</strong></td>
-<td style="text-align:right"><strong>0.3064 ns</strong></td>
-<td style="text-align:right"><strong>0.2866 ns</strong></td>
+<td style="text-align:right"><strong>12.490 ns</strong></td>
+<td style="text-align:right"><strong>0.0419 ns</strong></td>
+<td style="text-align:right"><strong>0.0327 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
 <td style="text-align:right"><strong>0.00</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
@@ -364,11 +364,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>abcdefgh</td>
 <td>False</td>
-<td style="text-align:right">11.916 ns</td>
-<td style="text-align:right">0.1723 ns</td>
-<td style="text-align:right">0.1438 ns</td>
-<td style="text-align:right">0.90</td>
-<td style="text-align:right">0.03</td>
+<td style="text-align:right">11.019 ns</td>
+<td style="text-align:right">0.1102 ns</td>
+<td style="text-align:right">0.0920 ns</td>
+<td style="text-align:right">0.88</td>
+<td style="text-align:right">0.01</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
@@ -388,11 +388,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>abcdefgh</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>16.125 ns</strong></td>
-<td style="text-align:right"><strong>0.2082 ns</strong></td>
-<td style="text-align:right"><strong>0.1739 ns</strong></td>
+<td style="text-align:right"><strong>15.303 ns</strong></td>
+<td style="text-align:right"><strong>0.1656 ns</strong></td>
+<td style="text-align:right"><strong>0.1549 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.01</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -400,11 +400,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>abcdefgh</td>
 <td>True</td>
-<td style="text-align:right">16.006 ns</td>
-<td style="text-align:right">0.3496 ns</td>
-<td style="text-align:right">0.3885 ns</td>
-<td style="text-align:right">0.99</td>
-<td style="text-align:right">0.03</td>
+<td style="text-align:right">14.662 ns</td>
+<td style="text-align:right">0.1572 ns</td>
+<td style="text-align:right">0.1393 ns</td>
+<td style="text-align:right">0.96</td>
+<td style="text-align:right">0.01</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
@@ -424,11 +424,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>abcde(...)tuvwz [24]</strong></td>
 <td><strong>False</strong></td>
-<td style="text-align:right"><strong>27.689 ns</strong></td>
-<td style="text-align:right"><strong>0.2165 ns</strong></td>
-<td style="text-align:right"><strong>0.1919 ns</strong></td>
+<td style="text-align:right"><strong>26.222 ns</strong></td>
+<td style="text-align:right"><strong>0.2207 ns</strong></td>
+<td style="text-align:right"><strong>0.2064 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.01</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -436,9 +436,9 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>abcde(...)tuvwz [24]</td>
 <td>False</td>
-<td style="text-align:right">21.501 ns</td>
-<td style="text-align:right">0.1773 ns</td>
-<td style="text-align:right">0.1659 ns</td>
+<td style="text-align:right">20.395 ns</td>
+<td style="text-align:right">0.1547 ns</td>
+<td style="text-align:right">0.1371 ns</td>
 <td style="text-align:right">0.78</td>
 <td style="text-align:right">0.01</td>
 <td style="text-align:right">-</td>
@@ -460,11 +460,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td><strong>GetNativeHashCode</strong></td>
 <td><strong>abcde(...)tuvwz [24]</strong></td>
 <td><strong>True</strong></td>
-<td style="text-align:right"><strong>34.858 ns</strong></td>
-<td style="text-align:right"><strong>0.7313 ns</strong></td>
-<td style="text-align:right"><strong>1.2015 ns</strong></td>
+<td style="text-align:right"><strong>32.021 ns</strong></td>
+<td style="text-align:right"><strong>0.4030 ns</strong></td>
+<td style="text-align:right"><strong>0.3770 ns</strong></td>
 <td style="text-align:right"><strong>1.00</strong></td>
-<td style="text-align:right"><strong>0.00</strong></td>
+<td style="text-align:right"><strong>0.02</strong></td>
 <td style="text-align:right"><strong>-</strong></td>
 <td style="text-align:right"><strong>NA</strong></td>
 </tr>
@@ -472,11 +472,11 @@ Intel Xeon CPU E5-2697 v3 2.60GHz, 1 CPU, 2 logical cores and 1 physical core
 <td>GetMurmurHashCode</td>
 <td>abcde(...)tuvwz [24]</td>
 <td>True</td>
-<td style="text-align:right">34.181 ns</td>
-<td style="text-align:right">0.7145 ns</td>
-<td style="text-align:right">0.5966 ns</td>
-<td style="text-align:right">0.98</td>
-<td style="text-align:right">0.04</td>
+<td style="text-align:right">32.120 ns</td>
+<td style="text-align:right">0.3300 ns</td>
+<td style="text-align:right">0.3086 ns</td>
+<td style="text-align:right">1.00</td>
+<td style="text-align:right">0.01</td>
 <td style="text-align:right">-</td>
 <td style="text-align:right">NA</td>
 </tr>
