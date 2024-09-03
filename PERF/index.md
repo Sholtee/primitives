@@ -6,5 +6,5 @@
 - [ExclusiveBlock](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.ExclusiveBlock-report-github.html )
 - [MurmurHash](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.MurmurHash-report-github.html )
 - [IndexOfAnyExcept](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.IndexOfAnyExcept-report-github.html )
-- [ObjectPool](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.ObjectPool_Comparison-report-github.html )
+- [ObjectPool](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.ObjectPool-report-github.html )
 - [RedBlackTree](https://sholtee.github.io/primitives/perf/Solti.Utils.Primitives.Perf.RedBlackTree-report-github.html )
